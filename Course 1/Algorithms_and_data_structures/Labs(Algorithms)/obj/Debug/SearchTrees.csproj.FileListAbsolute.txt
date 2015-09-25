@@ -1,0 +1,18 @@
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees\SearchTrees\bin\Debug\SearchTrees.exe.config
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees\SearchTrees\bin\Debug\SearchTrees.exe
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees\SearchTrees\bin\Debug\SearchTrees.pdb
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees\SearchTrees\obj\Debug\SearchTrees.csprojResolveAssemblyReference.cache
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees\SearchTrees\obj\Debug\SearchTrees.exe
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees\SearchTrees\obj\Debug\SearchTrees.pdb
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees(Lab2)\SearchTrees\bin\Debug\SearchTrees.exe.config
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees(Lab2)\SearchTrees\obj\Debug\SearchTrees.exe
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees(Lab2)\SearchTrees\obj\Debug\SearchTrees.pdb
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees(Lab2)\SearchTrees\obj\Debug\SearchTrees.csprojResolveAssemblyReference.cache
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees(Lab2)\SearchTrees\bin\Debug\SearchTrees.exe
+C:\Users\Nick\Documents\IFMO\The Semester 2\Combinatorial Algorithms\SearchTrees(Lab2)\SearchTrees\bin\Debug\SearchTrees.pdb
+C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\Algorithms\bin\Debug\SearchTrees.exe.config
+C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\Algorithms\obj\Debug\SearchTrees.exe
+C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\Algorithms\obj\Debug\SearchTrees.pdb
+C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\Algorithms\bin\Debug\SearchTrees.exe
+C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\Algorithms\bin\Debug\SearchTrees.pdb
+C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\Algorithms\obj\Debug\SearchTrees.csprojResolveAssemblyReference.cache

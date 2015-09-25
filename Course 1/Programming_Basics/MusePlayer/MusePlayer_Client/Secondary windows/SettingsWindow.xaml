@@ -1,0 +1,24 @@
+﻿<Window 
+        x:Name="SettingsWindowXaml"
+        x:Class="MusicPlayer_ClientSide.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SettingWindow" Height="290.987" Width="293.562" WindowStyle="None" ResizeMode="NoResize"
+    BorderBrush="Black" BorderThickness="3">
+    <Grid>
+        <Rectangle Fill="Transparent" Grid.Row="0" HorizontalAlignment="Left" Height="14" VerticalAlignment="Top" Width="292" MouseDown="Border_MouseDown"/>
+        <Label x:Name="PathLabel" Content="Path to a music folder.." Foreground="{Binding ElementName=PathTB, Path=BorderBrush}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PathTB" Style="{DynamicResource SimpleTextBox}" Foreground="#FFFFFFFF" Background="{Binding ElementName=ThemeSettingsLB, Path=Background}" HorizontalAlignment="Left" Height="28" Margin="10,30,0,0" TextWrapping="Wrap" Text="C:\Users\Nick\Music\MusicAppFolder\" VerticalAlignment="Top" Width="272"/>
+        <Button x:Name="CloseButt" Style="{DynamicResource SimpleButton}" Content="Close" Click="CloseButton_Click" HorizontalAlignment="Left" Margin="207,264.04,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="ThemeLabel" Content="Theme" HorizontalAlignment="Left" Foreground="{Binding ElementName=PathTB, Path=BorderBrush}" Margin="10,138,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="ThemeSettingsLB" Background="#FF121313" Foreground="{Binding ElementName=PathTB, Path=Foreground}" BorderBrush="{Binding ElementName=PathTB, Path=BorderBrush}" Style="{DynamicResource SimpleListBox}" HorizontalAlignment="Left" Height="79" Margin="10,164,0,0" VerticalAlignment="Top" Width="272"/>
+        <Label x:Name="ServerIPLabel" Content="Server Ip address" Foreground="{Binding ElementName=PathTB, Path=BorderBrush}" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ServerIpLB" Style="{DynamicResource SimpleTextBox}" Foreground="{Binding ElementName=PathTB, Path=Foreground}" Background="{Binding ElementName=ThemeSettingsLB, Path=Background}" BorderBrush="{Binding ElementName=PathTB, Path=BorderBrush}" HorizontalAlignment="Left" Height="28" Margin="10,85,0,0" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="101"/>
+        <Label x:Name="LanguageLabel" Content="Language" Foreground="{Binding ElementName=PathTB, Path=BorderBrush}" HorizontalAlignment="Left" Margin="162,63,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="LanguageCB" HorizontalAlignment="Left" Margin="162,85,0,0" VerticalAlignment="Top" Width="120" >
+            <ComboBoxItem x:Name="EnglishCB">English</ComboBoxItem>
+            <ComboBoxItem x:Name="RussianCB">Russian</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="Header" Content="Settings" Foreground="{Binding ElementName=PathTB, Path=BorderBrush}" HorizontalAlignment="Center" Margin="0,-4,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

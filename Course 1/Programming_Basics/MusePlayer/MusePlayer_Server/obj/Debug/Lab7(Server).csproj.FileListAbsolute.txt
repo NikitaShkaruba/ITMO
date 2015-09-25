@@ -1,0 +1,13 @@
+c:\users\nick\documents\visual studio 2013\Projects\Lab7(Server)\Lab7(Server)\bin\Debug\Lab7(Server).exe.config
+c:\users\nick\documents\visual studio 2013\Projects\Lab7(Server)\Lab7(Server)\bin\Debug\Lab7(Server).exe
+c:\users\nick\documents\visual studio 2013\Projects\Lab7(Server)\Lab7(Server)\bin\Debug\Lab7(Server).pdb
+c:\users\nick\documents\visual studio 2013\Projects\Lab7(Server)\Lab7(Server)\obj\Debug\Lab7(Server).csprojResolveAssemblyReference.cache
+c:\users\nick\documents\visual studio 2013\Projects\Lab7(Server)\Lab7(Server)\obj\Debug\Lab7(Server).exe
+c:\users\nick\documents\visual studio 2013\Projects\Lab7(Server)\Lab7(Server)\obj\Debug\Lab7(Server).pdb
+C:\Users\Nick\Desktop\Tasks\2 семестр\Основы программирования\Lab1\Server\Lab7(Server)\bin\Debug\Lab7(Server).exe.config
+C:\Users\Nick\Desktop\Tasks\2 семестр\Основы программирования\Lab1\Server\Lab7(Server)\obj\Debug\Lab7(Server).exe
+C:\Users\Nick\Desktop\Tasks\2 семестр\Основы программирования\Lab1\Server\Lab7(Server)\obj\Debug\Lab7(Server).pdb
+C:\Users\Nick\Desktop\Tasks\2 семестр\Основы программирования\Lab1\Server\Lab7(Server)\obj\Debug\Lab7(Server).csprojResolveAssemblyReference.cache
+C:\Users\Nick\Desktop\Tasks\2 семестр\Основы программирования\Lab1\Server\Lab7(Server)\bin\Debug\Lab7(Server).exe
+C:\Users\Nick\Desktop\Tasks\2 семестр\Основы программирования\Lab1\Server\Lab7(Server)\bin\Debug\Lab7(Server).pdb
+C:\Users\Nick\Desktop\Tasks\2 семестр\Основы программирования\Lab1\Server\Lab7(Server)\bin\Debug\SQLite.NET.dll

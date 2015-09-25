@@ -1,0 +1,20 @@
+﻿Build started 6/13/2015 4:38:12 PM.
+     1>Project "C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\HuffmanCompress\HuffmanCompress\HuffmanCompress.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Program.cpp
+         Program.cpp
+     1>c:\users\nick\documents\ifmo\semester 2\combinatorial algorithms\huffmancompress\huffmancompress\program.cpp(78): warning C4554: '>>' : check operator precedence for possible error; use parentheses to clarify precedence
+     1>c:\users\nick\documents\ifmo\semester 2\combinatorial algorithms\huffmancompress\huffmancompress\program.cpp(98): warning C4554: '<<' : check operator precedence for possible error; use parentheses to clarify precedence
+     1>c:\users\nick\documents\ifmo\semester 2\combinatorial algorithms\huffmancompress\huffmancompress\program.cpp(99): warning C4554: '<<' : check operator precedence for possible error; use parentheses to clarify precedence
+     1>c:\users\nick\documents\ifmo\semester 2\combinatorial algorithms\huffmancompress\huffmancompress\program.cpp(140): warning C4805: '|' : unsafe mix of type 'int' and type 'std::_Vb_const_iterator<std::_Wrap_alloc<std::allocator<char32_t>>>::const_reference' in operation
+     1>c:\users\nick\documents\ifmo\semester 2\combinatorial algorithms\huffmancompress\huffmancompress\program.cpp(151): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'size_t', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\HuffmanCompress\Debug\HuffmanCompress.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\HuffmanCompress\Debug\HuffmanCompress.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\HuffmanCompress\Debug\HuffmanCompress.lib" /MACHINE:X86 /PROFILE Debug\Program.obj
+     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/PROFILE' specification
+     1>Program.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+         HuffmanCompress.vcxproj -> C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\HuffmanCompress\Debug\HuffmanCompress.exe
+     1>Done Building Project "C:\Users\Nick\Documents\IFMO\Semester 2\Combinatorial algorithms\HuffmanCompress\HuffmanCompress\HuffmanCompress.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.39
