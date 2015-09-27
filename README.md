@@ -1,5 +1,5 @@
-## About
-It contains all the code that i wrote, studying at my beloved university
+## About repository
+It contains all the code that i wrote when I studied at ITMO University
 
 ## Programming languages
 I do write:
