@@ -1,31 +1,24 @@
-﻿Build started 9/22/2015 8:20:10 PM.
-     1>Project "C:\Users\Nikita\SkyDrive\Documents\IFMO\Semester 3\Computational Mathematics\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5).vcxproj" on node 2 (Build target(s)).
+﻿Build started 10/5/2015 10:16:10 PM.
+     1>Project "C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Computational_mathematics\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5).vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(23): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(40): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(44): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(56): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(59): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(62): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(67): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(67): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(68): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(97): warning C4305: 'argument': truncation from 'double' to 'float'
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(129): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(133): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(135): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(141): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(156): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(160): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\nikita\skydrive\documents\ifmo\semester 3\computational mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(134): warning C4101: 'buf': unreferenced local variable
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(24): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(41): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(45): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(82): warning C4305: 'initializing': truncation from 'double' to 'float'
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(148): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(153): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(154): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(159): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(172): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\nikita\skydrive\documents\itmo\course 2\computational_mathematics\comp.math(labs 1-5)\comp.math(labs 1-5)\main.cpp(176): warning C4018: '<': signed/unsigned mismatch
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Nikita\SkyDrive\Documents\IFMO\Semester 3\Computational Mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Nikita\SkyDrive\Documents\IFMO\Semester 3\Computational Mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Nikita\SkyDrive\Documents\IFMO\Semester 3\Computational Mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).lib" /MACHINE:X86 Debug\Main.obj
-         Comp.Math(Labs 1-5).vcxproj -> C:\Users\Nikita\SkyDrive\Documents\IFMO\Semester 3\Computational Mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).exe
-     1>Done Building Project "C:\Users\Nikita\SkyDrive\Documents\IFMO\Semester 3\Computational Mathematics\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5).vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Computational_mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Computational_mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Computational_mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).lib" /MACHINE:X86 Debug\Main.obj
+         Comp.Math(Labs 1-5).vcxproj -> C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Computational_mathematics\Comp.Math(Labs 1-5)\Debug\Comp.Math(Labs 1-5).exe
+     1>Done Building Project "C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Computational_mathematics\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5).vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.24
+Time Elapsed 00:00:01.29
