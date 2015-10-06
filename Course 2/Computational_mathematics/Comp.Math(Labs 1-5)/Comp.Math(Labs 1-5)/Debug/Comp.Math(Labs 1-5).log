@@ -1,4 +1,4 @@
-﻿Build started 10/5/2015 10:16:10 PM.
+﻿Build started 10/6/2015 12:12:08 PM.
      1>Project "C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Computational_mathematics\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5)\Comp.Math(Labs 1-5).vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
@@ -21,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.29
+Time Elapsed 00:00:01.39

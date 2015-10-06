@@ -103,7 +103,7 @@ namespace tests {
 
 		// common
 		testResult = ComputeIntegral([](double x) { return -abs(x) + 3; }, lowBound, topBound, atomRang);
-		assert(testResult >= 9 - atomRang && testResult <= 9 + atomRang);
+		assert(testResult >= 9 - atomRang && testResult <= 9 + atomRang);	
 		
 		// reversed
 		testResult = ComputeIntegral([](double x) { return -abs(x) + 3; }, topBound, lowBound, atomRang);
@@ -133,8 +133,8 @@ void main() {
 		cout << "What method do you want to run?" << endl;
 		cout << "1. Gauss-Seidel method\n2. Reqtangle method(integrals)\n3.\n4.\n5.\n0 - exit" << endl;
 		cout << endl << "Command: ";
-
-		cin.get(command);
+		
+		cin >> command;
 		switch (command) {
 		case '1': {
 			cout << "Gauss-Seidel method for linear system solving" << endl;
@@ -186,33 +186,33 @@ void main() {
 
 			cout << "choose f(x) function: \n1. y = x^2\n2. y = 1/x^2\n3. y = 4*x\n4. y = e^x\n5. y = sin(3*x)\n\n0. - exit";
 			cout << endl << "Command: ";
-			while (true) {
-				cin >> command;
-				switch (command) {
-					case '1': function = [](double x) { return pow(x, 2); }; break;
-					case '2': function = [](double x) { return 1/pow(x, 2); }; break;
-					case '3': function = [](double x) { return 4 * x; }; break;
-					case '4': function = [](double x) { return exp(x); }; break;
-					case '5': function = [](double x) { return sin(3 * x); }; break;
+			cin >> command;
+			switch (command) {
+				case '1': function = [](double x) { return pow(x, 2); }; break;
+				case '2': function = [](double x) { return 1/pow(x, 2); }; break;
+				case '3': function = [](double x) { return 4 * x; }; break;
+				case '4': function = [](double x) { return exp(x); }; break;
+				case '5': function = [](double x) { return sin(3 * x); }; break;
 
-					case '0': break; break;
-					default: cout << "Wrong number. Try a number(1-5)/n 0 to exit." << endl; break; continue;
-				}
-				cout << "input lower bound:";
-				cin >> lowBound;
-				cout << "input upper bound:";
-				cin >> upBound;
-				
-				cout << "input positive(!) atom rang(maximum deta(x))";
-				cin >> atomRang;
-				if (atomRang <= 0)
-					break;
-
-				double I = ComputeIntegral(function, lowBound, upBound, atomRang);
-				cout << "I = " << I << endl;
-				cout << "Amount of divisions = " << abs(lowBound - upBound) / atomRang << endl;
-				cout << "Error == " << abs(I - ComputeIntegral(function, lowBound, upBound, atomRang/2))/3 << endl;
+				case '0': break; break;
+				default: cout << "Wrong number. Try a number(1-5)/n 0 to exit." << endl; break; continue;
 			}
+
+			cout << "input lower bound:";
+			cin >> lowBound;
+			cout << "input upper bound:";
+			cin >> upBound;
+				
+			cout << "input positive(!) precision == atom rang(maximum deta(x)): ";
+			cin >> atomRang;
+			if (atomRang <= 0)
+				break;
+
+			double I = ComputeIntegral(function, lowBound, upBound, atomRang);
+			cout << endl << "*************results:\nI = " << I << endl;
+			cout << "Amount of divisions = " << abs(lowBound - upBound) / atomRang << endl;
+			cout << "Error == " << abs(I - ComputeIntegral(function, lowBound, upBound, atomRang/2))/3 << endl;
+			cout << "*************" << endl << endl;
 		} break;
 		case '3': throw "NotImplementedException"; break;
 		case '4': throw "NotImplementedException"; break;
