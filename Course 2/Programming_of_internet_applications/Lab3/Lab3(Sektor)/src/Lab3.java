@@ -65,7 +65,7 @@ public class Lab3 {
                 } break;
 
                 case "0": return;
-                default: System.out.println("Incorrect input. Try again");
+                default: System.out.println("Incorrect input. Try again"); break;
             }
             // flush(scanner);
             scanner.nextLine();
@@ -77,12 +77,15 @@ public class Lab3 {
 class Kontur {
     public Kontur(float scale) {
         this.R = scale;
+
+        if (R < 0)
+            throw new RuntimeException("Kontur do not handles the negative R");
     }
 
     public boolean contains(Spot spot) {
         if  (spot.y > 0)
             return (spot.x < 0 && Math.pow(spot.x, 2) + Math.pow(spot.y, 2) < Math.pow(R/2, 2));
-        else if (spot.y < 0)
+        if (spot.y < 0)
             return (spot.x > -R && spot.y > -R/2 && spot.y > -R/2 + spot.x);
         if (spot.y == 0)
             return (spot.x > -R/2 && spot.x < 0);
