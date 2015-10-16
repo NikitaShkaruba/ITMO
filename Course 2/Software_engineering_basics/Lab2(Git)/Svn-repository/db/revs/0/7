@@ -1,0 +1,108 @@
+id: 4-1.0.r7/0
+type: file
+pred: 4-1.0.r4/178
+count: 2
+text: 1 164 480 463 611c7867d96ffa8d9d8bd36af323d3f8 14424321858fe3ddac1e3ab6a79e3e5a3d0f1bde 6-6/_2
+cpath: /trunk/D.java
+copyroot: 0 /
+
+id: 2-6.0-7.r7/191
+type: file
+pred: 2-6.0-5.r6/550
+count: 1
+text: 6 126 113 100 9eee52aa3c810eaa676ea0b003a0ea94 c1a4bae9fcb81d4bf1a1235c4809bad40b825295 5-5/_6
+props: 6 484 53 53 113136892f2137aa0116093a524ade0b
+cpath: /trunk/UTpbMeg3f2.aXL
+copyfrom: 6 /branches/Danya-hotFix/UTpbMeg3f2.aXL
+
+id: 4-6.1-7.r7/484
+type: file
+pred: 4-6.0-5.r6/823
+count: 1
+text: 6 0 113 100 abcec33b083a9df0714a43cdb884550a a2c21f3e09ea01c5d24c5793482d640afdbe40c0 5-5/_5
+cpath: /trunk/_
+copyfrom: 6 /branches/Danya-hotFix/_
+
+PLAIN
+K 14
+7GevPExr9s.7fa
+V 15
+file 1-4.0.r4/0
+K 6
+D.java
+V 15
+file 4-1.0.r7/0
+K 6
+F.java
+V 18
+file 6-1.0.r1/1043
+K 6
+G.java
+V 18
+file 7-1.0.r1/1216
+K 6
+K.java
+V 18
+file 8-1.0.r1/1387
+K 14
+UTpbMeg3f2.aXL
+V 19
+file 2-6.0-7.r7/191
+K 1
+_
+V 19
+file 4-6.1-7.r7/484
+END
+ENDREP
+PLAIN
+K 13
+svn:mergeinfo
+V 26
+/branches/Danya-hotFix:5-6
+END
+ENDREP
+id: 3-1.0.r7/1036
+type: dir
+pred: 3-1.0.r4/567
+count: 2
+text: 7 697 258 258 525238830a74ba6abee1f42793c4bf92
+props: 7 968 55 55 f7d2b7247649633330fca25174f5cacd
+cpath: /trunk
+copyroot: 0 /
+minfo-cnt: 1
+minfo-here: y
+
+PLAIN
+K 8
+branches
+V 17
+dir 0-1.0.r6/1583
+K 4
+tags
+V 16
+dir 2-1.0.r1/805
+K 5
+trunk
+V 17
+dir 3-1.0.r7/1036
+END
+ENDREP
+id: 0.0.r7/1370
+type: dir
+pred: 0.0.r6/1839
+count: 7
+text: 7 1253 104 104 ee2802493202d81574c6c23f00cb4ca8
+cpath: /
+copyroot: 0 /
+minfo-cnt: 1
+
+3-1.0.t6-6 modify-dir false true /trunk
+
+4-1.0.t6-6 modify-file true false /trunk/D.java
+
+2-6._0.t6-6 add-file false false /trunk/UTpbMeg3f2.aXL
+6 /branches/Danya-hotFix/UTpbMeg3f2.aXL
+4-6._1.t6-6 add-file false false /trunk/_
+6 /branches/Danya-hotFix/_
+
+1370 1514
