@@ -1,0 +1,54 @@
+id: 3-1.0-5.r5/0
+type: dir
+pred: 3-1.0.r4/567
+count: 2
+text: 4 370 184 184 554da6ba486ce629f50077eb64b95642
+cpath: /branches/Danya-hotFix
+copyfrom: 4 /trunk
+
+PLAIN
+K 12
+Danya-hotFix
+V 16
+dir 3-1.0-5.r5/0
+K 11
+dumbestIdea
+V 18
+dir 3-1.0-2.r3/873
+END
+ENDREP
+id: 0-1.0.r5/256
+type: dir
+pred: 0-1.0.r3/1105
+count: 3
+text: 5 158 85 85 576caf26e407bcd5558272d6861499f1
+cpath: /branches
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 16
+dir 0-1.0.r5/256
+K 4
+tags
+V 16
+dir 2-1.0.r1/805
+K 5
+trunk
+V 16
+dir 3-1.0.r4/567
+END
+ENDREP
+id: 0.0.r5/510
+type: dir
+pred: 0.0.r4/821
+count: 5
+text: 5 395 102 102 b672180151cd24b69308eb2e4886bebb
+cpath: /
+copyroot: 0 /
+
+3-1._0.t4-4 add-dir false false /branches/Danya-hotFix
+4 /trunk
+
+510 638

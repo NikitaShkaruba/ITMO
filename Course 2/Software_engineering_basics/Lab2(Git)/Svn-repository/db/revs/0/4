@@ -1,0 +1,75 @@
+id: 1-4.0.r4/0
+type: file
+count: 0
+text: 3 0 113 100 3de1c6a8ca2c9577b01cf9d961f02e3c 9087d4f2823a826c2b3a9e4ce2477b5d89b926d1 3-3/_3
+cpath: /trunk/7GevPExr9s.7fa
+copyroot: 0 /
+
+id: 4-1.0.r4/178
+type: file
+pred: 4-1.0.r1/869
+count: 1
+text: 3 126 75 525 1c678e44167ab2c16a78fc3e27e2a072 346ec7f6eaf89ee78bb3e5dba270850a489d3ee9 3-3/_4
+cpath: /trunk/D.java
+copyroot: 0 /
+
+PLAIN
+K 14
+7GevPExr9s.7fa
+V 15
+file 1-4.0.r4/0
+K 6
+D.java
+V 17
+file 4-1.0.r4/178
+K 6
+F.java
+V 18
+file 6-1.0.r1/1043
+K 6
+G.java
+V 18
+file 7-1.0.r1/1216
+K 6
+K.java
+V 18
+file 8-1.0.r1/1387
+END
+ENDREP
+id: 3-1.0.r4/567
+type: dir
+pred: 3-1.0.r1/1715
+count: 1
+text: 4 370 184 184 554da6ba486ce629f50077eb64b95642
+cpath: /trunk
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 17
+dir 0-1.0.r3/1105
+K 4
+tags
+V 16
+dir 2-1.0.r1/805
+K 5
+trunk
+V 16
+dir 3-1.0.r4/567
+END
+ENDREP
+id: 0.0.r4/821
+type: dir
+pred: 0.0.r3/1362
+count: 4
+text: 4 705 103 103 564f8edafb25f25d57dafb0e3f77c7e8
+cpath: /
+copyroot: 0 /
+
+_1.0.t3-3 add-file true false /trunk/7GevPExr9s.7fa
+
+4-1.0.t3-3 modify-file true false /trunk/D.java
+
+
+821 950
