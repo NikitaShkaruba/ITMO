@@ -54,7 +54,36 @@ namespace math {
 		delete[] pastX;
 		return X;
 	}
+	
+	bool converge(vector<float> first, vector<float> second, float precision) {
+		float norm = 0;
 
+		for (int i = 0; i < first.size(); i++) 
+			norm += powf((first[i] - second[i]), 2);
+		
+		return (sqrt(norm) < precision);
+	}
+	vector<float> GaussSeidel(vector<vector<float>> a, vector<float> b, float precision) {
+		// aX = b
+
+		vector<float> X(b.size());
+		vector<float> pastX(X);
+		
+		do {
+			pastX = X;
+			
+			for (int i = 0; i < b.size(); i++) {
+				double var = 0;
+				for (int j = 0; j < i; j++)
+					var += a[i][j] * X[j];
+				for (int j = i + 1; j < b.size(); j++)
+					var += a[i][j] * pastX[j];
+
+				X[i] = (b[i] - var) / a[i][i];
+			}
+		} while (!converge(X, pastX, precision));
+		return X;
+	}
 	// 2. Integrals
 	double ComputeIntegral(double(*y)(double x), double lowBound, double topBound, double atomRang) {
 		if (lowBound == topBound)
@@ -77,18 +106,42 @@ namespace math {
 		const float y;
 	};
 
-	float getX (float x, float a1, float a2, float a3) {
-		return a1*x + a2*powf(x, 2) + a3*powf(x, 3);
+	float computePolynom(float x, vector<float> coefficients) {
+		float sum = 0;
+
+		for (size_t i = 0; i < coefficients.size(); i++)
+			sum += powf(x, i)*coefficients[i];
+
+		return sum;
 	}
-	typedef float (*ApproximatedFunctionPtr)(float);
-	ApproximatedFunctionPtr OrdinaryLeastSquares(vector<Point> points) {
-		float a1 = 0.6f, a2 = 0.7f;
-		auto curry = [&a1, &a2](float x) {
-			// compute a-coefficients
-			return getX(x, a1, a2, 0.5f);
+	function<float(float)> OrdinaryLeastSquares(vector<Point> points) {
+		vector<float> coefficients(4);
+
+		vector<vector<float>> bs { {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0} };	// remove 4 for some ????
+		vector<float> cs(4);
+
+		// compute bs
+		for (size_t k = 0; k < bs.size(); k++)
+			for (size_t l = 0; l < bs.size(); l++)
+				for (size_t i = 0; i < points.size(); i++)
+					bs[k][l] += powf(points[i].x, k+l); 
+
+		// compute cs
+		for (size_t k = 0; k < bs.size(); k++)
+			for (size_t i = 0; i < points.size(); i++)
+				cs[k] = powf(points[i].x, k) + points[i].y;
+		
+		auto iter = coefficients.begin();
+		for each (float a in GaussSeidel(bs, cs, 0.001)) {
+			 *iter = a;
+			 iter++;
+		}
+		
+		function<float(float)> approximate = [coefficients](float x) -> float {
+			return computePolynom(x, coefficients);
 		};
 
-		return sht;
+		return approximate;
 	}
 }
 namespace tests {
@@ -149,6 +202,7 @@ namespace tests {
 		v.push_back({0, 0});
 
 		auto f = OrdinaryLeastSquares(v);
+		float rslt = f(5);
 		assert(f(5) - 5 <= 0.1);
 	}
 	// All
