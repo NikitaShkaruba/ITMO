@@ -1,7 +1,9 @@
+#include <functional>
 #include <iostream>
 #include <assert.h>
-#include <Array>
 #include <fstream>
+#include <Array>
+#include <Vector>
 using namespace std;
 
 namespace math {
@@ -66,6 +68,28 @@ namespace math {
 
 		return sum;
 	}
+
+	// 3. Function approximation
+	struct Point {
+		Point(float x, float y): x(x), y(y) {}
+
+		const float x;
+		const float y;
+	};
+
+	float getX (float x, float a1, float a2, float a3) {
+		return a1*x + a2*powf(x, 2) + a3*powf(x, 3);
+	}
+	typedef float (*ApproximatedFunctionPtr)(float);
+	ApproximatedFunctionPtr OrdinaryLeastSquares(vector<Point> points) {
+		float a1 = 0.6f, a2 = 0.7f;
+		auto curry = [&a1, &a2](float x) {
+			// compute a-coefficients
+			return getX(x, a1, a2, 0.5f);
+		};
+
+		return sht;
+	}
 }
 namespace tests {
 	void printEquatationSystem(float** a, float* b, size_t size) {
@@ -117,14 +141,26 @@ namespace tests {
 		testResult = ComputeIntegral([](double x) { return x; }, topBound, lowBound, atomRang);
 		assert(testResult >= 0 - atomRang && testResult <= 0 + atomRang);
 	}
+	// 3
+	void runOrdinaryLastSquaresTests() {
+		vector<Point> v;
+		v.push_back({-1, -1});
+		v.push_back({3, 3});
+		v.push_back({0, 0});
+
+		auto f = OrdinaryLeastSquares(v);
+		assert(f(5) - 5 <= 0.1);
+	}
 	// All
 	void runAllTests() {
 		runGaussSeidelTest();
 		runComputeIntegralTests();
+		runOrdinaryLastSquaresTests();
 	}
 }
 
 void main() {
+	tests::runOrdinaryLastSquaresTests();
 	// tests::runAllTests();
 	using namespace math;
 	char command;
