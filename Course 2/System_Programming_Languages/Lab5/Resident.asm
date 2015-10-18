@@ -6,8 +6,9 @@
 ; consts
 VPage1 equ 0B900h
 screenSize equ 80*25 ; every symbol is 2 bytes {ASCII code , attribute}
-scancode_p equ 25
-altPressedBits equ 00100000b
+scancode_q equ 10h
+altPressedBits equ 00000100b
+
 
 code segment para public 'code'
 assume cs:code, ds:code, ss:code
@@ -15,39 +16,15 @@ org 100h ; offset memory for psp
 	; data
 	Picture dw screenSize dup(1515h) 
 
-printO proc
-	mov dl, 'O'
-	mov ah, 02h
-	int 21h
-	ret
-printO endp
-printHash proc
-	mov dl, '#'
-	mov ah, 02h
-	int 21h
-	ret
-printHash endp
-printQ proc
-	mov dl, '?'
-	mov ah, 02h
-	int 21h
-	ret
-printQ endp
-printSign proc
-	mov dl, '!'
-	mov ah, 02h
-	int 21h
-	ret
-printSign endp
-
 begin:
 	jmp setup
 
 	; data segment
-	systemHandler dd ?	; stores system handler adress
+	installMessage db 'Setting program in memory', '$'
+	omitInstallMessage db 'program already installed', '$'
 	isCovered db 0
+	systemHandler dd ?	; stores system handler adress
 	screenSize equ 80*25 ; every symbol is 2 bytes {ASCII code , attribute}
-	screenBuffer db screenSize dup(?) 
 	customPicture db screenSize dup(15h) 
 	
 ; resident one
@@ -65,47 +42,36 @@ switch_handler proc
 	jne restoreScreenCase
 	
 setPictureCase:
-	call printHash
 	; is alt pressed?
-	;mov al, 02h
-	;int 16h
-	;cmp al, altPressedBits
-	;jne invokeSystemInterrupt
+	mov ah, 02h
+	int 16h
+	and al, altPressedBits
+	cmp al, 0
+	je invokeSystemInterrupt
 	; is p pressed too?
 	in al, 60h 
-	cmp al, scancode_p
+	cmp al, scancode_q
 	jne invokeSystemInterrupt
-	call printHash
 	; if survived
 	mov isCovered, 1
 	mov ah, 05h
 	mov al, 1	; al - page number
 	int 10h
-	call printHash
 	jmp omitSystemInterrupt
 	
 restoreScreenCase:
-	call printSign
-	; is alt pressed?
-	;mov al, 02h
-	;int 16h
-	;cmp al, altPressedBits
-	;jne exit
 	; is p pressed too?
 	in al, 60h 
-	cmp al, scancode_p
+	cmp al, scancode_q
 	jne omitSystemInterrupt
-	call printSign
 	; if survived
 	mov isCovered, 0
 	mov ah, 05h
 	mov al, 0	; al - page number
 	int 10h
-	call printSign
 	jmp omitSystemInterrupt
 	
 omitSystemInterrupt:
-	call printO
 	in      al,61H             ;get value of keyboard control lines
     mov     ah,al              ; save it
     or      al,80h             ;set the "enable kbd" bit
@@ -116,14 +82,11 @@ omitSystemInterrupt:
     mov     al,20H             ;send End-Of-Interrupt signal
     out     20H,al             ; to the 8259 Interrupt Controller	
 	
-	call printO
 	jmp exit
 	
 invokeSystemInterrupt:
-	call printQ
 	pushf
 	call cs:systemHandler
-	call printQ
 	jmp exit
 	
 exit:
@@ -140,9 +103,14 @@ switch_handler_end:
 
 ; prepares everything
 setup: 
-	; cmd args
-	; mov al, es: [80h]
+	; getting FF interrut vector
+	mov ax, 35FFh
+	int 21h
+	cmp bx, 0000h
+	je install
+	jne omitInstall
 	
+install:
 	; filling page 1
 	mov ax, cs
 	mov ds, ax
@@ -152,6 +120,18 @@ setup:
 	mov di, 0h
 	mov cx, screenSize
 	rep movsw
+	
+	; set already-isntalled flag
+	mov ax, 25FFh
+	mov dx, 0001h
+	int 21h
+	
+	;print installMessage
+	mov ax, cs
+	mov ds, ax
+	lea dx, installMessage
+	mov ah, 9
+	int 21h
 	
 	; getting system int adress
 	mov ax, 3509h
@@ -172,7 +152,19 @@ setup:
 	inc dx 			; dx == 0 - rare case
 	mov ax, 3100h
 	int 21h	
-		
+
+omitInstall:
+	;print uninstallMessage
+	mov ax, cs
+	mov ds, ax
+	lea dx, omitInstallMessage
+	mov ah, 9
+	int 21h
+	
+	
+	; save exit
+	mov ax, 4C00h
+	int 21h
 ;stack segment
 localStack dw 100h dup(?)
 code ends
