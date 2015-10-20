@@ -2,9 +2,11 @@
 #include <iostream>
 #include <assert.h>
 #include <fstream>
-#include <Array>
+#include <string>
 #include <Vector>
+#include <Array>
 using namespace std;
+#define Pi 3.14159f
 
 namespace math {
 	// 1. Linear systems
@@ -30,7 +32,7 @@ namespace math {
 	}
 	float* GaussSeidel(float** a, float* b, size_t size, float precision) {
 		// aX = b
-
+		size_t count = 0;
 		float* X = new float[size];
 		for (size_t i = 0; i < size; i++)
 			X[i] = 0;
@@ -49,6 +51,8 @@ namespace math {
 
 				X[i] = (b[i] - var) / a[i][i];
 			}
+			if (count++ > 10050)
+				throw "Cannot compute due to dDominance";
 		} while (!converge(X, pastX, size, precision));
 	
 		delete[] pastX;
@@ -66,9 +70,10 @@ namespace math {
 	vector<float> GaussSeidel(vector<vector<float>> a, vector<float> b, float precision) {
 		// aX = b
 
+		size_t count = 0;
 		vector<float> X(b.size());
 		vector<float> pastX(X);
-		
+
 		do {
 			pastX = X;
 			
@@ -81,6 +86,8 @@ namespace math {
 
 				X[i] = (b[i] - var) / a[i][i];
 			}
+			if (count++ > 10050)
+				throw "Cannot compute due to dDominance";
 		} while (!converge(X, pastX, precision));
 		return X;
 	}
@@ -102,6 +109,11 @@ namespace math {
 	struct Point {
 		Point(float x, float y): x(x), y(y) {}
 
+		string toString() {
+			string s("x: ");
+			return "{ " + std::to_string(x) + ", " + std::to_string(y) = " }";
+		}
+
 		const float x;
 		const float y;
 	};
@@ -114,34 +126,31 @@ namespace math {
 
 		return sum;
 	}
-	function<float(float)> OrdinaryLeastSquares(vector<Point> points) {
-		vector<float> coefficients(4);
+	function<float(float)> OrdinaryLeastSquares(vector<Point> points, size_t polynomRang = 5) {
+		// Matrix system is bA = c
+		// polynomRang = points.size() - 1 
+		vector<vector<float>> b(polynomRang, vector<float>(polynomRang));
+		vector<float> c(polynomRang);
+		vector<float> coefficients(polynomRang);
 
-		vector<vector<float>> bs { {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0} };	// remove 4 for some ????
-		vector<float> cs(4);
-
-		// compute bs
-		for (size_t k = 0; k < bs.size(); k++)
-			for (size_t l = 0; l < bs.size(); l++)
+		// compute b
+		for (size_t k = 0; k < polynomRang; k++)
+			for (size_t l = 0; l < polynomRang; l++)
 				for (size_t i = 0; i < points.size(); i++)
-					bs[k][l] += powf(points[i].x, k+l); 
+					b[k][l] += powf(points[i].x, k+l); 
 
-		// compute cs
-		for (size_t k = 0; k < bs.size(); k++)
+		// compute c
+		for (size_t k = 0; k < polynomRang; k++)
 			for (size_t i = 0; i < points.size(); i++)
-				cs[k] = powf(points[i].x, k) + points[i].y;
+				c[k] = powf(points[i].x, k) + points[i].y;
 		
-		auto iter = coefficients.begin();
-		for each (float a in GaussSeidel(bs, cs, 0.001)) {
-			 *iter = a;
-			 iter++;
-		}
+		// compute coefficients
+		coefficients = GaussSeidel(b, c, 0.0001);
 		
-		function<float(float)> approximate = [coefficients](float x) -> float {
+		// appriximated function. Don't be ashamed of lambda's
+		return [coefficients](float x) -> float {
 			return computePolynom(x, coefficients);
 		};
-
-		return approximate;
 	}
 }
 namespace tests {
@@ -196,14 +205,54 @@ namespace tests {
 	}
 	// 3
 	void runOrdinaryLastSquaresTests() {
+		// simulate function is sin(x)
 		vector<Point> v;
-		v.push_back({-1, -1});
-		v.push_back({3, 3});
-		v.push_back({0, 0});
 
-		auto f = OrdinaryLeastSquares(v);
-		float rslt = f(5);
-		assert(f(5) - 5 <= 0.1);
+		// case 1
+		v.push_back({-Pi, 0});
+		v.push_back({-Pi/2, -1});
+		v.push_back({0, 0});
+		v.push_back({Pi/2, 1});
+		v.push_back({Pi, 0});
+
+		auto f = OrdinaryLeastSquares(v, 4);
+		float rslt = f(2);
+		// assert(abs(f(5) - 71) <= 0.1);
+
+		// case 2
+		v.push_back({-Pi/6, -sqrtf(3)/2});
+		v.push_back({-Pi/4, -sqrtf(2)/2});
+		v.push_back({-Pi/3, -1/2});
+		v.push_back({Pi/3, 1/2});
+		v.push_back({Pi/4, sqrtf(2)/2});
+		v.push_back({Pi/6, sqrtf(3)/2});
+		f = OrdinaryLeastSquares(v, 4);
+		rslt = f(2);
+		// assert(abs(f(5) + 66) <= 0.1);
+
+		// case 3
+		v.pop_back();
+		v.push_back({Pi/6, 67});
+		f = OrdinaryLeastSquares(v, 4);
+		rslt = f(2);
+		// assert(abs(f(5) + 66) <= 0.1);
+
+		// case 4
+		v.clear();
+		v.push_back({-11*Pi/2, -1});
+		v.push_back({-15*Pi, 0});
+		v.push_back({-7*Pi/2, -1});
+		v.push_back({5*Pi, 0});
+		v.push_back({-3*Pi/2, -1});
+		v.push_back({0, 0});
+		v.push_back({3*Pi/2, 1});
+		v.push_back({5*Pi, 0});
+		v.push_back({7*Pi/2, 1});
+		v.push_back({13*Pi, 0});
+		v.push_back({11*Pi/2, 1});
+		f = OrdinaryLeastSquares(v, 4);
+		rslt = f(2);
+		// assert(abs(f(5) + 66) <= 0.1);
 	}
 	// All
 	void runAllTests() {
@@ -214,14 +263,14 @@ namespace tests {
 }
 
 void main() {
-	tests::runOrdinaryLastSquaresTests();
+	// tests::runOrdinaryLastSquaresTests();
 	// tests::runAllTests();
 	using namespace math;
 	char command;
 
 	while (true) {
 		cout << "What method do you want to run?" << endl;
-		cout << "1. Gauss-Seidel method\n2. Reqtangle method(integrals)\n3.\n4.\n5.\n0 - exit" << endl;
+		cout << "1. Gauss-Seidel method\n2. Reqtangle method(integrals)\n3. Ordinary Least Squares(approximation)\n4.\n5.\n0 - exit" << endl;
 		cout << endl << "Command: ";
 		
 		cin >> command;
@@ -304,7 +353,39 @@ void main() {
 			cout << "Error == " << abs(I - ComputeIntegral(function, lowBound, upBound, atomRang/2))/3 << endl;
 			cout << "*************" << endl << endl;
 		} break;
-		case '3': throw "NotImplementedException"; break;
+		case '3': {
+			vector<Point> points;
+			size_t polynomRank = 0;
+
+			cout << "Ordinary Least Squares method" << endl;
+			cout << "Input points:";
+			do {
+				cout << endl;
+				float x, y;
+				cout << "x: "; 
+				cin >> x;
+				cout << "y: ";
+				cin >> y;
+				points.push_back({ x, y });
+				cout << "'q' - exit; other key - continue. command: ";
+			} while (cin >> command && command != 'q');
+
+			cout << endl;
+			cout << "Input expexted polynom rank or 'q' if you don't know it: ";
+			cin >> command;
+			if (command == 'q')
+				polynomRank = points.size() - 1;
+			polynomRank = atoi(&command);
+			cout << endl;
+
+			function<float(float)> approximation = OrdinaryLeastSquares(points, polynomRank);
+			// use reflextion power, son
+			cout << "input 'q' to exit, or if you want to calculate y, inout x: ";
+			if (command == 'q')
+				break;
+			cout << endl << "y: " << approximation(atof(&command));
+
+		} break;
 		case '4': throw "NotImplementedException"; break;
 		case '5': throw "NotImplementedException"; break;
 		default: cout << "Wrong number. Try a number(1-5)" << endl;
