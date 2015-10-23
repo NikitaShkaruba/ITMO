@@ -11,9 +11,11 @@ public class SPanel extends JPanel {
         this.setBackground(new Color(226, 219, 226));
         this.setLayout(new GridBagLayout());
 
+        // If you don't know what it is, just read about GridBagLayout
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
 
+        // Labels
         c.gridx = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0, 20, 0, 0);
         c.gridwidth = 1;
@@ -26,7 +28,7 @@ public class SPanel extends JPanel {
         this.add(RLabel, c);
 
 
-        //c.weightx = 1;
+        // Spinners
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(2, 0, 2, 60);
         c.gridwidth = 5;
@@ -37,22 +39,22 @@ public class SPanel extends JPanel {
         c.gridy = 1;
         this.add(ySpinner, c);
         c.gridy = 2;
-        this.add(RSpinner, c);
-
-        /*ChangeListener xSpinListener = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-
-            }
-        }; */
+        this.add(RSlider, c);
     }
 
-    JLabel xLabel = new JLabel("x: "); JSpinner xSpinner = new JSpinner();
-    JLabel yLabel = new JLabel("y: "); JSpinner ySpinner = new JSpinner();
-    JLabel RLabel = new JLabel("R: "); JSpinner RSpinner = new JSpinner();
+    JLabel xLabel = new JLabel("x: ");
+    public JSpinner xSpinner = new JSpinner();
+    JLabel yLabel = new JLabel("y: ");
+    public JSpinner ySpinner = new JSpinner();
+    JLabel RLabel = new JLabel("R: ");
+    public JSlider RSlider = new JSlider(JSlider.HORIZONTAL, 0, 120, 75);
     {
-        xSpinner.setValue(20);
-        ySpinner.setValue(20);
-        RSpinner.setValue(100);
+        xSpinner.setValue(60);
+        ySpinner.setValue(60);
+
+        RSlider.setMajorTickSpacing(30);
+        RSlider.setMinorTickSpacing(10);
+        RSlider.setPaintTicks(true);
+        RSlider.setPaintLabels(true);
     }
 }
