@@ -23,4 +23,6 @@ public class BatFrame extends JFrame {
 
     private SPanel statPanel = new SPanel();
     private GPanel graphPanel = new GPanel();
+    int R;
+    Point selectedPoint;
 }
