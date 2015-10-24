@@ -1,17 +1,13 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 
-/**
- * Created by Nikita on 10/22/2015.
- */
-public class SPanel extends JPanel {
+class SPanel extends JPanel {
     public SPanel() {
+        // Properties
         this.setBackground(new Color(226, 219, 226));
         this.setLayout(new GridBagLayout());
 
-        // If you don't know what it is, just read about GridBagLayout
+        // Layout: If you don't know what it is, just read about GridBagLayout
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
 
@@ -27,7 +23,6 @@ public class SPanel extends JPanel {
         c.gridy = 2;
         this.add(RLabel, c);
 
-
         // Spinners
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(2, 0, 2, 60);
@@ -42,12 +37,13 @@ public class SPanel extends JPanel {
         this.add(RSlider, c);
     }
 
+    // Visible only in this package. That's the decision
     JLabel xLabel = new JLabel("x: ");
-    public JSpinner xSpinner = new JSpinner();
+    JSpinner xSpinner = new JSpinner();
     JLabel yLabel = new JLabel("y: ");
-    public JSpinner ySpinner = new JSpinner();
+    JSpinner ySpinner = new JSpinner();
     JLabel RLabel = new JLabel("R: ");
-    public JSlider RSlider = new JSlider(JSlider.HORIZONTAL, 0, 120, 75);
+    JSlider RSlider = new JSlider(JSlider.HORIZONTAL, 0, 120, 75);
     {
         xSpinner.setValue(60);
         ySpinner.setValue(60);
