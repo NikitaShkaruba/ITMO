@@ -10,7 +10,7 @@
 
 ; 16 words * 19 bit in word == 19 words * 16 bit in word
 loadW macro arr, i
-local LoadAddition, Acase0_4, Acase10, Acase11_15, Acase5, Acase6_9, PostLoadAddition, LoadPrimary, Pcase0_4, Pcase5_9, Pcase10_15, PostLoadPrimary, testZ, setZFlag, clearZFlag, testN, setNFlag, clearNFlag, exit 
+local LoadAddition, Acase0_4, Acase10, Acase11_15, Acase5, Acase6_9, PostLoadAddition, LoadPrimary, Pcase0_4, Pcase5_9, Pcase10_15, PostLoadPrimary 
 	push bx
 	push cx
 	
@@ -194,33 +194,7 @@ Acase11_15:
 PostLoadAddition:
 	; set all the flags
 	and dx, 0007h ; coz my addition is the last 3 bits
-	jmp testZ
 	
-testZ:
-	cmp dl, 0
-	jne clearZFlag
-	cmp ax, 0
-	jne clearZFlag
-	je setZFlag
-setZFlag:
-	or dl, 1h
-	jmp testN
-clearZFlag:
-	and dl, 0EFh
-	jmp testN
-	
-testN:
-	test dl, 04h
-	je setNFlag
-	jne clearNFlag
-setNFlag:
-	or dl, 20h
-	jmp exit
-clearNFlag:
-	and dl, 0DFh
-	jmp exit
-
-exit:
 	pop cx
 	pop bx
 endm
@@ -230,8 +204,57 @@ writeW macro eReg, arr, idx
 endm
 
 ; 3.
-addW macro reg1, reg2
+addW macro arr, i
+local addPrimary, addCarry, addAdditional, testZ, setZFlag, clearZFlag, testN, setNFlag, clearNFlag, exit
+	push bx
+	push cx
+
+;	; load new word
+	mov bx, ax
+	mov cl, dl
+	loadW arr, i
 	
+addPrimary:
+	add ax, bx
+	jc addCarry
+	jnc addAdditional
+addCarry:
+	add cl, 1
+	jmp addAdditional
+
+addAdditional:
+	and cl, 0Fh
+	and dl, 07h
+	add dl, cl
+	jmp testZ
+	
+testZ:
+	cmp dl, 0
+	jne clearZFlag
+	cmp ax, 0
+	jne clearZFlag
+	je setZFlag
+setZFlag:
+	or dl, 2h
+	jmp testN
+clearZFlag:
+	and dl, 0DFh
+	jmp testN
+	
+testN:
+	test dl, 04h
+	je setNFlag
+	jne clearNFlag
+setNFlag:
+	or dl, 40h
+	jmp exit
+clearNFlag:
+	and dl, 0BFh
+	jmp exit
+
+exit:	
+	pop cx
+	pop bx
 endm
 
 stack segment para stack 'stack'
@@ -267,17 +290,23 @@ loadWTest proc
 	ret
 loadWTest endp
 
-axTest proc
+addWTest proc
+	mov si, 0h
+	loadW array, si
 	
-axTest endp
+	mov si, 2h
+	addW array, si	
+	
+	ret
+addWTest endp
 
 main:
 	mov ax, data
 	mov ds, ax
 	
 	;call dxTest
-	call loadWTest
-	;call Fulltest
+	;call loadWTest
+	call addWTest
 	
 	mov ax, 4C00h
 	int 21h
