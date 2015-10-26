@@ -564,6 +564,63 @@ exit:
 	pop bx
 endm
 
+subW macro arr, i
+local addPrimary, addCarry, addAdditional, testZ, setZFlag, clearZFlag, testN, setNFlag, clearNFlag, exit
+	push bx
+	push cx
+
+	; load new word
+	mov bx, ax
+	mov cl, dl
+	loadW arr, i
+	neg ax
+	dec ax
+	neg dx
+	and dx, 0007h
+	
+addPrimary:
+	add ax, bx
+	jc addCarry
+	jnc addAdditional
+addCarry:
+	add cl, 1
+	jmp addAdditional
+
+addAdditional:
+	and cl, 0Fh
+	and dl, 07h
+	add dl, cl
+	jmp testZ
+	
+testZ:
+	cmp dl, 0
+	jne clearZFlag
+	cmp ax, 0
+	jne clearZFlag
+	je setZFlag
+setZFlag:
+	or dl, 2h
+	jmp testN
+clearZFlag:
+	and dl, 0DFh
+	jmp testN
+	
+testN:
+	test dl, 04h
+	je setNFlag
+	jne clearNFlag
+setNFlag:
+	or dl, 40h
+	jmp exit
+clearNFlag:
+	and dl, 0BFh
+	jmp exit
+
+exit:	
+	pop cx
+	pop bx
+endm
+
 stack segment para stack 'stack'
 	db 100h dup(?)
 stack ends
@@ -571,12 +628,64 @@ stack ends
 	arrSize equ 19
 data segment para public 'data'
 	array dw arrSize dup(0F0F0h)
-	min dd ?
-	max dd ?
+	printBuffer db 19 dup(?), '$'
+	counter db ?
+	min dw ?
+	max dw ?
 data ends
 
 code segment para public 'code'
 assume cs:code, ds:data, ss:stack
+
+Print19bitWord proc
+	pusha
+	
+	mov si, 0
+	mov cl, 5
+	shl dl, cl
+	
+	mov cx, 3
+dlPrint:	
+	rcl dl, 1
+	jc dlPrint1
+	jnc dlPrint0
+dlPrintEnd:
+	inc si
+	loop dlPrint
+	mov cx, 16
+	jmp axPrint
+	
+dlPrint1:
+	mov printBuffer[si], '1'
+	jmp dlPrintEnd
+dlPrint0:
+	mov printBuffer[si], '0'
+	jmp dlPrintEnd
+	
+axPrint:
+	rcl ax, 1
+	jc alPrint1
+	jnc alPrint0
+alPrintEnd:
+	inc si
+	loop axPrint
+	jmp printToScreen
+	
+alPrint1:
+	mov printBuffer[si], '1'
+	jmp alPrintEnd
+alPrint0:
+	mov printBuffer[si], '0'
+	jmp alPrintEnd
+	
+printToScreen:
+	lea dx, printBuffer
+	mov ah, 09
+	int 21h
+	
+	popa
+	ret
+Print19bitWord endp
 
 loadWTest proc
 	mov si, 0	; case0_4 addition, _4 primary
@@ -617,13 +726,122 @@ writeWTest proc
 	ret
 writeWTest endp
 
+PrintNewLine proc
+	mov dl, 0ah
+	mov ah, 02h
+	int 21h
+	mov dl, 0dh
+	mov ah, 02h
+	int 21h
+	ret
+PrintNewLine endp
+
+printArr proc
+
+	mov si, 0
+	mov cx, 16
+loopMark:
+	loadW array, si
+	call Print19bitWord
+	call PrintNewLine
+	inc si
+	loop cs:loopMark
+	
+	ret
+printArr endp
+
+doWork proc
+	
+	mov si, 0
+	mov cx, 16
+workLoop:
+	loadW array, si
+	test dl, 08h
+	jz addMin
+	jnz addMax
+workLoopEnd:
+	inc si
+	loop workLoop
+	ret
+	
+addMax:
+	mov di, max
+	addW array, di
+	writeW array, si
+	jmp workLoopEnd
+addMin:
+	mov di, min
+	addW array, di
+	writeW array, si
+	jmp workLoopEnd
+	
+doWork endp
+
+findMin proc
+	mov si, 1
+	mov min, 0
+	mov counter, 15
+	
+findMinLoop:
+	mov di, min
+	loadW array, di
+	subw array, si
+	and dl, 20h
+	cmp dl, 0
+	jne newMin
+	je findMinLoopEnd
+
+findMinLoopEnd:
+	inc si
+	dec counter
+	cmp counter, 0
+	jne findMinLoop	
+	ret
+	
+newMin:
+	mov min, si
+	jmp findMinLoopEnd 
+findMin endp
+
+findMax proc
+	mov si, 1
+	mov max, 0
+	mov counter, 15
+	
+findMaxLoop:
+	mov di, max
+	loadW array, di
+	subw array, si
+	and dl, 20h
+	cmp dl, 1
+	jne newMax
+	je findMaxLoopEnd
+		
+findMaxLoopEnd:
+	inc si
+	dec counter
+	cmp counter, 0
+	jne findMaxLoop
+	ret
+	
+newMax:
+	mov max, si
+	jmp findMaxLoopEnd 
+findMax endp
 main:
 	mov ax, data
 	mov ds, ax
 	
-	;call loadWTest
-	;call addWTest
-	call writeWTest
+	; call loadWTest
+	; call addWTest
+	; call writeWTest
+	
+	call findMin
+	call findMax
+	
+	call printArr
+	call doWork
+	call printArr
 	
 	mov ax, 4C00h
 	int 21h
