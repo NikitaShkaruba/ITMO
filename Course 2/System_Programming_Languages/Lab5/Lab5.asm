@@ -202,10 +202,11 @@ endm
 ; 2.
 writeW macro arr, i
 local case0_4, case5, case6_9, case10, case11_15, exit
+	add ax, 0AB75h
 	pusha
 	
 case0_4:
-	; 3*i - bit's before
+	; 3*(i) - bit's before
 	; 3 + 3*(i) - bit's after
 	
 	; clear past bytes, save others
@@ -233,6 +234,7 @@ case0_4:
 	add cx, 3
 	shr ax, cl 	; shr ax, 3 + 3*i
 	add bx, ax
+	;mov bx, 0FF00h; !!!!!!!!!!!!!!1
 	
 	shl i, 1
 	mov arr[i], bx
@@ -436,8 +438,6 @@ case10:
 	
 	jmp exit
 case11_15:
-	; 2 + 3*(i - 6) - bit's before
-	; 5 + 3*(i - 6) - bit's after
 	; 1 + 3*(i - 11) - bit's before
 	; 4 + 3*(i - 11) - bit's after
 	
@@ -564,7 +564,7 @@ exit:
 	pop bx
 endm
 
-subW macro arr, i
+cmpW macro arr, i ; is subs
 local addPrimary, addCarry, addAdditional, testZ, setZFlag, clearZFlag, testN, setNFlag, clearNFlag, exit
 	push bx
 	push cx
@@ -607,8 +607,8 @@ clearZFlag:
 	
 testN:
 	test dl, 04h
-	je setNFlag
-	jne clearNFlag
+	jne setNFlag	; OMG, I WERE TRYING TO WRITE SUBW IN THIS TONN OF NOT READABLE CODE. IT'S MY DAMNED CRUTCH. I AM SO SORRY ABOUT THIS
+	je clearNFlag
 setNFlag:
 	or dl, 40h
 	jmp exit
@@ -627,23 +627,23 @@ stack ends
 
 	arrSize equ 19
 data segment para public 'data'
-	array dw arrSize dup(0F0F0h)
+	array dw arrSize dup(0FEFFh)
 	printBuffer db 19 dup(?), '$'
 	counter db ?
-	min dw ?
-	max dw ?
+	min dw 0002h
+	max dw 000Ch
 data ends
 
 code segment para public 'code'
 assume cs:code, ds:data, ss:stack
 
-Print19bitWord proc
+PrintW proc
 	pusha
 	
-	mov si, 0
-	mov cl, 5
-	shl dl, cl
+	; prepare dl for rcl needed bit's
+	shl dl, 5
 	
+	mov si, 0
 	mov cx, 3
 dlPrint:	
 	rcl dl, 1
@@ -680,14 +680,26 @@ alPrint0:
 	
 printToScreen:
 	lea dx, printBuffer
-	mov ah, 09
+	mov ah, 09h
 	int 21h
 	
 	popa
 	ret
-Print19bitWord endp
+PrintW endp
+
+; void loadW(int idx)
+loadWShell proc
+	mov bp, sp
+	mov	si, [bp + 2]
+	
+	loadW array, si
+	
+	ret 2
+loadWShell endp
 
 loadWTest proc
+	pusha 
+	
 	mov si, 0	; case0_4 addition, _4 primary
 	loadW array, si	
 	
@@ -703,99 +715,158 @@ loadWTest proc
 	mov si, 12	; case11_15
 	loadW array, si
 	
+	popa
 	ret
 loadWTest endp
 
+; void addW(int idx)
+addWShell proc
+	mov bp, sp
+	mov	si, bp[2]
+	
+	addW array, si
+	
+	ret 2
+addWShell endp
+
+; void cmpW(int idx)
+cmpWShell proc
+	mov bp, sp
+	mov	si, bp[2]
+	
+	cmpW array, si
+	
+	ret 2
+cmpWShell endp
+
 addWTest proc
+	pusha
+	
 	mov si, 0h
 	loadW array, si
 	
 	mov si, 2h
 	addW array, si	
 	
+	popa
 	ret
 addWTest endp
 
-writeWTest proc
-	mov ax, 8765h
-	mov dl, 05h
+; void writeW(int idx)
+writeWShell proc
+	mov bp, sp
+	mov	si, [bp + 2]
 	
-	mov si, 1
 	writeW array, si
 	
+	ret 2
+writeWShell endp
+
+writeWTest proc
+	pusha
+	
+	mov ax, 0ABCDh
+	mov dl, 03h
+	
+	mov cx, 16
+lp:
+	mov si, cx
+	push cx
+	call writeWShell
+	loop lp
+	
+	popa
 	ret
 writeWTest endp
 
 PrintNewLine proc
+	pusha
 	mov dl, 0ah
 	mov ah, 02h
 	int 21h
 	mov dl, 0dh
 	mov ah, 02h
 	int 21h
+	
+	popa
 	ret
 PrintNewLine endp
 
 printArr proc
+	pusha
 
 	mov si, 0
 	mov cx, 16
 loopMark:
-	loadW array, si
-	call Print19bitWord
+	push si
+	call loadWShell
+	call PrintW
 	call PrintNewLine
 	inc si
-	loop cs:loopMark
+	loop loopMark
 	
+	call PrintNewLine
+	
+	popa
 	ret
 printArr endp
 
 doWork proc
-	
+	pusha
 	mov si, 0
 	mov cx, 16
 workLoop:
-	loadW array, si
-	test dl, 08h
+	push si
+	call loadWShell
+	test dl, 04h
 	jz addMin
 	jnz addMax
 workLoopEnd:
 	inc si
 	loop workLoop
+	
+	call writeWTest
+	popa
 	ret
 	
 addMax:
-	mov di, max
-	addW array, di
-	writeW array, si
+	push max
+	call addWShell
+	push si
+	call writeWShell
 	jmp workLoopEnd
 addMin:
-	mov di, min
-	addW array, di
-	writeW array, si
+	push min
+	call addWShell
+	push si
+	call writeWShell
 	jmp workLoopEnd
 	
 doWork endp
 
 findMin proc
+	pusha
 	mov si, 1
 	mov min, 0
-	mov counter, 15
+	mov counter, 15 ; i do not have enough registers
 	
 findMinLoop:
-	mov di, min
-	loadW array, di
-	subw array, si
-	and dl, 20h
+	push min 
+	call loadWShell
+	push si
+	call cmpWShell
+	and dl, 40h
 	cmp dl, 0
-	jne newMin
 	je findMinLoopEnd
+	jne newMin
 
 findMinLoopEnd:
 	inc si
 	dec counter
 	cmp counter, 0
-	jne findMinLoop	
+	jne findMinLoop
+	
+	popa
 	ret
 	
 newMin:
@@ -804,40 +875,46 @@ newMin:
 findMin endp
 
 findMax proc
+	pusha
 	mov si, 1
 	mov max, 0
 	mov counter, 15
 	
 findMaxLoop:
-	mov di, max
-	loadW array, di
-	subw array, si
-	and dl, 20h
-	cmp dl, 1
-	jne newMax
-	je findMaxLoopEnd
+	push max
+	call loadWShell
+	push si
+	call cmpWShell
+	and dl, 40h
+	cmp dl, 0
+	je newMax
+	jne findMaxLoopEnd
 		
 findMaxLoopEnd:
 	inc si
 	dec counter
 	cmp counter, 0
 	jne findMaxLoop
+	
+	popa
 	ret
 	
 newMax:
 	mov max, si
 	jmp findMaxLoopEnd 
 findMax endp
+
 main:
 	mov ax, data
 	mov ds, ax
 	
-	; call loadWTest
-	; call addWTest
-	; call writeWTest
+	;call loadWTest
+	;call addWTest
+	;call writeWTest
 	
 	call findMin
 	call findMax
+
 	
 	call printArr
 	call doWork
