@@ -202,7 +202,7 @@ endm
 ; 2.
 writeW macro arr, i
 local case0_4, case5, case6_9, case10, case11_15, exit
-	add ax, 0AB75h
+	;add ax, 0AB75h
 	pusha
 	
 case0_4:
@@ -273,7 +273,7 @@ case5:
 	shr i, 1
 	
 	push dx
-	and bx, 0FFFEh
+	and bx, 0FFFEh ; 0001h
 	shr dl, 2
 	add bx, dx
 	shl i, 1
@@ -281,7 +281,7 @@ case5:
 	shr i, 1
 	pop dx
 	
-	inc i		; i == 6
+	mov i, 6 ;inc i		; i == 6
 	shl i, 1
 	mov bx, arr[i]
 	; load addition
@@ -305,7 +305,6 @@ case5:
 	mov bx, arr[i]
 	
 	push ax
-	mov cx, 2
 	shl bx, 2
 	and ax, 0003h
 	add bx, ax
@@ -825,7 +824,7 @@ workLoopEnd:
 	inc si
 	loop workLoop
 	
-	call writeWTest
+	;call writeWTest
 	popa
 	ret
 	
@@ -914,12 +913,11 @@ main:
 	
 	call findMin
 	call findMax
-
 	
 	call printArr
 	call doWork
 	call printArr
-	
+
 	mov ax, 4C00h
 	int 21h
 code ends
