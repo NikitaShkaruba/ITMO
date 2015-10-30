@@ -7,13 +7,13 @@ public class Lab2 {
   public static void main(String[] args) {
     //Locale.setDefault(new Locale("ru", "RU"));
     
-    Gastrodon daughter = new Gastrodon();
-    Shellos mother = new Shellos();
-    Shellos sister = new Gastrodon();
+    Gustav daughter = new Gustav();
+    Sheldon mother = new Sheldon();
+    Sheldon sister = new Gustav();
 
     sister.foresight();
     daughter.painSplit(sister);
-    ((Gastrodon)sister).swordsDance();
+    ((Gustav)sister).swordsDance();
     mother.painSplit(sister);
     mother.batonPass();
     daughter.foresight();
