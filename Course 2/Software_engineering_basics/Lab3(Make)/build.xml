@@ -1,0 +1,72 @@
+<project name="Lab2" >  
+	<property file="build.properties" />
+	<path id="application" location="${jar.dir}/${ant.project.name}.jar" />
+	
+	<target name="init">
+		<manifest file="MANIFEST.MF">
+			<section name="">
+				<attribute name="Author" value="${author}"	/>
+				<attribute name="Version" value="${version}"	/>
+				<attribute name="MainClass" value="${main-class}"	/>
+			</section>
+		</manifest>
+
+		<tstamp/>
+		<mkdir dir="${build.dir}" />
+	</target>
+    
+	<target name="compile" depends="init">
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" />
+	</target>
+
+	<target name="build" depends="compile">
+		<copy todir="${classes.dir}">
+    		<fileset dir="${resources.dir}" includes="*.properties"/>
+  		</copy>
+	    <mkdir dir="${jar.dir}" />
+	    <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+		    <manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>			    
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+	
+	<target name="run" depends="build">
+		<java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="application"/>
+            </classpath>
+		</java>
+	</target>
+	
+	<target name="test" depends="build">
+		<junit printsummary="yes">
+            <classpath>
+                <path refid="application"/>
+            </classpath>
+            <batchtest fork="yes">
+                <fileset dir="${src.dir}" includes="Tests/*.java"/>
+            </batchtest>
+        </junit>
+	</target>
+
+	<target name="native2ascii" depends="compile">
+  		<native2ascii encoding="UTF-8" src="${resources.dir}/native" dest="${resources.dir}" includes="*.properties"/>
+	</target>
+
+	<target name="alt" depends="clean">
+  		<replaceregexp file="build.properties" match="src.dir=(.*)" replace="src.dir=srcAlt" byline="true" />
+  		<replaceregexp file="build.properties" match="resources.dir=(.*)" replace="resources.dir=srcAlt/Resources" byline="true" />
+
+		 <antcall target="build"	/>		  		
+
+  		<replaceregexp file="build.properties" match="resources.dir=(.*)" replace="resources.dir=src/Resources" byline="true" />
+  		<replaceregexp file="build.properties" match="src.dir=(.*)" replace="src.dir=src" byline="true" />
+	</target>
+
+</project>
