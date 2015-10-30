@@ -3,6 +3,14 @@
 	<path id="application" location="${jar.dir}/${ant.project.name}.jar" />
 	
 	<target name="init">
+		<manifest file="MANIFEST.MF">
+			<section name="">
+				<attribute name="Author" value="${author}"	/>
+				<attribute name="Version" value="${version}"	/>
+				<attribute name="MainClass" value="${main-class}"	/>
+			</section>
+		</manifest>
+
 		<tstamp/>
 		<mkdir dir="${build.dir}" />
 	</target>
