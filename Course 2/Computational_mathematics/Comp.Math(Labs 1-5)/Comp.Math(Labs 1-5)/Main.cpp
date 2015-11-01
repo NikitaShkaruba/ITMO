@@ -269,7 +269,7 @@ void main() {
 	char command;
 
 	while (true) {
-		cout << "What method do you want to run?" << endl;
+		cout << "Which method do you want to run?" << endl;
 		cout << "1. Gauss-Seidel method\n2. Reqtangle method(integrals)\n3. Ordinary Least Squares(approximation)\n4.\n5.\n0 - exit" << endl;
 		cout << endl << "Command: ";
 		
@@ -384,7 +384,6 @@ void main() {
 			if (command == 'q')
 				break;
 			cout << endl << "y: " << approximation(atof(&command));
-
 		} break;
 		case '4': throw "NotImplementedException"; break;
 		case '5': throw "NotImplementedException"; break;
