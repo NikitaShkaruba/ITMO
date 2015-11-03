@@ -1,7 +1,6 @@
 package Lab3;
 
 import javafx.beans.property.SimpleDoubleProperty;
-
 import java.util.function.DoubleFunction;
 /**
  * Created by Nikita on 11/3/2015.
@@ -101,5 +100,14 @@ class Point {
     @Override
     public String toString() {
         return String.format("%.2f", x.get()) + " , " + String.format("%.2f", y.get());
+    }
+
+    @Override
+    public boolean equals(Object pretendent) {
+        if (!(pretendent instanceof Point))
+            return false;
+
+        Point temp = (Point)pretendent;
+        return temp.getX() == this.getX() && temp.getY() == this.getY();
     }
 }

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Approximator-Lab3:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/Lab3/Main.java" />
   </component>
@@ -63,17 +68,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42171717">
-              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.448276">
+              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
               <folding>
                 <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
                 <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-                <element signature="e#5400#5401#0" expanded="true" />
-                <element signature="e#5428#5429#0" expanded="true" />
+                <element signature="method#start#0;class#Main#0" expanded="false" />
+                <element signature="class#2428:2725" expanded="false" />
+                <element signature="method#call#0;class#2828:6296" expanded="false" />
+                <element signature="class#3469:5313" expanded="false" />
+                <element signature="class#5359:5644" expanded="false" />
+                <element signature="class#5688:5899" expanded="false" />
+                <element signature="e#5806#5807#0" expanded="true" />
+                <element signature="e#5880#5881#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Lab3/sample.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.3448277">
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JavaFXApp.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,11 +115,14 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lab3/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+                <element signature="method#delete#0;class#Controller#0" expanded="false" />
+                <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+                <element signature="method#update#0;class#Controller#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,9 +132,14 @@
         <entry file="file://$PROJECT_DIR$/src/Lab3/Calculator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <caret line="110" column="71" selection-start-line="110" selection-start-column="71" selection-end-line="110" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#Calculator#0" expanded="false" />
+                <element signature="method#Gauss#0;class#Calculator#0" expanded="false" />
+                <element signature="method#calculatePolynom#0;class#Calculator#0" expanded="false" />
+                <element signature="method#OrdinaryLeastSquares#0;class#Calculator#0" expanded="false" />
+                <element signature="e#1734#1760#0" expanded="false" />
                 <element signature="method#Point#0;class#Point#0" expanded="false" />
               </folding>
             </state>
@@ -134,9 +176,10 @@
         <option value="$PROJECT_DIR$/src/CMath/OrdinaryLeastSquaresCalcuator.java" />
         <option value="$PROJECT_DIR$/src/Lab3/OrdinaryLeastSquaresCalcuator.java" />
         <option value="$PROJECT_DIR$/src/Lab3/OrdinaryLeastSquaresCalculator.java" />
+        <option value="$PROJECT_DIR$/src/Lab3/Main.java" />
         <option value="$PROJECT_DIR$/src/Lab3/Calculator.java" />
         <option value="$PROJECT_DIR$/src/Lab3/Controller.java" />
-        <option value="$PROJECT_DIR$/src/Lab3/Main.java" />
+        <option value="$PROJECT_DIR$/src/Lab3/sample.fxml" />
       </list>
     </option>
   </component>
@@ -183,6 +226,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,6 +243,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -241,11 +300,111 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Approximator-Lab3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="production" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Approximator-Lab3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JavaFXApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab3(JavaFX)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,6 +420,9 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -461,11 +623,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="800" height="860" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33422104" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33376792" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -474,12 +636,12 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.133125" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3469388" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39680427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38748336" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -506,7 +668,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="43" />
+      <option name="time" value="50" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -515,25 +677,17 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
-            <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab3/Calculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#Calculator#0" expanded="false" />
+            <element signature="method#Gauss#0;class#Calculator#0" expanded="false" />
+            <element signature="method#calculatePolynom#0;class#Calculator#0" expanded="false" />
+            <element signature="method#OrdinaryLeastSquares#0;class#Calculator#0" expanded="false" />
+            <element signature="e#1734#1760#0" expanded="false" />
             <element signature="method#Point#0;class#Point#0" expanded="false" />
           </folding>
         </state>
@@ -543,7 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -551,10 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="304" column="15" selection-start-line="304" selection-start-column="15" selection-end-line="304" selection-end-column="46" />
-          <folding>
-            <element signature="e#11624#11625#0" expanded="false" />
-            <element signature="e#11678#11679#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -565,6 +714,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -576,8 +728,14 @@
           <folding>
             <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
             <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="class#2428:2725" expanded="false" />
+            <element signature="method#call#0;class#2828:6296" expanded="false" />
+            <element signature="class#3469:5313" expanded="false" />
+            <element signature="class#5359:5644" expanded="false" />
+            <element signature="class#5688:5899" expanded="false" />
+            <element signature="e#5806#5807#0" expanded="true" />
+            <element signature="e#5880#5881#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -588,6 +746,11 @@
           <caret line="104" column="1" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#Calculator#0" expanded="false" />
+            <element signature="method#Gauss#0;class#Calculator#0" expanded="false" />
+            <element signature="method#calculatePolynom#0;class#Calculator#0" expanded="false" />
+            <element signature="method#OrdinaryLeastSquares#0;class#Calculator#0" expanded="false" />
+            <element signature="e#1734#1760#0" expanded="false" />
             <element signature="method#Point#0;class#Point#0" expanded="false" />
           </folding>
         </state>
@@ -597,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -605,10 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="304" column="15" selection-start-line="304" selection-start-column="15" selection-end-line="304" selection-end-column="46" />
-          <folding>
-            <element signature="e#11624#11625#0" expanded="false" />
-            <element signature="e#11678#11679#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -619,6 +777,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -630,8 +791,14 @@
           <folding>
             <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
             <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="class#2428:2725" expanded="false" />
+            <element signature="method#call#0;class#2828:6296" expanded="false" />
+            <element signature="class#3469:5313" expanded="false" />
+            <element signature="class#5359:5644" expanded="false" />
+            <element signature="class#5688:5899" expanded="false" />
+            <element signature="e#5806#5807#0" expanded="true" />
+            <element signature="e#5880#5881#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -658,6 +825,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -669,8 +839,14 @@
           <folding>
             <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
             <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="class#2428:2725" expanded="false" />
+            <element signature="method#call#0;class#2828:6296" expanded="false" />
+            <element signature="class#3469:5313" expanded="false" />
+            <element signature="class#5359:5644" expanded="false" />
+            <element signature="class#5688:5899" expanded="false" />
+            <element signature="e#5806#5807#0" expanded="true" />
+            <element signature="e#5880#5881#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -697,6 +873,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -708,8 +887,14 @@
           <folding>
             <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
             <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="class#2428:2725" expanded="false" />
+            <element signature="method#call#0;class#2828:6296" expanded="false" />
+            <element signature="class#3469:5313" expanded="false" />
+            <element signature="class#5359:5644" expanded="false" />
+            <element signature="class#5688:5899" expanded="false" />
+            <element signature="e#5806#5807#0" expanded="true" />
+            <element signature="e#5880#5881#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -729,6 +914,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -740,8 +928,14 @@
           <folding>
             <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
             <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="class#2428:2725" expanded="false" />
+            <element signature="method#call#0;class#2828:6296" expanded="false" />
+            <element signature="class#3469:5313" expanded="false" />
+            <element signature="class#5359:5644" expanded="false" />
+            <element signature="class#5688:5899" expanded="false" />
+            <element signature="e#5806#5807#0" expanded="true" />
+            <element signature="e#5880#5881#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -753,6 +947,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -765,14 +962,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab3/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
@@ -782,8 +979,14 @@
           <folding>
             <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
             <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="class#2428:2725" expanded="false" />
+            <element signature="method#call#0;class#2828:6296" expanded="false" />
+            <element signature="class#3469:5313" expanded="false" />
+            <element signature="class#5359:5644" expanded="false" />
+            <element signature="class#5688:5899" expanded="false" />
+            <element signature="e#5806#5807#0" expanded="true" />
+            <element signature="e#5880#5881#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -795,30 +998,22 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab3/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab3/sample.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/function/DoubleFunction.java">
@@ -892,13 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/DoublePropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72389793">
-          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/scene/chart/XYChart.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -911,10 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.02351314">
           <caret line="304" column="15" selection-start-line="304" selection-start-column="15" selection-end-line="304" selection-end-column="46" />
-          <folding>
-            <element signature="e#11624#11625#0" expanded="false" />
-            <element signature="e#11678#11679#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,6 +1106,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/IntegerPropertyBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/scene/control/Pagination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="273" column="0" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/scene/control/ListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="695" column="0" selection-start-line="695" selection-start-column="0" selection-end-line="695" selection-end-column="0" />
+          <folding>
+            <element signature="e#28698#28699#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/stage/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="404" column="0" selection-start-line="404" selection-start-column="0" selection-end-line="404" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/beans/property/DoublePropertyBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/javafx-src.zip!/javafx/event/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="165" column="22" selection-start-line="165" selection-start-column="20" selection-end-line="165" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -929,9 +1162,14 @@
     <entry file="file://$PROJECT_DIR$/src/Lab3/Calculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <caret line="110" column="71" selection-start-line="110" selection-start-column="71" selection-end-line="110" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#Calculator#0" expanded="false" />
+            <element signature="method#Gauss#0;class#Calculator#0" expanded="false" />
+            <element signature="method#calculatePolynom#0;class#Calculator#0" expanded="false" />
+            <element signature="method#OrdinaryLeastSquares#0;class#Calculator#0" expanded="false" />
+            <element signature="e#1734#1760#0" expanded="false" />
             <element signature="method#Point#0;class#Point#0" expanded="false" />
           </folding>
         </state>
@@ -939,27 +1177,131 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab3/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Controller#0;class#Controller#0" expanded="false" />
+            <element signature="method#delete#0;class#Controller#0" expanded="false" />
+            <element signature="method#setTestProbes#0;class#Controller#0" expanded="false" />
+            <element signature="method#update#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42171717">
-          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+        <state vertical-scroll-proportion="-6.448276">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
           <folding>
             <element signature="method#initializeGraphic#0;class#Main#0" expanded="false" />
             <element signature="method#getSinChart#0;class#Main#0" expanded="false" />
-            <element signature="e#5400#5401#0" expanded="true" />
-            <element signature="e#5428#5429#0" expanded="true" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="class#2428:2725" expanded="false" />
+            <element signature="method#call#0;class#2828:6296" expanded="false" />
+            <element signature="class#3469:5313" expanded="false" />
+            <element signature="class#5359:5644" expanded="false" />
+            <element signature="class#5688:5899" expanded="false" />
+            <element signature="e#5806#5807#0" expanded="true" />
+            <element signature="e#5880#5881#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab3/sample.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3448277">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>JavaFXApp</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Approximator-Lab3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

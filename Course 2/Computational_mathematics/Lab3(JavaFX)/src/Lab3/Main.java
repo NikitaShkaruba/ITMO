@@ -1,22 +1,24 @@
 package Lab3;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.util.Callback;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.util.Optional;
+import javafx.scene.Node;
 
 public class Main extends Application {
     final NumberAxis xAxis = new NumberAxis();
@@ -30,15 +32,17 @@ public class Main extends Application {
         xAxis.setLowerBound(-5);
         xAxis.setTickUnit(1);
         xAxis.setUpperBound(5);
+        xAxis.setAutoRanging(false);
 
         yAxis.setLabel("y");
         yAxis.setLowerBound(-5);
         yAxis.setTickUnit(1);
         yAxis.setUpperBound(5);
-
+        yAxis.setAutoRanging(false);
 
         chart = new LineChart<Number,Number>(xAxis,yAxis);
         chart.setCreateSymbols(false);
+        chart.setAnimated(false);
     }
     private XYChart.Series getSinChart() {
         XYChart.Series sinSeries = new XYChart.Series();
@@ -49,51 +53,18 @@ public class Main extends Application {
 
         return sinSeries;
     }
-    private void setTestCases() {
-        // case 1
-        controller.add(0, new Point(-Math.PI, 0));
-        controller.add(0, new Point(-Math.PI/2, -1));
-        controller.add(0, new Point(0, 0));
-        controller.add(0, new Point(Math.PI/2, 1));
-        controller.add(0, new Point(Math.PI, 0));
-
-        // case 2
-        controller.add(1, new Point(-Math.PI, 0));
-        controller.add(1, new Point(-Math.PI/2, -1));
-        controller.add(1, new Point(0, 0));
-        controller.add(1, new Point(Math.PI/2, 1));
-        controller.add(1, new Point(Math.PI, 0));
-        controller.add(1, new Point(-Math.PI/6, -Math.sqrt(3)/2));
-        controller.add(1, new Point(-Math.PI/4, -Math.sqrt(2)/2));
-        controller.add(1, new Point(-Math.PI/3, -1/2));
-        controller.add(1, new Point(Math.PI/3, 1/2));
-        controller.add(1, new Point(Math.PI / 6, Math.sqrt(3) / 2));
-        controller.add(1, new Point(Math.PI / 4, Math.sqrt(2) / 2));
-
-        // case 3
-        controller.add(2, new Point(-11*Math.PI, -1));
-        controller.add(2, new Point(-15*Math.PI, 0));
-        controller.add(2, new Point(-7*Math.PI, -1));
-        controller.add(2, new Point(5*Math.PI, 0));
-        controller.add(2, new Point(-3*Math.PI, -1));
-        controller.add(2, new Point(0, 0));
-        controller.add(2, new Point(3*Math.PI, 1));
-        controller.add(2, new Point(5*Math.PI, 0));
-        controller.add(2, new Point(7*Math.PI, 1));
-        controller.add(2, new Point(11*Math.PI, 0));
-        controller.add(2, new Point(15*Math.PI, 1));
-    }
 
     @Override
     public void start(Stage stage) {
         stage.setTitle("Approximator(Lab 3)");
         initializeGraphic();
 
-        // ---------- Prepare chart ---------- //
+        // ---------- Prepare left chart side ---------- //
         chart.getData().add(getSinChart());
+        // Bind controller to Chart
         for (int i = 0; i < controller.chartDataSeries.size(); i++) {
             XYChart.Series temp = new XYChart.Series(controller.chartDataSeries.get(i));
-            temp.setName("Approximation " + i);
+            temp.setName("Approximation" + i + "(x)");
             chart.getData().add(temp);
         }
         // Synchronized with chart coords mouse listener! AWESOME!
@@ -106,34 +77,90 @@ public class Main extends Application {
         });
 
 
-        // ---------- Prepare pagination ---------- //
+        // ---------- Prepare right stat side ---------- //
         pagination.setPageFactory(new Callback<Integer, Node>() {
-            @Override   // that is called when a page has been selected by the application
+            @Override   // That is called when a page has been selected by the application
             public Node call(Integer pageIndex) {
-                VBox vBox = new VBox();
+                VBox rightBox = new VBox();
 
-                Label approximatedFunctionLbl = new Label("Approximation" + pagination.getCurrentPageIndex());
-                approximatedFunctionLbl.setStyle(" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;");
-                vBox.getChildren().add(approximatedFunctionLbl);
-
+                // Generate listView
                 ListView<Point> listView = new ListView<>();
                 listView.setEditable(true);
                 listView.setPrefWidth(200);
-                listView.setItems(controller.listDataSeries.get(pagination.getCurrentPageIndex()));
-                vBox.getChildren().add(listView);
 
-                return vBox;
+                // Generate Buttons
+                Button addButt = new Button("Add");
+                Button deleteButt = new Button("Delete");
+                Button testButt = new Button("Test");
+                addButt.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Dialog<Point> dialog = new Dialog<>();
+                        dialog.setHeaderText("Input x and y!");
+
+                        ButtonType AddButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
+                        dialog.getDialogPane().getButtonTypes().addAll(AddButtonType, ButtonType.CANCEL);
+
+                        // Create the X and Y labels and fields
+                        GridPane grid = new GridPane();
+                        grid.setHgap(10);
+                        grid.setVgap(10);
+                        grid.setPadding(new Insets(20, 150, 10, 10));
+
+                        TextField xField = new TextField();
+                        xField.setPromptText("X");
+                        TextField yField = new TextField();
+                        yField.setPromptText("Y");
+
+                        grid.add(new Label("X:"), 0, 0);
+                        grid.add(xField, 1, 0);
+                        grid.add(new Label("Y:"), 0, 1);
+                        grid.add(yField, 1, 1);
+
+                        dialog.getDialogPane().setContent(grid);
+                        dialog.setResultConverter(dialogButton -> {
+                            if (dialogButton == AddButtonType) {
+                                return new Point(Double.parseDouble(xField.getText()),Double.parseDouble(yField.getText()));
+                            }
+
+                            return null;
+                        });
+
+                        Optional<Point> result = dialog.showAndWait();
+                        if (result.get() != null)
+                            controller.add(pagination.getCurrentPageIndex(), result.get());
+                    }
+                });
+                deleteButt.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        controller.delete(pagination.getCurrentPageIndex(), listView.getSelectionModel().getSelectedIndex());
+                    }
+                });
+                testButt.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        controller.setTestProbes();
+                    }
+                });
+                HBox buttBox = new HBox();
+                buttBox.setAlignment(Pos.CENTER);
+                buttBox.getChildren().addAll(testButt, addButt, deleteButt);
+
+                listView.setItems(controller.listDataSeries.get(pagination.getCurrentPageIndex()));
+                rightBox.getChildren().addAll(listView, buttBox);
+
+                return rightBox;
             }
         });
 
-        // pack chart and pagination to a box
-        setTestCases();
-        HBox hBox = new HBox();
-        hBox.setSpacing(10);
-        hBox.setPadding(new Insets(10, 10, 10, 10));
-        hBox.getChildren().addAll(chart, pagination);
+        // Pack left and right sides together
+        HBox sceneContainer = new HBox();
+        sceneContainer.setSpacing(10);
+        sceneContainer.setPadding(new Insets(10, 10, 10, 10));
+        sceneContainer.getChildren().addAll(chart, pagination);
 
-        stage.setScene(new Scene(hBox));
+        stage.setScene(new Scene(sceneContainer));
         stage.show();
     }
 
