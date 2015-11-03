@@ -1,13 +1,22 @@
 package Lab3;
 
 import javafx.application.Application;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import java.util.ArrayList;
 
+import java.util.Vector;
 import java.util.function.DoubleFunction;
 
 class OrdinaryLeastSquaresCalcuator {
@@ -67,12 +76,12 @@ class OrdinaryLeastSquaresCalcuator {
         for (int k = 0; k < bLength; k++)
             for (int l = 0; l < bLength; l++)
                 for (int i = 0; i < points.length; i++)
-                    bc[k][l] += Math.pow(points[i].x, k + l);
+                    bc[k][l] += Math.pow(points[i].getX(), k + l);
 
         // compute c
         for (int k = 0; k < bLength; k++)
             for (int i = 0; i < points.length; i++)
-                bc[k][bLength] += Math.pow(points[i].x, k) * points[i].y;
+                bc[k][bLength] += Math.pow(points[i].getX(), k) * points[i].getY();
 
         final double[] bb = Gauss(bc);
         // approximated function. Don't be ashamed of lambda's
@@ -81,105 +90,109 @@ class OrdinaryLeastSquaresCalcuator {
 }
 
 class Point {
+    public SimpleDoubleProperty x, y;
+
     Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+        this.x = new SimpleDoubleProperty(x);
+        this.y = new SimpleDoubleProperty(y);
     }
 
-    double x, y;
+   public double getX() {
+        return x.get();
+    }
+    public void setX(Double x) {
+        this.x.set(x);
+    }
+    public double getY() {
+        return y.get();
+    }
+    public void setY(Double y) {
+        this.y.set(y);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%.2f", x.get()) + " , " + String.format("%.2f", y.get());
+    }
+}
+
+class ListController {
+    public Vector<ObservableList<Point>> listDataSeries = new Vector<>();
+    public Vector<ObservableList<XYChart.Data>> chartDataSeries = new Vector<>();
+    private int seriesCount = 0;
+
+    ListController(int amountOfSeries) {
+        seriesCount = amountOfSeries;
+
+        for (int i = 0; i < amountOfSeries; i++) {
+            listDataSeries.add(FXCollections.observableArrayList());
+            chartDataSeries.add(FXCollections.observableArrayList());
+        }
+    }
+
+    public void add(int chartNumber, Point point) {
+        assert(chartNumber <= seriesCount); // remove this later
+
+        listDataSeries.get(chartNumber).add(point);
+        chartDataSeries.get(chartNumber).add(new XYChart.Data(point.x.get(), point.y.get()));
+    }
+    /*public void update(int position, Double value) {
+        chartDataSeries.set(position, new XYChart.Data(chartDataSeries.get(position).getXValue(), value));
+    }*/
 }
 
 public class Main extends Application {
-    @Override
-    public void start(Stage stage) {
-        OrdinaryLeastSquaresCalcuator calc = new OrdinaryLeastSquaresCalcuator();
-        stage.setTitle("Approximator(Lab 3)");
-        //defining the axes
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
+    final NumberAxis xAxis = new NumberAxis();
+    final NumberAxis yAxis = new NumberAxis();
+    private LineChart<Number,Number> lineChart;
+
+    private OrdinaryLeastSquaresCalcuator calc = new OrdinaryLeastSquaresCalcuator();
+    private ListController controller = new ListController(3);
+
+    private void initializeGraphic(){
         yAxis.setLabel("y");
         xAxis.setLabel("x");
 
-        // creating the chart
-        final LineChart<Number,Number> lineChart =
-                new LineChart<Number,Number>(xAxis,yAxis);
+        lineChart = new LineChart<Number,Number>(xAxis,yAxis);
         lineChart.setCreateSymbols(false);
-
-
-        // defining a series 0
+    }
+    private XYChart.Series getSinChart() {
         XYChart.Series sinSeries = new XYChart.Series();
         sinSeries.setName("Sin(x)");
+
         for (double x = -5; x < 5; x+=0.05)
             sinSeries.getData().add(new XYChart.Data(x, Math.sin(x)));
+        return sinSeries;
+    }
 
-        // defining a series 1
-        ArrayList<Point> points = new ArrayList();
-        points.add(new Point(-Math.PI, 0));
-        points.add(new Point(-Math.PI, 0));
-        points.add(new Point(-Math.PI/2, -1));
-        points.add(new Point(0, 0));
-        points.add(new Point(Math.PI/2, 1));
-        points.add(new Point(Math.PI, 0));
+    @Override
+    public void start(Stage stage) {
+        stage.setTitle("Approximator(Lab 3)");
+        initializeGraphic();
 
-        Point[] d = new Point[points.size()];
-        points.toArray(d);
-        DoubleFunction<Double> computedFunc = calc.OrdinaryLeastSquares(d, 4);
-        XYChart.Series app1Series = new XYChart.Series();
-        app1Series.setName("Approximated 1");
-        for (double x = -5; x < 5; x+=0.05)
-            app1Series.getData().add(new XYChart.Data(x, computedFunc.apply(x)));
+        lineChart.getData().add(getSinChart());
+        lineChart.getData().add(new XYChart.Series(controller.chartDataSeries.get(0)));
 
-        // defining a series 2
-        points.add(new Point(-Math.PI/6, -Math.sqrt(3)/2));
-        points.add(new Point(-Math.PI/4, -Math.sqrt(2)/2));
-        points.add(new Point(-Math.PI/3, 1/2));
-        points.add(new Point(Math.PI/3, 1/2));
-        points.add(new Point(Math.PI/4, Math.sqrt(2)/2));
-        points.add(new Point(Math.PI/6, Math.sqrt(3)/2));
+        // Synchronized with chart coords mouse listener! AWESOME!
+        Node chartBackground = lineChart.lookup(".chart-plot-background");
+        chartBackground.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                controller.add(0, new Point((double)xAxis.getValueForDisplay(event.getX()),(double)yAxis.getValueForDisplay(event.getY())));
+            }
+        });
 
-        d = new Point[points.size()];
-        points.toArray(d);
-        computedFunc = calc.OrdinaryLeastSquares(d, 4);
-        XYChart.Series app2Series = new XYChart.Series();
-        app2Series.setName("Approximated 2");
-        for (double x = -5; x < 5; x+=0.05)
-            app2Series.getData().add(new XYChart.Data(x, computedFunc.apply(x)));
+        ListView<Point> listView = new ListView<Point>();
+        listView.setEditable(false);
+        listView.setPrefWidth(200);
+        listView.setItems(controller.listDataSeries.get(0));
 
-        // defining a series 3
-        points.get(3).y = 3;
+        HBox hBox = new HBox();
+        hBox.setSpacing(10);
+        hBox.setPadding(new Insets(10, 10, 10, 10));
+        hBox.getChildren().addAll(lineChart, listView);
 
-        d = new Point[points.size()];
-        points.toArray(d);
-        computedFunc = calc.OrdinaryLeastSquares(d, 4);
-        XYChart.Series app3Series = new XYChart.Series();
-        app3Series.setName("Approximated 3");
-        for (double x = -5; x < 5; x+=0.05)
-            app3Series.getData().add(new XYChart.Data(x, computedFunc.apply(x)));
-
-        // defining a series 4
-        points = new ArrayList();
-        points.add(new Point(-15*Math.PI, 0));
-        points.add(new Point(-11*Math.PI/2, 1));
-        points.add(new Point(-7*Math.PI/2, 1));
-        points.add(new Point(-5*Math.PI, 0));
-        points.add(new Point(0, 0));
-        points.add(new Point(5*Math.PI, 0));
-        points.add(new Point(7*Math.PI/2, -1));
-        points.add(new Point(11*Math.PI/2, -1));
-        points.add(new Point(15*Math.PI, 0));
-
-        d = new Point[points.size()];
-        points.toArray(d);
-        computedFunc = calc.OrdinaryLeastSquares(d, 4);
-        XYChart.Series app4Series = new XYChart.Series();
-        app4Series.setName("Approximated 4");
-        for (double x = -5; x < 5; x+=0.05)
-            app4Series.getData().add(new XYChart.Data(x, computedFunc.apply(x)));
-
-        Scene scene = new Scene(lineChart,800,600);
-        lineChart.getData().addAll(sinSeries, app1Series, app2Series, app3Series, app4Series);
-
-        stage.setScene(scene);
+        stage.setScene(new Scene(hBox));
         stage.show();
     }
 
