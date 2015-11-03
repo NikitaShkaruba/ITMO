@@ -12,9 +12,12 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Pagination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.util.Vector;
 import java.util.function.DoubleFunction;
@@ -145,6 +148,7 @@ public class Main extends Application {
     final NumberAxis xAxis = new NumberAxis();
     final NumberAxis yAxis = new NumberAxis();
     private LineChart<Number,Number> lineChart;
+    private Pagination pagination = new Pagination(3);
 
     private OrdinaryLeastSquaresCalcuator calc = new OrdinaryLeastSquaresCalcuator();
     private ListController controller = new ListController(3);
@@ -171,16 +175,33 @@ public class Main extends Application {
         initializeGraphic();
 
         lineChart.getData().add(getSinChart());
-        lineChart.getData().add(new XYChart.Series(controller.chartDataSeries.get(0)));
+        for (int i = 0; i < controller.chartDataSeries.size(); i++) {
+            XYChart.Series temp = new XYChart.Series(controller.chartDataSeries.get(i));
+            temp.setName("Approximation " + i);
+            lineChart.getData().add(temp);
+        }
 
         // Synchronized with chart coords mouse listener! AWESOME!
         Node chartBackground = lineChart.lookup(".chart-plot-background");
         chartBackground.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                controller.add(0, new Point((double)xAxis.getValueForDisplay(event.getX()),(double)yAxis.getValueForDisplay(event.getY())));
+                controller.add(pagination.getCurrentPageIndex(), new Point((double)xAxis.getValueForDisplay(event.getX()),(double)yAxis.getValueForDisplay(event.getY())));
             }
         });
+
+        pagination.setPageFactory(new Callback<Integer, Node>() {
+            @Override   // that is called when a page has been selected by the application
+            public Node call(Integer pageIndex) {
+                ListView<Point> listView = new ListView<Point>();
+                listView.setEditable(false);
+                listView.setPrefWidth(200);
+                listView.setItems(controller.listDataSeries.get(pageIndex));
+
+                return listView;
+            }
+        });
+
 
         ListView<Point> listView = new ListView<Point>();
         listView.setEditable(false);
@@ -190,7 +211,7 @@ public class Main extends Application {
         HBox hBox = new HBox();
         hBox.setSpacing(10);
         hBox.setPadding(new Insets(10, 10, 10, 10));
-        hBox.getChildren().addAll(lineChart, listView);
+        hBox.getChildren().addAll(lineChart, pagination);
 
         stage.setScene(new Scene(hBox));
         stage.show();
