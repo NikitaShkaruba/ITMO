@@ -2,37 +2,43 @@
 .model flat, stdcall	; Flat, 32-bit memory model (not used in 64-bit)
 option casemap: none	; Case sensitive syntax
 
-; *************************************************************************
 ; MASM32 proto types for Win32 functions and structures
 include c:\masm32\include\windows.inc
 include c:\masm32\include\kernel32.inc
 include c:\masm32\include\masm32.inc
 include \masm32\macros\macros.asm
-; *************************************************************************
 ; MASM32 object libraries
 includelib c:\masm32\lib\kernel32.lib
 includelib c:\masm32\lib\masm32.lib
-; *************************************************************************  
 ; C function
 include c:\masm32\include\msvcrt.inc
 includelib c:\masm32\lib\msvcrt.lib
-; *************************************************************************
 
 .stack 100h
 
 .data
-	x1 dq 0.2
-	deltaX dq 0.2
-	xn dq 2.0
-	a dq 1.6
-	prec dq 0.0001
+	startMessage db "System Programming Languages, final Lab 7. Made by Shkaruba Nikita, group P3218", 13, 10, 0
+	funcMessage db "My func is:  sin(x + a)", 13, 10, 0
+	tableMessage db 13, 10, 10, "Resulted table: ", 13, 10, " |(x+a)", 9, " | my result", 9, " | c result", 9, " |series length", 9, " |", 13 , 10, 0
+	getXmessage db "Input first x: ", 0			; first x 
+	getDXmessage db "Input delta x: ", 0		; delta x
+	getFXMessage db "Input last x: ", 0			; last x
+	getAMessage db "Input a: ", 0				
+	getPrecisionMessage db "Input Precision: ", 0
 	
+	inFormat db "%lf", 0
+	outFormat db "%d", 0
 	endl db 10, 8, 0
 	tab db 9, 0
 	wall db ' ', '|', ' ', 0
 .data?
+	x1 dq ?
+	deltaX dq ?
+	x2 dq ?
+	a dq ?
+	prec dq ?
 	strBuffer db 20 dup(?)
-	rangeLength dw ?
+	rangeLength dd ?
 	
 .code
 SinSum proc xPtr:dword, aPtr:dword, precPtr:dword	
@@ -105,8 +111,9 @@ postIter:
 	pop eax
 	ja nextIter
 	
+	xor ecx, ecx
 	mov cx, i
-	mov rangeLength, cx
+	mov rangeLength, ecx
 	faddp st(0), st(0)
 	popa
 	ret 12
@@ -156,13 +163,7 @@ work proc x:qword
 	print addr wall
 	print addr strBuffer
 	print addr tab
-	
-	; print my range length
-	;print addr wall
-	;add rangeLength, '0'
-	;print addr rangeLength
-	;print addr tab
-	
+		
 	; print c function result
 	invoke crt_sin, xBuffer
 	lea eax, xBuffer
@@ -171,6 +172,12 @@ work proc x:qword
 	print addr wall
 	print addr strBuffer
 	print addr tab
+	
+	; print my range length
+	print addr wall
+	invoke crt_printf, addr outFormat, rangeLength
+	print addr tab
+	print addr tab
 	print addr wall
 	print addr endl
 	
@@ -178,14 +185,48 @@ work proc x:qword
 	ret 6
 work endp
 
+getUserData proc
+	print addr startMessage
+    print addr funcMessage
+	
+	print addr getXmessage
+	invoke crt_scanf, addr inFormat, addr x1
+	
+	print addr getDXmessage
+	invoke crt_scanf, addr inFormat, addr deltaX
+	
+	print addr getFXMessage
+	invoke crt_scanf, addr inFormat, addr x2
+	
+	print addr getAMessage
+	invoke crt_scanf, addr inFormat, addr a
+	
+	print addr getPrecisionMessage
+	invoke crt_scanf, addr inFormat, addr prec
+	
+	print addr tableMessage
+	
+	ret
+getUserData endp
+
 start:
 	finit
+	call getUserData
 	
+	xor ecx, ecx
 	mov cx, 16
 continueWork:
 	invoke work, x1
 	invoke AddDouble, offset x1, offset deltaX
-	loop continueWork
+	
+	push ax
+	fld x1
+	fcomp x2
+	fstsw ax
+	fwait
+	sahf
+	pop ax
+	jb continueWork
 	
     invoke ExitProcess, 0
 end start
