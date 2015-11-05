@@ -20,14 +20,16 @@ includelib c:\masm32\lib\msvcrt.lib
 	startMessage db "System Programming Languages, final Lab 7. Made by Shkaruba Nikita, group P3218", 13, 10, 0
 	funcMessage db "My func is:  sin(x + a)", 13, 10, 0
 	tableMessage db 13, 10, 10, "Resulted table: ", 13, 10, " |(x+a)", 9, " | my result", 9, " | c result", 9, " |series length", 9, " |", 13 , 10, 0
-	getXmessage db "Input first x: ", 0			; first x 
-	getDXmessage db "Input delta x: ", 0		; delta x
-	getFXMessage db "Input last x: ", 0			; last x
+	getXmessage db "Input first x: ", 0			
+	getDXmessage db "Input delta x: ", 0		
+	getFXMessage db "Input last x: ", 0			
 	getAMessage db "Input a: ", 0				
 	getPrecisionMessage db "Input Precision: ", 0
 	
+	; printf, scanf formats
 	inFormat db "%lf", 0
 	outFormat db "%d", 0
+	
 	endl db 10, 8, 0
 	tab db 9, 0
 	wall db ' ', '|', ' ', 0
@@ -37,6 +39,7 @@ includelib c:\masm32\lib\msvcrt.lib
 	x2 dq ?
 	a dq ?
 	prec dq ?
+	
 	strBuffer db 20 dup(?)
 	rangeLength dd ?
 	
@@ -46,9 +49,9 @@ SinSum proc xPtr:dword, aPtr:dword, precPtr:dword
 	pusha
 	mov i, 0
 	
-	mov ecx, precPtr	; 0.001
-	mov ebx, aPtr		; 1.6
-	mov eax, xPtr		; 1.8
+	mov ecx, precPtr
+	mov ebx, aPtr
+	mov eax, xPtr
 	lea edx, i
 	mov rangeLength, 0
 	
@@ -76,7 +79,7 @@ pow:
 	mov cx,  i
 	cmp cx, 0
 	je faq
-	fld1				
+	fld1
 	fld qword ptr [eax]
 powLoop:
 	fmul st(1), st(0)	; st(1) *= x
@@ -103,8 +106,9 @@ postIter:
 	fabs
 	inc i
 	
+	; jmp if TEMP > PREC
 	push eax
-	fcomp st(1)	; cmp TEMP, PREC
+	fcomp st(1)	
 	fstsw ax
 	fwait
 	sahf
@@ -115,12 +119,14 @@ postIter:
 	mov cx, i
 	mov rangeLength, ecx
 	faddp st(0), st(0)
+	
 	popa
 	ret 12
 SinSum endp
 
 AddDouble proc doublePtr:dword, additionPtr:dword
 	pusha
+	
 	mov eax, doublePtr
 	mov ebx, additionPtr
 	
@@ -130,24 +136,20 @@ AddDouble proc doublePtr:dword, additionPtr:dword
 	
 	fstp qword ptr [eax]
 	faddp st(0), st(0)
+	
 	popa
 	ret 4
 AddDouble endp
 
 work proc x:qword
-	local xBuffer:qword
+	local xBuffer:qword	; x is for my function, xBuffer for c function
 	pusha
 	
+	; copy x to xBuffer
 	mov eax, dword ptr[x]
 	mov dword ptr xBuffer, eax
 	mov eax, dword ptr[x+4]
 	mov dword ptr xBuffer+4, eax
-	lea eax, a
-	fld qword ptr [eax]
-	lea eax, xBuffer
-	fld qword ptr ss:[eax]
-	faddp st(1), st(0)
-	fstp qword ptr ss:[eax]
 	
 	; print argument
 	invoke FloatToStr, xBuffer, offset strBuffer
@@ -164,6 +166,14 @@ work proc x:qword
 	print addr strBuffer
 	print addr tab
 		
+	; add a to xBuffer
+	lea eax, a
+	fld qword ptr [eax]
+	lea eax, xBuffer
+	fld qword ptr ss:[eax]
+	faddp st(1), st(0)
+	fstp qword ptr ss:[eax]
+	
 	; print c function result
 	invoke crt_sin, xBuffer
 	lea eax, xBuffer
@@ -186,6 +196,8 @@ work proc x:qword
 work endp
 
 getUserData proc
+	pusha
+	
 	print addr startMessage
     print addr funcMessage
 	
@@ -205,7 +217,8 @@ getUserData proc
 	invoke crt_scanf, addr inFormat, addr prec
 	
 	print addr tableMessage
-	
+
+	popa
 	ret
 getUserData endp
 
@@ -213,12 +226,11 @@ start:
 	finit
 	call getUserData
 	
-	xor ecx, ecx
-	mov cx, 16
 continueWork:
 	invoke work, x1
 	invoke AddDouble, offset x1, offset deltaX
 	
+	; cmp x1, x2
 	push ax
 	fld x1
 	fcomp x2
