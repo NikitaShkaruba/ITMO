@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64ec121-b6b1-4c44-a819-f50ebdec0072" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab4/BatFrame$1.class" afterPath="$PROJECT_DIR$/out/production/Lab4/BatFrame$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab4/BatFrame$2.class" afterPath="$PROJECT_DIR$/out/production/Lab4/BatFrame$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab4/BatFrame$3.class" afterPath="$PROJECT_DIR$/out/production/Lab4/BatFrame$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab4/BatFrame$4.class" afterPath="$PROJECT_DIR$/out/production/Lab4/BatFrame$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab4/BatFrame.class" afterPath="$PROJECT_DIR$/out/production/Lab4/BatFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab4/GPanel.class" afterPath="$PROJECT_DIR$/out/production/Lab4/GPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lab4/SPanel.class" afterPath="$PROJECT_DIR$/out/production/Lab4/SPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BatFrame.java" afterPath="$PROJECT_DIR$/src/BatFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GPanel.java" afterPath="$PROJECT_DIR$/src/GPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SPanel.java" afterPath="$PROJECT_DIR$/src/SPanel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Lab4/Controller.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Lab4/Model.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Lab4/Test.java" />
+      <change type="DELETED" beforePath="C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Programming_of_internet_applications\Lab4\SwingBook.url" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Programming_of_internet_applications\Lab4\src\GPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Programming_of_internet_applications\Lab4\src\SPanel.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Programming_of_internet_applications\Lab4\src\BatFrame.java" afterPath="$PROJECT_DIR$/src/Lab4/BatFrame.java" />
+      <change type="MOVED" beforePath="C:\Users\Nikita\SkyDrive\Documents\ITMO\Course 2\Programming_of_internet_applications\Lab4\src\Main.java" afterPath="$PROJECT_DIR$/src/Lab4/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Lab4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,63 +32,96 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Lab4/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#Controller#0" expanded="false" />
+                <element signature="class#688:1001" expanded="false" />
+                <element signature="method#stateChanged#0;class#688:1001" expanded="false" />
+                <element signature="class#1049:1919" expanded="false" />
+                <element signature="method#mouseClicked#0;class#1049:1919" expanded="false" />
+                <element signature="method#startApplication#0;class#Controller#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="BatFrame.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+        <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.87921846">
-              <caret line="82" column="64" selection-start-line="82" selection-start-column="64" selection-end-line="82" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.7795389">
+              <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#BatFrame#0" expanded="false" />
-                <element signature="class#551:795" expanded="false" />
-                <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-                <element signature="class#847:1091" expanded="false" />
-                <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-                <element signature="class#1142:1371" expanded="false" />
-                <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+                <element signature="class#BatFrame#0" expanded="false" />
+                <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
                 <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-                <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-                <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
+                <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
+                <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+                <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+                <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+                <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
+                <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
+                <element signature="class#SPanel#0" expanded="false" />
+                <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+                <element signature="initializer##0;class#SPanel#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SPanel.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Lab4/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GPanel.java">
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Lab4/Model.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
               <folding>
-                <element signature="docComment;class#GPanel#0" expanded="false" />
-                <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-                <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
-                <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
-                <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
-                <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-                <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-                <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-                <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+                <element signature="docComment;class#Model#0" expanded="false" />
+                <element signature="class#Model#0" expanded="false" />
+                <element signature="method#Model#0;class#Model#0" expanded="false" />
+                <element signature="method#setR#0;class#Model#0" expanded="false" />
+                <element signature="e#637#672#0" expanded="false" />
+                <element signature="method#getFigurePoints#0;class#Model#0" expanded="false" />
+                <element signature="method#getMarks#0;class#Model#0" expanded="false" />
+                <element signature="method#InitializeFigure#0;class#Model#0" expanded="false" />
+                <element signature="method#RecalculateMarks#0;class#Model#0" expanded="false" />
+                <element signature="class#Mark#0" expanded="false" />
+                <element signature="method#Mark#0;class#Mark#0" expanded="false" />
+                <element signature="method#Mark#1;class#Mark#0" expanded="false" />
+                <element signature="class#BatEquatation#0" expanded="false" />
+                <element signature="method#BatEquatation#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeLeftWing#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeLeftNeck#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeLeftHead#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeTop#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeRightHead#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeRightNeck#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeRightWing#0;class#BatEquatation#0" expanded="false" />
+                <element signature="method#computeBot#0;class#BatEquatation#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Lab4/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,8 +131,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JavaFXApplication" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -120,6 +152,13 @@
         <option value="$PROJECT_DIR$/src/SPanel.java" />
         <option value="$PROJECT_DIR$/src/GPanel.java" />
         <option value="$PROJECT_DIR$/src/BatFrame.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/MVC.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/BatController.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/GPanel.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/Main.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/Model.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/BatFrame.java" />
       </list>
     </option>
   </component>
@@ -127,10 +166,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="800" />
+    <option name="height" value="860" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -139,7 +176,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -155,13 +192,86 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Lab4" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javax" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javax" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="swing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -187,11 +297,38 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lab4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BatFrame.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -201,11 +338,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="Lab4.Main" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -369,26 +507,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="0" width="800" height="860" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32356858" sideWeight="0.47021547" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32333767" sideWeight="0.47021547" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23076923" sideWeight="0.5538657" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724902" sideWeight="0.4904943" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288948" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262317" sideWeight="0.4904943" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288948" sideWeight="0.49489796" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22946545" sideWeight="0.44613436" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36751" sideWeight="0.44613436" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -410,7 +548,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab4/Main.java</url>
+          <line>8</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -419,462 +565,321 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#BatFrame#0" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="62" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="62" />
+          <folding>
+            <element signature="docComment;class#Controller#0" expanded="false" />
+            <element signature="class#688:1001" expanded="false" />
+            <element signature="method#stateChanged#0;class#688:1001" expanded="false" />
+            <element signature="class#1049:1919" expanded="false" />
+            <element signature="method#mouseClicked#0;class#1049:1919" expanded="false" />
+            <element signature="method#startApplication#0;class#Controller#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Model#0" expanded="false" />
+            <element signature="class#Model#0" expanded="false" />
+            <element signature="method#Model#0;class#Model#0" expanded="false" />
+            <element signature="method#setR#0;class#Model#0" expanded="false" />
+            <element signature="e#637#672#0" expanded="false" />
+            <element signature="method#getFigurePoints#0;class#Model#0" expanded="false" />
+            <element signature="method#getMarks#0;class#Model#0" expanded="false" />
+            <element signature="method#InitializeFigure#0;class#Model#0" expanded="false" />
+            <element signature="method#RecalculateMarks#0;class#Model#0" expanded="false" />
+            <element signature="class#Mark#0" expanded="false" />
+            <element signature="method#Mark#0;class#Mark#0" expanded="false" />
+            <element signature="method#Mark#1;class#Mark#0" expanded="false" />
+            <element signature="class#BatEquatation#0" expanded="false" />
+            <element signature="method#BatEquatation#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeLeftWing#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeLeftNeck#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeLeftHead#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeTop#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeRightHead#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeRightNeck#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeRightWing#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeBot#0;class#BatEquatation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#BatFrame#0" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#BatFrame#0" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
             <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
             <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -885,47 +890,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -944,55 +926,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/Vector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.3328823">
+          <caret line="1105" column="39" selection-start-line="1105" selection-start-column="24" selection-end-line="1105" selection-end-column="39" />
           <folding>
-            <element signature="docComment;class#GPanel#0" expanded="false" />
-            <element signature="method#paintComponent#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
-            <element signature="method#printSelectedPoint#0;class#GPanel#0" expanded="false" />
-            <element signature="method#setOffset#0;class#GPanel#0" expanded="false" />
-            <element signature="method#reverse#0;class#GPanel#0" expanded="false" />
+            <element signature="e#42942#42943#0" expanded="false" />
+            <element signature="e#42979#42980#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BatFrame.java">
+    <entry file="file://$PROJECT_DIR$/Lab4.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87921846">
-          <caret line="82" column="64" selection-start-line="82" selection-start-column="64" selection-end-line="82" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38035962">
+          <caret line="296" column="7" selection-start-line="296" selection-start-column="7" selection-end-line="296" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/awt/Polygon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34375">
+          <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/awt/event/MouseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3318584">
+          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/awt/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="15" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
+          <folding>
+            <element signature="docComment;class#Model#0" expanded="false" />
+            <element signature="class#Model#0" expanded="false" />
+            <element signature="method#Model#0;class#Model#0" expanded="false" />
+            <element signature="method#setR#0;class#Model#0" expanded="false" />
+            <element signature="e#637#672#0" expanded="false" />
+            <element signature="method#getFigurePoints#0;class#Model#0" expanded="false" />
+            <element signature="method#getMarks#0;class#Model#0" expanded="false" />
+            <element signature="method#InitializeFigure#0;class#Model#0" expanded="false" />
+            <element signature="method#RecalculateMarks#0;class#Model#0" expanded="false" />
+            <element signature="class#Mark#0" expanded="false" />
+            <element signature="method#Mark#0;class#Mark#0" expanded="false" />
+            <element signature="method#Mark#1;class#Mark#0" expanded="false" />
+            <element signature="class#BatEquatation#0" expanded="false" />
+            <element signature="method#BatEquatation#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeLeftWing#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeLeftNeck#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeLeftHead#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeTop#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeRightHead#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeRightNeck#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeRightWing#0;class#BatEquatation#0" expanded="false" />
+            <element signature="method#computeBot#0;class#BatEquatation#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Controller#0" expanded="false" />
+            <element signature="class#688:1001" expanded="false" />
+            <element signature="method#stateChanged#0;class#688:1001" expanded="false" />
+            <element signature="class#1049:1919" expanded="false" />
+            <element signature="method#mouseClicked#0;class#1049:1919" expanded="false" />
+            <element signature="method#startApplication#0;class#Controller#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/BatFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7795389">
+          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#BatFrame#0" expanded="false" />
-            <element signature="class#551:795" expanded="false" />
-            <element signature="method#stateChanged#0;class#551:795" expanded="false" />
-            <element signature="class#847:1091" expanded="false" />
-            <element signature="method#stateChanged#0;class#847:1091" expanded="false" />
-            <element signature="class#1142:1371" expanded="false" />
-            <element signature="method#stateChanged#0;class#1142:1371" expanded="false" />
+            <element signature="class#BatFrame#0" expanded="false" />
+            <element signature="method#BatFrame#0;class#BatFrame#0" expanded="false" />
             <element signature="method#setViewComponents#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#compute#0;class#BatFrame#0" expanded="false" />
-            <element signature="method#transformPointToDecart#0;class#BatFrame#0" expanded="false" />
+            <element signature="method#updateFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printAxes#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printFigure#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printLabels#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMarks#0;class#GPanel#0" expanded="false" />
+            <element signature="method#printMark#0;class#GPanel#0" expanded="false" />
+            <element signature="class#SPanel#0" expanded="false" />
+            <element signature="method#SPanel#0;class#SPanel#0" expanded="false" />
+            <element signature="initializer##0;class#SPanel#0" expanded="false" />
           </folding>
         </state>
       </provider>
