@@ -1,5 +1,7 @@
 package Lab4;
 
+import javafx.util.Pair;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -37,14 +39,17 @@ class GPanel extends JPanel {
     private Vector<Point> RMarks = new Vector<>(4);
     private Vector<Mark> marks = new Vector<>();
     private Point center = new Point(0, 0);
+    private Point cursor = new Point(0, 0);
 
     public GPanel() {
         this.setBackground(Color.white);
     }
 
-    public void updateFigure(Vector<Point> figurePoints, int R, Vector<Mark> marks) {
+    public void updateFigure(Vector<Point> figurePoints, int R, Vector<Mark> marks, Point cursor) {
         center = new Point(this.getWidth()/2, this.getHeight()/2);
+        this.cursor = new Point(cursor.x + center.x, -cursor.y + center.y);
 
+        // get Polygon
         figure.reset();
         Iterator<Point> iter = figurePoints.iterator();
         while (iter.hasNext()) {
@@ -56,6 +61,7 @@ class GPanel extends JPanel {
             figure.addPoint(temp.x, temp.y);
         }
 
+        // get Marks
         this.marks.clear();
         Iterator<Mark> iter2 = marks.iterator();
         while (iter2.hasNext()) {
@@ -84,6 +90,7 @@ class GPanel extends JPanel {
         printAxes(g);
         printLabels(g);
         printMarks(g);
+        printCursor(g);
     }
     private void printAxes(Graphics g) {
         int h = this.getHeight();
@@ -113,21 +120,23 @@ class GPanel extends JPanel {
     }
     private void printMarks(Graphics g) {
         for (Mark mark: marks) {
-            if (mark.isHighlighted)
+            if (mark.isHighlighted) {
                 g.setColor(new Color(43, 255, 29));
-            else
-                g.setColor(new Color(255, 174, 174));
-
-            g.fillOval(mark.x-3, mark.y -3, 6, 6);
+                g.fillOval(mark.x-3, mark.y -3, 6, 6);
+            } else {
+                g.setColor(new Color(100, 95, 100));
+                g.fillOval(mark.x - 3, mark.y - 3, 6, 6);
+            }
         }
+    }
+    private void printCursor(Graphics g) {
+        g.drawOval(cursor.x-4, cursor.y-4, 8, 8);
     }
     private void printMark(Graphics g, Point point, String label, int radius) {
         g.drawString(label, point.x, point.y + radius/2);
         g.fillOval(point.x - radius/2, point.y - radius/2, radius, radius);
     }
 }
-
-
 
 class SPanel extends JPanel {
     public SPanel() {
@@ -165,7 +174,6 @@ class SPanel extends JPanel {
         this.add(RSlider, c);
     }
 
-    // Visible only in this package. That's the decision
     JLabel xLabel = new JLabel("x: ");
     JSpinner xSpinner = new JSpinner();
     JLabel yLabel = new JLabel("y: ");

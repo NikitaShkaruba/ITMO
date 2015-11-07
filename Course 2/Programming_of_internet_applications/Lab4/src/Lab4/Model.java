@@ -6,14 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeSupport;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
  * Created by Nikita on 11/5/2015.
  */
 public class Model {
-    public Vector<Mark> marks = new Vector<>();
+    public Vector<Point> registeredPoints = new Vector<>();
+    private Vector<Mark> marks = new Vector<>();
     private Vector<Point> figurePoints;
+    private Point cursor = new Point(0, 0);
     private int R;
 
     public Model() {
@@ -42,6 +45,12 @@ public class Model {
 
         return scaledPoints;
     }
+    public Point getCursor() {
+        return cursor;
+    }
+    public void setCursor(Point point) {
+        this.cursor = point;
+    }
 
     public void addMark(Point point) {
         this.marks.add(new Mark(point, doContains(point)));
@@ -63,11 +72,29 @@ public class Model {
         figurePoints.addElement(new Point(-1, 1));
     }
     private void RecalculateMarks() {
-        for (Mark m: marks)
+        for (Mark m: marks) {
+            boolean previous = m.isHighlighted;
             m.isHighlighted = doContains(m);
+
+            if (m.isHighlighted == false && previous == true)
+                register(m);
+        }
     }
     private boolean doContains(Point point) {
         return (point.x > -R && point.x < R && point.y < R && point.y > -R);
+    }
+    public void register(Point point) {
+        Iterator<Point> it = registeredPoints.iterator();
+
+        while(it.hasNext()) {
+            Point next = it.next();
+
+            if (next.equals(it)) {
+                return;
+            }
+        }
+
+        registeredPoints.add(point);
     }
 }
 
