@@ -101,9 +101,11 @@ class GPanel extends JPanel {
         g.drawLine(w / 2, 0 + 20, w / 2, h - 20);
     }
     private void printFigure(Graphics g) {
-        g.setColor(new Color(100, 95, 100));
-
+        g.setColor(new Color(241, 250, 0));
         g.fillPolygon(figure);
+
+        g.setColor(Color.BLACK);
+        g.drawPolygon(figure);
     }
     private void printLabels(Graphics g) {
         // Print R Marks
@@ -124,13 +126,14 @@ class GPanel extends JPanel {
                 g.setColor(new Color(43, 255, 29));
                 g.fillOval(mark.x-3, mark.y -3, 6, 6);
             } else {
-                g.setColor(new Color(100, 95, 100));
+                g.setColor(Color.BLACK);
                 g.fillOval(mark.x - 3, mark.y - 3, 6, 6);
             }
         }
     }
     private void printCursor(Graphics g) {
-        g.drawOval(cursor.x-4, cursor.y-4, 8, 8);
+        g.setColor(Color.YELLOW);
+        g.drawOval(cursor.x - 4, cursor.y - 4, 8, 8);
     }
     private void printMark(Graphics g, Point point, String label, int radius) {
         g.drawString(label, point.x, point.y + radius/2);
@@ -141,7 +144,7 @@ class GPanel extends JPanel {
 class SPanel extends JPanel {
     public SPanel() {
         // Properties
-        this.setBackground(new Color(226, 219, 226));
+        this.setBackground(Color.WHITE);
         this.setLayout(new GridBagLayout());
 
         // Layout: If you don't know what it is, just read about GridBagLayout
@@ -179,13 +182,13 @@ class SPanel extends JPanel {
     JLabel yLabel = new JLabel("y: ");
     JSpinner ySpinner = new JSpinner();
     JLabel RLabel = new JLabel("R: ");
-    JSlider RSlider = new JSlider(JSlider.HORIZONTAL, 0, 120, 75);
+    JSlider RSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 20);
     {
         xSpinner.setValue(60);
         ySpinner.setValue(60);
 
-        RSlider.setMajorTickSpacing(30);
-        RSlider.setMinorTickSpacing(10);
+        RSlider.setMajorTickSpacing(5);
+        RSlider.setMinorTickSpacing(1);
         RSlider.setPaintTicks(true);
         RSlider.setPaintLabels(true);
     }

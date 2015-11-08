@@ -4,6 +4,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.beans.PropertyChangeSupport;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -13,15 +14,16 @@ import java.util.Vector;
  * Created by Nikita on 11/5/2015.
  */
 public class Model {
+    BatmanFigure batFigure = new BatmanFigure(0.001);
     public Vector<Point> registeredPoints = new Vector<>();
     private Vector<Mark> marks = new Vector<>();
-    private Vector<Point> figurePoints;
+    private Vector<Point2D.Double> figurePoints;
     private Point cursor = new Point(0, 0);
     private int R;
 
     public Model() {
         // Compute first state
-        setR(70);
+        setR(20);
         InitializeFigure();
     }
 
@@ -32,15 +34,15 @@ public class Model {
         this.R = R;
 
         RecalculateMarks();
-        // Dream: notify Figure has changed
-        //callFuigureChanged();
+        // My Dream: notify view thru controller
+        // callFuigureChanged();
     }
     public Vector<Point> getFigurePoints() {
         Vector<Point> scaledPoints = new Vector<>();
 
-        for (Enumeration<Point> it = figurePoints.elements(); it.hasMoreElements();) {
-            Point next = it.nextElement();
-            scaledPoints.add(new Point(next.x * R, next.y * R));
+        for (Enumeration<Point2D.Double> it = figurePoints.elements(); it.hasMoreElements();) {
+            Point2D.Double next = it.nextElement();
+            scaledPoints.add(new Point((int)(next.x * R), (int)(next.y * R)));
         }
 
         return scaledPoints;
@@ -53,7 +55,8 @@ public class Model {
     }
 
     public void addMark(Point point) {
-        this.marks.add(new Mark(point, doContains(point)));
+        Point2D.Double buf = new Point2D.Double(point.x / (double)R, point.y / (double)R); // For unscaled doContains
+        this.marks.add(new Mark(point, batFigure.doContains(buf)));
     }
     public Vector<Mark> getMarks() {
         Vector<Mark> buf = new Vector<Mark>();
@@ -64,24 +67,20 @@ public class Model {
     }
 
     private void InitializeFigure() {
-        figurePoints = new Vector<>(4);
+        figurePoints = new Vector<>();
 
-        figurePoints.addElement(new Point(1, 1));
-        figurePoints.addElement(new Point(1, -1));
-        figurePoints.addElement(new Point(-1, -1));
-        figurePoints.addElement(new Point(-1, 1));
+        figurePoints.addAll(batFigure.getFigurePoints());
     }
     private void RecalculateMarks() {
         for (Mark m: marks) {
             boolean previous = m.isHighlighted;
-            m.isHighlighted = doContains(m);
+            Point2D.Double buf = new Point2D.Double(m.x / (double)R, m.y / (double)R);
+
+            m.isHighlighted = batFigure.doContains(buf);
 
             if (m.isHighlighted == false && previous == true)
                 register(m);
         }
-    }
-    private boolean doContains(Point point) {
-        return (point.x > -R && point.x < R && point.y < R && point.y > -R);
     }
     public void register(Point point) {
         Iterator<Point> it = registeredPoints.iterator();
@@ -113,84 +112,84 @@ class Mark extends Point {
     }
 }
 
-class BatEquatation {
-    private Vector<Point> figure = new Vector<>();
-    private int R;
+class BatmanFigure {
+    Vector<Point2D.Double> figure = new Vector<>();
 
-    public BatEquatation(int R) {
+    public BatmanFigure(double precision) {
+        // Left wing
+        for (double y = -2.07; y <= 2.35; y += precision)
+            figure.add(new Point2D.Double(-7.0 * Math.sqrt(1 - y*y/6.0), y));
+
+        // Left Shoulder
+        for (double x = -2.3; x <= -1; x += precision)
+            figure.add(new Point2D.Double(x, (6.0*Math.sqrt(10)/7.0 + (1.5-0.5*Math.abs(x)))-(6.0*Math.abs(10)/14.0)*Math.sqrt(4-Math.pow(Math.abs(x)-1.0, 2)) + 5.7));
+
+        // Left Hand side
+        for (double x = -1.0; x <= -0.75; x += precision)
+            figure.add(new Point2D.Double(x, 9-8*Math.abs(x)));
+
+        // Left ear
+        for (double x = -0.75; x < -0.5; x += precision)
+            figure.add(new Point2D.Double(x, 3*Math.abs(x) + 0.75));
+
+        // Forehead
+        for (double x = -0.5; x <= 0.5; x += precision)
+            figure.add(new Point2D.Double(x, 2.25));
+
+        // Right ear
+        for (double x = 0.5; x <= 0.75; x += precision)
+            figure.add(new Point2D.Double(x, 3*Math.abs(x) + 0.75));
+
+        // Right Hand side
+        for (double x = 0.75; x <= 1; x += precision)
+            figure.add(new Point2D.Double(x, 9-8*Math.abs(x)));
+
+        // Right Shoulder (!)
+        for (double x = 1.0; x <= 2.3; x += precision)
+            figure.add(new Point2D.Double(x, (6.0*Math.sqrt(10)/7.0 + (1.5-0.5*Math.abs(x)))-(6.0*Math.abs(10)/14.0)*Math.sqrt(4-Math.pow(Math.abs(x)-1.0, 2)) + 5.7));
+
+        // Right wing
+        for (double y = 2.35; y >= -2.1; y -= precision)
+            figure.add(new Point2D.Double(7.0 * Math.sqrt(1 - y * y / 6.0), y));
+
+        // Legs and tail
+        for (double x = 3.8; x >= -3.8; x -= precision)
+            figure.add(new Point2D.Double(x, (Math.abs(x/2)- (3*Math.sqrt(33) - 7)/112*x*x - 3) + Math.sqrt(1 - (Math.pow(Math.abs(Math.abs(x)-2)-1 ,2)))));
 
     }
 
-    private Vector<Point> computeLeftWing() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int y = -R/3; y < R/3; y++) {
-            temp.add(new Point((int)(7*Math.sqrt(1 - y*y/3)), y));
-        }
-
-        return temp;
+    public Vector<Point2D.Double> getFigurePoints() {
+        return figure;
     }
-    private Vector<Point> computeLeftNeck() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int x = -R*3/7; x < -R*1/7; x++) {
-            temp.add(new Point(x, (int)((6*Math.sqrt(10)/7 + (1.5 - 0.5*Math.abs(x)))* (6*Math.sqrt(10)/14)*Math.sqrt(4 - (Math.pow(Math.abs(x) - 1, 2))))));
+    public boolean doContains(Point2D.Double point) { // Enhance this method
+        if (point.y > 0) {
+            // under top part of wings
+            if (Math.abs(point.x) >= 2.0)
+                return Math.pow(point.x, 2)/49.0 + Math.pow(point.y, 2)/6.0 <= 1;
+            // under shoulders
+            if (Math.abs(point.x) >= 1 && Math.abs(point.x) < 2.0)
+                return point.y < (6.0*Math.sqrt(10)/7.0 + (1.5-0.5*Math.abs(point.x)))-(6.0*Math.abs(10)/14.0)*Math.sqrt(4-Math.pow(Math.abs(point.x)-1.0, 2)) + 5.7;
+            // under head sides
+            if (Math.abs(point.x) >= 0.75 && Math.abs(point.x) < 1.0)
+                return point.y < 9-8*Math.abs(point.x);
+            // under ears
+            if (Math.abs(point.x) >= 0.5 && Math.abs(point.x) < 0.75)
+                return point.y < 3*Math.abs(point.x) + 0.75;
+            // under forehead
+            if (Math.abs(point.x) < 0.5)
+                return point.y < 2.25;
         }
 
-        return temp;
-    }
-    private Vector<Point> computeLeftHead() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int x = -R*1/7; x < -R*0.5/7; x++) {
-            temp.add(new Point(x, 9 - 8* Math.abs(x)));
+        if (point.y <= 0) {
+            // over bottom part of wings
+            if (Math.abs(point.x) < 3.75)
+                return point.y > ((Math.abs(point.x/2)- (3*Math.sqrt(33) - 7)/112*point.x*point.x - 3) + Math.sqrt(1 - (Math.pow(Math.abs(Math.abs(point.x)-2)-1 ,2))));
+            // over tail
+            if (Math.abs(point.x) >= 3.75)
+                return Math.pow(point.x, 2)/49.0 + Math.pow(point.y, 2)/6.0 <= 1;
         }
 
-        return temp;
-    }
-    private Vector<Point> computeTop() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int x = -R/7/2; x < R/7/2; x++) {
-            temp.add(new Point(x, (int)(2.25*R/3)));
-        }
-
-        return temp;
-    }
-    private Vector<Point> computeRightHead() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int x = (int)(R*0.5/7); x < R*1/7; x++) {
-            temp.add(new Point(x, 9 - 8* Math.abs(x)));
-        }
-
-        return temp;
-    }
-    private Vector<Point> computeRightNeck() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int x = -R*3/7; x < -R*1/7; x++) {
-            temp.add(new Point(x, (int)((6*Math.sqrt(10)/7 + (1.5 - 0.5*Math.abs(x)))* (6*Math.sqrt(10)/14)*Math.sqrt(4 - (Math.pow(Math.abs(x) - 1, 2))))));
-        }
-
-        return temp;
-    }
-    private Vector<Point> computeRightWing() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int y = -R/3; y < R/3; y++) {
-            temp.add(new Point((int)(-7*Math.sqrt(1 - y*y/3)), y));
-        }
-
-        return temp;
-    }
-    private Vector<Point> computeBot() {
-        Vector<Point> temp = new Vector<>();
-
-        for (int x = R*4/7; x < -R*4/7; x--) {
-            temp.add(new Point(x, (int)((Math.abs(x/2)*(3*Math.sqrt(33)*7/112)*Math.pow(x, 2)-3)+ Math.sqrt(1 - Math.pow(Math.abs(1 - (Math.abs(x) - 2)-1), 2)))));
-        }
-
-        return temp;
+        // For readability and compiler sake
+        return false;
     }
 }

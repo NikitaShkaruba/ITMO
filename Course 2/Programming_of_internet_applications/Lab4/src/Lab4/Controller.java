@@ -51,26 +51,36 @@ public class Controller {
 
                         @Override
                         public void run() {
-                            for (int size = 3; size < 30; size++) {
-                                g.fillOval(buf.x-size/2, buf.y-size/2, size, size);
-                                view.repaint(buf.x-size/2, buf.y-size/2, size, size);
+                            int maxSize = 12;
+                            int normalSize = 6;
 
-                                try { Thread.sleep(100); }
+                            for (int size = 0; size < maxSize ; size++) {
+                                g.setColor(Color.WHITE);
+                                g.fillOval(buf.x - maxSize / 2, buf.y - maxSize / 2, maxSize, maxSize);
+
+                                g.setColor(Color.BLACK);
+                                g.fillOval(buf.x - size / 2, buf.y - size / 2, size, size);
+
+                                /*view.graphPanel.repaint(buf.x - 6 / 2, buf.y - 6 / 2, 6, 6);*/
+                                try { Thread.sleep(50); }
                                 catch(Exception ex) {}
                             }
-                            for (int size = 3; size < 6; size--) {
-                                g.fillOval(buf.x-size/2, buf.y-size/2, size, size);
-                                view.repaint(buf.x-size/2, buf.y-size/2, size, size);
+                            for (int size = maxSize; size > normalSize; size--) {
+                                g.setColor(Color.WHITE);
+                                g.fillOval(buf.x - maxSize / 2, buf.y - maxSize / 2, maxSize, maxSize);
 
-                                try { Thread.sleep(100); }
+                                g.setColor(Color.BLACK);
+                                g.fillOval(buf.x - size / 2, buf.y - size / 2, size, size);
+
+                                /*view.graphPanel.repaint(buf.x - 6 / 2, buf.y - 6 / 2, 6, 6);*/
+                                try { Thread.sleep(50); }
                                 catch(Exception ex) {}
                             }
-                            view.repaint();
                         }
                     }).start();
                 }
-
                 model.registeredPoints.clear();
+
                 updateView();
             }
         });
@@ -115,6 +125,7 @@ public class Controller {
 
     public void startApplication() {
         view.setVisible(true);
+        updateView();
     }
     private void updateView(){
         view.graphPanel.updateFigure(model.getFigurePoints(), model.getR(), model.getMarks(), model.getCursor());
