@@ -1,11 +1,11 @@
 ; Hypotetic processor's word - 19 bit
 ; Macroses:
-;	1. read element by index from word array
-;	2. write element by index to word array
+;	1. read element  by index from word array
+;	2. write element by index to   word array
 ; 	3. word's addition
 ; Work:
 ; 	- To every negative add max positive element
-; 	- To every positive ann min negative element
+; 	- To every positive add min negative element
 .186
 
 ; 16 words * 19 bit in word == 19 words * 16 bit in word
@@ -24,9 +24,9 @@ LoadPrimary:
 Pcase0_4:
 	; {3 + 3(i)} is an amount of bits in the left real word
 	; shl ax, 3 + 3*(i) 
-	shl i, 1
+	shl i,	1
 	mov ax, arr[i]
-	shr i, 1
+	shr i,  1 
 	mov cx, i
 	mul cx, 3
 	add cx, 3
@@ -34,9 +34,9 @@ Pcase0_4:
 	
 	; shr bx, 16 - 3 - 3*(i)
 	inc i
-	shl i, 1
+	shl i,	1
 	mov bx, arr[i]
-	shr i, 1
+	shr i, 	1
 	dec i
 	mov cx, i
 	mul cx, 3
@@ -51,9 +51,9 @@ Pcase5_9:
 	; {2 + 3*(i - 5)} is an amount of bits in the left real word
 	; rol ax, 2 + 3*(i - 5) 
 	inc i
-	shl i, 1
+	shl i, 	1
 	mov ax, arr[i]
-	shr i, 1
+	shr i, 	1
 	dec i
 	mov cx, i
 	sub cx, 5
@@ -62,11 +62,11 @@ Pcase5_9:
 	shl ax, cl
 	
 	; shr bx, 16 - 2 - 3*(i - 5)
-	add i, 2
-	shl i, 1
+	add i, 	2
+	shl i, 	1
 	mov bx, arr[i]
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	mov cx, i
 	sub cx, 5
 	mul cx, 3
@@ -80,11 +80,11 @@ Pcase5_9:
 Pcase10_15:
 	; {1 + 3*(i - 10)} is an amount of bits in the left real word
 	; rol ax, 1 + 3*(i - 10) 
-	add i, 2
-	shl i, 1
+	add i, 	2
+	shl i, 	1
 	mov ax, arr[i]
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	mov cx, i
 	sub cx, 10
 	mul cx, 3
@@ -92,11 +92,11 @@ Pcase10_15:
 	shl ax, cl
 	
 	; shr bx, 16 - 1 - 3*(i - 10) 
-	add i, 3
-	shl i, 1
+	add i, 	3
+	shl i, 	1
 	mov bx, arr[i]
-	shr i, 1
-	sub i, 3
+	shr i, 	1
+	sub i, 	3
 	mov cx, i
 	sub cx, 10
 	mul cx, 3
@@ -111,20 +111,20 @@ PostLoadPrimary:
 
 	; 1.load addition to dx
 LoadAddition:
-	cmp i, 5
+	cmp i, 	5
 	jl Acase0_4
 	je Acase5
-	cmp i, 10
+	cmp i, 	10
 	jl Acase6_9
 	je Acase10
 	jmp Acase11_15
 		
 Acase0_4:
-	shl i, 1
+	shl i, 	1
 	mov dx, arr[i]
 	
 	;rol dx, 3 + (i)
-	shr i, 1
+	shr i, 	1
 	mov cx, i
 	inc cx
 	mul cx, 3
@@ -132,26 +132,26 @@ Acase0_4:
 	jmp PostLoadAddition
 
 Acase5:
-	shl i, 1
+	shl i, 	1
 	mov dx, arr[i]
 	
-	and dx, 01h ; clear other bytes
-	add i, 2
+	and dx, 01h 		;clear other bytes
+	add i, 	2
 	mov bx, arr[i]
 	and bx, 0C000h
-	or dx, bx
+	or  dx,	bx
 	rol dx, 2
-	sub i, 2
-	shr i, 1
+	sub i, 	2
+	shr i, 	1
 	jmp PostLoadAddition
 	
 Acase6_9:
 	inc i
-	shl i, 1
+	shl i, 	1
 	mov dx, arr[i]
 	
 	; rol dx, 5 + 3*(i - 6) ; 
-	shr i, 1
+	shr i, 	1
 	dec i
 	mov cx, i
 	sub cx, 6
@@ -162,28 +162,28 @@ Acase6_9:
 
 Acase10:
 	inc i
-	shl i, 1
+	shl i, 	1
 	mov dx, arr[i]
 	
-	and dx, 0003h ; clear other bytes
-	add i, 2
+	and dx, 0003h 		;clear other bytes
+	add i, 	2
 	mov bx, arr[i]
 	and bx, 8000h
-	or dx, bx
+	or  dx, bx
 	rol dx, 1
-	sub i, 2
-	shr i, 1
+	sub i, 	2
+	shr i, 	1
 	dec i
 	jmp PostLoadAddition
 	
 Acase11_15:
-	add i, 2
-	shl i, 1
+	add i, 	2
+	shl i, 	1
 	mov dx, arr[i]
 	
 	; rol dx, 4 + 3*(i - 11)
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	mov cx, i
 	sub cx, 11
 	mul cx, 3
@@ -193,7 +193,7 @@ Acase11_15:
 
 PostLoadAddition:
 	; set all the flags
-	and dx, 0007h ; coz my addition is the last 3 bits
+	and dx, 0007h 			;coz my addition is the last 3 bits
 	
 	pop cx
 	pop bx
@@ -210,11 +210,11 @@ case0_4:
 	; 3 + 3*(i) - bit's after
 	
 	; clear past bytes, save others
-	shl i, 1
+	shl i, 	1
 	mov bx, arr[i]
-	shr i, 1
+	shr i, 	1
 	
-	mov cx, i 	;shr bx, 16 - 3*i
+	mov cx, i 			;shr bx, 16 - 3*i
 	mul cx, 3
 	neg cx
 	add cx, 16
@@ -228,61 +228,61 @@ case0_4:
 	; load primary first part
 	push ax
 	sub cx, 3
-	shl bx, cl	;shl bx, 16 - 3 - 3*i 
+	shl bx, cl			;shl bx, 16 - 3 - 3*i 
 	mov cx, i
 	mul cx, 3
 	add cx, 3
-	shr ax, cl 	; shr ax, 3 + 3*i
+	shr ax, cl 			;shr ax, 3 + 3*i
 	add bx, ax
-	;mov bx, 0FF00h; !!!!!!!!!!!!!!1
+	;mov bx, 0FF00h; !!!!!!!!!!!!!!1      - если это уже не нужно, может стоит удалить?
 	
-	shl i, 1
+	shl i, 	1
 	mov arr[i], bx
-	shr i, 1
+	shr i, 	1
 	pop ax
 	; load primary second part
 	push ax
 	inc i
-	shl i, 1
+	shl i, 	1
 	mov bx, arr[i]
-	shr i, 1
+	shr i, 	1
 	dec i
 	
-	shl bx, cl	;shl bx, 3 + 3*i
+	shl bx, cl			;shl bx, 3 + 3*i
 	neg cx		
 	add cx, 16
-	shl ax, cl	;shl ax, 16 - 3 - 3*(i)
-	shr ax, cl	;shr ax, 16 - 3 - 3*(i)
+	shl ax, cl			;shl ax, 16 - 3 - 3*(i)
+	shr ax, cl			;shr ax, 16 - 3 - 3*(i)
 	add bx, ax
 	mov cx, i
 	mul cx, 3
 	add cx, 3
-	ror bx, cl	;ror bx, 3 + 3*i
+	ror bx, cl			;ror bx, 3 + 3*i
 	
-	shl i, 1
-	add i, 2
+	shl i, 	1
+	add i, 	2
 	mov arr[i], bx
-	sub i, 2
-	shr i, 1
+	sub i, 	2
+	shr i, 	1
 	pop ax
 
 	jmp exit
 case5:
-	shl i, 1	; i == 5
+	shl i, 	1			; i == 5
 	mov bx, arr[i]
-	shr i, 1
+	shr i, 	1
 	
 	push dx
-	and bx, 0FFFEh ; 0001h
+	and bx, 0FFFEh 			;0001h
 	shr dl, 2
 	add bx, dx
-	shl i, 1
+	shl i, 	1
 	mov arr[i], bx
-	shr i, 1
+	shr i, 	1
 	pop dx
 	
-	mov i, 6 ;inc i		; i == 6
-	shl i, 1
+	mov i, 	6 			;inc i. what?	; i == 6
+	shl i, 	1
 	mov bx, arr[i]
 	; load addition
 	xor bx, bx
@@ -295,12 +295,12 @@ case5:
 	add bx, ax
 
 	mov arr[i], bx
-	shr i, 1
+	shr i, 	1
 	dec i
 	pop ax
 	
 	; load primary last 2 bits
-	add i, 2		; i == 7
+	add i, 2			; i == 7
 	shl i, 1
 	mov bx, arr[i]
 	
@@ -311,8 +311,8 @@ case5:
 	
 	ror bx, 2
 	mov arr[i], bx
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	pop ax
 	
 	jmp exit
@@ -322,12 +322,12 @@ case6_9:
 	
 	; clear past bytes, save others
 	inc i
-	shl i, 1
+	shl i, 	1
 	mov bx, arr[i]
-	shr i, 1
+	shr i, 	1
 	dec i
 	
-	mov cx, i 	;shr bx, 16 - 2 - 3*(i - 6)
+	mov cx, 		 	;shr bx, 16 - 2 - 3*(i - 6)
 	sub cx, 6
 	mul cx, 3
 	neg cx
@@ -342,65 +342,65 @@ case6_9:
 	; load primary first part
 	push ax
 	sub cx, 3
-	shl bx, cl	;shl bx, 16 - 2 - 3*(i - 6)
+	shl bx, cl			;shl bx, 16 - 2 - 3*(i - 6)
 	mov cx, i
 	sub cx, 6
 	mul cx, 3
 	add cx, 5
-	shr ax, cl 	; shr ax, 5 + 3*(i - 6)
+	shr ax, cl 			; shr ax, 5 + 3*(i - 6)
 	add bx, ax
 	inc i
 	
-	shl i, 1
+	shl i, 	1
 	mov arr[i], bx
-	shr i, 1
+	shr i, 	1
 	dec i
 	pop ax
 	; load primary second part
 	push ax
-	add i, 2
-	shl i, 1
+	add i, 	2
+	shl i, 	1
 	mov bx, arr[i]
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	
-	shl bx, cl	;shl bx, bit's after. cl is proper from last cl's calls
+	shl bx, cl			;shl bx, bit's after. cl is proper from last cl's calls
 	neg cx
 	add cx, 16
-	shl ax, cl	;shl ax, 16 - 3 - 3*(i)
-	shr ax, cl	;shr ax, 16 - 3 - 3*(i)
+	shl ax, cl			;shl ax, 16 - 3 - 3*(i)
+	shr ax, cl			;shr ax, 16 - 3 - 3*(i)
 	add bx, ax
 	mov cx, i
 	sub cx, 6
 	mul cx, 3
 	add cx, 5
-	ror bx, cl	;ror bx, 5 + 3*(i - 6) - bit's after
+	ror bx, cl			;ror bx, 5 + 3*(i - 6) - bit's after
 	
-	add i, 2
-	shl i, 2
+	add i, 	2
+	shl i, 	2
 	mov arr[i], bx
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	pop ax
 
 	jmp exit
 case10:
 	inc i
-	shl i, 1	
-	mov bx, arr[i] ; i == 10
+	shl i, 	1	
+	mov bx, arr[i] 			;i == 10
 		
 	push dx
-	and bx, 0FFFCh ; clear last bytes
+	and bx, 0FFFCh 			;clear last bytes
 	shr dl, 1
 	add bx, dx
 	
 	mov arr[i], bx
-	shr i, 1
+	shr i, 	1
 	dec i
 	pop dx
 	
-	add i, 2		; i == 6
-	shl i, 1
+	add i, 	2			;i == 6
+	shl i, 	1
 	mov bx, arr[i]
 	
 	; load addition
@@ -415,13 +415,13 @@ case10:
 	add bx, ax
 
 	mov arr[i], bx
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	pop ax
 	
 	; load primary last bit
-	add i, 3		; i == 7
-	shl i, 1
+	add i, 	3			;i == 7
+	shl i, 	1
 	mov bx, arr[i]
 	
 	push ax
@@ -431,8 +431,8 @@ case10:
 	ror bx, 1
 	
 	mov arr[i], bx
-	shr i, 1
-	sub i, 3
+	shr i, 	1
+	sub i, 	3
 	pop ax
 	
 	jmp exit
@@ -442,9 +442,9 @@ case11_15:
 	
 	; clear past bytes, save others
 	inc i
-	shl i, 1
+	shl i, 	1
 	mov bx, arr[i]
-	shr i, 1
+	shr i, 	1
 	dec i
 	
 	mov cx, i 
@@ -452,7 +452,7 @@ case11_15:
 	mul cx, 3
 	neg cx
 	add cx, 15
-	shr bx, cl	;shr bx, 16 - 1 - 3*(i - 11)
+	shr bx, cl			;shr bx, 16 - 1 - 3*(i - 11)
 	; load addition
 	push dx
 	shl bx, 3
@@ -462,45 +462,45 @@ case11_15:
 	; load primary first part
 	push ax
 	sub cx, 3
-	shl bx, cl	;shl bx, 16 - 2 - 3 - 3*(i - 6)
+	shl bx, cl			;shl bx, 16 - 2 - 3 - 3*(i - 6)
 	mov cx, i
 	sub cx, 11
 	mul cx, 3
 	add cx, 4
-	shr ax, cl 	; shr ax, 4 + 3*(i - 11)
+	shr ax, cl 			;shr ax, 4 + 3*(i - 11)
 	add bx, ax
 	inc i
 	
-	shl i, 1
+	shl i, 	1
 	mov arr[i], bx
-	shr i, 1
+	shr i, 	1
 	dec i
 	pop ax
 	; load primary second part
 	push ax
-	add i, 2
-	shl i, 1
+	add i, 	2
+	shl i, 	1
 	mov bx, arr[i]
 	shr i, 1
 	sub i, 2
 	
-	shl bx, cl	;shl bx, bit's after. cl is proper from last cl's calls
+	shl bx, cl			;shl bx, bit's after. cl is proper from last cl's calls
 	neg cx
 	add cx, 16
-	shl ax, cl	;shl ax, 16 - 4 - 3*(i - 11)
-	shr ax, cl	;shr ax, 16 - 4 - 3*(i - 11)
+	shl ax, cl			;shl ax, 16 - 4 - 3*(i - 11)
+	shr ax, cl			;shr ax, 16 - 4 - 3*(i - 11)
 	add bx, ax
 	mov cx, i
 	sub cx, 11
 	mul cx, 3
 	add cx, 4
-	ror bx, cl	;ror bx, 4 + 3*(i - 11) - bit's after
+	ror bx, cl			;ror bx, 4 + 3*(i - 11) - bit's after
 	
-	add i, 2
-	shl i, 2
+	add i, 	2
+	shl i, 	2
 	mov arr[i], bx
-	shr i, 1
-	sub i, 2
+	shr i, 	1
+	sub i, 	2
 	pop ax
 
 	jmp exit
@@ -541,18 +541,18 @@ testZ:
 	jne clearZFlag
 	je setZFlag
 setZFlag:
-	or dl, 2h
+	or dl, 	2h
 	jmp testN
 clearZFlag:
 	and dl, 0DFh
 	jmp testN
 	
 testN:
-	test dl, 04h
+	test dl,04h
 	je setNFlag
 	jne clearNFlag
 setNFlag:
-	or dl, 40h
+	or dl, 	40h
 	jmp exit
 clearNFlag:
 	and dl, 0BFh
@@ -598,18 +598,18 @@ testZ:
 	jne clearZFlag
 	je setZFlag
 setZFlag:
-	or dl, 2h
+	or dl, 	2h
 	jmp testN
 clearZFlag:
-	and dl, 0DFh
+	and dl,	0DFh
 	jmp testN
 	
 testN:
-	test dl, 04h
+	test dl,04h
 	jne setNFlag	; OMG, I WERE TRYING TO WRITE SUBW IN THIS TONN OF NOT READABLE CODE. IT'S MY DAMNED CRUTCH. I AM SO SORRY ABOUT THIS
 	je clearNFlag
 setNFlag:
-	or dl, 40h
+	or dl,	40h
 	jmp exit
 clearNFlag:
 	and dl, 0BFh
@@ -688,8 +688,8 @@ PrintW endp
 
 ; void loadW(int idx)
 loadWShell proc
-	mov bp, sp
-	mov	si, [bp + 2]
+	mov bp,	sp
+	mov si, [bp + 2]
 	
 	loadW array, si
 	
@@ -699,19 +699,19 @@ loadWShell endp
 loadWTest proc
 	pusha 
 	
-	mov si, 0	; case0_4 addition, _4 primary
+	mov si,	0			;case0-4 addition, _4 primary
 	loadW array, si	
 	
-	mov si, 5	; case5
+	mov si, 5			;case5
 	loadW array, si	
 	
-	mov si, 7	; case6_9
+	mov si, 7			;case6-9
 	loadW array, si	
 	
-	mov si, 10	; case10
+	mov si, 10			;case10
 	loadW array, si	
 	
-	mov si, 12	; case11_15
+	mov si, 12			;case11-15
 	loadW array, si
 	
 	popa
@@ -721,7 +721,7 @@ loadWTest endp
 ; void addW(int idx)
 addWShell proc
 	mov bp, sp
-	mov	si, bp[2]
+	mov si, bp[2]
 	
 	addW array, si
 	
@@ -731,7 +731,7 @@ addWShell endp
 ; void cmpW(int idx)
 cmpWShell proc
 	mov bp, sp
-	mov	si, bp[2]
+	mov si, bp[2]
 	
 	cmpW array, si
 	
@@ -754,7 +754,7 @@ addWTest endp
 ; void writeW(int idx)
 writeWShell proc
 	mov bp, sp
-	mov	si, [bp + 2]
+	mov si, [bp + 2]
 	
 	writeW array, si
 	
@@ -846,8 +846,8 @@ doWork endp
 findMin proc
 	pusha
 	mov si, 1
-	mov min, 0
-	mov counter, 15 ; i do not have enough registers
+	mov min,0
+	mov counter, 15 		;I haven't enough registers
 	
 findMinLoop:
 	push min 
@@ -875,7 +875,7 @@ findMin endp
 
 findMax proc
 	pusha
-	mov si, 1
+	mov si,	 1
 	mov max, 0
 	mov counter, 15
 	
