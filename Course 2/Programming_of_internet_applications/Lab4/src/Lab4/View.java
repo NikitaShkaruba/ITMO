@@ -1,25 +1,28 @@
 package Lab4;
 
-import javafx.util.Pair;
-
 import javax.swing.*;
-import java.awt.*;
 import java.util.*;
+import java.awt.*;
 
 /**
- * Created by Nikita Shkaruba on 10/22/2015.
+ * Created by Nikita Shkaruba on 11/5/2015.
+ * This project have a Readme.md on my GitHub, check it out, if you misunderstand something (!)
+ *
+ * My contacts:
+ * Vk: https://vk.com/wavemeaside
+ * Mail: sh.nickita@list.ru
+ * GitHub: https://github.com/SigmaOne
  */
-public class BatFrame extends JFrame {
-    public SPanel statPanel = new SPanel();
-    public GPanel graphPanel = new GPanel();
+public class View extends JFrame {
+    public StatisticPanel statPanel = new StatisticPanel();
+    public ChartPanel chartPanel = new ChartPanel();
 
-    public BatFrame (String title) {
+    public View(String title) {
         super(title);
-
         setViewComponents();
     }
-    public Point getGrapCenter() {
-        return new Point(this.graphPanel.getWidth()/2, this.graphPanel.getHeight()/2);
+    public Point getChartCenter() {
+        return new Point(this.chartPanel.getWidth()/2, this.chartPanel.getHeight()/2);
     }
 
     public Point getCursorPoint() {
@@ -35,31 +38,31 @@ public class BatFrame extends JFrame {
         // Layout
         JPanel windowPanel = (JPanel)this.getContentPane();
         windowPanel.setLayout(new GridLayout());
-        windowPanel.add(graphPanel);
+        windowPanel.add(chartPanel);
         windowPanel.add(statPanel);
     }
 }
 
-class GPanel extends JPanel {
+class ChartPanel extends JPanel {
     private Polygon figure = new Polygon();
-    private Vector<Point> RMarks = new Vector<>(4);
-    private Vector<Mark> marks = new Vector<>();
-    private Point center = new Point(0, 0);
-    private Point cursor = new Point(0, 0);
+    private Vector<Point> radiusMarks = new Vector<>(4);
+    private Vector<Mark> customMarks = new Vector<>();
+    private Point center = new Point(0, 0); // I initialize it because of model dependencies
+    private Point cursor;
 
-    public GPanel() {
+    public ChartPanel() {
         this.setBackground(Color.white);
     }
 
     public void updateFigure(Vector<Point> figurePoints, int R, Vector<Mark> marks, Point cursor) {
-        center = new Point(this.getWidth()/2, this.getHeight()/2);
+        this.center = new Point(this.getWidth()/2, this.getHeight()/2);
         this.cursor = new Point(cursor.x + center.x, -cursor.y + center.y);
 
-        // get Polygon
+        // Transfer logical offset to chartPanel's absolute(no negative coordinates) offset
         figure.reset();
-        Iterator<Point> iter = figurePoints.iterator();
-        while (iter.hasNext()) {
-            Point temp = iter.next();
+        Iterator<Point> it = figurePoints.iterator();
+        while (it.hasNext()) {
+            Point temp = it.next();
             temp.x += center.x;
             temp.y *= -1;
             temp.y += center.y;
@@ -67,23 +70,24 @@ class GPanel extends JPanel {
             figure.addPoint(temp.x, temp.y);
         }
 
-        // get Marks
-        this.marks.clear();
-        Iterator<Mark> iter2 = marks.iterator();
-        while (iter2.hasNext()) {
-            Mark temp = iter2.next();
+        // Get custom marks
+        this.customMarks.clear();
+        Iterator<Mark> it2 = marks.iterator();
+        while (it2.hasNext()) {
+            Mark temp = it2.next();
             temp.x += center.x;
             temp.y *= -1;
             temp.y += center.y;
 
-            this.marks.add(temp);
+            this.customMarks.add(temp);
         }
 
-        RMarks.clear();
-        RMarks.add(0, new Point(center.x, -R*7 + center.y));
-        RMarks.add(0, new Point(center.x + R*7, center.y));
-        RMarks.add(0, new Point(center.x, R*7 + center.y));
-        RMarks.add(0, new Point(center.x - R*7, center.y));
+        // Compute radius marks
+        radiusMarks.clear();
+        radiusMarks.add(0, new Point(center.x, -R * 7 + center.y));
+        radiusMarks.add(0, new Point(center.x + R * 7, center.y));
+        radiusMarks.add(0, new Point(center.x, R * 7 + center.y));
+        radiusMarks.add(0, new Point(center.x - R * 7, center.y));
 
         this.repaint();
     }
@@ -115,10 +119,14 @@ class GPanel extends JPanel {
     }
     private void printLabels(Graphics g) {
         // Print R Marks
-        g.setColor(new Color(250, 44, 123));
-        for (Point mark: RMarks)
+
+        for (Point mark: radiusMarks) {
+            g.setColor(new Color(250, 59, 78));
             g.fillOval(mark.x-3, mark.y -3, 6, 6);
 
+            g.setColor(new Color(59, 59, 59));
+            g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
+        }
 
         g.setColor(new Color(50, 50, 50));
         for (Integer i = -120; i <= 120; i += 30) {
@@ -127,13 +135,19 @@ class GPanel extends JPanel {
         }
     }
     private void printMarks(Graphics g) {
-        for (Mark mark: marks) {
+        for (Mark mark: customMarks) {
             if (mark.isHighlighted) {
-                g.setColor(new Color(43, 255, 29));
+                g.setColor(new Color(100, 255, 253));
                 g.fillOval(mark.x-3, mark.y -3, 6, 6);
+
+                g.setColor(new Color(59, 59, 59));
+                g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
             } else {
                 g.setColor(Color.BLACK);
                 g.fillOval(mark.x - 3, mark.y - 3, 6, 6);
+
+                g.setColor(new Color(226, 219, 226));
+                g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
             }
         }
     }
@@ -147,7 +161,7 @@ class GPanel extends JPanel {
     }
 }
 
-class SPanel extends JPanel {
+class StatisticPanel extends JPanel {
     public JLabel xLabel = new JLabel("x: ");
     public JSpinner xSpinner = new JSpinner();
     public JLabel yLabel = new JLabel("y: ");
@@ -167,16 +181,16 @@ class SPanel extends JPanel {
         RSlider.setPaintLabels(true);
     }
 
-    public SPanel() {
-        // Properties
+    public StatisticPanel() {
+        // Set panel properties
         this.setBackground(Color.WHITE);
         this.setLayout(new GridBagLayout());
 
-        // Layout: If you don't know what it is, just read about GridBagLayout
+        // Actual Layout: If you don't know what is constraints(!), just read about GridBagLayout
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
 
-        // Buttons
+        // Set buttons  /// It comes first because i want to mess around constraints as few as possible
         c.gridy = 3;
         c.gridx = 0;
         this.add(addButt, c);
@@ -185,7 +199,7 @@ class SPanel extends JPanel {
         c.gridx = 2;
         this.add(diceButt, c);
 
-        // Labels
+        // Set labels
         c.gridx = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0, 20, 0, 0);
         c.gridwidth = 1;
@@ -197,7 +211,7 @@ class SPanel extends JPanel {
         c.gridy = 2;
         this.add(RLabel, c);
 
-        // Spinners
+        // Set spinners
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(2, 0, 2, 60);
         c.gridwidth = 5;

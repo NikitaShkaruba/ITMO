@@ -1,25 +1,19 @@
 package Lab4;
 
-import javafx.util.Callback;
-import jdk.nashorn.internal.codegen.CompilerConstants;
-
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
+import javax.swing.event.ChangeEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.Vector;
-import java.util.function.Function;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Nikita Shkaruba on 11/5/2015.
+ * This project have a Readme.md on my GitHub, check it out, if you misunderstand something (!)
  *
  * My contacts:
  * Vk: https://vk.com/wavemeaside
@@ -28,19 +22,19 @@ import java.util.function.Function;
  */
 public class Controller {
 
-    private BatFrame view;
+    private View view;
     private Model model;
 
     public Controller() {
         model = new Model();
-        view = new BatFrame("Lab 4");
+        view = new View("Lab 4");
 
-        view.graphPanel.addMouseListener(new MouseListener() {
+        view.chartPanel.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Point temp = e.getPoint();
-                temp.x -= view.graphPanel.getWidth() / 2;
-                temp.y -= view.graphPanel.getHeight() / 2;
+                temp.x -= view.chartPanel.getWidth() / 2;
+                temp.y -= view.chartPanel.getHeight() / 2;
                 temp.y *= -1;
 
                 if (e.getClickCount() == 2)
@@ -86,16 +80,16 @@ public class Controller {
                 int v = ((JSlider)e.getSource()).getValue();
                 model.setR(v);
 
-                Iterator it = model.registeredPoints.iterator();
+                Iterator it = model.getRegisteredPoints().iterator();
                 while (it.hasNext()) {
                     Point buf = new Point((Point)it.next());
 
-                    buf.x += view.graphPanel.getWidth()/2;
+                    buf.x += view.chartPanel.getWidth()/2;
                     buf.y *= -1;
-                    buf.y += view.graphPanel.getHeight()/2;
+                    buf.y += view.chartPanel.getHeight()/2;
 
                     new Thread(new Runnable() {
-                        Graphics g = view.graphPanel.getGraphics();
+                        Graphics g = view.chartPanel.getGraphics();
 
                         @Override
                         public void run() {
@@ -109,7 +103,7 @@ public class Controller {
                                 g.setColor(Color.BLACK);
                                 g.fillOval(buf.x - size / 2, buf.y - size / 2, size, size);
 
-                                /*view.graphPanel.repaint(buf.x - 6 / 2, buf.y - 6 / 2, 6, 6);*/
+                                /*view.chartPanel.repaint(buf.x - 6 / 2, buf.y - 6 / 2, 6, 6);*/
                                 try { Thread.sleep(50); }
                                 catch(Exception ex) {}
                             }
@@ -120,15 +114,15 @@ public class Controller {
                                 g.setColor(Color.BLACK);
                                 g.fillOval(buf.x - size / 2, buf.y - size / 2, size, size);
 
-                                /*view.graphPanel.repaint(buf.x - 6 / 2, buf.y - 6 / 2, 6, 6);*/
+                                /*view.chartPanel.repaint(buf.x - 6 / 2, buf.y - 6 / 2, 6, 6);*/
                                 try { Thread.sleep(50); }
                                 catch(Exception ex) {}
                             }
-                            view.graphPanel.repaint();
+                            view.chartPanel.repaint();
                         }
                     }).start();
                 }
-                model.registeredPoints.clear();
+                model.clearRegisteredPoints();
 
                 updateView();
             }
@@ -137,7 +131,7 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Random dice = new Random();
-                Point center = view.getGrapCenter();
+                Point center = view.getChartCenter();
                 Point randomed = new Point(dice.nextInt(2*center.x) - center.x, dice.nextInt(2*center.y) - center.y);
 
                 view.statPanel.xSpinner.setValue(randomed.x);
@@ -168,6 +162,6 @@ public class Controller {
         updateView();
     }
     private void updateView(){
-        view.graphPanel.updateFigure(model.getFigurePoints(), model.getR(), model.getMarks(), model.getCursor());
+        view.chartPanel.updateFigure(model.getScaledFigurePoints(), model.getR(), model.getMarks(), model.getCursor());
     }
 }
