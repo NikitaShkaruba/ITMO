@@ -18,8 +18,9 @@ public class Main {
         Controller controller = new Controller();
 
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-        ObjectName name = new ObjectName("MBeans:type=PointCounter");
-        mbs.registerMBean(controller.getPointCounterMBean(), name);
+
+        mbs.registerMBean(controller.getModel(), new ObjectName("Lab4:type=Model"));
+        mbs.registerMBean(controller.getAverageClickIntervalCalculator(), new ObjectName("Lab4:type=AverageClickIntervalCalculator"));
 
         controller.startApplication();
     }

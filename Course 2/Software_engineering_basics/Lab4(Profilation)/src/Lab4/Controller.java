@@ -1,8 +1,5 @@
 package Lab4;
 
-import MBeans.PointCounter;
-
-import javax.management.MXBean;
 import javax.swing.event.ChangeListener;
 import java.awt.Point;
 import java.awt.event.ActionListener;
@@ -10,10 +7,10 @@ import javax.swing.event.ChangeEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import java.util.Iterator;
-import java.util.Random;
+import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
 
 /**
  * Created by Nikita Shkaruba on 11/5/2015.
@@ -27,12 +24,14 @@ import java.awt.*;
 public class Controller {
     private View view;
     private Model model;
+    private AverageClickIntervalCalculator averageClickIntervalCalculator = new AverageClickIntervalCalculator();
 
     public Controller() {
         model = new Model();
         view = new View("Lab 4");
 
         view.chartPanel.addMouseListener(new MouseListener() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 Point temp = e.getPoint();
@@ -63,6 +62,7 @@ public class Controller {
             public void mouseExited(MouseEvent e) {
             }
         });
+        view.chartPanel.addMouseListener(averageClickIntervalCalculator);
         view.statPanel.xSpinner.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -168,7 +168,42 @@ public class Controller {
         view.chartPanel.updateFigure(model.getScaledFigurePoints(), model.getR(), model.getMarks(), model.getCursor());
     }
 
-    public PointCounter getPointCounterMBean() {
-        return model.pointCounter;
+    public Model getModel() {
+        return model;
     }
+    public AverageClickIntervalCalculator getAverageClickIntervalCalculator() {
+        return  averageClickIntervalCalculator;
+    }
+}
+
+class AverageClickIntervalCalculator implements MouseListener, AverageClickIntervalCalculatorMBean {
+    Vector<Long> measurements = new Vector<>();
+    long startTime;
+
+    public AverageClickIntervalCalculator() {
+        startTime = System.currentTimeMillis();
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        measurements.add(System.currentTimeMillis() - startTime);
+    }
+
+    @Override
+    public long getAverageClickInterval() {
+        long sum = 0;
+        for(int i = 0; i < measurements.size()-1; i++)
+            sum += measurements.get(i+1) - measurements.get(i);
+
+        return sum / measurements.size()-1;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {}
+    @Override
+    public void mouseReleased(MouseEvent e) {}
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseExited(MouseEvent e) {}
 }

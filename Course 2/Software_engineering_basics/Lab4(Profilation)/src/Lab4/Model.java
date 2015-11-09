@@ -5,7 +5,6 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Vector;
 import java.awt.*;
-import MBeans.*;
 
 /**
  * Created by Nikita Shkaruba on 11/5/2015.
@@ -16,13 +15,12 @@ import MBeans.*;
  * Mail: sh.nickita@list.ru
  * GitHub: https://github.com/SigmaOne
  */
-public class Model {
+public class Model implements ModelMBean {
     private BatmanFigure batFigure;
     private Vector<Point> registeredPoints = new Vector<>();
     private Vector<Mark> marks = new Vector<>();
     private Point cursor = new Point(0, 0);
     private int R;
-    public PointCounter pointCounter = new PointCounter();
 
     public Model() {
         batFigure = new BatmanFigure(0.001);
@@ -59,15 +57,15 @@ public class Model {
     public void addMark(Point point) {
         boolean doContains = batFigure.Contains(new Point2D.Double(point.x / (double) R, point.y / (double) R));
         this.marks.add(new Mark(point, doContains)); // Caution! method BatFigure.Contains works with unscaled points
-
-        if (doContains)
-            pointCounter.addHitPoint();
-        else
-            pointCounter.addMissPoint();
+        if (marks.size() % 15 == 0)
+            System.out.println("Congratulations, 15 is multiple of added points count! Current size is: " + marks.size());
     }
     public void removeLastMark() {
-        if (marks.size() != 0)
+        if (marks.size() != 0) {
             marks.removeElementAt(marks.size()-1);
+            if (marks.size() == 15)
+                System.out.println("Congratulations, 15 is multiple of added points count! Current size is: " + marks.size());
+        }
     }
     public Vector<Mark> getMarks() {
         Vector<Mark> buf = new Vector<Mark>();
@@ -110,6 +108,17 @@ public class Model {
 
         registeredPoints.add(point);
     }
+
+    @Override
+    public int getAllPointsCount() {
+        return marks.size();
+    }
+
+    @Override
+    public int getHitPointsCount() {
+        return (int)marks.stream().filter(mark -> mark.isHighlighted == true).count();
+    }
+
 }
 
 class BatmanFigure {
