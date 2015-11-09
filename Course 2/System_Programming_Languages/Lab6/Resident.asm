@@ -1,6 +1,6 @@
 ; Variant 15
 ; Interrupt - 09h - keyboard.
-; <Alt>+<Q> - switch dispay to a new video-page, where  belongs some picture
+; <Alt>+<Q> - switch dispay to a new video-page, with some kind of picture
 ; <Alt>+<X> - uninstall program from memory
 
 ; consts
@@ -26,9 +26,9 @@ begin:
 	omitInstallMessage db 'Program is already installed. For switch use: "ctrl+q". For uninstall - "ctrl+x"', '$'
 	uninstallMessage db 'Program has been removed from memory', '$'
 	isCovered db 0h
-	systemHandler dd ?	; stores system handler adress
+	systemHandler dd ?	; stores system handler address
 	
-; resident one
+; resident handler itself
 switch_handler proc
 	push ax
 	push cx
@@ -41,13 +41,13 @@ switch_handler proc
 	jne restoreScreenCase
 	
 setPictureCase:
-	; is ctrl pressed?
+	; is alt pressed?
 	mov ah, 02h
 	int 16h
 	and al, altPressedBits
 	cmp al, 0h
 	je invokeSystemInterrupt
-	; is p or q pressed too?
+	; is x or q pressed too?
 	in al, 60h 
 	cmp al, scancode_x
 	je uninstall
@@ -61,7 +61,7 @@ setPictureCase:
 	jmp omitSystemInterrupt
 	
 restoreScreenCase:
-	; is ctrl pressed?
+	; is alt pressed?
 	mov ah, 02h
 	int 16h
 	and al, altPressedBits
@@ -79,7 +79,7 @@ restoreScreenCase:
 	jmp omitSystemInterrupt
 
 uninstall:
-	; setting old handler into int.table
+	; set old dos handler into int.table
 	mov ax, word ptr cs:systemHandler[2]
 	mov ds, ax
 	mov dx, word ptr cs:systemHandler
@@ -92,19 +92,18 @@ uninstall:
 	int 21h
 	
 	push es
-	; free encironment area (PSP) 
+	; free environment area (PSP) 
 	mov es, cs:2Ch
 	mov ah, 49h
 	int 21h
-	; free resient itself
+	; free resident itself
 	push cs
 	pop es
 	mov ah, 49h
 	int 21h
-	;
 	pop es
 	
-	; print message
+	; print uninstall message
 	push ds
 	mov ax, cs
 	mov ds, ax
@@ -121,7 +120,10 @@ invokeSystemInterrupt:
 	jmp exit
 	
 omitSystemInterrupt:
-	in al, 61H  	; get value of keyboard control lines
+    ; Keyboard key press disables keyboard bit in 61h port, it blocks all the input
+    ; Dos standart keyboard interrupt handler sets enable keyboard bit every time
+    ; So, if i want to block input to a console(omit system interrupt), then my handler just have to set this flag itself
+    in al, 61H      ; get value of keyboard control lines
     mov ah, al      ; save it
     or al, 80h      ; set the "enable kbd" bit
     out 61H, al     ; and write it out the control port
@@ -143,7 +145,6 @@ exit:
 switch_handler endp
 switch_handler_end:
 
-; prepares everything
 setup: 
 	; getting FF interrut vector
 	mov ax, 35FFh
@@ -168,7 +169,7 @@ install:
 	mov dx, 0001h
 	int 21h
 	
-	;print message
+	;print install message
 	mov ax, cs
 	mov ds, ax
 	lea dx, installMessage
@@ -196,7 +197,7 @@ install:
 	int 21h	
 
 omitInstall:
-	;print message
+	;print omit install message
 	mov ax, cs
 	mov ds, ax
 	lea dx, omitInstallMessage
