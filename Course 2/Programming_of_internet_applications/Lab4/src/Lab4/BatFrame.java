@@ -17,11 +17,17 @@ public class BatFrame extends JFrame {
         super(title);
 
         setViewComponents();
-        graphPanel.setPreferredSize(new Dimension(300, 300));
+    }
+    public Point getGrapCenter() {
+        return new Point(this.graphPanel.getWidth()/2, this.graphPanel.getHeight()/2);
+    }
+
+    public Point getCursorPoint() {
+        return new Point((int)statPanel.xSpinner.getValue(), (int)statPanel.ySpinner.getValue());
     }
     private void setViewComponents() {
         // Properties
-        this.setMinimumSize(new Dimension(600, 300));
+        this.setMinimumSize(new Dimension(600, 334));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocation(200, 200);
@@ -74,10 +80,10 @@ class GPanel extends JPanel {
         }
 
         RMarks.clear();
-        RMarks.add(0, new Point(center.x, -R + center.y));
-        RMarks.add(0, new Point(center.x + R, center.y));
-        RMarks.add(0, new Point(center.x, R + center.y));
-        RMarks.add(0, new Point(center.x - R, center.y));
+        RMarks.add(0, new Point(center.x, -R*7 + center.y));
+        RMarks.add(0, new Point(center.x + R*7, center.y));
+        RMarks.add(0, new Point(center.x, R*7 + center.y));
+        RMarks.add(0, new Point(center.x - R*7, center.y));
 
         this.repaint();
     }
@@ -97,8 +103,8 @@ class GPanel extends JPanel {
         int w = this.getWidth();
 
         g.setColor(new Color(50, 50, 50));
-        g.drawLine(0 + 20, h / 2, w - 20, h / 2);
-        g.drawLine(w / 2, 0 + 20, w / 2, h - 20);
+        g.drawLine(0 + 10, h / 2, w - 10, h / 2);
+        g.drawLine(w / 2, 0 + 10, w / 2, h - 10);
     }
     private void printFigure(Graphics g) {
         g.setColor(new Color(241, 250, 0));
@@ -132,7 +138,7 @@ class GPanel extends JPanel {
         }
     }
     private void printCursor(Graphics g) {
-        g.setColor(Color.YELLOW);
+        g.setColor(Color.BLACK);
         g.drawOval(cursor.x - 4, cursor.y - 4, 8, 8);
     }
     private void printMark(Graphics g, Point point, String label, int radius) {
@@ -142,6 +148,25 @@ class GPanel extends JPanel {
 }
 
 class SPanel extends JPanel {
+    public JLabel xLabel = new JLabel("x: ");
+    public JSpinner xSpinner = new JSpinner();
+    public JLabel yLabel = new JLabel("y: ");
+    public JSpinner ySpinner = new JSpinner();
+    public JLabel RLabel = new JLabel("R: ");
+    public JSlider RSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 20);
+    public JButton diceButt = new JButton("Roll the dice");
+    public JButton addButt = new JButton("Add");
+    public JButton removeButt = new JButton("Remove");
+    {
+        xSpinner.setValue(0);
+        ySpinner.setValue(0);
+
+        RSlider.setMajorTickSpacing(5);
+        RSlider.setMinorTickSpacing(1);
+        RSlider.setPaintTicks(true);
+        RSlider.setPaintLabels(true);
+    }
+
     public SPanel() {
         // Properties
         this.setBackground(Color.WHITE);
@@ -150,6 +175,15 @@ class SPanel extends JPanel {
         // Layout: If you don't know what it is, just read about GridBagLayout
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
+
+        // Buttons
+        c.gridy = 3;
+        c.gridx = 0;
+        this.add(addButt, c);
+        c.gridx = 1;
+        this.add(removeButt, c);
+        c.gridx = 2;
+        this.add(diceButt, c);
 
         // Labels
         c.gridx = GridBagConstraints.HORIZONTAL;
@@ -175,21 +209,5 @@ class SPanel extends JPanel {
         this.add(ySpinner, c);
         c.gridy = 2;
         this.add(RSlider, c);
-    }
-
-    JLabel xLabel = new JLabel("x: ");
-    JSpinner xSpinner = new JSpinner();
-    JLabel yLabel = new JLabel("y: ");
-    JSpinner ySpinner = new JSpinner();
-    JLabel RLabel = new JLabel("R: ");
-    JSlider RSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 20);
-    {
-        xSpinner.setValue(60);
-        ySpinner.setValue(60);
-
-        RSlider.setMajorTickSpacing(5);
-        RSlider.setMinorTickSpacing(1);
-        RSlider.setPaintTicks(true);
-        RSlider.setPaintLabels(true);
     }
 }

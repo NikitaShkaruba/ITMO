@@ -9,9 +9,12 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Vector;
 import java.util.function.Function;
 
@@ -32,6 +35,51 @@ public class Controller {
         model = new Model();
         view = new BatFrame("Lab 4");
 
+        view.graphPanel.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Point temp = e.getPoint();
+                temp.x -= view.graphPanel.getWidth() / 2;
+                temp.y -= view.graphPanel.getHeight() / 2;
+                temp.y *= -1;
+
+                if (e.getClickCount() == 2)
+                    model.addMark(temp);
+                else {
+                    model.setCursor(temp);
+                    view.statPanel.xSpinner.setValue(temp.x);
+                    view.statPanel.ySpinner.setValue(temp.y);
+                }
+                updateView();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        view.statPanel.xSpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                model.setCursor(new Point((int) ((JSpinner) e.getSource()).getValue(), model.getCursor().y));
+                updateView();
+            }
+        });
+        view.statPanel.ySpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                model.setCursor(new Point(model.getCursor().x, (int) ((JSpinner) e.getSource()).getValue()));
+                updateView();
+            }
+        });
         view.statPanel.RSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -76,6 +124,7 @@ public class Controller {
                                 try { Thread.sleep(50); }
                                 catch(Exception ex) {}
                             }
+                            view.graphPanel.repaint();
                         }
                     }).start();
                 }
@@ -84,40 +133,31 @@ public class Controller {
                 updateView();
             }
         });
-        view.graphPanel.addMouseListener(new MouseListener() {
+        view.statPanel.diceButt.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                Point temp = e.getPoint();
-                temp.x -= view.graphPanel.getWidth()/2;
-                temp.y -= view.graphPanel.getHeight()/2;
-                temp.y *= -1;
+            public void actionPerformed(ActionEvent e) {
+                Random dice = new Random();
+                Point center = view.getGrapCenter();
+                Point randomed = new Point(dice.nextInt(2*center.x) - center.x, dice.nextInt(2*center.y) - center.y);
 
-                if (e.getClickCount() == 2)
-                    model.addMark(temp);
-                else {
-                    model.setCursor(temp);
-                    view.statPanel.xSpinner.setValue(temp.x);
-                    view.statPanel.ySpinner.setValue(temp.y);
-                }
-                updateView();
-            }
-
-            @Override public void mousePressed(MouseEvent e) {}
-            @Override public void mouseReleased(MouseEvent e) {}
-            @Override public void mouseEntered(MouseEvent e) {}
-            @Override public void mouseExited(MouseEvent e) {}
-        });
-        view.statPanel.xSpinner.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                model.setCursor(new Point((int)((JSpinner)e.getSource()).getValue(), model.getCursor().y));
+                view.statPanel.xSpinner.setValue(randomed.x);
+                view.statPanel.ySpinner.setValue(randomed.y);
+                model.addMark(randomed);
+                model.setCursor(randomed);
                 updateView();
             }
         });
-        view.statPanel.ySpinner.addChangeListener(new ChangeListener() {
+        view.statPanel.addButt.addActionListener(new ActionListener() {
             @Override
-            public void stateChanged(ChangeEvent e) {
-                model.setCursor(new Point(model.getCursor().x, (int) ((JSpinner) e.getSource()).getValue()));
+            public void actionPerformed(ActionEvent e) {
+                model.addMark(view.getCursorPoint());
+                updateView();
+            }
+        });
+        view.statPanel.removeButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.removeLastMark();
                 updateView();
             }
         });
@@ -130,5 +170,4 @@ public class Controller {
     private void updateView(){
         view.graphPanel.updateFigure(model.getFigurePoints(), model.getR(), model.getMarks(), model.getCursor());
     }
-
 }

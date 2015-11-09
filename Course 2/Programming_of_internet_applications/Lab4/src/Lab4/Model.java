@@ -53,10 +53,13 @@ public class Model {
     public void setCursor(Point point) {
         this.cursor = point;
     }
-
     public void addMark(Point point) {
         Point2D.Double buf = new Point2D.Double(point.x / (double)R, point.y / (double)R); // For unscaled doContains
         this.marks.add(new Mark(point, batFigure.doContains(buf)));
+    }
+    public void removeLastMark() {
+        if (marks.size() != 0)
+            marks.removeElementAt(marks.size()-1);
     }
     public Vector<Mark> getMarks() {
         Vector<Mark> buf = new Vector<Mark>();
