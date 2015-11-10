@@ -9,6 +9,7 @@ package Lab4;
  * GitHub: https://github.com/SigmaOne
  */
 
+// Point counter MBean
 public interface ModelMBean {
     int getAllPointsCount();
     int getHitPointsCount();

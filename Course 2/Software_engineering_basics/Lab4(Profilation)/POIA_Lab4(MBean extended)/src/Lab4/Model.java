@@ -63,7 +63,7 @@ public class Model implements ModelMBean {
     public void removeLastMark() {
         if (marks.size() != 0) {
             marks.removeElementAt(marks.size()-1);
-            if (marks.size() == 15)
+            if (marks.size() % 15 == 0)
                 System.out.println("Congratulations, 15 is multiple of added points count! Current size is: " + marks.size());
         }
     }
