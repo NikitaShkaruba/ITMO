@@ -1,5 +1,6 @@
 package Lab4;
 
+import javax.management.*;
 import javax.swing.event.ChangeListener;
 import java.awt.Point;
 import java.awt.event.ActionListener;

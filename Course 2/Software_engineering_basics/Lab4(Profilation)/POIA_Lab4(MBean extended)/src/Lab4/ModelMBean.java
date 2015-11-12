@@ -1,5 +1,7 @@
 package Lab4;
 
+import javax.management.NotificationEmitter;
+
 /**
  * Created by Nikita Shkaruba on 11/9/2015.
  *
@@ -10,7 +12,7 @@ package Lab4;
  */
 
 // Point counter MBean
-public interface ModelMBean {
+public interface ModelMBean extends NotificationEmitter {
     int getAllPointsCount();
     int getHitPointsCount();
 }

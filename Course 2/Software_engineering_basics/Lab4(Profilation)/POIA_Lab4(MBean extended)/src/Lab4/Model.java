@@ -1,5 +1,9 @@
 package Lab4;
 
+import javax.management.AttributeChangeNotification;
+import javax.management.MBeanNotificationInfo;
+import javax.management.Notification;
+import javax.management.NotificationBroadcasterSupport;
 import java.awt.geom.Point2D;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -15,7 +19,8 @@ import java.awt.*;
  * Mail: sh.nickita@list.ru
  * GitHub: https://github.com/SigmaOne
  */
-public class Model implements ModelMBean {
+public class Model extends NotificationBroadcasterSupport implements ModelMBean {
+    private long sequenceNumber = 1;
     private BatmanFigure batFigure;
     private Vector<Point> registeredPoints = new Vector<>();
     private Vector<Mark> marks = new Vector<>();
@@ -57,14 +62,16 @@ public class Model implements ModelMBean {
     public void addMark(Point point) {
         boolean doContains = batFigure.Contains(new Point2D.Double(point.x / (double) R, point.y / (double) R));
         this.marks.add(new Mark(point, doContains)); // Caution! method BatFigure.Contains works with unscaled points
+
         if (marks.size() % 15 == 0)
-            System.out.println("Congratulations, 15 is multiple of added points count! Current size is: " + marks.size());
+            sendNotification(new Notification("size % 15", this, sequenceNumber++, System.currentTimeMillis(), "Now points amount is divisible by 15!"));
     }
     public void removeLastMark() {
         if (marks.size() != 0) {
             marks.removeElementAt(marks.size()-1);
+
             if (marks.size() % 15 == 0)
-                System.out.println("Congratulations, 15 is multiple of added points count! Current size is: " + marks.size());
+                sendNotification(new Notification("size % 15", this, sequenceNumber++, System.currentTimeMillis(), "Now points amount is divisible by 15!"));
         }
     }
     public Vector<Mark> getMarks() {
@@ -118,11 +125,9 @@ public class Model implements ModelMBean {
     public int getHitPointsCount() {
         return (int)marks.stream().filter(mark -> mark.isHighlighted == true).count();
     }
-
 }
 
 class BatmanFigure {
-
     private Vector<Point2D.Double> figure = new Vector<>();
     public BatmanFigure(double precision) {
         // Add left wing
