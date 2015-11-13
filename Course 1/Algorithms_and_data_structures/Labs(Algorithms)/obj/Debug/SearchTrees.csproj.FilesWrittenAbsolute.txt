@@ -1,6 +1,0 @@
-/home/nick/Code/SearchTrees(Lab2)/SearchTrees/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/home/nick/Code/SearchTrees(Lab2)/SearchTrees/bin/Debug/SearchTrees.exe.config
-/home/nick/Code/SearchTrees(Lab2)/SearchTrees/bin/Debug/SearchTrees.exe.mdb
-/home/nick/Code/SearchTrees(Lab2)/SearchTrees/bin/Debug/SearchTrees.exe
-/home/nick/Code/SearchTrees(Lab2)/SearchTrees/obj/Debug/SearchTrees.exe
-/home/nick/Code/SearchTrees(Lab2)/SearchTrees/obj/Debug/SearchTrees.exe.mdb
