@@ -1,4 +1,4 @@
-package Lab4;
+package Lab5;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -7,11 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Point2D;
-import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.Vector;
 import java.awt.*;
 
 /**
@@ -25,7 +22,6 @@ import java.awt.*;
  */
 
 public class Controller {
-
     private View view;
     private Model model;
 

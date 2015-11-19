@@ -1,4 +1,4 @@
-package Lab4;
+package Lab5;
 
 import javax.swing.*;
 import java.awt.*;
@@ -135,19 +135,29 @@ class ChartPanel extends JPanel {
         }
     }
     private void printMarks(Graphics g) {
-        for (Mark mark: customMarks) {
-            if (mark.isHighlighted) {
-                g.setColor(new Color(100, 255, 253));
-                g.fillOval(mark.x-3, mark.y -3, 6, 6);
+        for (Mark mark : customMarks) {
+            switch (mark.state) {
+                case in: {
+                    g.setColor(new Color(100, 255, 253));
+                    g.fillOval(mark.x - 3, mark.y - 3, 6, 6);
 
-                g.setColor(new Color(59, 59, 59));
-                g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
-            } else {
-                g.setColor(Color.BLACK);
-                g.fillOval(mark.x - 3, mark.y - 3, 6, 6);
+                    g.setColor(new Color(59, 59, 59));
+                    g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
+                } break;
+                case outside: {
+                    g.setColor(new Color(126, 31, 42));
+                    g.fillOval(mark.x - 3, mark.y - 3, 6, 6);
 
-                g.setColor(new Color(226, 219, 226));
-                g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
+                    g.setColor(Color.WHITE);
+                    g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
+                } break;
+                case suspended: {
+                    g.setColor(Color.LIGHT_GRAY);
+                    g.fillOval(mark.x - 3, mark.y - 3, 6, 6);
+
+                    g.setColor(Color.WHITE);
+                    g.drawOval(mark.x - 3, mark.y - 3, 6, 6);
+                } break;
             }
         }
     }
@@ -186,7 +196,7 @@ class StatisticPanel extends JPanel {
         this.setBackground(Color.WHITE);
         this.setLayout(new GridBagLayout());
 
-        // Actual Layout: If you don't know what is constraints(!), just read about GridBagLayout
+        // Actual Layout: If you don't know what is constraints(!), just read about GridBagLayout in general
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.NONE;
 

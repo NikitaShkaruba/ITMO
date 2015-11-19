@@ -1,4 +1,4 @@
-package Lab4;
+package Lab5;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -105,5 +105,9 @@ class Mark extends Point {
     public Mark(Point src, boolean isHighlighted) {
         super(src);
         this.isHighlighted = isHighlighted;
+    }
+    public static Point2D.Double Parse(String str) {
+        String[] splitted = str.split(",");
+        return new Point2D.Double(new java.lang.Double(splitted[0]), new java.lang.Double(splitted[1]));
     }
 }
