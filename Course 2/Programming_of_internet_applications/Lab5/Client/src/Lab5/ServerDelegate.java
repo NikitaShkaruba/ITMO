@@ -52,9 +52,10 @@ class ServerDelegate {
         try {
             DatagramSocket socket  = new DatagramSocket();
             socket.setSoTimeout(10);
-            byte[] bytes = new byte[Double.BYTES*2];
+            byte[] bytes = new byte[Integer.BYTES + Double.BYTES*2];
             ByteBuffer buf = ByteBuffer.wrap(bytes);
 
+            buf.putInt(1);
             buf.putDouble(point.getX());
             buf.putDouble(point.getY());
 
@@ -72,7 +73,56 @@ class ServerDelegate {
             return Mark.States.suspended;
         }
         catch (IOException ex) { return Mark.States.suspended; }
+    }
+    public static Vector<Mark.States> doContains(Vector<Point2D.Double> points) {
+        try {
+            // Prepare data
+            DatagramSocket socket  = new DatagramSocket();
+            socket.setSoTimeout(10);
+            byte[] bytes = new byte[Integer.BYTES + 2*Double.BYTES*points.size()];
+            ByteBuffer buf = ByteBuffer.wrap(bytes);
 
+            // Put Points
+            buf.putInt(points.size());
+            for (Point2D.Double point: points) {
+                buf.putDouble(point.getX());
+                buf.putDouble(point.getY());
+            }
+
+            // Send
+            InetAddress address = InetAddress.getByName("127.0.0.1");
+            DatagramPacket packet = new DatagramPacket(bytes, bytes.length, address, 4445);
+            socket.send(packet);
+
+            // Prepare new data
+            bytes = new byte[points.size()];
+            Vector<Mark.States> newStates = new Vector(points.size());
+            packet = new DatagramPacket(bytes, bytes.length);
+            socket.receive(packet);
+            bytes = packet.getData();
+
+            // Decode
+            buf = ByteBuffer.wrap(bytes);
+            for (int i = 0; i < points.size(); i++) {
+                switch(buf.get()) {
+                    case 0: newStates.add(Mark.States.outside); break;
+                    case 1: newStates.add(Mark.States.in); break;
+                }
+            }
+            return newStates;
+        }
+        catch (SocketTimeoutException e) {
+            Vector<Mark.States> newStates = new Vector(points.size());
+            for (int i = 0; i < points.size(); i++)
+                newStates.add(Mark.States.suspended);
+            return newStates;
+        }
+        catch (IOException ex) {
+            Vector<Mark.States> newStates = new Vector(points.size());
+            for (int i = 0; i < points.size(); i++)
+                newStates.add(Mark.States.suspended);
+            return newStates;
+        }
     }
 }
 

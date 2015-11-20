@@ -42,6 +42,15 @@ public class Model {
             scaledPoints.add(new Point((int)(next.x * R), (int)(next.y * R)));
         }*/
     }
+    public Vector<Point2D.Double> getUnscaledMarks() {
+        Vector<Point2D.Double> unscaledPoints = new Vector(marks.size());
+
+        for (int i = 0; i < marks.size(); i++) {
+            unscaledPoints.add(new Point2D.Double(marks.elementAt(i).getX() / (double)R, marks.elementAt(i).getY() / (double)R));
+        }
+
+        return unscaledPoints;
+    }
 
     public Point getCursor() {
         return cursor;
@@ -55,13 +64,11 @@ public class Model {
     }
     public void setR(int R) {
         this.R = R;
-
-        recalculateMarks();
     }
 
-    public void addMark(Point point) {
-        Mark.States state = ServerDelegate.doContains(new Point2D.Double(point.x / (double) R, point.y / (double) R));
-        this.marks.add(new Mark(point, state)); // Caution! method BatFigure.Contains works with unscaled points
+    public void addMark(Point point, Mark.States state) {
+
+        this.marks.add(new Mark(point, state));
     }
     public void removeLastMark() {
         if (marks.size() != 0)
@@ -81,19 +88,14 @@ public class Model {
     public void clearRegisteredPoints() {
         registeredPoints.clear();
     }
-
-    private void recalculateMarks() {
-        for (Mark m: marks) {
-            Mark.States previousState = m.state;
-            Point2D.Double buf = new Point2D.Double(m.x / (double)R, m.y / (double)R);
-
-            // TODO: call server
-            m.state = batmanFigure.Contains(buf);
-
-            if (m.state == Mark.States.outside && previousState == Mark.States.in)
-                registerToAnimate(m);
+    public void recalculateMarks(Vector<Mark.States> newStates) {
+        for (int i = 0; i < marks.size(); i++) {
+            if (marks.elementAt(i).state == Mark.States.outside && newStates.elementAt(i) == Mark.States.in)
+                registerToAnimate(marks.elementAt(i));
+            marks.elementAt(i).state = newStates.elementAt(i);
         }
     }
+
     private void registerToAnimate(Point point) {
         // Sry for this unrefactored method. I don't really sure somebody will look at it ^)
         Iterator<Point> it = registeredPoints.iterator();

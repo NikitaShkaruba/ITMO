@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.Random;
 import java.awt.*;
@@ -37,9 +38,10 @@ public class Controller {
                 temp.y -= view.chartPanel.getHeight() / 2;
                 temp.y *= -1;
 
-                if (e.getClickCount() == 2)
-                    model.addMark(temp);
-                else {
+                if (e.getClickCount() == 2) {
+                    Mark.States state = ServerDelegate.doContains(new Point2D.Double( temp.x/(double)model.getR(), temp.y/(double)model.getR() ));
+                    model.addMark(temp, state);
+                } else {
                     model.setCursor(temp);
                     view.statPanel.xSpinner.setValue(temp.x);
                     view.statPanel.ySpinner.setValue(temp.y);
@@ -78,6 +80,8 @@ public class Controller {
             @Override
             public void stateChanged(ChangeEvent e) {
                 int v = ((JSlider)e.getSource()).getValue();
+                // TODO call server
+                model.recalculateMarks(ServerDelegate.doContains(model.getUnscaledMarks()));
                 model.setR(v);
 
                 Iterator it = model.getRegisteredPoints().iterator();
@@ -137,7 +141,8 @@ public class Controller {
 
                 view.statPanel.xSpinner.setValue(randomed.x);
                 view.statPanel.ySpinner.setValue(randomed.y);
-                model.addMark(randomed);
+                Mark.States state = ServerDelegate.doContains(new Point2D.Double( randomed.x/model.getR(), randomed.y/model.getR() ));
+                model.addMark(randomed, state);
                 model.setCursor(randomed);
                 updateView();
             }
@@ -145,7 +150,9 @@ public class Controller {
         view.statPanel.addButt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.addMark(view.getCursorPoint());
+                Point temp = view.getCursorPoint();
+                Mark.States state = ServerDelegate.doContains(new Point2D.Double( temp.x/model.getR(), temp.y/model.getR() ));
+                model.addMark(temp, state);
                 updateView();
             }
         });
