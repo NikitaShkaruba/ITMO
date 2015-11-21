@@ -15,14 +15,14 @@ import java.util.Vector;
  * Mail: sh.nickita@list.ru
  */
 public class Model {
-    BatmanFigure batmanFigure;
+    Figure batmanFigure;
     private Vector<Point> registeredPoints = new Vector();
     private Vector<Mark> marks = new Vector();
     private Point cursor = new Point(0, 0);
     private int R;
 
     public Model() {
-        batmanFigure = new BatmanFigure(0.001);
+        batmanFigure = new Figure(0.001);
         setR(20);
     }
 
@@ -113,10 +113,9 @@ public class Model {
     }
 }
 
-class BatmanFigure {
-
+class Figure {
     private Vector<Point2D.Double> figure = new Vector();
-    public BatmanFigure(double precision) {
+    public Figure(double precision) {
         // Add left wing
         for (double y = -2.07; y <= 2.35; y += precision)
             figure.add(new Point2D.Double(-7.0 * Math.sqrt(1 - y*y/6.0), y));
@@ -160,37 +159,5 @@ class BatmanFigure {
 
     public Vector<Point2D.Double> getFigurePoints() {
         return figure;
-    }
-
-    public Mark.States Contains(Point2D.Double point) { // Enhance this method
-        if (point.y > 0) {
-            // under top part of wings
-            if (Math.abs(point.x) >= 2.0)
-                return (Math.pow(point.x, 2)/49.0 + Math.pow(point.y, 2)/6.0 <= 1)? Mark.States.in : Mark.States.outside;
-            // under shoulders
-            if (Math.abs(point.x) >= 1 && Math.abs(point.x) < 2.0)
-                return (point.y < (6.0*Math.sqrt(10)/7.0 + (1.5-0.5*Math.abs(point.x)))-(6.0*Math.abs(10)/14.0)*Math.sqrt(4-Math.pow(Math.abs(point.x)-1.0, 2)) + 5.7)? Mark.States.in : Mark.States.outside;
-            // under head sides
-            if (Math.abs(point.x) >= 0.75 && Math.abs(point.x) < 1.0)
-                return (point.y < 9-8*Math.abs(point.x))? Mark.States.in : Mark.States.outside;
-            // under ears
-            if (Math.abs(point.x) >= 0.5 && Math.abs(point.x) < 0.75)
-                return (point.y < 3*Math.abs(point.x) + 0.75)? Mark.States.in : Mark.States.outside;
-            // under forehead
-            if (Math.abs(point.x) < 0.5)
-                return (point.y < 2.25)? Mark.States.in : Mark.States.outside;
-        }
-
-        if (point.y <= 0) {
-            // over bottom part of wings
-            if (Math.abs(point.x) < 3.75)
-                return (point.y > ((Math.abs(point.x/2)- (3*Math.sqrt(33) - 7)/112*point.x*point.x - 3) + Math.sqrt(1 - (Math.pow(Math.abs(Math.abs(point.x)-2)-1 ,2)))))? Mark.States.in : Mark.States.outside;
-            // over tail
-            if (Math.abs(point.x) >= 3.75)
-                return (Math.pow(point.x, 2)/49.0 + Math.pow(point.y, 2)/6.0 <= 1)? Mark.States.in : Mark.States.outside;
-        }
-
-        // For readability and compiler sake
-        return Mark.States.suspended;
     }
 }

@@ -1,6 +1,5 @@
 package Lab5;
 
-import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
@@ -10,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.Random;
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -39,7 +39,7 @@ public class Controller {
                 temp.y *= -1;
 
                 if (e.getClickCount() == 2) {
-                    Mark.States state = ServerDelegate.doContains(new Point2D.Double( temp.x/(double)model.getR(), temp.y/(double)model.getR() ));
+                    Mark.States state = ServerDelegate.askIfContains(new Point2D.Double( temp.x/(double)model.getR(), temp.y/(double)model.getR() ));
                     model.addMark(temp, state);
                 } else {
                     model.setCursor(temp);
@@ -81,7 +81,7 @@ public class Controller {
             public void stateChanged(ChangeEvent e) {
                 int v = ((JSlider)e.getSource()).getValue();
                 // TODO call server
-                model.recalculateMarks(ServerDelegate.doContains(model.getUnscaledMarks()));
+                model.recalculateMarks(ServerDelegate.askIfContains(model.getUnscaledMarks()));
                 model.setR(v);
 
                 Iterator it = model.getRegisteredPoints().iterator();
@@ -141,7 +141,7 @@ public class Controller {
 
                 view.statPanel.xSpinner.setValue(randomed.x);
                 view.statPanel.ySpinner.setValue(randomed.y);
-                Mark.States state = ServerDelegate.doContains(new Point2D.Double( randomed.x/model.getR(), randomed.y/model.getR() ));
+                Mark.States state = ServerDelegate.askIfContains(new Point2D.Double( randomed.x/model.getR(), randomed.y/model.getR() ));
                 model.addMark(randomed, state);
                 model.setCursor(randomed);
                 updateView();
@@ -151,7 +151,7 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Point temp = view.getCursorPoint();
-                Mark.States state = ServerDelegate.doContains(new Point2D.Double( temp.x/model.getR(), temp.y/model.getR() ));
+                Mark.States state = ServerDelegate.askIfContains(new Point2D.Double( temp.x/model.getR(), temp.y/model.getR() ));
                 model.addMark(temp, state);
                 updateView();
             }
@@ -161,6 +161,12 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 model.removeLastMark();
                 updateView();
+            }
+        });
+        view.statPanel.changeLanguageButt.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                view.setNextLanguage();
             }
         });
     }

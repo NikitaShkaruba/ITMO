@@ -57,10 +57,6 @@ class BatmanFigure {
             figure.add(new Point2D.Double(x, (Math.abs(x/2)- (3*Math.sqrt(33) - 7)/112*x*x - 3) + Math.sqrt(1 - (Math.pow(Math.abs(Math.abs(x)-2)-1 ,2)))));
     }
 
-    public Vector<Point2D.Double> getFigurePoints() {
-        return figure;
-    }
-
     public boolean Contains(Point2D.Double point) { // Enhance this method
         if (point.y > 0) {
             // under top part of wings
@@ -91,23 +87,5 @@ class BatmanFigure {
 
         // For readability and compiler sake
         return false;
-    }
-}
-
-class Mark extends Point {
-    public boolean isHighlighted;
-
-    public Mark(Mark src) {
-        super(src);
-
-        this.isHighlighted = src.isHighlighted;
-    }
-    public Mark(Point src, boolean isHighlighted) {
-        super(src);
-        this.isHighlighted = isHighlighted;
-    }
-    public static Point2D.Double Parse(String str) {
-        String[] splitted = str.split(",");
-        return new Point2D.Double(new java.lang.Double(splitted[0]), new java.lang.Double(splitted[1]));
     }
 }

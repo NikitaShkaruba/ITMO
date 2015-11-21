@@ -10,8 +10,9 @@ import java.awt.*;
  * Vk: https://vk.com/wavemeaside
  * Mail: sh.nickita@list.ru
  */
+
 public class Mark extends Point {
-    public enum States {suspended, in, outside }
+    public enum States { suspended, in, outside }
 
     public States state;
     public Mark(Mark src) {
