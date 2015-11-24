@@ -6,6 +6,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
    <f:view>
-      <h:outputLabel value="Hello, world"/>
+      <h:outputLabel value="Hello there, fellow! It's the start page of my project"/>
+
+      <!-- Its like \n -->
+      <h:outputText value="&lt;br/&gt;" escape="false" />
+      <h:outputText value="&lt;br/&gt;" escape="false" />
+
+      <h:link outcome="SpeakWithWorldSpeaker" value="Look at WorldSpeaker" />
    </f:view>
 </html>
