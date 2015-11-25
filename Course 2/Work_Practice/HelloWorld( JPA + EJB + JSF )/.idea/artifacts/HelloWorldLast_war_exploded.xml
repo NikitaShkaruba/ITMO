@@ -9,6 +9,9 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Mojarra-2.2.1" />
+          <element id="library" level="project" name="JPA 2.0-2.0" />
+          <element id="library" level="project" name="org.hibernate:hibernate-entitymanager:4.1.9.Final" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.23-bin" />
         </element>
       </element>
     </root>
