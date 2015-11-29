@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="jsf2-portlet:war exploded">
+    <output-path>$PROJECT_DIR$/target/jsf2-portlet-4.2.5-ga6</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="HelloWorldPortlet( JPA + EJB + JSF )" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.1" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
+          <element id="library" level="project" name="Maven: com.liferay.faces:liferay-faces-bridge-impl:4.2.5-ga6" />
+          <element id="library" level="project" name="Maven: com.liferay.faces:liferay-faces-bridge-api:4.2.5-ga6" />
+          <element id="library" level="project" name="Maven: com.liferay.faces:liferay-faces-util:4.2.5-ga6" />
+          <element id="library" level="project" name="Maven: com.liferay.faces:liferay-faces-alloy:4.2.5-ga6" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.2.12" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.2.12" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/jsf2-portlet-4.2.5-ga6/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="HelloWorldPortlet( JPA + EJB + JSF )/web/Web" />
+    </root>
+  </artifact>
+</component>

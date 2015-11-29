@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.liferay.faces:liferay-faces-bridge-api:4.2.5-ga6">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/liferay/faces/liferay-faces-bridge-api/4.2.5-ga6/liferay-faces-bridge-api-4.2.5-ga6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/liferay/faces/liferay-faces-bridge-api/4.2.5-ga6/liferay-faces-bridge-api-4.2.5-ga6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/liferay/faces/liferay-faces-bridge-api/4.2.5-ga6/liferay-faces-bridge-api-4.2.5-ga6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
