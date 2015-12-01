@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Lab4(JavaFX):jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Lab4_JavaFX__jar</output-path>
+    <root id="archive" name="Lab4(JavaFX).jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../../Computational_mathe-matics/Lab4(JavaFX)/src/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Lab4(JavaFX)" />
+    </root>
+  </artifact>
+</component>
