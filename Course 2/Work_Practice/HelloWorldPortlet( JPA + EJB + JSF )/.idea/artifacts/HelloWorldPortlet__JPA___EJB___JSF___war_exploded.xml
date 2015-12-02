@@ -24,6 +24,8 @@
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.15.0-GA" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.30" />
           <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0" />
+          <element id="library" level="project" name="Maven: javax.ejb:javax.ejb-api:3.2" />
+          <element id="library" level="project" name="Maven: javax.transaction:javax.transaction-api:1.2" />
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.2.12" />
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.2.12" />
         </element>

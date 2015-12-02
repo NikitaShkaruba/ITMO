@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="HelloWorldPortlet( JPA + EJB + JSF ):ejb exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/HelloWorldPortlet__JPA___EJB___JSF___ejb_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="HelloWorldPortlet( JPA + EJB + JSF )/ejb/EJB" />
+      <element id="javaee-facet-classes" facet="HelloWorldPortlet( JPA + EJB + JSF )/ejb/EJB" />
+    </root>
+  </artifact>
+</component>

@@ -5,7 +5,7 @@ package sample;
  */
 public class Main {
     public static void main(String[] args) {
-        WorldSpeaker speaker = new WorldSpeaker();
+        WorldSpeakerBean speaker = new WorldSpeakerBean();
         System.out.println(speaker.getMessage());
     }
 }

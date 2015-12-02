@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - sql497477@sql4.freemysqlhosting.net" uuid="30efe6c4-a118-4191-a15e-602356324168">
+  <data-source name="MySQL - sql498356@sql4.freemysqlhosting.net" uuid="9ac8c677-3f47-4954-af13-03d9b80bacd1">
     <database-info product="MySQL" version="5.5.46-0ubuntu0.12.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.2">
-      <schema id="1" name="sql497477"/>
-      <table id="2" parent="1" name="sTable"/>
-      <column id="3" parent="2" name="ID">
+      <schema id="1" name="sql498356"/>
+      <table id="2" parent="1" name="sampleTable"/>
+      <column id="3" parent="2" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="4" parent="2" name="STRING">
-        <mandatory>1</mandatory>
-        <data-type>varchar(20)</data-type>
+      <column id="4" parent="2" name="string">
+        <data-type>text</data-type>
       </column>
       <key id="5" parent="2" name="PRIMARY">
-        <columns>ID</columns>
+        <columns>id</columns>
         <primary>1</primary>
       </key>
     </database-model>

@@ -3,12 +3,12 @@
 
     <persistence-unit name="NewPersistenceUnit">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>sample.STableEntity</class>
+        <class>sample.SampleTableEntity</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://sql4.freemysqlhosting.net:3306/sql497477"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://sql4.freemysqlhosting.net:3306/sql498356"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.username" value="sql497477"/>
-            <property name="hibernate.connection.password" value="Pfvpq9lSug"/>
+            <property name="hibernate.connection.username" value="sql498356"/>
+            <property name="hibernate.connection.password" value="Ttw1sTmjGt"/>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
