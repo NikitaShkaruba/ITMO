@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-// Sample program to parse
+// Input file to the main program.
 int main() {
     int i = 100500;
     std::string greetings = "Hello World!";

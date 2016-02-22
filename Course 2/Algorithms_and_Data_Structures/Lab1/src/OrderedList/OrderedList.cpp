@@ -5,6 +5,7 @@ OrderedList::OrderedList(string content) {
     first = median;
     _size = 1;
 }
+
 OrderedList::OrderedList() {
     median = nullptr;
     first = nullptr;
@@ -13,7 +14,7 @@ OrderedList::OrderedList() {
 
 void OrderedList::insert(string content) {
     Node* nodeToPush = new Node(content, nullptr, nullptr);
-    Node*challenger = median;
+    Node* challenger = median;
 
     if (_size == 0) {
         median = nodeToPush;
@@ -78,8 +79,6 @@ void OrderedList::insert(string content) {
         }
     }
 }
-
-
 
 bool OrderedList::find(string content) const {
     Node nodeToFind(content, nullptr, nullptr);

@@ -6,10 +6,10 @@
 #include <map>
 #include "HashTable.h"
 
-// builder class
 class CodeParser {
 public:
     void retrieveWordsFromFile(string filename);
+    void printHashTableInfo();
 
 private:
     HashTable words;

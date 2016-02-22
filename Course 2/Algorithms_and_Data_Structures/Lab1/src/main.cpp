@@ -15,7 +15,8 @@ bool isNotEnableToOpenFile(string filename) {
     }
 }
 
-// Hash function: Sum of first and second ASCII-codesУпорядоченный   список   с   логарифмическим
+// Option № 3
+// Hash function: Sum of first and second ASCII-codes
 // Collision resolved by: log(n) organized list
 int main(int argc, char* argv[]) {
     CodeParser parser;
@@ -24,7 +25,6 @@ int main(int argc, char* argv[]) {
         return 1;
 
     parser.retrieveWordsFromFile(argv[1]);
-    // TODO: add logic
+    parser.printHashTableInfo();
 }
-
 

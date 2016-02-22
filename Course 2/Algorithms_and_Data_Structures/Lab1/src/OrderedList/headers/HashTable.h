@@ -11,8 +11,11 @@ public:
     HashTable();
 
     void insert(string content);
-    bool find(string content);
-    int hash(string word);
+    bool find(string content) const ;
+    int hash(string word) const;
+    void printTree() const;
+    float getAverageCollisionCount() const;
+    long getAverageAccessTimeInMilliseconds() const;
 
 private:
     void restructure();

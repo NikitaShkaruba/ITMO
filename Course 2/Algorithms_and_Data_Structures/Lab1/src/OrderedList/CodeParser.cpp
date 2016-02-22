@@ -1,5 +1,5 @@
-#include "headers/CodeParser.h"
 #include <string>
+#include "headers/CodeParser.h"
 
 using namespace std;
 
@@ -8,10 +8,17 @@ void CodeParser::retrieveWordsFromFile(string file) {
     string word;
 
     while (inputStream >> word) {
-        if (word == "ptr")
-            cout << "It's him";
         words.insert(word);
     }
 
     inputStream.close();
+}
+
+void CodeParser::printHashTableInfo() {
+    cout << "::INFO::" << endl;
+
+    cout << "Average collission count: " << words.getAverageCollisionCount() << endl;
+    cout << "Average find time: " << words.getAverageAccessTimeInMilliseconds() << " milliseconds" << endl;
+
+    words.printTree();
 }

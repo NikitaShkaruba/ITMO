@@ -12,7 +12,7 @@ private:
         Node* previous;
 
         Node(string content, Node* previous, Node* next) {
-            this->content =content;
+            this->content = content;
             this->previous = previous;
             this->next = next;
         }
@@ -38,7 +38,6 @@ public:
     bool find(string content) const;
     string operator [](int i) const;
     int size() const;
-
 
 private:
     Node* median;
