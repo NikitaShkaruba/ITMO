@@ -17,8 +17,8 @@ void CodeParser::retrieveWordsFromFile(string file) {
 void CodeParser::printHashTableInfo() {
     cout << "::INFO::" << endl;
 
-    cout << "Average collission count: " << words.getAverageCollisionCount() << endl;
-    cout << "Average find time: " << words.getAverageAccessTimeInMilliseconds() << " milliseconds" << endl;
+    cout << "Average collision count: " << words.getAverageCollisionCount() << endl;
+    cout << "Average access time: " << words.getAverageAccessTimeInMilliseconds() << " milliseconds" << endl;
 
     words.printTree();
 }

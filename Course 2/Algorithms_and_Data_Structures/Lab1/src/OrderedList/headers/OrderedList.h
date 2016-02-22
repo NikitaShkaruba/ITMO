@@ -17,7 +17,7 @@ private:
             this->next = next;
         }
 
-        // returns int if pretendent: lower(-1), equals(0), bigger(1)
+        // returns int if challenger: lower(-1), equals(0), bigger(1)
         int compare(Node* const challenger) {
             Node* longerOne = (this->content.size() > challenger->content.size()) ? this : challenger;
 
