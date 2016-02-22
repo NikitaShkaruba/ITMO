@@ -18,13 +18,13 @@ private:
         }
 
         // returns int if pretendent: lower(-1), equals(0), bigger(1)
-        int compare(Node* const pretendent) {
-            Node* longerOne = (this->content.size() > pretendent->content.size()) ? this : pretendent;
+        int compare(Node* const challenger) {
+            Node* longerOne = (this->content.size() > challenger->content.size()) ? this : challenger;
 
             for (int i = 0; i < longerOne->content.size(); i++) {
-                if (this->content[i] > pretendent->content[i])
+                if (this->content[i] > challenger->content[i])
                     return -1;
-                if (this->content[i] > pretendent->content[i])
+                if (this->content[i] < challenger->content[i])
                     return 1;
             }
             return 0;
@@ -32,11 +32,17 @@ private:
     };
 
 public:
+    OrderedList();
     OrderedList(string content);
-    void insert(string content, int weight);
-    bool find(string content);
+    void insert(string content);
+    bool find(string content) const;
+    string operator [](int i) const;
+    int size() const;
+
 
 private:
     Node* median;
+    Node* first;
+    int _size;
 };
 

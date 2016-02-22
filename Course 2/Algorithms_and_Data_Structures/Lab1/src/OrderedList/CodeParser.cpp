@@ -1,23 +1,17 @@
-//
-// Created by nikita on 21.02.16.
-//
+#include "headers/CodeParser.h"
+#include <string>
 
-#include "CodeParser.h"
+using namespace std;
+
 void CodeParser::retrieveWordsFromFile(string file) {
     ifstream inputStream(file, ios::in);
     string word;
 
     while (inputStream >> word) {
-        words.insert(hash(word), word);
+        if (word == "ptr")
+            cout << "It's him";
+        words.insert(word);
     }
 
     inputStream.close();
-}
-
-int CodeParser::hash(string word) {
-    switch(word.size()) {
-        case 0: throw "Word have no size";
-        case 1: return word[0];
-        default: return word[0] + word[1];
-    }
 }

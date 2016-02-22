@@ -4,14 +4,12 @@
 #include <fstream>
 #include <vector>
 #include <map>
-#include "OrderedList/headers/HashTable.h"
-
-using namespace std;
+#include "HashTable.h"
 
 // builder class
 class CodeParser {
 public:
-    void retrieveWordsFromFile(string file);
+    void retrieveWordsFromFile(string filename);
 
 private:
     HashTable words;

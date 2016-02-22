@@ -7,5 +7,5 @@ int main() {
     std::string greetings = "Hello World!";
     int* ptr = new int;
 
-    std::cout << "Sample" << greetings << i << *ptr;
+    std::cout << greetings << i << *ptr;
 }
