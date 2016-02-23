@@ -3,46 +3,40 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 struct Edge; // Is needed for self-include purpose
 
 struct Vertex {
-    Vertex(string name) {
-        this->name = name;
-    }
+    Vertex(string name) : name(name) {}
+    Vertex() {}
 
-    string name;
-    list<Edge> neighborhood;
+    const string name;
+    list<Edge*> neighborhood;
 };
 
 struct Edge {
     Edge(Vertex* v1, Vertex* v2, int weight) : weight(weight) {
-        this->v1 = v1;
-        this->v2 = v2;
+        this->source = v1;
+        this->destination = v2;
     }
 
-    Vertex* v1;
-    Vertex* v2;
+    Vertex* source;
+    Vertex* destination;
     int weight;
 };
 
 class Graph {
+    friend class GraphBuilder;
 public:
-    Graph(size_t vertexCount, int minWeight, int maxWeight);
+    Graph(size_t vertexCount);
 
-    Graph generateGraph(size_t vertexCount, size_t edgesCount, int minWeight, int maxWeight);
     Vertex* getVertex(string content);
-
-private:
     Vertex *getRandomVertex();
-    void addEdge(Vertex *v1, Vertex *v2);
-    void addVertex(string name, Vertex *neighbour);
-    void addVertex(string name, vector<Vertex *> neighbours);
-    int hash(char *content);
+private:
 
-    vector<Vertex> vertexes;
+    map<string, Vertex> vertexes;
     size_t edgesCount;
-    int minWeight, maxWeight;
 };
 
