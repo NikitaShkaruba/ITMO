@@ -33,7 +33,8 @@ public:
     Graph(size_t vertexCount);
 
     Vertex* getVertex(string content);
-    Vertex *getRandomVertex();
+    Vertex* getRandomVertex();
+    map<string, Vertex *> getAllVertexes();
 private:
 
     map<string, Vertex> vertexes;

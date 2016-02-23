@@ -7,3 +7,12 @@ Vertex* Graph::getVertex(string content) {
 Graph::Graph(size_t vertexCount) {
 
 }
+
+map<string, Vertex*> Graph::getAllVertexes() {
+    map<string, Vertex*> result;
+
+    for (map<string, Vertex>::iterator it = vertexes.begin(); it != vertexes.end(); it++)
+        result.insert(pair<string, Vertex*>(it->first, &it->second));
+
+    return result;
+}

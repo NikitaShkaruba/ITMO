@@ -1,8 +1,15 @@
 #include <iostream>
 #include "graph/Graph.h"
 #include "graph/GraphBuilder.h"
+#include "algorithms/algorithms.h"
 
 using namespace std;
+
+void PrintVertexes(list<Vertex *> path) {
+    for (list<Vertex*>::iterator i = path.begin(); i != path.end(); ++i) {
+        cout << "{" + (*i)->name + "} -- ";
+    }
+}
 
 // Option 31
 // 1. Dijkstra's marked algorithm
@@ -13,9 +20,15 @@ int main(int argc, char* argv[]) {
 
         if (key == "0") {
             cout << "Testing Dijkstra's marked algorithm" << endl;
+
             GraphBuilder builder(7);
             builder.generateTestGraph1();
             Graph* g = builder.getResult();
+
+            list<Vertex*> shortestPath = Dijkstra(g, "A", "F");
+
+            cout << "Shortest path: ";
+            PrintVertexes(shortestPath);
             return 0;
         }
         if (key == "1") {

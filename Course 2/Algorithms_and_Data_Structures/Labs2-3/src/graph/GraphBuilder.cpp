@@ -1,7 +1,3 @@
-//
-// Created by nikita on 23.02.16.
-//
-
 #include "GraphBuilder.h"
 
 void GraphBuilder::generateTestGraph1() {
