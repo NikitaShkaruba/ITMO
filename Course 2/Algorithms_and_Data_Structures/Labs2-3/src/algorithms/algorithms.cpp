@@ -16,6 +16,8 @@ list<Vertex*> recoverShortestPath(map<Vertex *, Vertex *> shortestPaths, Vertex*
     result.reverse();
     return result;
 }
+
+// TODO: refactor is needed
 Vertex* getVertexWithMinDistance(map<Vertex*, int> distances, map<Vertex*, bool> marks) {
     int min = INT_MAX;
     Vertex* minVertex = nullptr;
@@ -30,7 +32,6 @@ Vertex* getVertexWithMinDistance(map<Vertex*, int> distances, map<Vertex*, bool>
     assert(minVertex != nullptr);
     return minVertex;
 }
-// TODO: refactor this
 list<Vertex*> Dijkstra(Graph* graph, string startName, string destinationName) {
     map<Vertex*, int> distances;
     map<Vertex*, bool> marked;
@@ -58,6 +59,34 @@ list<Vertex*> Dijkstra(Graph* graph, string startName, string destinationName) {
                 distances[(*edge)->destination] = distances[minVertex] + (*edge)->weight;
                 shortestPreviouses[(*edge)->destination] = (*edge)->source;
             }
+        }
+    }
+
+    return recoverShortestPath(shortestPreviouses, vertexes[destinationName]);
+}
+
+list<Vertex*> BellmanFord(Graph* graph, string startName, string destinationName) {
+    map<Vertex*, int> distances;
+    map<Vertex*, Vertex*> shortestPreviouses;
+    map<string, Vertex*> vertexes = graph->getAllVertexes();
+
+    // Preparation
+    for (map<string, Vertex*>::iterator it = vertexes.begin(); it != vertexes.end(); it++)
+        distances[it->second] = INT_MAX;
+    distances[vertexes[startName]] = 0;
+
+    for(int i = 0; i < vertexes.size()-1; i++) {
+        for(map<string, Vertex*>::iterator vertexIt = vertexes.begin(); vertexIt != vertexes.end(); vertexIt++) {
+            int s = distances[vertexIt->second];
+            if (s == INT_MAX) // int overflow may screw comparison up
+                continue;
+            else
+                for(list<Edge*>::iterator neighborhoodIt = vertexIt->second->neighborhood.begin(); neighborhoodIt != vertexIt->second->neighborhood.end(); neighborhoodIt++) {
+                    if (distances[(*neighborhoodIt)->destination] > distances[(*neighborhoodIt)->source] + (*neighborhoodIt)->weight) {
+                        distances[(*neighborhoodIt)->destination] = distances[(*neighborhoodIt)->source] + (*neighborhoodIt)->weight;
+                        shortestPreviouses[(*neighborhoodIt)->destination] = (*neighborhoodIt)->source;
+                    }
+                }
         }
     }
 

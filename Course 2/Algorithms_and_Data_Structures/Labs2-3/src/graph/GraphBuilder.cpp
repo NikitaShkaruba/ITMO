@@ -1,6 +1,9 @@
 #include "GraphBuilder.h"
 
-void GraphBuilder::generateTestGraph1() {
+void GraphBuilder::generateDijkstraTestGraph() {
+    delete constructed;
+    constructed = new Graph(7);
+
     addVertex("A"); // start
     addVertex("B");
     addVertex("C");
@@ -16,6 +19,24 @@ void GraphBuilder::generateTestGraph1() {
     addEdges("E", {{"A", 7}, {"C", 8}, {"D", 2}, {"G", 5}});
     addEdges("F", {{"D", 2}, {"G", 3}});
     addEdges("G", {{"E", 5}, {"D", 10}, {"F", 3}});
+}
+void GraphBuilder::generateBellmanFordTestGraph() {
+    delete constructed;
+    constructed = new Graph(6);
+
+    addVertex("A"); // start
+    addVertex("B");
+    addVertex("C");
+    addVertex("D");
+    addVertex("E");
+    addVertex("S"); // destination
+
+    addEdges("A", {{"C", 2}});
+    addEdges("B", {{"A", 1}});
+    addEdges("C", {{"B", -2}});
+    addEdges("D", {{"C", -1}, {"A", -4}});
+    addEdges("E", {{"D", 1}});
+    addEdges("S", {{"A", 10}, {"E", 8}});
 }
 
 void GraphBuilder::addEdges(string sourceName, vector<pair<string, int>> names) {
@@ -43,3 +64,4 @@ GraphBuilder::GraphBuilder(size_t graphSize, int minWeight, int maxWeight) {
     this->minWeight = minWeight;
     this->maxWeight = maxWeight;
 }
+

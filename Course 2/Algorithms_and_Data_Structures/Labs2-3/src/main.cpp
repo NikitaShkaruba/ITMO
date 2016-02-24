@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
             cout << "Testing Dijkstra's marked algorithm" << endl;
 
             GraphBuilder builder(7);
-            builder.generateTestGraph1();
+            builder.generateDijkstraTestGraph();
             Graph* g = builder.getResult();
 
             list<Vertex*> shortestPath = Dijkstra(g, "A", "F");
@@ -33,6 +33,17 @@ int main(int argc, char* argv[]) {
         }
         if (key == "1") {
             cout << "Testing Bellman-Ford algorithm" << endl;
+
+            GraphBuilder builder(6);
+            builder.generateBellmanFordTestGraph();
+            Graph* g = builder.getResult();
+
+            list<Vertex*> shortestPath = BellmanFord(g, "S", "B");
+
+            cout << "Shortest path: ";
+            PrintVertexes(shortestPath);
+            return 0;
+
             return 0;
         }
         if (key == "help") {
