@@ -2,9 +2,11 @@
 #include <limits.h>
 #include <assert.h>
 #include "../graph/Graph.h"
+#include "../graph/GraphBuilder.h"
 
 using namespace std;
 
+// Lab 2
 list<Vertex*> recoverShortestPath(map<Vertex *, Vertex *> shortestPaths, Vertex* last) {
     list<Vertex*> result;
 
@@ -54,10 +56,10 @@ list<Vertex*> Dijkstra(Graph* graph, string startName, string destinationName) {
             break;
 
         // Update dist value of the adjacent vertices of the picked vertex.
-        for (list<Edge*>::iterator edge = minVertex->neighborhood.begin(); edge != minVertex->neighborhood.end(); edge++) {
-            if (!marked[(*edge)->destination] && distances[minVertex] + (*edge)->weight < distances[(*edge)->destination]) {
-                distances[(*edge)->destination] = distances[minVertex] + (*edge)->weight;
-                shortestPreviouses[(*edge)->destination] = (*edge)->source;
+        for (list<Edge*>::iterator edgeIt = minVertex->neighborhood.begin(); edgeIt != minVertex->neighborhood.end(); edgeIt++) {
+            if (!marked[(*edgeIt)->destination] && distances[minVertex] + (*edgeIt)->weight < distances[(*edgeIt)->destination]) {
+                distances[(*edgeIt)->destination] = distances[minVertex] + (*edgeIt)->weight;
+                shortestPreviouses[(*edgeIt)->destination] = (*edgeIt)->source;
             }
         }
     }
@@ -92,3 +94,44 @@ list<Vertex*> BellmanFord(Graph* graph, string startName, string destinationName
 
     return recoverShortestPath(shortestPreviouses, vertexes[destinationName]);
 }
+
+// Lab 3
+Edge*getLightweightestEdge(list<Edge *> edges) {
+    Edge* min = edges.front();
+
+    for(list<Edge*>::iterator edgeIt = edges.begin(); edgeIt != edges.end(); edgeIt++)
+        if ((*edgeIt)->weight < min->weight)
+            min = *edgeIt;
+
+    return min;
+}
+Graph * Prim(Graph* graph, string startName) {
+    GraphBuilder builder(graph->getVertexAmount());
+    map<string, Vertex*> vertexes = graph->getAllVertexes();
+    list<Edge*> allAvailableEdges;
+
+    // preparations
+    builder.addVertex(vertexes[startName]->name);
+    for(list<Edge*>::iterator neighboursIt = vertexes[startName]->neighborhood.begin(); neighboursIt != vertexes[startName]->neighborhood.end(); neighboursIt++ )
+        allAvailableEdges.push_back(*neighboursIt);
+
+    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount()) {
+        map<string, Vertex*> currentVertexes = builder.getResult()->getAllVertexes();
+        Edge* lightweight = getLightweightestEdge(allAvailableEdges);
+
+        if (currentVertexes[lightweight->destination->name] == nullptr) {
+            builder.addVertex(lightweight->destination->name);
+
+            for(list<Edge*>::iterator neighboursIt = lightweight->destination->neighborhood.begin(); neighboursIt != lightweight->destination->neighborhood.end(); neighboursIt++ )
+                allAvailableEdges.push_back(*neighboursIt);
+            allAvailableEdges.remove_if([lightweight](Edge* e){ return e->source == lightweight->source && e->destination == lightweight->destination; });
+
+            builder.addEdge(lightweight->source->name, lightweight->destination->name, lightweight->weight);
+        } else
+            allAvailableEdges.remove(lightweight);
+    }
+
+    return builder.getResult();
+}
+
+// Kraskala

@@ -35,8 +35,10 @@ public:
     Vertex* getVertex(string content);
     Vertex* getRandomVertex();
     map<string, Vertex *> getAllVertexes();
-private:
+    size_t getVertexAmount();
+    size_t getEdgesAmount();
 
+private:
     map<string, Vertex> vertexes;
     size_t edgesCount;
 };

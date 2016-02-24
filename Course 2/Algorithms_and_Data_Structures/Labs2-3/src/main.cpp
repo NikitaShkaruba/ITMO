@@ -18,6 +18,26 @@ int main(int argc, char* argv[]) {
     if (argc == 2) {
         string key = argv[1];
 
+        if (key == "help") {
+            cout << "::HELP::" << endl;
+            cout << "Usage pattern: 'labs2-3 test 1'" << endl;
+            cout << "Available keys: " << endl;
+            cout << "custom - use custom graphs for algorithms" << endl;
+            cout << "\t not yet implemented :)";
+            cout << "test - use algorithms for predefined test cases";
+            cout << "\t 0 - Dijkstra's algorithm for finding shortest path algorithm" << endl;
+            cout << "\t 1 - Bellman-Ford algorithm for finding shortest path" << endl;
+            cout << "\t 2 - Prim's algorithm for finding min spanning tree" << endl;
+            cout << "\t 3 - Kruskal's algorithm for finding min spanning tree" << endl;
+            return 0;
+        }
+    }
+    if (argc == 3 && string(argv[1]) == "custom") {
+        string key = argv[2];
+    }
+    if (argc == 3 && string(argv[1]) == "test") {
+        string key = argv[2];
+
         if (key == "0") {
             cout << "Testing Dijkstra's marked algorithm" << endl;
 
@@ -43,14 +63,17 @@ int main(int argc, char* argv[]) {
             cout << "Shortest path: ";
             PrintVertexes(shortestPath);
             return 0;
-
-            return 0;
         }
-        if (key == "help") {
-            cout << "::HELP::" << endl;
-            cout << "Available keys: " << endl;
-            cout << "0 - Dijkstra's algorithm" << endl;
-            cout << "1 - Bellman-Ford algorithms" << endl;
+        if (key =="2") {
+            cout << "Testing Prima's algorithm" << endl;
+
+            GraphBuilder builder(6);
+            builder.generatePrimTestGraph();
+            Graph* g = builder.getResult();
+
+            Graph* minSpanningTree = Prim(g, "A");
+            cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << cout;
+            cout << "Edges count: " << minSpanningTree->getVertexAmount() << cout;
             return 0;
         }
     }

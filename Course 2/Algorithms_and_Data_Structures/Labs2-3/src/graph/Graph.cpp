@@ -16,3 +16,11 @@ map<string, Vertex*> Graph::getAllVertexes() {
 
     return result;
 }
+
+size_t Graph::getVertexAmount() {
+    return vertexes.size();
+}
+
+size_t Graph::getEdgesAmount() {
+    return edgesCount;
+}
