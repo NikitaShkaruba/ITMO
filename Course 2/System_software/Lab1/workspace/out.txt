@@ -29,4 +29,3 @@ Shkaruba 3 Physics 76.9
 Shkaruba 3 Physical_culture 93
 Shkaruba 3 Economics 75
 Shkaruba 3 System_programming_languages 97
- 3  97
