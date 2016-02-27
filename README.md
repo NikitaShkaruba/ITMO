@@ -3,17 +3,12 @@
 ## About
 Repository stores my code from various tasks from Software Engineering program
 
-## Programming languages 
-* C#
-* C++
-* Java
-* Assembler(Masm, Fasm)
+## Repository structure
+There are 3 different type of branches:
+* master - contains finished, properly working code i am not afraid to defend :)
+* {subject}-develop - these branches contains my developments(lol) code which you can use on your own risk
+* {something}-hotfix - little patch for master kinda branch
 
-## Subjects
-I did handle:
-* Programming basics (C#)
-* Algorithms and data structures (C#, C++)
-* Mathematical logic (C#)
-* Computational mathematics (C++, Java)
-* Programming of internet applications (Java)
-* System programming languages (Masm, Masm32, Fasm)
+## Foreword
+I am not afraid to objective criticism, so feel free to write/tell me about my mistakes.
+Have fun with my code :smirk:
