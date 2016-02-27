@@ -10,10 +10,11 @@ public:
     void generateDijkstraTestGraph();
     void generateBellmanFordTestGraph();
     void generatePrimTestGraph();
+    void generateKruskalTestGraph();
 
     void addVertex(string name);
-    void tryIncreaseEdgesCount(string sourceName, string destinationName);
     void addEdge(string sourceName, string destinationName, int weight);
+    void addUndirectedEdge(string vertexName1, string vertexName2, int weight);
     void addEdges(string sourceName, vector<pair<string, int>> names);
     size_t getCurrentGraphVertexesAmount();
     Graph* getResult();

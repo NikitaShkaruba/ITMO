@@ -20,11 +20,11 @@ int main(int argc, char* argv[]) {
 
         if (key == "help") {
             cout << "::HELP::" << endl;
-            cout << "Usage pattern: 'labs2-3 test 1'" << endl;
+            cout << "Usage pattern for dummies: 'labs2-3 test 1'" << endl;
             cout << "Available keys: " << endl;
             cout << "custom - use custom graphs for algorithms" << endl;
-            cout << "\t not yet implemented :)";
-            cout << "test - use algorithms for predefined test cases";
+            cout << "\t * - not yet implemented :)" << endl;
+            cout << "test - use algorithms for predefined test cases" << endl;
             cout << "\t 0 - Dijkstra's algorithm for finding shortest path algorithm" << endl;
             cout << "\t 1 - Bellman-Ford algorithm for finding shortest path" << endl;
             cout << "\t 2 - Prim's algorithm for finding min spanning tree" << endl;
@@ -72,8 +72,20 @@ int main(int argc, char* argv[]) {
             Graph* g = builder.getResult();
 
             Graph* minSpanningTree = Prim(g, "A");
-            cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << cout;
-            cout << "Edges count: " << minSpanningTree->getVertexAmount() << cout;
+            cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << endl;
+            cout << "Edges count: " << minSpanningTree->getVertexAmount() << endl;
+            return 0;
+        }
+        if (key == "3") {
+            cout << "Testing Kruskal's algorithm" << endl;
+
+            GraphBuilder builder(7);
+            builder.generateKruskalTestGraph();
+            Graph* g = builder.getResult();
+
+            Graph* minSpanningTree = Kruskal(g);
+            cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << endl;
+            cout << "Edges count: " << minSpanningTree->getVertexAmount() << endl;
             return 0;
         }
     }

@@ -112,26 +112,87 @@ Graph * Prim(Graph* graph, string startName) {
 
     // preparations
     builder.addVertex(vertexes[startName]->name);
-    for(list<Edge*>::iterator neighboursIt = vertexes[startName]->neighborhood.begin(); neighboursIt != vertexes[startName]->neighborhood.end(); neighboursIt++ )
-        allAvailableEdges.push_back(*neighboursIt);
+    for(list<Edge*>::iterator edgeIt = vertexes[startName]->neighborhood.begin(); edgeIt != vertexes[startName]->neighborhood.end(); edgeIt++ )
+        allAvailableEdges.push_back(*edgeIt);
 
     while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount()) {
         map<string, Vertex*> currentVertexes = builder.getResult()->getAllVertexes();
         Edge* lightweight = getLightweightestEdge(allAvailableEdges);
 
-        if (currentVertexes[lightweight->destination->name] == nullptr) {
+        if (currentVertexes.count(lightweight->destination->name) == 0) {
             builder.addVertex(lightweight->destination->name);
-
             for(list<Edge*>::iterator neighboursIt = lightweight->destination->neighborhood.begin(); neighboursIt != lightweight->destination->neighborhood.end(); neighboursIt++ )
                 allAvailableEdges.push_back(*neighboursIt);
-            allAvailableEdges.remove_if([lightweight](Edge* e){ return e->source == lightweight->source && e->destination == lightweight->destination; });
 
-            builder.addEdge(lightweight->source->name, lightweight->destination->name, lightweight->weight);
-        } else
-            allAvailableEdges.remove(lightweight);
+
+            builder.addUndirectedEdge(lightweight->source->name, lightweight->destination->name, lightweight->weight);
+        }
+
+        allAvailableEdges.remove(lightweight);
+        allAvailableEdges.remove(lightweight->destination->getDuplicateEdge(lightweight));
     }
 
     return builder.getResult();
 }
 
-// Kraskala
+Edge* findMinEdge(list<Edge*> edges) {
+    Edge* min = *edges.begin();
+
+    for (list<Edge *>::iterator eIt = edges.begin(); eIt != edges.end(); eIt++)
+        if ((*eIt)->weight < min->weight)
+            min = (*eIt);
+
+    return min;
+}
+void removeLoops(list<Edge*>& edges) {
+    for(list<Edge*>::iterator eIt = edges.begin(); eIt != edges.end(); eIt++) {
+        if ((*eIt)->destination == (*eIt)->source)
+            edges.remove(*eIt);
+    }
+}
+void removeDoubles(list<Edge*> &edges) {
+    for(list<Edge*>::iterator eIt = edges.begin(); eIt != edges.end(); eIt++) {
+        int currentEdgeCount = 0;
+
+        for (list<Edge*>::iterator eIt2 = edges.begin(); eIt2 != edges.end(); eIt2++)
+            if ((*eIt)->equals(**eIt2) && ++currentEdgeCount > 2) // 2 because of unordered implementation
+                edges.remove(*eIt2);
+    }
+}
+Graph* Kruskal(Graph* graph) {
+    GraphBuilder builder(graph->getVertexAmount());
+    map<string, Vertex*> vertexes = graph->getAllVertexes();
+    list<Edge*> allAvailableEdges;
+
+    // sort it by weight
+    for(map<string, Vertex*>::iterator vIt = vertexes.begin(); vIt != vertexes.end(); vIt++) {
+        for(list<Edge*>::iterator eIt = (*vIt).second->neighborhood.begin(); eIt != (*vIt).second->neighborhood.end(); eIt++) {
+            allAvailableEdges.push_back((*eIt));
+        }
+    }
+    removeLoops(allAvailableEdges);
+    removeDoubles(allAvailableEdges);
+
+    // Now add vertisies and edge between them from left to right of edge list if they add new vertices
+    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount()) {
+        Graph* constructedGraph = builder.getResult();
+        Edge* min = findMinEdge(allAvailableEdges);
+
+        if (!constructedGraph->haveCycle(min)) {
+            Graph* currentGraph = builder.getResult();
+
+            if (currentGraph->getVertex(min->source->name) == nullptr)
+                builder.addVertex(min->source->name);
+            if (currentGraph->getVertex(min->destination->name) == nullptr)
+                builder.addVertex(min->destination->name);
+
+            builder.addUndirectedEdge(min->source->name, min->destination->name, min->weight);
+        }
+
+        allAvailableEdges.remove(min);
+        allAvailableEdges.remove(min->destination->getDuplicateEdge(min));
+
+    }
+
+    return builder.getResult();
+}

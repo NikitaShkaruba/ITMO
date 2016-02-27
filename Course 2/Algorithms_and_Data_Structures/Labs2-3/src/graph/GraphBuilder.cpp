@@ -56,35 +56,40 @@ void GraphBuilder::generatePrimTestGraph() {
     addEdges("E", {{"C", 5}, {"D", 6}, {"F", 2}});
     addEdges("F", {{"A", 6}, {"D", 7}, {"E", 2}});
 }
+void GraphBuilder::generateKruskalTestGraph() {
+    delete constructed;
+    constructed = new Graph(7);
 
-void GraphBuilder::tryIncreaseEdgesCount(string sourceName, string destinationName) {
+    addVertex("A"); // start
+    addVertex("B");
+    addVertex("C");
+    addVertex("D");
+    addVertex("E");
+    addVertex("F"); // destination
+    addVertex("G"); // destination
+
+    addEdges("A", {{"B", 2}, {"C", 3}, {"D", 3}});
+    addEdges("B", {{"A", 2}, {"C", 4}, {"E", 3}});
+    addEdges("C", {{"A", 3}, {"B", 4}, {"D", 5}, {"E", 1}});
+    addEdges("D", {{"A", 3}, {"C", 5}, {"F", 7}});
+    addEdges("E", {{"B", 3}, {"C", 1}, {"F", 8}});
+    addEdges("F", {{"D", 7}, {"E", 8}, {"G", 9}});
+    addEdges("G", {{"F", 9}});
 }
+
 void GraphBuilder::addEdge(string sourceName, string destinationName, int weight) {
     Vertex* source = &constructed->vertexes[sourceName];
     Vertex* destination = &constructed->vertexes[destinationName];
     map<string, Vertex*> vertexes = constructed->getAllVertexes();
 
     source->neighborhood.push_back(new Edge(source, destination, weight));
-
-    // undirected graph - graph with tho different edges(!) in my implementation, and i do need to increae edges count somehow :/
-    for (list<Edge*>::iterator it = vertexes[destinationName]->neighborhood.begin(); it != vertexes[destinationName]->neighborhood.end(); it++)
-        if ((*it)->destination == vertexes[sourceName])
-            return;
-    constructed->edgesCount++;
 }
 void GraphBuilder::addEdges(string sourceName, vector<pair<string, int>> names) {
     Vertex* source = &constructed->vertexes[sourceName];
     map<string, Vertex*> vertexes = constructed->getAllVertexes();
 
-    for (int i = 0; i < names.size(); ++i) {
-        source->neighborhood.push_back(new Edge(source, &constructed->vertexes[names[i].first], names[i].second));
-
-        // undirected graph - graph with tho different edges(!) in my implementation, and i do need to increae edges count somehow :/
-        for (list<Edge*>::iterator it = vertexes[names.at(i).first]->neighborhood.begin(); it != vertexes[names.at(i).first]->neighborhood.end(); it++)
-            if ((*it)->destination == vertexes[sourceName])
-                return;
-        constructed->edgesCount++;
-    }
+    for (int i = 0; i < names.size(); ++i)
+        addEdge(sourceName, names[i].first, names[i].second);
 }
 
 void GraphBuilder::addVertex(string name) {
@@ -110,3 +115,7 @@ size_t GraphBuilder::getCurrentGraphVertexesAmount() {
     return constructed->vertexes.size();
 }
 
+void GraphBuilder::addUndirectedEdge(string vertexName1, string vertexName2, int weight) {
+    this->addEdge(vertexName1, vertexName2, weight);
+    this->addEdge(vertexName2, vertexName1, weight);
+}
