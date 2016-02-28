@@ -44,7 +44,7 @@ void customCopy(string inPath, string outPath) {
 }
 
 void posixCopy(string inPath, string outPath) {
-    char* buffer = new char[2056]; // 256 byte for a null-terminator
+    char* buffer = new char[2057]; // 2057 byte is for a null-terminator
     ssize_t readAmount = 0;
     size_t head = 0; // point to the current char to read
     size_t step = 2056;
@@ -60,11 +60,11 @@ void posixCopy(string inPath, string outPath) {
         readAmount = pread(inFiledes, buffer, step, head);
         buffer[readAmount] = 0; // pread doesn't append string null-terminator, so, let's do it manually
         write(outFiledes, buffer, readAmount);
-        cout << buffer;
 
         head += step;
     } while(readAmount == step);
 
+    delete[] buffer;
     close(inFiledes);
     close(outFiledes);
 }
