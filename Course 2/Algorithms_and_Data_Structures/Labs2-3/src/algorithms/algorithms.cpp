@@ -20,7 +20,7 @@ list<Vertex*> recoverShortestPath(map<Vertex *, Vertex *> shortestPaths, Vertex*
 }
 
 // TODO: refactor is needed
-Vertex* getVertexWithMinDistance(map<Vertex*, int> distances, map<Vertex*, bool> marks) {
+Vertex* getVertexWithMinDistance(map<Vertex*, int>& distances, map<Vertex*, bool>& marks) {
     int min = INT_MAX;
     Vertex* minVertex = nullptr;
 

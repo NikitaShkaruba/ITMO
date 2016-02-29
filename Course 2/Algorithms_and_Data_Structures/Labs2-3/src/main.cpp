@@ -14,6 +14,8 @@ void PrintVertexes(list<Vertex *> path) {
 // Option 31
 // 1. Dijkstra's marked algorithm
 // 2. Bellman–Ford algorithm
+// 3. Prim's algorithm
+// 4. Kruskal's algorithm
 int main(int argc, char* argv[]) {
     if (argc == 2) {
         string key = argv[1];
@@ -32,8 +34,35 @@ int main(int argc, char* argv[]) {
             return 0;
         }
     }
-    if (argc == 3 && string(argv[1]) == "custom") {
+    if (argc == 7 && string(argv[1]) == "custom") {
         string key = argv[2];
+
+        size_t vertexCount = (size_t) stoi(argv[3]);
+        size_t edgesCount = (size_t) stoi(argv[4]);
+        int minEdgeWeight = stoi(argv[5]);
+        int maxEdgeWeight = stoi(argv[6]);
+
+        GraphBuilder builder(vertexCount);
+        builder.generateRandomUndirectedGraph(vertexCount, edgesCount, minEdgeWeight, maxEdgeWeight);
+        Graph* customGraph = builder.getResult();
+
+        if (key == "0") {
+            cout << "Testing Dijkstra's marked algorithm" << endl;
+
+            list<Vertex*> shortestPath = Dijkstra(customGraph, customGraph->getRandomVertex()->name, customGraph->getRandomVertex()->name);
+
+            cout << "Shortest path: ";
+            PrintVertexes(shortestPath);
+            return 0;
+        }
+        if (key == "1") {
+            cout << "Testing Bellman-Ford algorithm" << endl;
+
+            list<Vertex*> shortestPath = BellmanFord(customGraph,customGraph->getRandomVertex()->name, customGraph->getRandomVertex()->name);
+            cout << "Shortest path: ";
+            PrintVertexes(shortestPath);
+            return 0;
+        }
     }
     if (argc == 3 && string(argv[1]) == "test") {
         string key = argv[2];

@@ -55,3 +55,10 @@ bool Graph::DepthFirstSearch(string startVertexName, string destinationName) {
 bool Graph::haveCycle(Edge* bridge) {
     return DepthFirstSearch(bridge->source->name, bridge->destination->name);
 }
+
+Vertex *Graph::getRandomVertex() {
+    map<string, Vertex>::iterator it = vertexes.begin();
+    std::advance( it, rand()%vertexes.size());
+
+    return &it->second;
+}

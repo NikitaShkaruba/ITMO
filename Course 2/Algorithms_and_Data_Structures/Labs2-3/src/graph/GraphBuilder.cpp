@@ -1,5 +1,56 @@
+#include <assert.h>
 #include "GraphBuilder.h"
 
+void GraphBuilder::generateRandomDirectedGraph(size_t vertexCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
+    delete constructed;
+    constructed = new Graph(vertexCount);
+
+    // You shall not pass, bitch
+    assert(minEdgeWeight < maxEdgeWeight);
+    assert(vertexCount <= edgesCount);
+
+    addVertex("v0");
+
+    for (size_t i = 0; i < vertexCount-1; ++i) {
+        Vertex* randomVertex = constructed->getRandomVertex();
+
+        string newVertexName = "v" + to_string(i);
+        addVertex(newVertexName);
+        addEdge(randomVertex->name, newVertexName, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
+    }
+
+    for (size_t i = vertexCount; i < edgesCount; i++) {
+        Vertex* v1 = constructed->getRandomVertex();
+        Vertex* v2 = constructed->getRandomVertex();
+
+        addEdge(v1->name, v2->name, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
+    }
+}
+void GraphBuilder::generateRandomUndirectedGraph(size_t vertexCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
+    delete constructed;
+    constructed = new Graph(vertexCount);
+
+    // You shall not pass, bitch
+    assert(minEdgeWeight < maxEdgeWeight);
+    assert(vertexCount <= edgesCount);
+
+    addVertex("v0");
+
+    for (size_t i = 0; i < vertexCount-1; ++i) {
+        Vertex* randomVertex = constructed->getRandomVertex();
+
+        string newVertexName = "v" + to_string(i);
+        addVertex(newVertexName);
+        addUndirectedEdge(randomVertex->name, newVertexName, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
+    }
+
+    for (size_t i = vertexCount; i < edgesCount; i++) {
+        Vertex* v1 = constructed->getRandomVertex();
+        Vertex* v2 = constructed->getRandomVertex();
+
+        addUndirectedEdge(v1->name, v2->name, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
+    }
+}
 void GraphBuilder::generateDijkstraTestGraph() {
     delete constructed;
     constructed = new Graph(7);
@@ -91,31 +142,22 @@ void GraphBuilder::addEdges(string sourceName, vector<pair<string, int>> names) 
     for (int i = 0; i < names.size(); ++i)
         addEdge(sourceName, names[i].first, names[i].second);
 }
-
 void GraphBuilder::addVertex(string name) {
     // pair<string, Vertex> pr(name, Vertex(name));
     constructed->vertexes.emplace(string(name), Vertex(name));
+}
+Graph* GraphBuilder::getResult() {
+    return constructed;
 }
 
 GraphBuilder::GraphBuilder(size_t graphSize) {
     constructed = new Graph(graphSize);
 }
-
-Graph* GraphBuilder::getResult() {
-    return constructed;
-}
-
-GraphBuilder::GraphBuilder(size_t graphSize, int minWeight, int maxWeight) {
-    constructed = new Graph(graphSize);
-    this->minWeight = minWeight;
-    this->maxWeight = maxWeight;
-}
-
 size_t GraphBuilder::getCurrentGraphVertexesAmount() {
     return constructed->vertexes.size();
 }
-
 void GraphBuilder::addUndirectedEdge(string vertexName1, string vertexName2, int weight) {
     this->addEdge(vertexName1, vertexName2, weight);
     this->addEdge(vertexName2, vertexName1, weight);
 }
+

@@ -39,6 +39,7 @@ public:
     Graph(size_t vertexCount);
 
     bool haveCycle(Edge* edge);
+    Vertex* getRandomVertex();
     Vertex* getVertex(string content);
     map<string, Vertex *> getAllVertexes();
     size_t getVertexAmount();

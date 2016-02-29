@@ -5,8 +5,9 @@
 class GraphBuilder {
 public:
     GraphBuilder(size_t graphSize);
-    GraphBuilder(size_t graphSize, int minWeight, int maxWeight);
 
+    void generateRandomDirectedGraph(size_t vertexCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
+    void generateRandomUndirectedGraph(size_t vertexCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
     void generateDijkstraTestGraph();
     void generateBellmanFordTestGraph();
     void generatePrimTestGraph();
@@ -16,6 +17,7 @@ public:
     void addEdge(string sourceName, string destinationName, int weight);
     void addUndirectedEdge(string vertexName1, string vertexName2, int weight);
     void addEdges(string sourceName, vector<pair<string, int>> names);
+
     size_t getCurrentGraphVertexesAmount();
     Graph* getResult();
 
