@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab6 input page</title>
+
+    <style type="text/css">
+        table, th, td {
+            background-color: #ddeee9;
+            text-align: left;
+        }
+        input {
+        <!-- add allignment -->
+        }
+    </style>
+</head>
+
+<body>
+<form method="get" action="result.php">
+    <table id="main">
+        <tr>
+
+            <td>
+                <table>
+                    <tr>
+                        <th>Фамилия</th>
+                        <th>Группа</th>
+                        <th>Вариант</th>
+                    </tr>
+                    <tr>
+                        <td>Шкаруба Никита Евгеньевич</td>
+                        <td>P3218</td>
+                        <td>819</td>
+                    </tr>
+                </table>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td>
+                <img src="resources/images/plot.png"/>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td>
+                <table>
+                    <tr>
+                        <td>x:</td>
+                        <td>
+                            <input type="radio" name="x" value="-3">-3<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="-2">-2<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="-1">-1<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="0">0<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="1">1<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="2">2<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="3">3<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="4">4<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="x" value="5">5<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>y:</td>
+                        <td>
+                            <input type="number" name="y" min="-3" max="3" size="3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>r:</td>
+                        <td>
+                            <input type="radio" name="r" value="1">1
+                        </td>
+                        <td>
+                            <input type="radio" name="r" value="1.5">1.5<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="r" value="2">2<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="r" value="2.5">2.5<br>
+                        </td>
+                        <td>
+                            <input type="radio" name="r" value="3">3<br>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" value="Check point" />
+            </td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>
