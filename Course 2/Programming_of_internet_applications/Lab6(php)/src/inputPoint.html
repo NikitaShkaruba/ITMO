@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Lab6 input page</title>
 
     <style type="text/css">
-        table, th, td {
+        table {
             background-color: #ddeee9;
             text-align: left;
         }
-        input {
-        <!-- add allignment -->
+        .indented {
+            margin-top: 2%;
+        }
+
+        input[type = "submit"] {
+            border-color: chartreuse;
+        }
+        input[type = "reset"] {
+            border-color: #ff4411;
+        }
+
+        #header {
+            font-size: large;
+            font-style: italic;
+            color: black;
+        }
+
+        .allmightyY {
+            color: #a5164a;
         }
     </style>
 </head>
@@ -22,7 +36,7 @@
         <tr>
 
             <td>
-                <table>
+                <table id="header">
                     <tr>
                         <th>Фамилия</th>
                         <th>Группа</th>
@@ -47,7 +61,7 @@
         <tr>
 
             <td>
-                <table>
+                <table id="selections">
                     <tr>
                         <td>x:</td>
                         <td>
@@ -80,8 +94,8 @@
                     </tr>
                     <tr>
                         <td>y:</td>
-                        <td>
-                            <input type="number" name="y" min="-3" max="3" size="3">
+                        <td colspan="3">
+                            <input class="allmightyY" type="number" name="y" min="-3" max="3">
                         </td>
                     </tr>
                     <tr>
@@ -107,12 +121,12 @@
         </tr>
 
         <tr>
-            <td>
-                <input type="submit" value="Check point" />
+            <td class="indented">
+                <input class="indented" type="submit" value="Check point" />
+                <input class="indented" type="reset" value="reset" />
             </td>
         </tr>
 
     </table>
 </form>
 </body>
-</html>

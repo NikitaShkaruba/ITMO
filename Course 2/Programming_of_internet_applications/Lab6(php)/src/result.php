@@ -1,65 +1,87 @@
 <head>
     <title>Result</title>
+    <style type="text/css">
+        td, th {
+            border: 1px solid #CCC;
+        }
+        input[type = "submit"] {
+            border-color: #ff4411;
+            margin-top: 1%;
+        }
+    </style>
 </head>
 
 <body>
 <?php
-function isValid($x, $y, $r) {
+function isValidInput() {
+    if (isset($_GET['x']) && isset($_GET['y']) && isset($_GET['r'])) {
+        $x = $_GET['x'];
+        $y = $_GET['y'];
+        $r = $_GET['r'];
+
+        if (is_numeric($x) && is_numeric($y) && is_numeric($r))
+            if ($x >= -3 & $x <= 5 && $y >= -3 && $y <= 3 && $r >= 1 && $r <= 3)
+                return true;
+    }
+
+    return false;
+}
+function isPointInsideShape($x, $y, $r) {
     if ($x >= 0) {
         if ($y >= 0) {
-            if ($x < $r && $y < $r)
-                return "true";
+            if ($x <= $r && $y <= $r)
+                return true;
             else
-                return "false";
-        } else {
+                return false;
+        }
+        if ($y < 0) {
             if ($y >= -$r +$x)
-                return "true";
+                return true;
             else
-                return "false";
+                return false;
         }
     } else {
         if ($y >= 0) {
             if ($x*$x + $y*$y < $r*$r) {
-                return "true";
+                return true;
             } else
-                return "false";
-        } else {
-            return "false";
+                return false;
+        } 
+        if ($y < 0) {
+            return false;
         }
     }
 }
 
-if (isset($_GET['x']) && isset($_GET['y']) && isset($_GET['r'])) {
-    $x = $_GET["x"];
-    $y = $_GET["y"];
-    $r = $_GET["r"];
-
+if (isValidInput()) {
     $startupTime = new DateTime();
+    $x = $_GET['x'];
+    $y = $_GET['y'];
+    $r = $_GET['r'];
 
-    ?>
+echo "
     <table>
         <tr>
-            <th>inputed x: </th>
+            <th>Inputed x: </th>
             <td>$x</td>
         </tr>
         <tr>
-            <th>inputed y: </th>
+            <th>Inputed y: </th>
             <td>$y</td>
         </tr>
         <tr>
-            <th>inputed r: </th>
+            <th>Inputed r: </th>
             <td>$r</td>
         </tr>
-<?php echo "
         <tr>
-            <th>is point in shape? </th>
-            <td>" . isValid($x, $y, $r) . "</td>
+            <th>Is point in shape? </th>
+            <td>" . (isPointInsideShape($x, $y, $r)? "true" : "false") . "</td>
         </tr>
         <tr>
             <td> script startup time is: " . $startupTime->format('Y-m-d H:i:s') . "</td>
         </tr>
         <tr>
-            <td>script work time is: " . $startupTime->diff(new DateTime())->format('%s seconds') . " </td>
+            <td>script work time is around: " . $startupTime->diff(new DateTime())->format('%s seconds') . " </td>
         </tr>
     </table>
     ";
@@ -68,8 +90,7 @@ if (isset($_GET['x']) && isset($_GET['y']) && isset($_GET['r'])) {
 }
 ?>
 
-<form action="InputPoint.html" method="get">
+<form action="inputPoint.html" method="get">
     <input type="submit" value="Back" />
 </form>
 </body>
-</html>
