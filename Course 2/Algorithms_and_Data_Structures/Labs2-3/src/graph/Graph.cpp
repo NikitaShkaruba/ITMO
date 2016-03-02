@@ -1,19 +1,15 @@
 #include <iostream>
 #include "Graph.h"
 
-Vertex* Graph::getVertex(string content) {
-    return (vertexes.count(content) != 0)? &vertexes[content] : nullptr;
+Vertex* Graph::getVertex(int id) {
+    return vertexes.empty()? vertexes[id] : nullptr;
 }
 
-Graph::Graph(size_t vertexCount) {
+vector<Vertex*> Graph::getAllVertexes() {
+    vector<Vertex*> result;
 
-}
-
-map<string, Vertex*> Graph::getAllVertexes() {
-    map<string, Vertex*> result;
-
-    for (map<string, Vertex>::iterator it = vertexes.begin(); it != vertexes.end(); it++)
-        result.insert(pair<string, Vertex*>(it->first, &it->second));
+    for (auto it = vertexes.begin(); it != vertexes.end(); it++)
+        result.push_back(&*it);
 
     return result;
 }
@@ -21,7 +17,6 @@ map<string, Vertex*> Graph::getAllVertexes() {
 size_t Graph::getVertexAmount() {
     return vertexes.size();
 }
-
 size_t Graph::getEdgesAmount() {
     // TODO: remove this plug, add directional\undirectional logic
     return 2;
@@ -35,7 +30,7 @@ Edge* Vertex::getDuplicateEdge(Edge* duplicate) const {
     throw "WTF";
 }
 
-bool Graph::DepthFirstSearch(string startVertexName, string destinationName) {
+bool Graph::DepthFirstSearch(Vertex* start, Vertex* destination) {
     static int plug = 0;
     cout << "Ultimate plug is being used, beware!!!!" << endl;
 
@@ -52,13 +47,18 @@ bool Graph::DepthFirstSearch(string startVertexName, string destinationName) {
         case 9: return false;
     }
 }
-bool Graph::haveCycle(Edge* bridge) {
-    return DepthFirstSearch(bridge->source->name, bridge->destination->name);
-}
 
 Vertex *Graph::getRandomVertex() {
-    map<string, Vertex>::iterator it = vertexes.begin();
+    vector<Vertex>::iterator it = vertexes.begin();
     std::advance( it, rand()%vertexes.size());
 
-    return &it->second;
+    return &*it;
+}
+
+Graph::Graph(int vertexCount) {
+    vertexes.reserve(vertexCount);
+}
+
+bool Graph::haveCycle(Edge edge) {
+    return DepthFirstSearch(edge.source, edge.destination);
 }

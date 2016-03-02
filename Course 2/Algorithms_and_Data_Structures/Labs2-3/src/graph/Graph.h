@@ -4,15 +4,16 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <bits/unordered_map.h>
 
 using namespace std;
 struct Edge; // Is needed for self-include purpose
 
 struct Vertex {
-    Vertex(string name) : name(name) {}
-    Vertex() {}
+    Vertex(int id) : id(id) {}
 
-    const string name;
+public:
+    const int id;
     list<Edge*> neighborhood;
 
     Edge* getDuplicateEdge(Edge *pEdge) const;
@@ -24,8 +25,14 @@ struct Edge {
         this->destination = v2;
     }
 
-    bool equals(Edge edge) {
-        return edge.destination == this->destination && edge.source == this->source && edge.weight == this->weight;
+    bool isOpposite(const Edge& other) const {
+        return other.destination == this->source && other.source == this->destination && other.weight == this->weight;
+    }
+    bool equals(const Edge& other) const {
+        return other.destination == this->destination && other.source == this->source && other.weight == this->weight;
+    }
+    bool operator<(const Edge& other) const {
+        return this->weight < other.weight;
     }
 
     Vertex* source;
@@ -36,19 +43,19 @@ struct Edge {
 class Graph {
     friend class GraphBuilder;
 public:
-    Graph(size_t vertexCount);
-
-    bool haveCycle(Edge* edge);
+    bool haveCycle(Edge edge);
     Vertex* getRandomVertex();
-    Vertex* getVertex(string content);
-    map<string, Vertex *> getAllVertexes();
+    Vertex* getVertex(int id);
+    vector<Vertex*> getAllVertexes();
+
     size_t getVertexAmount();
     size_t getEdgesAmount();
 
 private:
-    bool DepthFirstSearch(string startVertexName, string destinationName);
+    Graph(int vertexCount);
+    bool DepthFirstSearch(Vertex* start, Vertex* destination);
 
-    map<string, Vertex> vertexes;
-    size_t edgesCount;
+    vector<Vertex> vertexes;
+    size_t edgeCount;
 };
 

@@ -13,18 +13,16 @@ public:
     void generatePrimTestGraph();
     void generateKruskalTestGraph();
 
-    void addVertex(string name);
-    void addEdge(string sourceName, string destinationName, int weight);
-    void addUndirectedEdge(string vertexName1, string vertexName2, int weight);
-    void addEdges(string sourceName, vector<pair<string, int>> names);
+    void addVertex(int id);
+    void addEdge(int startId, int destinationId, int weight);
+    void addUndirectedEdge(int firstId, int secondId, int weight);
+    // TODO: Consider Deletion of: void addEdges(int sourceId, vector<int> ids);
 
     size_t getCurrentGraphVertexesAmount();
     Graph* getResult();
 
 private:
     Graph* constructed;
-    int minWeight;
-    int maxWeight;
 };
 
 

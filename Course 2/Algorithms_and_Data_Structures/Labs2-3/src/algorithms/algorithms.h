@@ -4,9 +4,9 @@
 
 using namespace std;
 
-list<Vertex*> Dijkstra(Graph* graph, string startName, string destinationName);
-list<Vertex*> BellmanFord(Graph* graph, string startName, string destinationName);
+list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId);
+list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId);
 
-Graph* Prim(Graph* graph, string startName);
+Graph* Prim(Graph* graph, int startId);
 Graph* Kruskal(Graph* graph);
 

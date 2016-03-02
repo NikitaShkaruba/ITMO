@@ -7,7 +7,7 @@ using namespace std;
 
 void PrintVertexes(list<Vertex *> path) {
     for (list<Vertex*>::iterator i = path.begin(); i != path.end(); ++i) {
-        cout << "{" + (*i)->name + "} -- ";
+        cout << "{" + to_string((*i)->id) + "} -- ";
     }
 }
 
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
         if (key == "0") {
             cout << "Testing Dijkstra's marked algorithm" << endl;
 
-            list<Vertex*> shortestPath = Dijkstra(customGraph, customGraph->getRandomVertex()->name, customGraph->getRandomVertex()->name);
+            list<Vertex*> shortestPath = Dijkstra(customGraph, customGraph->getRandomVertex()->id, customGraph->getRandomVertex()->id);
 
             cout << "Shortest path: ";
             PrintVertexes(shortestPath);
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
         if (key == "1") {
             cout << "Testing Bellman-Ford algorithm" << endl;
 
-            list<Vertex*> shortestPath = BellmanFord(customGraph,customGraph->getRandomVertex()->name, customGraph->getRandomVertex()->name);
+            list<Vertex*> shortestPath = BellmanFord(customGraph,customGraph->getRandomVertex()->id, customGraph->getRandomVertex()->id);
             cout << "Shortest path: ";
             PrintVertexes(shortestPath);
             return 0;
@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
             builder.generateDijkstraTestGraph();
             Graph* g = builder.getResult();
 
-            list<Vertex*> shortestPath = Dijkstra(g, "A", "F");
+            list<Vertex*> shortestPath = Dijkstra(g, 0, 5);
 
             cout << "Shortest path: ";
             PrintVertexes(shortestPath);
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
             builder.generateBellmanFordTestGraph();
             Graph* g = builder.getResult();
 
-            list<Vertex*> shortestPath = BellmanFord(g, "S", "B");
+            list<Vertex*> shortestPath = BellmanFord(g, 5, 1);
 
             cout << "Shortest path: ";
             PrintVertexes(shortestPath);
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
             builder.generatePrimTestGraph();
             Graph* g = builder.getResult();
 
-            Graph* minSpanningTree = Prim(g, "A");
+            Graph* minSpanningTree = Prim(g, 0);
             cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << endl;
             cout << "Edges count: " << minSpanningTree->getVertexAmount() << endl;
             return 0;
