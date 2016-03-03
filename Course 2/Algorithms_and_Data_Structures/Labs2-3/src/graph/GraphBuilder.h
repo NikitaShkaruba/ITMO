@@ -16,12 +16,13 @@ public:
     void addVertex(int id);
     void addEdge(int startId, int destinationId, int weight);
     void addUndirectedEdge(int firstId, int secondId, int weight);
-    // TODO: Consider Deletion of: void addEdges(int sourceId, vector<int> ids);
 
     size_t getCurrentGraphVertexesAmount();
     Graph* getResult();
 
 private:
+    void addEdges(int sourceId, vector<pair<int, int>> ids);
+
     Graph* constructed;
 };
 

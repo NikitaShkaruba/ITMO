@@ -2,7 +2,7 @@
 #include "Graph.h"
 
 Vertex* Graph::getVertex(int id) {
-    return vertexes.empty()? vertexes[id] : nullptr;
+    return (vertexes.empty())? &vertexes[id] : nullptr;
 }
 
 vector<Vertex*> Graph::getAllVertexes() {

@@ -1,8 +1,6 @@
-#include <list>
-#include <limits.h>
 #include <assert.h>
-#include <bits/stl_queue.h>
-#include <bits/stl_set.h>
+#include <set>
+#include <limits.h>
 #include "../graph/Graph.h"
 #include "../graph/GraphBuilder.h"
 
@@ -13,9 +11,8 @@ list<Vertex*> recoverShortestPath(vector<Vertex*> shortestPaths, Vertex* last) {
     list<Vertex*> result;
 
     result.push_back(last);
-    for (Vertex* i = shortestPaths[last->id]; i != nullptr ; i = shortestPaths[i->id]) {
+    for (Vertex* i = shortestPaths[last->id]; i != nullptr ; i = shortestPaths[i->id])
         result.push_back(i);
-    }
 
     result.reverse();
     return result;
@@ -25,23 +22,20 @@ int getVertexWithMinDistance(vector<int>& distances, vector<bool>& marks) {
     int min = INT_MAX;
 
     for (int i = 0; i < distances.size(); i++)
-        if (marks[i] == false && distances[i] <= min)
+        if (!marks[i] && distances[i] <= min)
             min = distances[i];
 
     assert(min != INT_MAX);
     return min;
 }
 list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
-    vector<int> distances;
-    vector<bool> marked;
-    vector<Vertex*> shortestPreviouses;
     vector<Vertex*> vertexes = graph->getAllVertexes();
 
+    vector<int> distances(graph->getVertexAmount(), INT_MAX);
+    vector<bool> marked(graph->getVertexAmount(), false);
+    vector<Vertex*> shortestPreviouses(graph->getVertexAmount(), nullptr);
+
     // Preparations
-    for (int i = 0; i < graph->getVertexAmount(); i++) {
-        distances.push_back(INT_MAX);
-        marked.push_back(false);
-    }
     distances[startId] = 0;
 
     // Find shortest path for all vertices
@@ -56,7 +50,8 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
         for (list<Edge*>::iterator edgeIt = vertexes[minIndex]->neighborhood.begin(); edgeIt != vertexes[minIndex]->neighborhood.end(); edgeIt++) {
             if (!marked[(*edgeIt)->destination->id] && distances[minIndex] + (*edgeIt)->weight < distances[(*edgeIt)->destination->id]) {
                 distances[(*edgeIt)->destination->id] = distances[minIndex] + (*edgeIt)->weight;
-                shortestPreviouses[(*edgeIt)->destination->] = (*edgeIt)->source;
+                // TODO: gix pointer assignent
+                shortestPreviouses[(*edgeIt)->destination->id] = (*edgeIt)->source;
             }
         }
     }
@@ -65,13 +60,11 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
 }
 
 list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
-    vector<int> distances;
-    vector<Vertex*> shortestPreviouses;
     vector<Vertex*> vertexes = graph->getAllVertexes();
 
     // Preparation
-    for (int i = 0; i < graph->getVertexAmount(); i++)
-        distances[i] = INT_MAX;
+    vector<int> distances(graph->getVertexAmount(), INT_MAX);
+    vector<Vertex*> shortestPreviouses(graph->getVertexAmount(), nullptr);
     distances[startId] = 0;
 
     for(int i = 0; i < vertexes.size()-1; i++) {
@@ -95,7 +88,7 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
 Graph* Prim(Graph* graph, int startId) {
     GraphBuilder builder(graph->getVertexAmount());
     vector<Vertex*> vertexes = graph->getAllVertexes();
-    set<Edge> allAvailableEdges;
+    std::set<Edge> allAvailableEdges;
 
     // preparations
     builder.addVertex(startId);
