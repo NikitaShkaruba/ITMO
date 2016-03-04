@@ -19,7 +19,7 @@ size_t Graph::getVertexAmount() {
 }
 size_t Graph::getEdgesAmount() {
     // TODO: remove this plug, add directional\undirectional logic
-    return 2;
+    return edgeCount;
 }
 
 Edge* Vertex::getDuplicateEdge(Edge* duplicate) const {
@@ -57,6 +57,7 @@ Vertex *Graph::getRandomVertex() {
 
 Graph::Graph(int vertexCount) {
     vertexes.reserve(vertexCount);
+    edgeCount = 0;
 }
 
 bool Graph::haveCycle(Edge edge) {

@@ -132,6 +132,7 @@ void GraphBuilder::addEdge(int sourceId, int destinationId, int weight) {
     vector<Vertex*> vertexes = constructed->getAllVertexes();
 
     source->neighborhood.push_back(new Edge(source, destination, weight));
+    constructed->edgeCount++;
 }
 // TODO: refactor this
 void GraphBuilder::addEdges(int sourceId, vector<pair<int, int>> ids) {

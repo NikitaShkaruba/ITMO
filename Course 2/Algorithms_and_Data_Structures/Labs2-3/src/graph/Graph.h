@@ -42,6 +42,7 @@ struct Edge {
 
 class Graph {
     friend class GraphBuilder;
+
 public:
     bool haveCycle(Edge edge);
     Vertex* getRandomVertex();

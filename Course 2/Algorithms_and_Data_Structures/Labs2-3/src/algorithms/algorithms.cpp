@@ -17,30 +17,31 @@ list<Vertex*> recoverShortestPath(vector<Vertex*> shortestPaths, Vertex* last) {
     result.reverse();
     return result;
 }
-// TODO: refactor is needed
-int getVertexWithMinDistance(vector<int>& distances, vector<bool>& marks) {
+int getMinDistanceIndex(vector<int> &distances, vector<bool> &marked) {
     int min = INT_MAX;
+    int minIndex = INT_MAX;
 
     for (int i = 0; i < distances.size(); i++)
-        if (!marks[i] && distances[i] <= min)
+        if (!marked[i] && distances[i] <= min) {
             min = distances[i];
+            minIndex = i;
+        }
 
-    assert(min != INT_MAX);
-    return min;
+    assert(minIndex != INT_MAX);
+    return minIndex;
 }
 list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
     vector<Vertex*> vertexes = graph->getAllVertexes();
 
+    // Preparations
     vector<int> distances(graph->getVertexAmount(), INT_MAX);
     vector<bool> marked(graph->getVertexAmount(), false);
     vector<Vertex*> shortestPreviouses(graph->getVertexAmount(), nullptr);
-
-    // Preparations
     distances[startId] = 0;
 
     // Find shortest path for all vertices
     for (int count = 0; count < vertexes.size()-1; count++) {
-        int minIndex = getVertexWithMinDistance(distances, marked);
+        int minIndex = getMinDistanceIndex(distances, marked);
         marked[minIndex] = true;
 
         if (minIndex == destinationId)
@@ -50,7 +51,6 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
         for (list<Edge*>::iterator edgeIt = vertexes[minIndex]->neighborhood.begin(); edgeIt != vertexes[minIndex]->neighborhood.end(); edgeIt++) {
             if (!marked[(*edgeIt)->destination->id] && distances[minIndex] + (*edgeIt)->weight < distances[(*edgeIt)->destination->id]) {
                 distances[(*edgeIt)->destination->id] = distances[minIndex] + (*edgeIt)->weight;
-                // TODO: gix pointer assignent
                 shortestPreviouses[(*edgeIt)->destination->id] = (*edgeIt)->source;
             }
         }
@@ -69,15 +69,17 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
 
     for(int i = 0; i < vertexes.size()-1; i++) {
         for(vector<Vertex*>::iterator vertexIt = vertexes.begin(); vertexIt != vertexes.end(); vertexIt++) {
-            if (distances[(*vertexIt)->id] == INT_MAX) // int overflow may screw comparison up
+            if (distances[(*vertexIt)->id] == INT_MAX) { // int overflow may screw comparison up
                 continue;
-            else
-                for(list<Edge*>::iterator neighborhoodIt = (*vertexIt)->neighborhood.begin(); neighborhoodIt != (*vertexIt)->neighborhood.end(); neighborhoodIt++) {
+            } else {
+                for (list<Edge *>::iterator neighborhoodIt = (*vertexIt)->neighborhood.begin();
+                     neighborhoodIt != (*vertexIt)->neighborhood.end(); neighborhoodIt++) {
                     if (distances[(*neighborhoodIt)->destination->id] > distances[(*neighborhoodIt)->source->id] + (*neighborhoodIt)->weight) {
                         distances[(*neighborhoodIt)->destination->id] = distances[(*neighborhoodIt)->source->id] + (*neighborhoodIt)->weight;
                         shortestPreviouses[(*neighborhoodIt)->destination->id] = (*neighborhoodIt)->source;
                     }
                 }
+            }
         }
     }
 
@@ -85,12 +87,20 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
 }
 
 // Lab 3
-Graph* Prim(Graph* graph, int startId) {
+bool contains(vector<Vertex*> vertexes, int id) {
+    for (vector<Vertex*>::iterator it = vertexes.begin(); it != vertexes.end(); it++)
+        if ((*it)->id == id)
+            return true;
+
+    return false;
+}
+Graph* Prim(Graph* graph) {
     GraphBuilder builder(graph->getVertexAmount());
     vector<Vertex*> vertexes = graph->getAllVertexes();
     std::set<Edge> allAvailableEdges;
 
     // preparations
+    int startId = 0; //rand() % vertexes.size();
     builder.addVertex(startId);
     for(list<Edge*>::iterator startEdgesIt = vertexes[startId]->neighborhood.begin(); startEdgesIt != vertexes[startId]->neighborhood.end(); startEdgesIt++ )
         allAvailableEdges.insert(**startEdgesIt);
@@ -99,18 +109,17 @@ Graph* Prim(Graph* graph, int startId) {
         vector<Vertex*> currentVertexes = builder.getResult()->getAllVertexes();
         set<Edge>::iterator lightweight = allAvailableEdges.begin();
 
-        if (currentVertexes.at(lightweight->destination->id) == 0) {
+        if (!contains(currentVertexes, lightweight->destination->id)) {
             builder.addVertex(lightweight->destination->id);
-            for(list<Edge*>::iterator neighboursIt = lightweight->destination->neighborhood.begin(); neighboursIt != lightweight->destination->neighborhood.end(); neighboursIt++ )
-                allAvailableEdges.insert(**neighboursIt);
+            for(list<Edge*>::iterator neighboursIt = lightweight->destination->neighborhood.begin(); neighboursIt != lightweight->destination->neighborhood.end(); neighboursIt++ ) {
+                if (!(*neighboursIt)->isOpposite(*lightweight))
+                    allAvailableEdges.insert(**neighboursIt);
+            }
 
             builder.addUndirectedEdge(lightweight->source->id, lightweight->destination->id, lightweight->weight);
         }
 
-        // TODO: add logic, god, hate these things
         allAvailableEdges.erase(lightweight);
-        //if (lightweight.isOpposite(allAvailableEdges.top()))
-        //    allAvailableEdges.pop();
     }
 
     return builder.getResult();

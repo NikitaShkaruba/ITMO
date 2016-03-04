@@ -100,9 +100,9 @@ int main(int argc, char* argv[]) {
             builder.generatePrimTestGraph();
             Graph* g = builder.getResult();
 
-            Graph* minSpanningTree = Prim(g, 0);
+            Graph* minSpanningTree = Prim(g);
             cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << endl;
-            cout << "Edges count: " << minSpanningTree->getVertexAmount() << endl;
+            cout << "Edges count: " << minSpanningTree->getEdgesAmount() << endl;
             return 0;
         }
         if (key == "3") {
@@ -114,7 +114,7 @@ int main(int argc, char* argv[]) {
 
             Graph* minSpanningTree = Kruskal(g);
             cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << endl;
-            cout << "Edges count: " << minSpanningTree->getVertexAmount() << endl;
+            cout << "Edges count: " << minSpanningTree->getEdgesAmount() << endl;
             return 0;
         }
     }
