@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <set>
 #include <limits.h>
+#include <iostream>
 #include "../graph/Graph.h"
 #include "../graph/GraphBuilder.h"
 
@@ -97,7 +98,7 @@ bool contains(vector<Vertex*> vertexes, int id) {
 Graph* Prim(Graph* graph) {
     GraphBuilder builder(graph->getVertexAmount());
     vector<Vertex*> vertexes = graph->getAllVertexes();
-    std::set<Edge> allAvailableEdges;
+    multiset<Edge> allAvailableEdges;
 
     // preparations
     int startId = 0; //rand() % vertexes.size();
@@ -107,7 +108,7 @@ Graph* Prim(Graph* graph) {
 
     while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount()) {
         vector<Vertex*> currentVertexes = builder.getResult()->getAllVertexes();
-        set<Edge>::iterator lightweight = allAvailableEdges.begin();
+        multiset<Edge>::iterator lightweight = allAvailableEdges.begin();
 
         if (!contains(currentVertexes, lightweight->destination->id)) {
             builder.addVertex(lightweight->destination->id);
@@ -125,50 +126,25 @@ Graph* Prim(Graph* graph) {
     return builder.getResult();
 }
 
-void removeLoops(set<Edge>& edges) {
-    for(set<Edge>::iterator it = edges.begin(); it != edges.end();)
-        if (it->source != it->destination)
-            edges.erase(it++);
-        else
-            ++it;
-}
-void removeDoubles(set<Edge>& edges) {
-    // TODO: add logic
-    // ohh, there will be bug, i promise!
-    // ffs, i hate iterator deletion
-    for(set<Edge>::iterator it = edges.begin(); it != edges.end();) {
-        int currentEdgeCount = 0;
-
-        for (set<Edge>::iterator it2 = edges.begin(); it2 != edges.end(); it2++) {
-            if ((it)->equals(*it2) && ++currentEdgeCount > 2) { // 2 because of unordered implementation
-                edges.erase(it2++);
-                it++;
-            } else {
-                ++it;
-                ++it2;
-            }
-        }
-    }
-}
 Graph* Kruskal(Graph* graph) {
     GraphBuilder builder(graph->getVertexAmount());
-    vector<Vertex*> vertexes = graph->getAllVertexes();
-    set<Edge> allEdges;
 
-    // sort it by weight
+    GraphBuilder preparator(graph);
+    preparator.removeLoops();
+    preparator.removeDoubles();
+
+    multiset<Edge> allEdges;
+    vector<Vertex*> vertexes = graph->getAllVertexes();
     for(vector<Vertex*>::iterator vIt = vertexes.begin(); vIt != vertexes.end(); vIt++)
         for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end(); eIt++)
             allEdges.insert(**eIt);
 
-    removeLoops(allEdges);
-    removeDoubles(allEdges);
-
     // Now add vertisies and edge between them from left to right of edge list if they add new vertices
     while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount()) {
         Graph* constructedGraph = builder.getResult();
-        set<Edge>::iterator min = allEdges.begin();
+        multiset<Edge>::iterator min = allEdges.begin();
 
-        if (!constructedGraph->haveCycle(*min)) {
+        if (constructedGraph->haveCycle(*min) == false) {
             Graph* currentGraph = builder.getResult();
 
             if (currentGraph->getVertex(min->source->id) == nullptr)
@@ -177,10 +153,17 @@ Graph* Kruskal(Graph* graph) {
                 builder.addVertex(min->destination->id);
 
             builder.addUndirectedEdge(min->source->id, min->destination->id, min->weight);
+        } else {
+            cout << "sht";
         }
 
-        // TODO: add proper logic
+        // remove his opposite too;
         allEdges.erase(min);
+        for(multiset<Edge>::iterator it = allEdges.begin();;it++)
+            if (it->isOpposite(*min)) {
+                allEdges.erase(it);
+                break;
+            }
     }
 
     return builder.getResult();

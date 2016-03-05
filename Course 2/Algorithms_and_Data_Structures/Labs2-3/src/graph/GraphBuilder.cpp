@@ -117,9 +117,9 @@ void GraphBuilder::generateKruskalTestGraph() {
     addVertex(5);
     addVertex(6); // destination
 
-    addEdges(0, {{1, 2}, {2, 3}, {3, 3}});
+    addEdges(0, {{1, 2}, {2, 3}, {3, 3}, {0, 0}, {0, 0}});
     addEdges(1, {{0, 2}, {2, 4}, {4, 3}});
-    addEdges(2, {{0, 3}, {1, 4}, {3, 5}, {4, 1}});
+    addEdges(2, {{0, 3}, {1, 4}, {3, 5}, {4, 1}, {4, 1}});
     addEdges(3, {{0, 3}, {2, 5}, {5, 7}});
     addEdges(4, {{1, 3}, {2, 1}, {5, 8}});
     addEdges(5, {{3, 7}, {4, 8}, {6, 9}});
@@ -127,12 +127,12 @@ void GraphBuilder::generateKruskalTestGraph() {
 }
 
 void GraphBuilder::addEdge(int sourceId, int destinationId, int weight) {
-    Vertex* source = &constructed->vertexes[sourceId];
-    Vertex* destination = &constructed->vertexes[destinationId];
+    Vertex* source = constructed->vertexes[sourceId];
+    Vertex* destination = constructed->vertexes[destinationId];
     vector<Vertex*> vertexes = constructed->getAllVertexes();
 
     source->neighborhood.push_back(new Edge(source, destination, weight));
-    constructed->edgeCount++;
+    constructed->edgesCount++;
 }
 // TODO: refactor this
 void GraphBuilder::addEdges(int sourceId, vector<pair<int, int>> ids) {
@@ -141,7 +141,8 @@ void GraphBuilder::addEdges(int sourceId, vector<pair<int, int>> ids) {
 }
 void GraphBuilder::addVertex(int id) {
     // pair<string, Vertex> pr(name, Vertex(name));
-    constructed->vertexes.push_back(Vertex(id));
+    constructed->vertexes[id] = new Vertex(id);
+    constructed->vertexesCount++;
 }
 Graph* GraphBuilder::getResult() {
     return constructed;
@@ -151,10 +152,47 @@ GraphBuilder::GraphBuilder(size_t graphSize) {
     constructed = new Graph(graphSize);
 }
 size_t GraphBuilder::getCurrentGraphVertexesAmount() {
-    return constructed->vertexes.size();
+    return constructed->getVertexAmount();
 }
 void GraphBuilder::addUndirectedEdge(int firstId, int secondId, int weight) {
     this->addEdge(firstId, secondId, weight);
-    this->addEdge(firstId, secondId, weight);
+    this->addEdge(secondId, firstId, weight);
 }
 
+void GraphBuilder::removeLoops() {
+    for(vector<Vertex*>::iterator vIt = constructed->vertexes.begin(); vIt != constructed->vertexes.end(); vIt++) {
+        for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end();){
+            if ((*eIt)->source == (*eIt)->destination) {
+                (*vIt)->neighborhood.erase((eIt++));
+                constructed->edgesCount--;
+            } else {
+                ++eIt;
+            }
+        }
+    }
+}
+
+void GraphBuilder::removeDoubles() {
+    for(vector<Vertex*>::iterator vIt = constructed->vertexes.begin(); vIt != constructed->vertexes.end(); vIt++) {
+        for(list<Edge*>::iterator eIt1 = (*vIt)->neighborhood.begin(); eIt1 != (*vIt)->neighborhood.end(); eIt1++) {
+            bool isFirst = true;
+
+            (*vIt)->neighborhood.remove_if([&isFirst, eIt1, this](Edge* const e) -> bool {
+                if (e->equals(**eIt1)) {
+                    if (isFirst) {
+                        isFirst = false;
+                        return false;
+                    } else {
+                        constructed->edgesCount--;
+                        return true;
+                    }
+                } else
+                    return false;
+            });
+        }
+    }
+}
+
+GraphBuilder::GraphBuilder(Graph *graph) {
+    constructed = graph;
+}

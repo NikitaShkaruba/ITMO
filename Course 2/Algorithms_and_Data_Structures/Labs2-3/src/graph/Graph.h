@@ -40,6 +40,8 @@ struct Edge {
     int weight;
 };
 
+// Graph is a data structure which points to some vertexes, which point to an edges.
+// So, two graphs is able to point to same vertexes
 class Graph {
     friend class GraphBuilder;
 
@@ -54,9 +56,10 @@ public:
 
 private:
     Graph(int vertexCount);
-    bool DepthFirstSearch(Vertex* start, Vertex* destination);
+    void DepthFirstSearch(bool marked[], int currentIndex);
 
-    vector<Vertex> vertexes;
-    size_t edgeCount;
+    vector<Vertex*> vertexes;
+    size_t vertexesCount;
+    size_t edgesCount;
 };
 
