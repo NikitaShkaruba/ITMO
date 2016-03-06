@@ -32,16 +32,16 @@ int getMinDistanceIndex(vector<int> &distances, vector<bool> &marked) {
     return minIndex;
 }
 list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
-    vector<Vertex*> vertexes = graph->getAllVertexes();
+    vector<Vertex*> vertices = graph->getAllVertices();
 
     // Preparations
-    vector<int> distances(graph->getVertexAmount(), INT_MAX);
-    vector<bool> marked(graph->getVertexAmount(), false);
-    vector<Vertex*> shortestPreviouses(graph->getVertexAmount(), nullptr);
+    vector<int> distances(graph->getVerticesAmount(), INT_MAX);
+    vector<bool> marked(graph->getVerticesAmount(), false);
+    vector<Vertex*> shortestPreviouses(graph->getVerticesAmount(), nullptr);
     distances[startId] = 0;
 
     // Find shortest path for all vertices
-    for (int count = 0; count < vertexes.size()-1; count++) {
+    for (int count = 0; count < vertices.size() - 1; count++) {
         int minIndex = getMinDistanceIndex(distances, marked);
         marked[minIndex] = true;
 
@@ -49,7 +49,7 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
             break;
 
         // Update dist value of the adjacent vertices of the picked vertex.
-        for (list<Edge*>::iterator edgeIt = vertexes[minIndex]->neighborhood.begin(); edgeIt != vertexes[minIndex]->neighborhood.end(); edgeIt++) {
+        for (list<Edge*>::iterator edgeIt = vertices[minIndex]->neighborhood.begin(); edgeIt != vertices[minIndex]->neighborhood.end(); edgeIt++) {
             if (!marked[(*edgeIt)->destination->id] && distances[minIndex] + (*edgeIt)->weight < distances[(*edgeIt)->destination->id]) {
                 distances[(*edgeIt)->destination->id] = distances[minIndex] + (*edgeIt)->weight;
                 shortestPreviouses[(*edgeIt)->destination->id] = (*edgeIt)->source;
@@ -57,19 +57,19 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
         }
     }
 
-    return recoverShortestPath(shortestPreviouses, vertexes[destinationId]);
+    return recoverShortestPath(shortestPreviouses, vertices[destinationId]);
 }
 
 list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
-    vector<Vertex*> vertexes = graph->getAllVertexes();
+    vector<Vertex*> vertices = graph->getAllVertices();
 
     // Preparation
-    vector<int> distances(graph->getVertexAmount(), INT_MAX);
-    vector<Vertex*> shortestPreviouses(graph->getVertexAmount(), nullptr);
+    vector<int> distances(graph->getVerticesAmount(), INT_MAX);
+    vector<Vertex*> shortestPreviouses(graph->getVerticesAmount(), nullptr);
     distances[startId] = 0;
 
-    for(int i = 0; i < vertexes.size()-1; i++) {
-        for(vector<Vertex*>::iterator vertexIt = vertexes.begin(); vertexIt != vertexes.end(); vertexIt++) {
+    for(int i = 0; i < vertices.size() - 1; i++) {
+        for(vector<Vertex*>::iterator vertexIt = vertices.begin(); vertexIt != vertices.end(); vertexIt++) {
             if (distances[(*vertexIt)->id] == INT_MAX) { // int overflow may screw comparison up
                 continue;
             } else {
@@ -84,33 +84,33 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
         }
     }
 
-    return recoverShortestPath(shortestPreviouses, vertexes[destinationId]);
+    return recoverShortestPath(shortestPreviouses, vertices[destinationId]);
 }
 
 // Lab 3
-bool contains(vector<Vertex*> vertexes, int id) {
-    for (vector<Vertex*>::iterator it = vertexes.begin(); it != vertexes.end(); it++)
+bool contains(vector<Vertex*> vertices, int id) {
+    for (vector<Vertex*>::iterator it = vertices.begin(); it != vertices.end(); it++)
         if ((*it) != nullptr && (*it)->id == id)
             return true;
 
     return false;
 }
 Graph* Prim(Graph* graph) {
-    GraphBuilder builder(graph->getVertexAmount());
-    vector<Vertex*> vertexes = graph->getAllVertexes();
+    GraphBuilder builder(graph->getVerticesAmount());
+    vector<Vertex*> vertices = graph->getAllVertices();
     multiset<Edge> allAvailableEdges;
 
     // preparations
-    int startId = 0; //rand() % vertexes.size();
+    int startId = 0; //rand() % vertices.size();
     builder.addVertex(startId);
-    for(list<Edge*>::iterator startEdgesIt = vertexes[startId]->neighborhood.begin(); startEdgesIt != vertexes[startId]->neighborhood.end(); startEdgesIt++ )
+    for(list<Edge*>::iterator startEdgesIt = vertices[startId]->neighborhood.begin(); startEdgesIt != vertices[startId]->neighborhood.end(); startEdgesIt++ )
         allAvailableEdges.insert(**startEdgesIt);
 
-    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount() && !allAvailableEdges.empty()) {
-        vector<Vertex*> currentVertexes = builder.getResult()->getAllVertexes();
+    while(builder.getResult()->getVerticesAmount() != graph->getVerticesAmount() && !allAvailableEdges.empty()) {
+        vector<Vertex*> currentVertices = builder.getResult()->getAllVertices();
         multiset<Edge>::iterator lightweight = allAvailableEdges.begin();
 
-        if (!contains(currentVertexes, lightweight->destination->id)) {
+        if (!contains(currentVertices, lightweight->destination->id)) {
             builder.addVertex(lightweight->destination->id);
             for(list<Edge*>::iterator neighboursIt = lightweight->destination->neighborhood.begin(); neighboursIt != lightweight->destination->neighborhood.end(); neighboursIt++ ) {
                 if (!(*neighboursIt)->isOpposite(*lightweight))
@@ -127,20 +127,20 @@ Graph* Prim(Graph* graph) {
 }
 
 Graph* Kruskal(Graph* graph) {
-    GraphBuilder builder(graph->getVertexAmount());
+    GraphBuilder builder(graph->getVerticesAmount());
 
     GraphBuilder preparator(graph);
     preparator.removeLoops();
     preparator.removeDoubles();
 
     multiset<Edge> allEdges;
-    vector<Vertex*> vertexes = graph->getAllVertexes();
-    for(vector<Vertex*>::iterator vIt = vertexes.begin(); vIt != vertexes.end(); vIt++)
+    vector<Vertex*> vertices = graph->getAllVertices();
+    for(vector<Vertex*>::iterator vIt = vertices.begin(); vIt != vertices.end(); vIt++)
         for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end(); eIt++)
             allEdges.insert(**eIt);
 
-    // Now add vertisies and edge between them from left to right of edge list if they add new vertices
-    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount() && !allEdges.empty()) {
+    // Now add vertices and edge between them from left to right of edge list if they add new vertices
+    while(builder.getResult()->getVerticesAmount() != graph->getVerticesAmount() && !allEdges.empty()) {
         Graph* constructedGraph = builder.getResult();
         multiset<Edge>::iterator min = allEdges.begin();
 

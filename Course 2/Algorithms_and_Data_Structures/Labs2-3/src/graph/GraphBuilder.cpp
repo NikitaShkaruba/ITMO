@@ -1,54 +1,62 @@
-#include <assert.h>
 #include "GraphBuilder.h"
+#include <assert.h>
 
-void GraphBuilder::generateRandomDirectedGraph(size_t vertexCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
+GraphBuilder::GraphBuilder(size_t graphSize) {
+    constructed = new Graph(graphSize);
+}
+GraphBuilder::GraphBuilder(Graph *graph) {
+    constructed = graph;
+}
+
+void GraphBuilder::generateRandomDirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
     delete constructed;
-    constructed = new Graph(vertexCount);
+    constructed = new Graph(verticesCount);
 
     // You shall not pass, bitch
     assert(minEdgeWeight < maxEdgeWeight);
-    assert(vertexCount <= edgesCount);
+    assert(verticesCount <= edgesCount);
 
     addVertex(0);
 
-    for (size_t i = 0; i < vertexCount-1; ++i) {
+    for (size_t i = 0; i < verticesCount - 1; ++i) {
         Vertex* randomVertex = constructed->getRandomVertex();
 
         addVertex(i);
         addEdge(randomVertex->id, i, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
     }
 
-    for (size_t i = vertexCount; i < edgesCount; i++) {
+    for (size_t i = verticesCount; i < edgesCount; i++) {
         Vertex* v1 = constructed->getRandomVertex();
         Vertex* v2 = constructed->getRandomVertex();
 
         addEdge(v1->id, v2->id, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
     }
 }
-void GraphBuilder::generateRandomUndirectedGraph(size_t vertexCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
+void GraphBuilder::generateRandomUndirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
     delete constructed;
-    constructed = new Graph(vertexCount);
+    constructed = new Graph(verticesCount);
 
     // You shall not pass, bitch
     assert(minEdgeWeight < maxEdgeWeight);
-    assert(vertexCount <= edgesCount);
+    assert(verticesCount <= edgesCount);
 
     addVertex(0);
 
-    for (size_t i = 0; i < vertexCount-1; ++i) {
+    for (size_t i = 0; i < verticesCount - 1; ++i) {
         Vertex* randomVertex = constructed->getRandomVertex();
 
         addVertex(i);
         addUndirectedEdge(randomVertex->id, i, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
     }
 
-    for (size_t i = vertexCount; i < edgesCount; i++) {
+    for (size_t i = verticesCount; i < edgesCount; i++) {
         Vertex* v1 = constructed->getRandomVertex();
         Vertex* v2 = constructed->getRandomVertex();
 
         addUndirectedEdge(v1->id, v2->id, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
     }
 }
+
 void GraphBuilder::generateDijkstraTestGraph() {
     delete constructed;
     constructed = new Graph(7);
@@ -126,41 +134,27 @@ void GraphBuilder::generateKruskalTestGraph() {
     addEdges(6, {{5, 9}});
 }
 
+void GraphBuilder::addVertex(int id) {
+    // pair<string, Vertex> pr(name, Vertex(name));
+    constructed->vertices[id] = new Vertex(id);
+    constructed->verticesCount++;
+}
 void GraphBuilder::addEdge(int sourceId, int destinationId, int weight) {
-    Vertex* source = constructed->vertexes[sourceId];
-    Vertex* destination = constructed->vertexes[destinationId];
-    vector<Vertex*> vertexes = constructed->getAllVertexes();
+    Vertex* source = constructed->vertices[sourceId];
+    Vertex* destination = constructed->vertices[destinationId];
+    vector<Vertex*> vertexes = constructed->getAllVertices();
 
     source->neighborhood.push_back(new Edge(source, destination, weight));
     constructed->edgesCount++;
-}
-// TODO: refactor this
-void GraphBuilder::addEdges(int sourceId, vector<pair<int, int>> ids) {
-    for(vector<pair<int, int>>::iterator it = ids.begin(); it != ids.end(); it++)
-        addEdge(sourceId, it->first, it->second);
-}
-void GraphBuilder::addVertex(int id) {
-    // pair<string, Vertex> pr(name, Vertex(name));
-    constructed->vertexes[id] = new Vertex(id);
-    constructed->vertexesCount++;
-}
-Graph* GraphBuilder::getResult() {
-    return constructed;
-}
-
-GraphBuilder::GraphBuilder(size_t graphSize) {
-    constructed = new Graph(graphSize);
-}
-size_t GraphBuilder::getCurrentGraphVertexesAmount() {
-    return constructed->getVertexAmount();
 }
 void GraphBuilder::addUndirectedEdge(int firstId, int secondId, int weight) {
     this->addEdge(firstId, secondId, weight);
     this->addEdge(secondId, firstId, weight);
 }
-
 void GraphBuilder::removeLoops() {
-    for(vector<Vertex*>::iterator vIt = constructed->getAllVertexes().begin(); vIt != constructed->getAllVertexes().end(); vIt++) {
+    vector<Vertex*> vertexes = constructed->getAllVertices(); // i nee this for iterator comparison
+
+    for(vector<Vertex*>::iterator vIt = vertexes.begin(); vIt != vertexes.end(); vIt++) {
         for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end();){
             if ((*eIt)->source == (*eIt)->destination) {
                 (*vIt)->neighborhood.erase((eIt++));
@@ -171,9 +165,10 @@ void GraphBuilder::removeLoops() {
         }
     }
 }
-
 void GraphBuilder::removeDoubles() {
-    for(vector<Vertex*>::iterator vIt = constructed->getAllVertexes().begin(); vIt != constructed->getAllVertexes().end(); vIt++) {
+    vector<Vertex*> vertexes = constructed->getAllVertices(); // i need this because of iterator comparison
+
+    for(vector<Vertex*>::iterator vIt = vertexes.begin(); vIt != vertexes.end(); vIt++) {
         for(list<Edge*>::iterator eIt1 = (*vIt)->neighborhood.begin(); eIt1 != (*vIt)->neighborhood.end(); eIt1++) {
             bool isFirst = true;
 
@@ -193,6 +188,11 @@ void GraphBuilder::removeDoubles() {
     }
 }
 
-GraphBuilder::GraphBuilder(Graph *graph) {
-    constructed = graph;
+Graph* GraphBuilder::getResult() {
+    return constructed;
+}
+
+void GraphBuilder::addEdges(int sourceId, vector<pair<int, int>> ids) {
+    for(vector<pair<int, int>>::iterator it = ids.begin(); it != ids.end(); it++)
+        addEdge(sourceId, it->first, it->second);
 }

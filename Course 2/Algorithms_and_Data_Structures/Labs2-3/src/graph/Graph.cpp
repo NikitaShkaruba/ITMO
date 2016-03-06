@@ -1,41 +1,63 @@
 #include <iostream>
 #include "Graph.h"
 
-Vertex* Graph::getVertex(int id) {
-    return vertexes[id];
-}
+Vertex *Graph::getRandomVertex() {
+    vector<Vertex*>::iterator  it;
 
-vector<Vertex*> Graph::getAllVertexes() {
+    do {
+        it = vertices.begin();
+        std::advance(it, rand() % vertices.size());
+    } while (*it == nullptr);
+
+    return *it;
+}
+Vertex* Graph::getVertex(int id) {
+    return vertices[id];
+}
+vector<Vertex*> Graph::getAllVertices() {
     vector<Vertex*> result;
 
-    for (auto it = vertexes.begin(); it != vertexes.end(); it++)
+    for (auto it = vertices.begin(); it != vertices.end(); it++)
         if (*it != nullptr)
             result.push_back(*it);
 
     return result;
 }
 
-size_t Graph::getVertexAmount() {
-    return vertexesCount;
+size_t Graph::getVerticesAmount() {
+    return verticesCount;
 }
 size_t Graph::getEdgesAmount() {
     // TODO: remove this plug, add directional\undirectional logic
     return edgesCount;
 }
 
-Edge* Vertex::getDuplicateEdge(Edge* duplicate) const {
-    for(list<Edge *>::const_iterator it = neighborhood.begin(); it != neighborhood.end(); it++)
-        if ((*it)->destination == duplicate->source && (*it)->source == duplicate->destination && (*it)->weight == duplicate->weight)
-            return *it;
+bool Graph::haveCycle(Edge edge) {
+    bool marked[vertices.capacity()];
+    for (int i = 0; i < vertices.capacity(); ++i)
+        marked[i] = false;
 
-    throw "WTF";
+    DepthFirstSearch(marked, edge.destination->id);
+
+    return marked[edge.source->id];
+}
+
+Graph::Graph(int verticesAmount) {
+    // It is reserved because of one-to-one relation between id and vector index.
+    vertices.reserve(verticesAmount);
+    for (int i = 0; i < verticesAmount; ++i) {
+        vertices.push_back(nullptr);
+    }
+
+    this->edgesCount = 0;
+    this->verticesCount = 0;
 }
 
 void Graph::DepthFirstSearch(bool marked[], int currentIndex) {
     marked[currentIndex] = true;
 
-    if (vertexes[currentIndex] != nullptr) {
-        for (list<Edge *>::iterator eIt = vertexes[currentIndex]->neighborhood.begin(); eIt != vertexes[currentIndex]->neighborhood.end(); eIt++) {
+    if (vertices[currentIndex] != nullptr) {
+        for (list<Edge *>::iterator eIt = vertices[currentIndex]->neighborhood.begin(); eIt != vertices[currentIndex]->neighborhood.end(); eIt++) {
             if (!marked[(*eIt)->destination->id]) {
                 DepthFirstSearch(marked, (*eIt)->destination->id);
             }
@@ -43,34 +65,4 @@ void Graph::DepthFirstSearch(bool marked[], int currentIndex) {
     }
 }
 
-Vertex *Graph::getRandomVertex() {
-    vector<Vertex*>::iterator  it;
 
-    do {
-        it = vertexes.begin();
-        std::advance(it, rand() % vertexes.size());
-    } while (*it == nullptr);
-
-    return *it;
-}
-
-Graph::Graph(int vertexCount) {
-    vertexes.reserve(vertexCount);
-    // reserved for id's
-    for (int i = 0; i < vertexCount; ++i) {
-        vertexes.push_back(nullptr);
-    }
-
-    edgesCount = 0;
-    vertexesCount = 0;
-}
-
-bool Graph::haveCycle(Edge edge) {
-    bool marked[vertexes.capacity()];
-    for (int i = 0; i < vertexes.capacity(); ++i)
-        marked[i] = false;
-
-    DepthFirstSearch(marked, edge.destination->id);
-
-    return marked[edge.source->id];
-}

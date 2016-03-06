@@ -1,8 +1,8 @@
 #pragma once
 
-#include <list>
 #include <string>
 #include <vector>
+#include <list>
 #include <map>
 #include <set>
 
@@ -19,6 +19,7 @@ public:
     Edge* getDuplicateEdge(Edge *pEdge) const;
 };
 
+// TODO: consider creation of UndirectedEdge class
 struct Edge {
     Edge(Vertex* v1, Vertex* v2, int weight) : weight(weight) {
         this->source = v1;
@@ -40,26 +41,28 @@ struct Edge {
     int weight;
 };
 
-// Graph is a data structure which points to some vertexes, which point to an edges.
-// So, two graphs is able to point to same vertexes
+// Graph is a data structure which points to some vertices, which point to an edges.
+// So, two graphs is able to point to same vertices
 class Graph {
     friend class GraphBuilder;
 
 public:
-    bool haveCycle(Edge edge);
     Vertex* getRandomVertex();
     Vertex* getVertex(int id);
-    vector<Vertex*> getAllVertexes();
+    vector<Vertex*> getAllVertices();
 
-    size_t getVertexAmount();
+    size_t getVerticesAmount();
     size_t getEdgesAmount();
 
+    bool haveCycle(Edge edge);
+
 private:
-    Graph(int vertexCount);
+    Graph(int verticesAmount);
+
     void DepthFirstSearch(bool marked[], int currentIndex);
 
-    vector<Vertex*> vertexes;
-    size_t vertexesCount;
+    vector<Vertex*> vertices;
+    size_t verticesCount;
     size_t edgesCount;
 };
 

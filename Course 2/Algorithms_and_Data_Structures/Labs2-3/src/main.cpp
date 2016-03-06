@@ -75,8 +75,8 @@ void runPrimTest() {
     Graph* g = builder.getResult();
 
     Graph* minSpanningTree = Prim(g);
-    cout << "Expected vertexes, edges amounts: \t(6, (6-1)*2);" << endl;
-    cout << "Output vertexes, edges amounts: \t(" << minSpanningTree->getVertexAmount() << ", "  << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
+    cout << "Expected vertices, edges amounts: \t(6, (6-1)*2);" << endl;
+    cout << "Output vertices, edges amounts: \t(" << minSpanningTree->getVerticesAmount() << ", " << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
 }
 void runKruskalTest() {
     cout << "Testing Kruskal's algorithm" << endl;
@@ -86,8 +86,8 @@ void runKruskalTest() {
     Graph* g = builder.getResult();
 
     Graph* minSpanningTree = Kruskal(g);
-    cout << "Expected vertexes, edges amounts: \t(7, (7-1)*2);" << endl;
-    cout << "Output vertexes, edges amounts: \t(" << minSpanningTree->getVertexAmount() << ", "  << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
+    cout << "Expected vertices, edges amounts: \t(7, (7-1)*2);" << endl;
+    cout << "Output vertices, edges amounts: \t(" << minSpanningTree->getVerticesAmount() << ", " << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
 }
 void runAllTests() {
     runDijkstraTest();
@@ -129,7 +129,7 @@ void runAlgorithm(map<string, int> options) {
             cout << "Running Prim's algorithm" << endl;
 
             Graph *minSpanningTree = Prim(builder.getResult());
-            cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << endl;
+            cout << "Vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
             cout << "Edges count: " << minSpanningTree->getEdgesAmount() << endl;
             break;
         }
@@ -138,7 +138,7 @@ void runAlgorithm(map<string, int> options) {
             cout << "Running Kruskal's algorithm" << endl;
 
             Graph *minSpanningTree = Kruskal(builder.getResult());
-            cout << "Vertexes count: " << minSpanningTree->getVertexAmount() << endl;
+            cout << "Vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
             cout << "Edges count: " << minSpanningTree->getEdgesAmount();
             break;
         }
@@ -152,7 +152,7 @@ void runAlgorithm(map<string, int> options) {
 // 4. Kruskal's algorithm
 int main(int argc, char* argv[]) {
     if (argc < 2 || argc % 2 == 1) {
-        cout << "Try 'Labs2-3 help' for information about usage" << endl;
+        cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
         return 0;
     }
 
@@ -189,10 +189,10 @@ int main(int argc, char* argv[]) {
                     continue;
                 }
 
-                cout << "Try 'Labs2-3 help' for information about usage" << endl;
+                cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
                 return 1;
             } else {
-                cout << "Try 'Labs2-3 help' for information about usage" << endl;
+                cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
                 return 1;
             }
         }
@@ -221,7 +221,7 @@ int main(int argc, char* argv[]) {
                     continue;
                 }
 
-                cout << "Try 'Labs2-3 help' for information about usage" << endl;
+                cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
                 return 1;
             }
             if (option == "--directed" || option == "-d") {
@@ -248,7 +248,7 @@ int main(int argc, char* argv[]) {
         }
 
         if (customOptions["algorithm"] == -1) {
-            cout << "Try 'Labs2-3 help' for information about usage" << endl;
+            cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
             return 1;
         } else {
             runAlgorithm(customOptions);
@@ -256,6 +256,6 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    cout << "Try 'Labs2-3 help' for information about usage" << endl;
+    cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
     return 1;
 }
