@@ -9,7 +9,8 @@ vector<Vertex*> Graph::getAllVertexes() {
     vector<Vertex*> result;
 
     for (auto it = vertexes.begin(); it != vertexes.end(); it++)
-        result.push_back(*it);
+        if (*it != nullptr)
+            result.push_back(*it);
 
     return result;
 }
@@ -43,8 +44,12 @@ void Graph::DepthFirstSearch(bool marked[], int currentIndex) {
 }
 
 Vertex *Graph::getRandomVertex() {
-    vector<Vertex*>::iterator it = vertexes.begin();
-    std::advance( it, rand()%vertexes.size());
+    vector<Vertex*>::iterator  it;
+
+    do {
+        it = vertexes.begin();
+        std::advance(it, rand() % vertexes.size());
+    } while (*it == nullptr);
 
     return *it;
 }
@@ -65,10 +70,7 @@ bool Graph::haveCycle(Edge edge) {
     for (int i = 0; i < vertexes.capacity(); ++i)
         marked[i] = false;
 
-    int i = edge.source->id;
-    int j = edge.destination->id;
+    DepthFirstSearch(marked, edge.destination->id);
 
-    DepthFirstSearch(marked, j);
-
-    return marked[i];
+    return marked[edge.source->id];
 }

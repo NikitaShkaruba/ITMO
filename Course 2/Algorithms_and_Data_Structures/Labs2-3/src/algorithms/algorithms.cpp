@@ -90,7 +90,7 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
 // Lab 3
 bool contains(vector<Vertex*> vertexes, int id) {
     for (vector<Vertex*>::iterator it = vertexes.begin(); it != vertexes.end(); it++)
-        if ((*it)->id == id)
+        if ((*it) != nullptr && (*it)->id == id)
             return true;
 
     return false;
@@ -106,7 +106,7 @@ Graph* Prim(Graph* graph) {
     for(list<Edge*>::iterator startEdgesIt = vertexes[startId]->neighborhood.begin(); startEdgesIt != vertexes[startId]->neighborhood.end(); startEdgesIt++ )
         allAvailableEdges.insert(**startEdgesIt);
 
-    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount()) {
+    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount() && !allAvailableEdges.empty()) {
         vector<Vertex*> currentVertexes = builder.getResult()->getAllVertexes();
         multiset<Edge>::iterator lightweight = allAvailableEdges.begin();
 
@@ -140,11 +140,11 @@ Graph* Kruskal(Graph* graph) {
             allEdges.insert(**eIt);
 
     // Now add vertisies and edge between them from left to right of edge list if they add new vertices
-    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount()) {
+    while(builder.getCurrentGraphVertexesAmount() != graph->getVertexAmount() && !allEdges.empty()) {
         Graph* constructedGraph = builder.getResult();
         multiset<Edge>::iterator min = allEdges.begin();
 
-        if (constructedGraph->haveCycle(*min) == false) {
+        if (!constructedGraph->haveCycle(*min)) {
             Graph* currentGraph = builder.getResult();
 
             if (currentGraph->getVertex(min->source->id) == nullptr)
@@ -153,13 +153,11 @@ Graph* Kruskal(Graph* graph) {
                 builder.addVertex(min->destination->id);
 
             builder.addUndirectedEdge(min->source->id, min->destination->id, min->weight);
-        } else {
-            cout << "sht";
         }
 
         // remove his opposite too;
         allEdges.erase(min);
-        for(multiset<Edge>::iterator it = allEdges.begin();;it++)
+        for(multiset<Edge>::iterator it = allEdges.begin(); it != allEdges.end(); it++)
             if (it->isOpposite(*min)) {
                 allEdges.erase(it);
                 break;

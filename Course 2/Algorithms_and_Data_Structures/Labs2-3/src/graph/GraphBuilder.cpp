@@ -160,7 +160,7 @@ void GraphBuilder::addUndirectedEdge(int firstId, int secondId, int weight) {
 }
 
 void GraphBuilder::removeLoops() {
-    for(vector<Vertex*>::iterator vIt = constructed->vertexes.begin(); vIt != constructed->vertexes.end(); vIt++) {
+    for(vector<Vertex*>::iterator vIt = constructed->getAllVertexes().begin(); vIt != constructed->getAllVertexes().end(); vIt++) {
         for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end();){
             if ((*eIt)->source == (*eIt)->destination) {
                 (*vIt)->neighborhood.erase((eIt++));
@@ -173,7 +173,7 @@ void GraphBuilder::removeLoops() {
 }
 
 void GraphBuilder::removeDoubles() {
-    for(vector<Vertex*>::iterator vIt = constructed->vertexes.begin(); vIt != constructed->vertexes.end(); vIt++) {
+    for(vector<Vertex*>::iterator vIt = constructed->getAllVertexes().begin(); vIt != constructed->getAllVertexes().end(); vIt++) {
         for(list<Edge*>::iterator eIt1 = (*vIt)->neighborhood.begin(); eIt1 != (*vIt)->neighborhood.end(); eIt1++) {
             bool isFirst = true;
 
