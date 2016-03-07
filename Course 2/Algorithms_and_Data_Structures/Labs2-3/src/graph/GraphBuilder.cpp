@@ -12,13 +12,9 @@ void GraphBuilder::generateRandomDirectedGraph(size_t verticesCount, size_t edge
     delete constructed;
     constructed = new Graph(verticesCount);
 
-    // You shall not pass, bitch
-    assert(minEdgeWeight < maxEdgeWeight);
-    assert(verticesCount <= edgesCount);
-
     addVertex(0);
 
-    for (size_t i = 0; i < verticesCount - 1; ++i) {
+    for (size_t i = 1; i < verticesCount; ++i) {
         Vertex* randomVertex = constructed->getRandomVertex();
 
         addVertex(i);
@@ -42,7 +38,7 @@ void GraphBuilder::generateRandomUndirectedGraph(size_t verticesCount, size_t ed
 
     addVertex(0);
 
-    for (size_t i = 0; i < verticesCount - 1; ++i) {
+    for (size_t i = 0; i < verticesCount; ++i) {
         Vertex* randomVertex = constructed->getRandomVertex();
 
         addVertex(i);
