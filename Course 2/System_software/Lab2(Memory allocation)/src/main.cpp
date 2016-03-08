@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "MemoryMapper.h"
-#include "Algorithms.h"
+#include "sortAlgorithms/Algorithms.h"
+#include "memoryManagers/FileMapper.h"
 
 using namespace std;
 
@@ -16,9 +16,10 @@ using namespace std;
                int flags,
                int fd,
                off_t offset);
+ * I don't think that other methods needs an explanation
  */
 void testFileMapping() {
-    MemoryMapper mm;
+    FileMapper mm;
 
     // single allocation test
     int* s = (int *) mm.alloc(sizeof(int));
@@ -74,10 +75,11 @@ void writeIntegersToFile(vector<int> integers, string filename) {
 
 int main() {
     if (!is_file_exist("randomNumbers.txt"))
-        generateFileWithIntegers(100500);
+        generateFileWithIntegers(100500/4);
 
     vector<int> integers = getIntegersFromFile("randomNumbers.txt");
-    // MergeSortFM(&integers.front(), integers.size());     works!
     // MergeSort(&integers.front(), integers.size());       works!
+    // MergeSortFM(&integers.front(), integers.size());     works!
+    MergeSortBP(&integers.front(), integers.size());
     writeIntegersToFile(integers, "sortedNumbers.txt");
 }

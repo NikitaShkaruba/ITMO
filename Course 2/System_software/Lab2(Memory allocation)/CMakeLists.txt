@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
-project(Lab2_Memory_allocation_)
+project(Sort)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES src/main.cpp src/Algorithms.cpp src/Algorithms.h src/MemoryMapper.cpp src/MemoryMapper.h)
-add_executable(Lab2_Memory_allocation_ ${SOURCE_FILES})
+set(SOURCE_FILES src/main.cpp src/sortAlgorithms/Algorithms.cpp src/sortAlgorithms/Algorithms.h src/memoryManagers/FileMapper.cpp src/memoryManagers/FileMapper.h src/memoryManagers/BasePointerMapper.cpp src/memoryManagers/BasePointerMapper.h)
+add_executable(Sort ${SOURCE_FILES})

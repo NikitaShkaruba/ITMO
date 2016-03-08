@@ -9,10 +9,10 @@ using namespace std;
 
 const size_t MAPPED_BYTES_AMOUNT = INT_MAX;
 
-class MemoryMapper {
+class FileMapper {
 public:
-    MemoryMapper();
-    ~MemoryMapper();
+    FileMapper();
+    ~FileMapper();
 
     void*alloc(size_t size);
     void free(void *ptr, size_t size);

@@ -4,18 +4,18 @@
 #include <assert.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "MemoryMapper.h"
+#include "FileMapper.h"
 
-MemoryMapper::MemoryMapper() {
+FileMapper::FileMapper() {
     isAllocated.insert(isAllocated.begin(), MAPPED_BYTES_AMOUNT, false);
     MapMemoryToFile();
 }
-MemoryMapper::~MemoryMapper() {
+FileMapper::~FileMapper() {
     if (munmap(start, MAPPED_BYTES_AMOUNT) == -1)
         perror ("munmap fails");
 }
 
-void MemoryMapper::MapMemoryToFile() {
+void FileMapper::MapMemoryToFile() {
     int fd = open("FileToMap.fmobj", O_CREAT | O_RDWR, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
     if (fd == -1)
         perror("Opening of mapped file fails");
@@ -28,7 +28,7 @@ void MemoryMapper::MapMemoryToFile() {
         perror("mmap fails");
     close(fd);
 }
-void* MemoryMapper::alloc(size_t byteAmount) {
+void* FileMapper::alloc(size_t byteAmount) {
     int currentByteCounter = 0;
 
     assert(byteAmount > 0);
@@ -50,7 +50,7 @@ void* MemoryMapper::alloc(size_t byteAmount) {
 
     perror("Not enough memory");
 }
-void MemoryMapper::free(void *ptr, size_t byteAmount) {
+void FileMapper::free(void *ptr, size_t byteAmount) {
     int startIndex = (int) (((char*)ptr - start) / sizeof(char));
 
     for (int i = startIndex; i < startIndex + byteAmount; ++i) {
@@ -59,6 +59,6 @@ void MemoryMapper::free(void *ptr, size_t byteAmount) {
 }
 
 // I need this function, because i can't borrow memory from empty file
-void MemoryMapper::fillFile(int fd) {
+void FileMapper::fillFile(int fd) {
     ftruncate(fd, MAPPED_BYTES_AMOUNT);
 }

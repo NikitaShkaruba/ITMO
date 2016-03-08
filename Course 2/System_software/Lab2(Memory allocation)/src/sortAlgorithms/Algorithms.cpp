@@ -1,5 +1,6 @@
 #include "Algorithms.h"
-#include "MemoryMapper.h"
+#include "../memoryManagers/BasePointerMapper.h"
+#include "../memoryManagers/FileMapper.h"
 
 template<typename T> T* getSubArrayCopy(T *arr, size_t count) {
     // Complexity: O(1)
@@ -49,9 +50,8 @@ void QuickSort(int* arr, size_t size) {
     QuickSort(arr + i, size - i);
 }
 
-MemoryMapper memoryMapper;
+FileMapper fileMapper;
 void MergeSortFM(int* arr, size_t size) {
-    // Complexity O(n*log(n))
     if (size == 1)
         return;
 
@@ -61,7 +61,7 @@ void MergeSortFM(int* arr, size_t size) {
     int l = 0, r = (int) (size / 2);	// left and right indexes respectively
 
     // getSubbarray()
-    int* buf = (int*) memoryMapper.alloc(sizeof(int) * size);
+    int* buf = (int*) fileMapper.alloc(sizeof(int) * size);
     for (size_t i = 0; i < size; i++)		// count*
         buf[i] = arr[i];
 
@@ -72,14 +72,35 @@ void MergeSortFM(int* arr, size_t size) {
             arr[i] = (l != size/2) ? buf[l++] : buf[r++];
     }
 
-    memoryMapper.free(buf, sizeof(int) * size);
+    fileMapper.free(buf, sizeof(int) * size);
 }
 void QuickSortFM(int* arr, size_t size) {
 
 }
 
+BasePointerMapper pointerMapper;
 void MergeSortBP(int* arr, size_t size) {
+    if (size == 1)
+        return;
 
+    MergeSort(arr, size/2);
+    MergeSort(arr + size/2, size - size/2);
+
+    int l = 0, r = (int) (size / 2);	// left and right indexes respectively
+
+    // getSubbarray()
+    int* buf = (int*) pointerMapper.alloc(sizeof(int) * size);
+    for (size_t i = 0; i < size; i++)		// count*
+        buf[i] = arr[i];
+
+    for (size_t i = 0; i < size; i++) {			// O(n)
+        if (l != size/2 && r != size)
+            arr[i] = buf[l] < buf[r] ? buf[l++] : buf[r++];
+        else
+            arr[i] = (l != size/2) ? buf[l++] : buf[r++];
+    }
+
+    pointerMapper.free(buf, sizeof(int) * size);
 }
 void QuickSortBP(int* arr, size_t size) {
 
