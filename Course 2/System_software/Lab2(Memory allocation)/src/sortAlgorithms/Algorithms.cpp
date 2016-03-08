@@ -12,7 +12,6 @@ template<typename T> T* getSubArrayCopy(T *arr, size_t count) {
 
     return result;
 }
-
 void MergeSort(int* arr, size_t size) {
     // Complexity O(n*log(n))
     if (size == 1)
@@ -32,31 +31,27 @@ void MergeSort(int* arr, size_t size) {
     }
     delete[] buf;
 }
-void QuickSort(int* arr, size_t size) {
-    // Complexity T(n) = O(n*log(n))
-    if (size <= 1)
-        return;
 
-    // amazing not naive partition implementation
-    int key = (int) (rand() % size), i = 1; // i points on pivot element
-    swap(arr[0], arr[key]);
-    for (size_t j = 1; j < size; j++) { // j points on unsorted element
-        if (arr[j] < arr[0])
-            swap(arr[i++], arr[j]);
-    }
-    swap(arr[0], arr[i-1]);
-
-    QuickSort(arr, i-1);
-    QuickSort(arr + i, size - i);
-}
-
-FileMapper fileMapper;
+/* A call to mmap( ) asks the kernel to map len bytes of the object represented by the file descriptor fd,
+ * starting at offset bytes into the file, into memory. If addr is included, it indicates a preference to
+ * use that starting address in memory. The access permissions are dictated by prot,
+ * and additional behavior can be given by flags.
+ *
+ * void* mmap (void *addr,
+               size_t len,
+               int prot,
+               int flags,
+               int fd,
+               off_t offset);
+ * I don't think that other methods needs an explanation
+ */
 void MergeSortFM(int* arr, size_t size) {
+    static FileMapper fileMapper(size*5); // fucking shit gdb, good god, can some1 debug it for me, coz i fucking cant.
     if (size == 1)
         return;
 
-    MergeSort(arr, size/2);
-    MergeSort(arr + size/2, size - size/2);
+    MergeSortFM(arr, size/2);
+    MergeSortFM(arr + size/2, size - size/2);
 
     int l = 0, r = (int) (size / 2);	// left and right indexes respectively
 
@@ -74,17 +69,14 @@ void MergeSortFM(int* arr, size_t size) {
 
     fileMapper.free(buf, sizeof(int) * size);
 }
-void QuickSortFM(int* arr, size_t size) {
 
-}
-
-BasePointerMapper pointerMapper;
 void MergeSortBP(int* arr, size_t size) {
+    static BasePointerMapper pointerMapper(size*5); // * 5 because of fragmentation error, and i can't debug it coz GDB IS FUCKING PIECE OF CRAP. Damn, i am insane coz of gdb.
     if (size == 1)
         return;
 
-    MergeSort(arr, size/2);
-    MergeSort(arr + size/2, size - size/2);
+    MergeSortBP(arr, size/2);
+    MergeSortBP(arr + size/2, size - size/2);
 
     int l = 0, r = (int) (size / 2);	// left and right indexes respectively
 
@@ -101,7 +93,4 @@ void MergeSortBP(int* arr, size_t size) {
     }
 
     pointerMapper.free(buf, sizeof(int) * size);
-}
-void QuickSortBP(int* arr, size_t size) {
-
 }

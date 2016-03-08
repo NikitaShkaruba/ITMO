@@ -5,48 +5,11 @@
 
 using namespace std;
 
-/* A call to mmap( ) asks the kernel to map len bytes of the object represented by the file descriptor fd,
- * starting at offset bytes into the file, into memory. If addr is included, it indicates a preference to
- * use that starting address in memory. The access permissions are dictated by prot,
- * and additional behavior can be given by flags.
- *
- * void* mmap (void *addr,
-               size_t len,
-               int prot,
-               int flags,
-               int fd,
-               off_t offset);
- * I don't think that other methods needs an explanation
- */
-void testFileMapping() {
-    FileMapper mm;
-
-    // single allocation test
-    int* s = (int *) mm.alloc(sizeof(int));
-
-    cout << "Current single int is:" << *s << endl;
-    *s += 2;
-    cout << "after change single int is:" << *s << endl << endl;
-
-    mm.free(s, sizeof(int));
-
-
-    // array allocation test
-    double* array = (double *) mm.alloc(sizeof(double) * 5);
-
-    for (int i = 0; i < 5; ++i) {
-        cout << "array[" << i << "] before change is =" << array[i] << endl;
-        array[i] = 2;
-        cout << "array[" << i << "] after change is =" << array[i] << endl << endl;
-    }
-
-    mm.free(array, sizeof(double) * 5);
-}
-
 bool is_file_exist(const char *fileName) {
     std::ifstream infile(fileName);
     return infile.good();
 }
+
 void generateFileWithIntegers(size_t intAmount) {
     ofstream outStream("randomNumbers.txt", ios::out);
 
@@ -73,13 +36,60 @@ void writeIntegersToFile(vector<int> integers, string filename) {
         outStream << *it << endl;
 }
 
-int main() {
-    if (!is_file_exist("randomNumbers.txt"))
-        generateFileWithIntegers(100500/4);
+void printHelp() {
+    cout << "Usage pattern: sort --file-mapping in.txt out.txt" << endl << endl;
 
-    vector<int> integers = getIntegersFromFile("randomNumbers.txt");
-    // MergeSort(&integers.front(), integers.size());       works!
-    // MergeSortFM(&integers.front(), integers.size());     works!
-    MergeSortBP(&integers.front(), integers.size());
-    writeIntegersToFile(integers, "sortedNumbers.txt");
+    cout << "Available memory mapping methods: " << endl;
+    cout << "\t --file-mapping, -f : use file mapping memory managment " << endl;
+    cout << "\t --pointer-mappint -p" << endl;
+    cout << "\t --heap -h" << endl;
+    cout << "Optional keys: " << endl;
+    cout << "\t --generate-integers -g {intAmount} : generate test file" << endl;
+    cout << "\t --help : print help" << endl;
+}
+int main(int argc, char* argv[]) {
+    string key = argv[1];
+
+    switch(argc) {
+        case 2:
+            if (key == "--help") {
+                printHelp();
+                return 0;
+            } else {
+                cout << "Wrong arguments. Try sort -help" << endl;
+                return 1;
+            }
+        case 3:
+            if (key == "--generate-integers" || key == "-g") {
+                int intAmount = stoi(argv[2]);
+                if (!is_file_exist("randomNumbers.txt"))
+                    generateFileWithIntegers(intAmount);
+                return 0;
+            } else {
+                cout << "Wrong arguments. Try sort -help" << endl;
+                return 1;
+            }
+        case 4: {
+            string inName = argv[argc - 1];
+            vector<int> integers = getIntegersFromFile(inName);
+
+            if (key == "--file-mapping" || key == "-f")
+                MergeSortFM(&integers.front(), integers.size());
+            else if (key == "--pointer-mapping" || key == "-p")
+                MergeSortBP(&integers.front(), integers.size());
+            else if (key == "--heap" || key == "-h")
+                MergeSort(&integers.front(), integers.size());
+            else {
+                cout << "Wrong arguments. Try sort -help" << endl;
+                return 1;
+            }
+
+            string outName = argv[argc];
+            writeIntegersToFile(integers, outName);
+            return 0;
+        }
+        default:
+            cout << "Wrong arguments. Try sort -help" << endl;
+            return 1;
+    }
 }

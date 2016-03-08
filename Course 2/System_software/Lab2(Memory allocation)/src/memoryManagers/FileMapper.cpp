@@ -6,23 +6,23 @@
 #include <stdlib.h>
 #include "FileMapper.h"
 
-FileMapper::FileMapper() {
-    isAllocated.insert(isAllocated.begin(), MAPPED_BYTES_AMOUNT, false);
+FileMapper::FileMapper(size_t bytesAmount) {
+    isAllocated.insert(isAllocated.begin(), bytesAmount, false);
     MapMemoryToFile();
 }
 FileMapper::~FileMapper() {
-    if (munmap(start, MAPPED_BYTES_AMOUNT) == -1)
+    if (munmap(start, isAllocated.size()) == -1)
         perror ("munmap fails");
 }
 
 void FileMapper::MapMemoryToFile() {
     int fd = open("FileToMap.fmobj", O_CREAT | O_RDWR, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
     if (fd == -1)
-        perror("Opening of mapped file fails");
+        perror("File opening fails");
     else
-        fillFile(fd);
+        ftruncate(fd, isAllocated.size()); // resize mapped file
 
-    start = (char*) mmap (0, MAPPED_BYTES_AMOUNT, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0);
+    start = (char*) mmap (0, isAllocated.size(), PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0);
 
     if (start == MAP_FAILED)
         perror("mmap fails");
@@ -56,9 +56,4 @@ void FileMapper::free(void *ptr, size_t byteAmount) {
     for (int i = startIndex; i < startIndex + byteAmount; ++i) {
         isAllocated[i] = false;
     }
-}
-
-// I need this function, because i can't borrow memory from empty file
-void FileMapper::fillFile(int fd) {
-    ftruncate(fd, MAPPED_BYTES_AMOUNT);
 }

@@ -7,11 +7,9 @@
 
 using namespace std;
 
-const size_t MAPPED_BYTES_AMOUNT = INT_MAX;
-
 class FileMapper {
 public:
-    FileMapper();
+    FileMapper(size_t i);
     ~FileMapper();
 
     void*alloc(size_t size);
@@ -19,7 +17,6 @@ public:
 
 private:
     void MapMemoryToFile();
-    void fillFile(int fd);
 
     vector<bool> isAllocated;
     char* start;    // start of mapped memory

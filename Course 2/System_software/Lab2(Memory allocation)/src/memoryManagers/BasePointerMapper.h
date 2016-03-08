@@ -7,11 +7,11 @@ using namespace std;
 
 class BasePointerMapper {
 public:
-    BasePointerMapper();
+    BasePointerMapper(size_t bytesAmount);
     ~BasePointerMapper();
 
-    void*alloc(size_t size);
-    void free(void *ptr, size_t byteAmount);
+    void*alloc(size_t bytesAmount);
+    void free(void *ptr, size_t bytesAmount);
 
 private:
     vector<bool> isAllocated;
