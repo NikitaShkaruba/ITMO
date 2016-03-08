@@ -16,7 +16,7 @@ MemoryMapper::~MemoryMapper() {
 }
 
 void MemoryMapper::MapMemoryToFile() {
-    int fd = open("FileToMap", O_CREAT | O_RDWR, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    int fd = open("FileToMap.fmobj", O_CREAT | O_RDWR, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
     if (fd == -1)
         perror("Opening of mapped file fails");
     else
@@ -26,6 +26,7 @@ void MemoryMapper::MapMemoryToFile() {
 
     if (start == MAP_FAILED)
         perror("mmap fails");
+    close(fd);
 }
 void* MemoryMapper::alloc(size_t byteAmount) {
     int currentByteCounter = 0;
@@ -59,9 +60,5 @@ void MemoryMapper::free(void *ptr, size_t byteAmount) {
 
 // I need this function, because i can't borrow memory from empty file
 void MemoryMapper::fillFile(int fd) {
-    if (write(fd, "", 1) == -1) {
-        close(fd);
-        perror("Error writing last byte of the file");
-        exit(EXIT_FAILURE);
-    }
+    ftruncate(fd, MAPPED_BYTES_AMOUNT);
 }

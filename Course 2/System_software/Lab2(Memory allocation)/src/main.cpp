@@ -77,6 +77,7 @@ int main() {
         generateFileWithIntegers(100500);
 
     vector<int> integers = getIntegersFromFile("randomNumbers.txt");
-    MergeSort(&integers.front(), integers.size());
+    // MergeSortFM(&integers.front(), integers.size());     works!
+    // MergeSort(&integers.front(), integers.size());       works!
     writeIntegersToFile(integers, "sortedNumbers.txt");
 }

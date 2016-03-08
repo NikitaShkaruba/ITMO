@@ -2,10 +2,12 @@
 
 #include <glob.h>
 #include <vector>
+#include <stdint.h>
+#include <limits.h>
 
 using namespace std;
 
-const int MAPPED_BYTES_AMOUNT = 100500;
+const size_t MAPPED_BYTES_AMOUNT = INT_MAX;
 
 class MemoryMapper {
 public:
