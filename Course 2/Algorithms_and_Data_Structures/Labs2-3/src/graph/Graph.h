@@ -57,7 +57,7 @@ public:
     bool haveCycle(Edge edge);
 
 private:
-    Graph(int verticesAmount);
+    Graph(size_t verticesAmount);
 
     void DepthFirstSearch(bool marked[], int currentIndex);
 

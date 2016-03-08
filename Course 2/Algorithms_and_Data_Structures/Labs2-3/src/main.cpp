@@ -33,9 +33,14 @@ void printHelp() {
     cout << "\t kruskal, k - Kruskal's algorithm for finding min spanning tree" << endl;
 }
 void printVertexes(list<Vertex *> path) {
-    for (list<Vertex*>::iterator i = path.begin(); i != path.end(); ++i) {
-        cout << "{" + to_string((*i)->id) + "} -- ";
+    if (!path.empty()) {
+        for (list<Vertex*>::iterator i = path.begin(); i != path.end(); ++i) {
+            cout << "{" + to_string((*i)->id) + "} -- ";
+        }
+    } else {
+        cout << "none";
     }
+
     cout << endl;
 }
 void runDijkstraTest() {
@@ -106,8 +111,6 @@ void runAlgorithm(map<string, int> options) {
 
     switch(options["algorithm"]) {
         case 0: {
-            cout << "Running Dijkstra's marked algorithm" << endl;
-
             list<Vertex *> shortestPath = Dijkstra(builder.getResult(), options["start"], options["finish"]);
             cout << "Shortest path: ";
             printVertexes(shortestPath);
@@ -115,10 +118,6 @@ void runAlgorithm(map<string, int> options) {
         }
 
         case 1: {
-            cout << "Running bellman-ford's algorithm" << endl;
-
-            Graph *g = builder.getResult();
-
             list<Vertex *> shortestPath = BellmanFord(builder.getResult(), options["start"], options["finish"]);
             cout << "Shortest path: ";
             printVertexes(shortestPath);
@@ -126,18 +125,16 @@ void runAlgorithm(map<string, int> options) {
         }
 
         case 2: {
-            cout << "Running Prim's algorithm" << endl;
-
             Graph *minSpanningTree = Prim(builder.getResult());
+
             cout << "Vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
             cout << "Edges count: " << minSpanningTree->getEdgesAmount() << endl;
             break;
         }
 
         case 3: {
-            cout << "Running Kruskal's algorithm" << endl;
-
             Graph *minSpanningTree = Kruskal(builder.getResult());
+
             cout << "Vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
             cout << "Edges count: " << minSpanningTree->getEdgesAmount();
             break;

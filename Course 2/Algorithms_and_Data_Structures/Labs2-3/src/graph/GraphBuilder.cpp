@@ -12,16 +12,10 @@ void GraphBuilder::generateRandomDirectedGraph(size_t verticesCount, size_t edge
     delete constructed;
     constructed = new Graph(verticesCount);
 
-    addVertex(0);
-
-    for (size_t i = 1; i < verticesCount; ++i) {
-        Vertex* randomVertex = constructed->getRandomVertex();
-
+    for (size_t i = 0; i < verticesCount; ++i)
         addVertex(i);
-        addEdge(randomVertex->id, i, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
-    }
 
-    for (size_t i = verticesCount; i < edgesCount; i++) {
+    for (size_t i = 0; i < edgesCount; i++) {
         Vertex* v1 = constructed->getRandomVertex();
         Vertex* v2 = constructed->getRandomVertex();
 
@@ -32,20 +26,11 @@ void GraphBuilder::generateRandomUndirectedGraph(size_t verticesCount, size_t ed
     delete constructed;
     constructed = new Graph(verticesCount);
 
-    // You shall not pass, bitch
-    assert(minEdgeWeight < maxEdgeWeight);
-    assert(verticesCount <= edgesCount);
 
-    addVertex(0);
-
-    for (size_t i = 0; i < verticesCount; ++i) {
-        Vertex* randomVertex = constructed->getRandomVertex();
-
+    for (size_t i = 0; i < verticesCount; ++i)
         addVertex(i);
-        addUndirectedEdge(randomVertex->id, i, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
-    }
 
-    for (size_t i = verticesCount; i < edgesCount; i++) {
+    for (size_t i = 0; i < edgesCount; i++) {
         Vertex* v1 = constructed->getRandomVertex();
         Vertex* v2 = constructed->getRandomVertex();
 

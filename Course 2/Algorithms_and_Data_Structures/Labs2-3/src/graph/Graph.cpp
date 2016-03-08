@@ -42,7 +42,7 @@ bool Graph::haveCycle(Edge edge) {
     return marked[edge.source->id];
 }
 
-Graph::Graph(int verticesAmount) {
+Graph::Graph(size_t verticesAmount) {
     // It is reserved because of one-to-one relation between id and vector index.
     vertices.reserve(verticesAmount);
     for (int i = 0; i < verticesAmount; ++i) {

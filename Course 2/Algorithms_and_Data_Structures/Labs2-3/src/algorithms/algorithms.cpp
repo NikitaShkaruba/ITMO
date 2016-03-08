@@ -1,19 +1,24 @@
-#include <assert.h>
-#include <set>
 #include <limits.h>
 #include <iostream>
+#include <assert.h>
 #include "../graph/Graph.h"
 #include "../graph/GraphBuilder.h"
 
 using namespace std;
 
 // Lab 2
-list<Vertex*> recoverShortestPath(vector<Vertex*> shortestPaths, Vertex* last) {
+list<Vertex*> recoverShortestPath(vector<Vertex*> shortestPaths, Vertex* first, Vertex* last) {
     list<Vertex*> result;
 
     result.push_back(last);
-    for (Vertex* i = shortestPaths[last->id]; i != nullptr ; i = shortestPaths[i->id])
+    Vertex* i = last;
+    do {
+        i = shortestPaths[i->id];
+        if (i == nullptr)
+            return list<Vertex*>();
+
         result.push_back(i);
+    } while (i != first);
 
     result.reverse();
     return result;
@@ -57,7 +62,7 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
         }
     }
 
-    return recoverShortestPath(shortestPreviouses, vertices[destinationId]);
+    return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
 
 list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
@@ -84,7 +89,7 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
         }
     }
 
-    return recoverShortestPath(shortestPreviouses, vertices[destinationId]);
+    return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
 
 // Lab 3
