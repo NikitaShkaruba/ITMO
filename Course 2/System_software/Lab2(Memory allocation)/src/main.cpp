@@ -11,7 +11,7 @@ bool is_file_exist(const char *fileName) {
 }
 
 void generateFileWithIntegers(size_t intAmount) {
-    ofstream outStream("randomNumbers.txt", ios::out);
+    ofstream outStream("randomNumbers.txt");
 
     for (int i = 0; i < intAmount; ++i)
         outStream << "" << rand() << endl;
@@ -30,7 +30,7 @@ vector<int> getIntegersFromFile(string filename) {
     return integers;
 }
 void writeIntegersToFile(vector<int> integers, string filename) {
-    ofstream outStream(filename);
+    ofstream outStream(filename, fstream::out | fstream::trunc);
 
     for(vector<int>::iterator it = integers.begin(); it != integers.end(); it++)
         outStream << *it << endl;
@@ -70,12 +70,12 @@ int main(int argc, char* argv[]) {
                 return 1;
             }
         case 4: {
-            string inName = argv[argc - 1];
+            string inName = argv[argc - 2];
             vector<int> integers = getIntegersFromFile(inName);
 
-            if (key == "--file-mapping" || key == "-f")
+            if (key == "--file-mapped" || key == "-f")
                 MergeSortFM(&integers.front(), integers.size());
-            else if (key == "--pointer-mapping" || key == "-p")
+            else if (key == "--pointer-mapped" || key == "-p")
                 MergeSortBP(&integers.front(), integers.size());
             else if (key == "--heap" || key == "-h")
                 MergeSort(&integers.front(), integers.size());
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
                 return 1;
             }
 
-            string outName = argv[argc];
+            string outName = argv[argc - 1];
             writeIntegersToFile(integers, outName);
             return 0;
         }

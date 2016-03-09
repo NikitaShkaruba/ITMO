@@ -3,8 +3,6 @@
 #include "../memoryManagers/FileMapper.h"
 
 template<typename T> T* getSubArrayCopy(T *arr, size_t count) {
-    // Complexity: O(1)
-    // coz T(n) = O(count) = O(1)
     T* result = new T[count];
 
     for (size_t i = 0; i < count; i++)		// count*
