@@ -25,7 +25,7 @@ list<Vertex*> recoverShortestPath(vector<Vertex*> shortestPaths, Vertex* first, 
 }
 int getMinDistanceIndex(vector<int> &distances, vector<bool> &marked) {
     int min = INT_MAX;
-    int minIndex = INT_MAX;
+    size_t minIndex = -1;
 
     for (int i = 0; i < distances.size(); i++)
         if (!marked[i] && distances[i] <= min) {
@@ -33,10 +33,10 @@ int getMinDistanceIndex(vector<int> &distances, vector<bool> &marked) {
             minIndex = i;
         }
 
-    assert(minIndex != INT_MAX);
+    assert(minIndex != -1);
     return minIndex;
 }
-list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
+list<Vertex*> Dijkstra(Graph* graph, size_t startId, size_t destinationId) {
     vector<Vertex*> vertices = graph->getAllVertices();
 
     // Preparations
@@ -46,7 +46,7 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
     distances[startId] = 0;
 
     // Find shortest path for all vertices
-    for (int count = 0; count < vertices.size() - 1; count++) {
+    for (size_t count = 0; count < vertices.size() - 1; count++) {
         int minIndex = getMinDistanceIndex(distances, marked);
         marked[minIndex] = true;
 
@@ -65,7 +65,7 @@ list<Vertex*> Dijkstra(Graph* graph, int startId, int destinationId) {
     return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
 
-list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
+list<Vertex*> BellmanFord(Graph* graph, size_t startId, size_t destinationId) {
     vector<Vertex*> vertices = graph->getAllVertices();
 
     // Preparation
@@ -73,7 +73,7 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
     vector<Vertex*> shortestPreviouses(graph->getVerticesAmount(), nullptr);
     distances[startId] = 0;
 
-    for(int i = 0; i < vertices.size() - 1; i++) {
+    for(size_t i = 0; i < vertices.size() - 1; i++) {
         for(vector<Vertex*>::iterator vertexIt = vertices.begin(); vertexIt != vertices.end(); vertexIt++) {
             if (distances[(*vertexIt)->id] == INT_MAX) { // int overflow may screw comparison up
                 continue;
@@ -93,7 +93,7 @@ list<Vertex*> BellmanFord(Graph* graph, int startId, int destinationId) {
 }
 
 // Lab 3
-bool contains(vector<Vertex*> vertices, int id) {
+bool contains(vector<Vertex*> vertices, size_t id) {
     for (vector<Vertex*>::iterator it = vertices.begin(); it != vertices.end(); it++)
         if ((*it) != nullptr && (*it)->id == id)
             return true;

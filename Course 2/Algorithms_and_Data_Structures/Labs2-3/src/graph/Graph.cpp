@@ -11,7 +11,7 @@ Vertex *Graph::getRandomVertex() {
 
     return *it;
 }
-Vertex* Graph::getVertex(int id) {
+Vertex* Graph::getVertex(size_t id) {
     return vertices[id];
 }
 vector<Vertex*> Graph::getAllVertices() {
@@ -34,7 +34,7 @@ size_t Graph::getEdgesAmount() {
 
 bool Graph::haveCycle(Edge edge) {
     bool marked[vertices.capacity()];
-    for (int i = 0; i < vertices.capacity(); ++i)
+    for (size_t i = 0; i < vertices.capacity(); ++i)
         marked[i] = false;
 
     DepthFirstSearch(marked, edge.destination->id);
@@ -45,7 +45,7 @@ bool Graph::haveCycle(Edge edge) {
 Graph::Graph(size_t verticesAmount) {
     // It is reserved because of one-to-one relation between id and vector index.
     vertices.reserve(verticesAmount);
-    for (int i = 0; i < verticesAmount; ++i) {
+    for (size_t i = 0; i < verticesAmount; ++i) {
         vertices.push_back(nullptr);
     }
 
@@ -53,7 +53,7 @@ Graph::Graph(size_t verticesAmount) {
     this->verticesCount = 0;
 }
 
-void Graph::DepthFirstSearch(bool marked[], int currentIndex) {
+void Graph::DepthFirstSearch(bool marked[], size_t currentIndex) {
     marked[currentIndex] = true;
 
     if (vertices[currentIndex] != nullptr) {

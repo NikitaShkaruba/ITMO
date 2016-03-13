@@ -15,16 +15,16 @@ public:
     void generatePrimTestGraph();
     void generateKruskalTestGraph();
 
-    void addVertex(int id);
-    void addEdge(int startId, int destinationId, int weight);
-    void addUndirectedEdge(int firstId, int secondId, int weight);
+    void addVertex(size_t id);
+    void addEdge(size_t startId, size_t destinationId, int weight);
+    void addUndirectedEdge(size_t firstId, size_t secondId, int weight);
     void removeLoops();
     void removeDoubles();
 
     Graph* getResult();
 
 private:
-    void addEdges(int sourceId, vector<pair<int, int>> ids);
+    void addEdges(size_t sourceId, vector<pair<size_t, int>> ids);
 
     Graph* constructed;
 };

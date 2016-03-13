@@ -22,13 +22,13 @@ maxWeight=1000000
 > timestamps/dijkstra/dijkstra-33.txt
 > timestamps/bellmanford/bellmanford-33.txt
 
-for edgesAmount in {0..10000000..100000}
+for ((edgesAmount = 0; edgesAmount < 10**7; edgesAmount += 10**5))
 do
 	SECONDS=0 
-	./GraphAlgorithms run --algorithm dijkstra --directed 1 -va $verticesAmount -ea $edgesAmount -min $minWeight -max $maxWeight --start 0 --finish $[verticesAmount-1] >> timestamps/dijkstra/dijkstra-33.txt
-	printf "edges amount: %s\texecution time: %s\n" "$edgesAmount" "$SECONDS" >> timestamps/dijkstra/dijkstra-33.txt
+	./GraphAlgorithms run --algorithm dijkstra --directed 1 -va $verticesAmount -ea $edgesAmount -min $minWeight -max $maxWeight --start 0 --finish $[verticesAmount-1] | tee -a timestamps/dijkstra/dijkstra-33.txt | more
+	printf "edges amount: %s\texecution time: %s\n" "$edgesAmount" "$SECONDS" | tee -a timestamps/dijkstra/dijkstra-33.txt | more
 
 	SECONDS=0 
-	./GraphAlgorithms run --algorithm bellman-ford --directed 1 -va $verticesAmount -ea $edgesAmount -min $minWeight -max $maxWeight --start 0 --finish $[verticesAmount-1] >> timestamps/bellmanford/bellmanford-33.txt
-	printf "edges amount: %s\texecution time: %s\n" "$edgesAmount" "$SECONDS" >> timestamps/bellmanford/bellmanford-33.txt
+	./GraphAlgorithms run --algorithm bellman-ford --directed 1 -va $verticesAmount -ea $edgesAmount -min $minWeight -max $maxWeight --start 0 --finish $[verticesAmount-1] | tee -a timestamps/bellmanford/bellmanford-33.txt | more
+	printf "edges amount: %s\texecution time: %s\n" "$edgesAmount" "$SECONDS" | tee -a timestamps/bellmanford/bellmanford-33.txt | more
 done

@@ -19,7 +19,7 @@ void GraphBuilder::generateRandomDirectedGraph(size_t verticesCount, size_t edge
         Vertex* v1 = constructed->getRandomVertex();
         Vertex* v2 = constructed->getRandomVertex();
 
-        addEdge(v1->id, v2->id, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
+        addEdge(v1->id, v2->id, minEdgeWeight + rand() % (minEdgeWeight != maxEdgeWeight? maxEdgeWeight - minEdgeWeight : minEdgeWeight));
     }
 }
 void GraphBuilder::generateRandomUndirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
@@ -34,7 +34,7 @@ void GraphBuilder::generateRandomUndirectedGraph(size_t verticesCount, size_t ed
         Vertex* v1 = constructed->getRandomVertex();
         Vertex* v2 = constructed->getRandomVertex();
 
-        addUndirectedEdge(v1->id, v2->id, minEdgeWeight + rand() % (maxEdgeWeight - minEdgeWeight));
+        addUndirectedEdge(v1->id, v2->id, minEdgeWeight + rand() % (minEdgeWeight != maxEdgeWeight? maxEdgeWeight - minEdgeWeight : minEdgeWeight));
     }
 }
 
@@ -115,12 +115,12 @@ void GraphBuilder::generateKruskalTestGraph() {
     addEdges(6, {{5, 9}});
 }
 
-void GraphBuilder::addVertex(int id) {
+void GraphBuilder::addVertex(size_t id) {
     // pair<string, Vertex> pr(name, Vertex(name));
     constructed->vertices[id] = new Vertex(id);
     constructed->verticesCount++;
 }
-void GraphBuilder::addEdge(int sourceId, int destinationId, int weight) {
+void GraphBuilder::addEdge(size_t sourceId, size_t destinationId, int weight) {
     Vertex* source = constructed->vertices[sourceId];
     Vertex* destination = constructed->vertices[destinationId];
     vector<Vertex*> vertexes = constructed->getAllVertices();
@@ -128,7 +128,7 @@ void GraphBuilder::addEdge(int sourceId, int destinationId, int weight) {
     source->neighborhood.push_back(new Edge(source, destination, weight));
     constructed->edgesCount++;
 }
-void GraphBuilder::addUndirectedEdge(int firstId, int secondId, int weight) {
+void GraphBuilder::addUndirectedEdge(size_t firstId, size_t secondId, int weight) {
     this->addEdge(firstId, secondId, weight);
     this->addEdge(secondId, firstId, weight);
 }
@@ -173,7 +173,7 @@ Graph* GraphBuilder::getResult() {
     return constructed;
 }
 
-void GraphBuilder::addEdges(int sourceId, vector<pair<int, int>> ids) {
-    for(vector<pair<int, int>>::iterator it = ids.begin(); it != ids.end(); it++)
+void GraphBuilder::addEdges(size_t sourceId, vector<pair<size_t, int>> ids) {
+    for(vector<pair<size_t, int>>::iterator it = ids.begin(); it != ids.end(); it++)
         addEdge(sourceId, it->first, it->second);
 }

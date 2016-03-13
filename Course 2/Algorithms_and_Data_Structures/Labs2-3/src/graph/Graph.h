@@ -10,10 +10,10 @@ using namespace std;
 struct Edge; // Is needed for self-include purpose
 
 struct Vertex {
-    Vertex(int id) : id(id) {}
+    Vertex(size_t id) : id(id) {}
 
 public:
-    const int id;
+    const size_t id;
     list<Edge*> neighborhood;
 
     Edge* getDuplicateEdge(Edge *pEdge) const;
@@ -48,7 +48,7 @@ class Graph {
 
 public:
     Vertex* getRandomVertex();
-    Vertex* getVertex(int id);
+    Vertex* getVertex(size_t id);
     vector<Vertex*> getAllVertices();
 
     size_t getVerticesAmount();
@@ -59,7 +59,7 @@ public:
 private:
     Graph(size_t verticesAmount);
 
-    void DepthFirstSearch(bool marked[], int currentIndex);
+    void DepthFirstSearch(bool marked[], size_t currentIndex);
 
     vector<Vertex*> vertices;
     size_t verticesCount;
