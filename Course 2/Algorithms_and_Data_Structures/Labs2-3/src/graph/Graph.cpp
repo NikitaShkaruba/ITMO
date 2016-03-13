@@ -6,7 +6,7 @@ Vertex *Graph::getRandomVertex() {
 
     do {
         it = vertices.begin();
-        std::advance(it, rand() % vertices.size());
+        it += rand() % verticesCount;
     } while (*it == nullptr);
 
     return *it;

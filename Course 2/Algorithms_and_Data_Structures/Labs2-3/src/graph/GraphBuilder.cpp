@@ -8,7 +8,10 @@ GraphBuilder::GraphBuilder(Graph *graph) {
     constructed = graph;
 }
 
+// TODO: make this method static
 void GraphBuilder::generateRandomDirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
+    srand(time(nullptr));
+
     delete constructed;
     constructed = new Graph(verticesCount);
 
@@ -23,9 +26,10 @@ void GraphBuilder::generateRandomDirectedGraph(size_t verticesCount, size_t edge
     }
 }
 void GraphBuilder::generateRandomUndirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight) {
+    srand(time(nullptr));
+
     delete constructed;
     constructed = new Graph(verticesCount);
-
 
     for (size_t i = 0; i < verticesCount; ++i)
         addVertex(i);

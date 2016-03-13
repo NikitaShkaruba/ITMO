@@ -104,11 +104,14 @@ void runAllTests() {
 void runAlgorithm(map<string, int> options) {
     GraphBuilder builder(options["vertexAmount"]);
 
+    time_t buildTime = time(nullptr);
     if (options["directed"] == 1)
         builder.generateRandomDirectedGraph(options["vertexAmount"], options["edgesAmount"], options["minWeight"], options["maxWeight"]);
     else
         builder.generateRandomUndirectedGraph(options["vertexAmount"], options["edgesAmount"], options["minWeight"], options["maxWeight"]);
+    buildTime = time(nullptr) - buildTime;
 
+    time_t executionTime = time(nullptr);
     switch(options["algorithm"]) {
         case 0: {
             list<Vertex *> shortestPath = Dijkstra(builder.getResult(), options["start"], options["finish"]);
@@ -127,19 +130,23 @@ void runAlgorithm(map<string, int> options) {
         case 2: {
             Graph *minSpanningTree = Prim(builder.getResult());
 
-            cout << "Vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
-            cout << "Edges count: " << minSpanningTree->getEdgesAmount() << endl;
+            cout << "MST's vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
+            cout << "MST's edges count: " << minSpanningTree->getEdgesAmount() << endl;
             break;
         }
 
         case 3: {
             Graph *minSpanningTree = Kruskal(builder.getResult());
 
-            cout << "Vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
-            cout << "Edges count: " << minSpanningTree->getEdgesAmount();
+            cout << "MST's vertexes count: " << minSpanningTree->getVerticesAmount() << endl;
+            cout << "MST's edges count: " << minSpanningTree->getEdgesAmount() << endl;
             break;
         }
     }
+    executionTime = time(nullptr) - executionTime;
+
+    cout << "Graph build time: " << buildTime << "seconds;" << endl;
+    cout << "Execution time: " << executionTime << " seconds;" << endl;
 }
 
 // Option 31
