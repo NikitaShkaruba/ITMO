@@ -5,17 +5,28 @@
 class GraphBuilder {
 public:
     GraphBuilder(size_t graphSize);
-    GraphBuilder(size_t graphSize, int minWeight, int maxWeight);
-    void generateTestGraph1();
+    GraphBuilder(Graph* graph);
 
-    void addVertex(string name);
-    void addEdges(string sourceName, vector<pair<string, int>> names);
+    void generateRandomDirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
+    void generateRandomUndirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
+
+    void generateDijkstraTestGraph();
+    void generateBellmanFordTestGraph();
+    void generatePrimTestGraph();
+    void generateKruskalTestGraph();
+
+    void addVertex(size_t id);
+    void addEdge(size_t startId, size_t destinationId, int weight);
+    void addUndirectedEdge(size_t firstId, size_t secondId, int weight);
+    void removeLoops();
+    void removeDoubles();
+
     Graph* getResult();
 
 private:
+    void addEdges(size_t sourceId, vector<pair<size_t, int>> ids);
+
     Graph* constructed;
-    int minWeight;
-    int maxWeight;
 };
 
 
