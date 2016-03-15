@@ -118,7 +118,26 @@ void GraphBuilder::generateKruskalTestGraph() {
     addEdges(5, {{3, 7}, {4, 8}, {6, 9}});
     addEdges(6, {{5, 9}});
 }
+void GraphBuilder::generateTestWeb() {
+    // Option 13
+    delete constructed;
+    constructed = new Graph(7);
 
+    addVertex(0);   // A
+    addVertex(1);   // B
+    addVertex(2);   // C
+    addVertex(3);   // D
+    addVertex(4);   // E
+    addVertex(5);   // F
+
+    // TODO: add throwughputs
+    addEdges(0, {{1, 2}, {2, 3}, {3, 3}, {0, 0}, {0, 0}});
+    addEdges(1, {{0, 2}, {2, 4}, {4, 3}});
+    addEdges(2, {{0, 3}, {1, 4}, {3, 5}, {4, 1}, {4, 1}});
+    addEdges(3, {{0, 3}, {2, 5}, {5, 7}});
+    addEdges(4, {{1, 3}, {2, 1}, {5, 8}});
+    addEdges(5, {{3, 7}, {4, 8}, {6, 9}});
+}
 void GraphBuilder::addVertex(size_t id) {
     // pair<string, Vertex> pr(name, Vertex(name));
     constructed->vertices[id] = new Vertex(id);
@@ -181,3 +200,4 @@ void GraphBuilder::addEdges(size_t sourceId, vector<pair<size_t, int>> ids) {
     for(vector<pair<size_t, int>>::iterator it = ids.begin(); it != ids.end(); it++)
         addEdge(sourceId, it->first, it->second);
 }
+

@@ -9,6 +9,7 @@ public:
 
     void generateRandomDirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
     void generateRandomUndirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
+    void generateRandomWeb(size_t verticesCount);
 
     void generateDijkstraTestGraph();
     void generateBellmanFordTestGraph();
@@ -27,6 +28,8 @@ private:
     void addEdges(size_t sourceId, vector<pair<size_t, int>> ids);
 
     Graph* constructed;
+
+    void generateTestWeb();
 };
 
 

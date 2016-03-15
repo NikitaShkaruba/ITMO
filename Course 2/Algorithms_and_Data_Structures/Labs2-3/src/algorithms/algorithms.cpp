@@ -171,3 +171,29 @@ Graph* Kruskal(Graph* graph) {
 
     return builder.getResult();
 }
+
+// Lab 4
+vector<Edge*> createFlow(Graph* graph) {
+
+}
+vector<Edge*> kargerMinCut(Graph* graph) {
+        /*size_t n = graph.edgeCount_;
+        Graph best = Graph(graph);
+
+        for (size_t i = 0; i < pow(n, 2)*log(n); i++) {		// O(log(n)*n^2)
+            Graph copy = Graph(graph);
+
+                while (copy.nodes_.size() != 2) {				// O(m/log(n))
+                    size_t j = rand() / copy.edgeCount_;
+                    Edge* chosen = copy.nodes_[j].edges_[rand() / copy.nodes_[j].edges_.size()]; //!
+                    Node* merged = chosen->from_;
+                    copy.fuse(chosen);
+                    copy.removeSelfLoops(*merged);
+                }
+
+                if (copy.edgeCount_ < best.edgeCount_)
+                    best = copy;
+    }
+
+    return best; */
+}
