@@ -66,3 +66,12 @@ void Graph::DepthFirstSearch(bool marked[], size_t currentIndex) {
 }
 
 
+vector<Edge*> Graph::getAllEdges() {
+    vector<Edge*> result;
+
+    for (vector<Vertex*>::iterator vIt = vertices.begin(); vIt != vertices.end(); vIt++)
+        for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end(); eIt++)
+            result.push_back(*eIt);
+
+    return result;
+}

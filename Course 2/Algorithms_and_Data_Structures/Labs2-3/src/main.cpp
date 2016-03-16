@@ -94,6 +94,17 @@ void runKruskalTest() {
     cout << "Expected vertices, edges amounts: \t(7, (7-1)*2);" << endl;
     cout << "Output vertices, edges amounts: \t(" << minSpanningTree->getVerticesAmount() << ", " << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
 }
+void runCalculateFlowTest() {
+    cout << "Testing Flow calculation algorithm" << endl;
+
+    GraphBuilder builder(6);
+    builder.generateTestWeb();
+    Graph* g = builder.getResult();
+
+    vector<Edge*> eges = calculateFlow(g);
+    cout << "Expected vertices, edges amounts: \t(7, (7-1)*2);" << endl;
+    cout << "Output vertices, edges amounts: \t(" << minSpanningTree->getVerticesAmount() << ", " << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
+}
 void runAllTests() {
     runDijkstraTest();
     runBellmanFordTest();

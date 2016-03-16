@@ -56,6 +56,8 @@ public:
 
     bool haveCycle(Edge edge);
 
+    vector<Edge *> getAllEdges();
+
 private:
     Graph(size_t verticesAmount);
 

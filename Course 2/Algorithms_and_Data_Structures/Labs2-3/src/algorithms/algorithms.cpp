@@ -173,8 +173,13 @@ Graph* Kruskal(Graph* graph) {
 }
 
 // Lab 4
-vector<Edge*> createFlow(Graph* graph) {
+map<Edge*, int> calculateFlow(Graph* graph) {
+    map<Edge*, int> result();
+    vector<Edge*> allEdges = graph->getAllEdges();
+    vector<list<Edge*>> increaseChains();
 
+    for(vector<Edge*>::iterator it = allEdges.begin(); it != allEdges.end(); it++)
+        map
 }
 vector<Edge*> kargerMinCut(Graph* graph) {
         /*size_t n = graph.edgeCount_;

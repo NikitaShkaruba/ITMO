@@ -119,6 +119,24 @@ void GraphBuilder::generateKruskalTestGraph() {
     addEdges(6, {{5, 9}});
 }
 void GraphBuilder::generateTestWeb() {
+    delete constructed;
+    constructed = new Graph(7);
+
+    addVertex(0);   // A
+    addVertex(1);   // B
+    addVertex(2);   // C
+    addVertex(3);   // D
+    addVertex(4);   // E
+    addVertex(5);   // F
+
+    // TODO: add throwughputs
+    addEdges(0, {{1, 9}, {2, 8}});
+    addEdges(1, {{3, 6}, {4, 3}});
+    addEdges(2, {{4, 4}});
+    addEdges(3, {{5, 10}});
+    addEdges(4, {{4, 4}, {5, 7}});
+}
+void GraphBuilder::generateOptionWeb() {
     // Option 13
     delete constructed;
     constructed = new Graph(7);
@@ -131,8 +149,8 @@ void GraphBuilder::generateTestWeb() {
     addVertex(5);   // F
 
     // TODO: add throwughputs
-    addEdges(0, {{1, 2}, {2, 3}, {3, 3}, {0, 0}, {0, 0}});
-    addEdges(1, {{0, 2}, {2, 4}, {4, 3}});
+    addEdges(0, {{1, 0}, {2, 0}, {3, 0}, {4, 0}});
+    addEdges(1, {{0, 0}, {3, 0}, {5, 0}});
     addEdges(2, {{0, 3}, {1, 4}, {3, 5}, {4, 1}, {4, 1}});
     addEdges(3, {{0, 3}, {2, 5}, {5, 7}});
     addEdges(4, {{1, 3}, {2, 1}, {5, 8}});
@@ -201,3 +219,13 @@ void GraphBuilder::addEdges(size_t sourceId, vector<pair<size_t, int>> ids) {
         addEdge(sourceId, it->first, it->second);
 }
 
+void GraphBuilder::copyGraph(Graph& graph) {
+    this->constructed = new Graph(graph.getVerticesAmount());
+
+    for(vector<Vertex*>::iterator vIt = constructed->vertices.begin(); vIt != constructed->vertices.end(); vIt++) {
+        addVertex((*vIt)->id);
+        for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end(); eIt++) {
+            addEdge((*eIt)->source->id, (*eIt)->destination->id, (*eIt)->weight);
+        }
+    }
+}
