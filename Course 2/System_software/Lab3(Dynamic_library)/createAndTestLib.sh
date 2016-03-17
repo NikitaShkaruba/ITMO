@@ -16,5 +16,8 @@ ldconfig -n .
 echo "4) compiling source files with custom and math library-links"
 gcc src/main.c libcrap.so.1.5.0 -lm -o thirdPartyProgram # -lm is needed for sin and cos functions, coz 
 
-echo "5) executing output file"
+echo "5) adding library to dynamic linkage variable, so it can be found "
+export LD_LIBRARY_PATH=$PWD
+
+echo "6) executing output file"
 ./thirdPartyProgram
