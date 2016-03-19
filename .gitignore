@@ -1,4 +1,4 @@
-ompiled source #
+Compiled source #
 ###################
 *.com
 *.class
@@ -39,9 +39,9 @@ Thumbs.db
 # Intellij Idea's trash #
 #########################
 .idea/
-/out/
+**/out/
 *.iml
 
 # Maven trash #
 ###############
-/target/
+**/target/
