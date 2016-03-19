@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 7 - Servlets</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/default.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <style>
+        .redBorder {
+            border: 1px solid #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrap">
+    <div id="header">
+        <h3>
+            Старался: Никита Шкаруба <br/>
+            Группа: P3218 <br/>
+            Вариант: 424
+        </h3>
+    </div>
+    <div id="content">
+        <img src="resources/images/chart.jpg">
+        <form method="get" action="WebForm" class="box">
+            <div id="xes" class="inputs">
+                <label>x: </label>
+                <label>
+                    -3
+                    <input type="radio" name="x" value="-3"/>
+                </label>
+                <label>
+                    -2
+                    <input type="radio" name="x" value="-2"/>
+                </label>
+                <label>
+                    -1
+                    <input type="radio" name="x" value="-1"/>
+                </label>
+                <label>
+                    0
+                    <input type="radio" name="x" value="0"/>
+                </label>
+                <label>
+                    1
+                    <input type="radio" name="x" value="1"/>
+                </label>
+                <label>
+                    2
+                    <input type="radio" name="x" value="2"/>
+                </label>
+                <label>
+                    3
+                    <input type="radio" name="x" value="3"/>
+                </label>
+                <label>
+                    4
+                    <input type="radio" name="x" value="4"/>
+                </label>
+                <label>
+                    5
+                    <input type="radio" name="x" value="5"/>
+                </label>
+            </div>
+            <div id="ys">
+                <label>
+                    y:
+                    <input id="dangerInput" type="text"/>
+                </label>
+                <label id="errorMessage" style="color: red">Input correct Numeric Y!</label>
+            </div>
+            <div id="rs">
+                <label>r: </label>
+
+                <label>
+                    1
+                    <input type="checkbox" name="r" value="1"/>
+                </label>
+                <label>
+                    1.5
+                    <input type="checkbox" name="r" value="1.5"/>
+                </label>
+                <label>
+                    2
+                    <input type="checkbox" name="r" value="2"/>
+                </label>
+                <label>
+                    2.5
+                    <input type="checkbox" name="r" value="2.5"/>
+                </label>
+                <label>
+                    3
+                    <input type="checkbox" name="r" value="3"/>
+                </label>
+            </div>
+
+            <input id="submit" type="submit" disabled="true" value="Проверить точку">
+        </form>
+        <script>
+            $("input[name*='r']").on('click', function() {
+                var $box = $(this);
+
+                if ($box.is(":checked")) {
+                    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                    $(group).prop("checked", false);
+                    $box.prop("checked", true);
+                } else {
+                    $box.prop("checked", false);
+                }
+            });
+        </script>
+        <script>
+             $('#dangerInput').on('change keydown paste inputc', (function() {
+                 var value = $('#dangerInput').val();
+
+                 if (isNaN(value)) {
+                     $('#dangerInput').addClass("redBorder");
+                     $('#errorMessage').text("Input correct numeric Y!");
+                     $('#submit').attr('disabled','disabled');
+                 } else if (value < -3 || value > 3) {
+                     $('#dangerInput').addClass("redBorder");
+                     $('#errorMessage').text("Y is out of bounds {-3, 3}");
+                     $('#submit').attr('disabled','disabled');
+                 } else {
+                     $('#dangerInput').removeClass("redBorder");
+                     $('#errorMessage').text("");
+                     $('#submit').removeAttr('disabled');
+                 }
+             }));
+         </script>
+    </div>
+</div>
+</body>
+</html>
