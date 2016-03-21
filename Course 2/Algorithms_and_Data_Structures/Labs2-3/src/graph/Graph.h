@@ -15,8 +15,6 @@ struct Vertex {
 public:
     const size_t id;
     list<Edge*> neighborhood;
-
-    Edge* getDuplicateEdge(Edge *pEdge) const;
 };
 
 // TODO: consider creation of UndirectedEdge class

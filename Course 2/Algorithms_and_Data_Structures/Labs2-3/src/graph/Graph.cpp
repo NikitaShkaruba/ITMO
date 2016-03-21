@@ -1,6 +1,13 @@
 #include <iostream>
 #include "Graph.h"
 
+Graph::Graph(size_t verticesAmount) : vertices(verticesAmount, nullptr) {
+    // vertices are reserved because of encapsulation(inner realization)
+
+    this->edgesCount = 0;
+    this->verticesCount = 0;
+}
+
 Vertex *Graph::getRandomVertex() {
     vector<Vertex*>::iterator  it;
 
@@ -42,17 +49,6 @@ bool Graph::haveCycle(Edge edge) {
     return marked[edge.source->id];
 }
 
-Graph::Graph(size_t verticesAmount) {
-    // It is reserved because of one-to-one relation between id and vector index.
-    vertices.reserve(verticesAmount);
-    for (size_t i = 0; i < verticesAmount; ++i) {
-        vertices.push_back(nullptr);
-    }
-
-    this->edgesCount = 0;
-    this->verticesCount = 0;
-}
-
 void Graph::DepthFirstSearch(bool marked[], size_t currentIndex) {
     marked[currentIndex] = true;
 
@@ -64,7 +60,6 @@ void Graph::DepthFirstSearch(bool marked[], size_t currentIndex) {
         }
     }
 }
-
 
 vector<Edge*> Graph::getAllEdges() {
     vector<Edge*> result;

@@ -156,7 +156,7 @@ void runAlgorithm(map<string, int> options) {
     }
     executionTime = time(nullptr) - executionTime;
 
-    cout << "Graph build time: " << buildTime << "seconds;" << endl;
+    cout << "Graph build time: " << buildTime << " seconds;" << endl;
     cout << "Execution time: " << executionTime << " seconds;" << endl;
 }
 

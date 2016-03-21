@@ -157,14 +157,12 @@ void GraphBuilder::generateOptionWeb() {
     addEdges(5, {{3, 7}, {4, 8}, {6, 9}});
 }
 void GraphBuilder::addVertex(size_t id) {
-    // pair<string, Vertex> pr(name, Vertex(name));
     constructed->vertices[id] = new Vertex(id);
     constructed->verticesCount++;
 }
 void GraphBuilder::addEdge(size_t sourceId, size_t destinationId, int weight) {
     Vertex* source = constructed->vertices[sourceId];
     Vertex* destination = constructed->vertices[destinationId];
-    vector<Vertex*> vertexes = constructed->getAllVertices();
 
     source->neighborhood.push_back(new Edge(source, destination, weight));
     constructed->edgesCount++;
