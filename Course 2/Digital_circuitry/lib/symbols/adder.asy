@@ -1,0 +1,22 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal 48 -49 -47 48
+TEXT -41 -20 Left 2 ADDER
+PIN -48 -32 RIGHT 8
+PINATTR PinName a
+PINATTR SpiceOrder 1
+PIN -48 0 RIGHT 8
+PINATTR PinName b
+PINATTR SpiceOrder 2
+PIN -48 32 RIGHT 8
+PINATTR PinName c
+PINATTR SpiceOrder 3
+PIN 0 -48 BOTTOM 8
+PINATTR PinName vdd
+PINATTR SpiceOrder 4
+PIN 48 -16 LEFT 8
+PINATTR PinName sum
+PINATTR SpiceOrder 5
+PIN 48 16 LEFT 8
+PINATTR PinName cout
+PINATTR SpiceOrder 6
