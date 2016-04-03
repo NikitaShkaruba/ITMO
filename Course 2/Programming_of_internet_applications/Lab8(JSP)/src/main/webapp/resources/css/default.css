@@ -1,0 +1,29 @@
+body {
+	background: #373737;
+	color:#e5e5e5;
+	font:86% 'lucida grande','lucida sans unicode',Verdana,Tahoma,Arial,sans-serif;
+	line-height:1.2em;
+	margin:0 auto;
+	padding:0;
+}
+
+#content {
+    float:left;
+    line-height:1.5em;
+    margin:0;
+    padding:0;
+    text-align:left;
+}
+
+a {
+    color: aqua;
+}
+
+.box {
+    border:2px solid #c8c8c8;
+    color:#fff;
+    font-size:0.9em;
+    line-height:1.4em;
+	padding: 2px;
+}
+
