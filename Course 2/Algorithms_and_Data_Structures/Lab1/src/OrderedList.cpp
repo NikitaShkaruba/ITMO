@@ -113,9 +113,8 @@ bool OrderedList::find(string content) const {
 string OrderedList::operator[](int i) const {
     Node* node = first;
 
-    for (int j = 0; j < i; ++j) {
+    for (int j = 0; j < i; ++j)
         node = first->next;
-    }
 
     return node->content;
 }

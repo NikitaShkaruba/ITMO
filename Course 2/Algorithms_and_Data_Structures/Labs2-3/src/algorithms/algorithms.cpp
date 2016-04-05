@@ -98,6 +98,8 @@ list<Vertex*> BellmanFord(Graph* graph, size_t startId, size_t destinationId) {
     }
 
     AllMinimumPathsFound:
+
+
     return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
 
@@ -182,6 +184,7 @@ Graph* Kruskal(Graph* graph) {
 }
 
 // Lab 4
+/*
 map<Edge*, int> calculateFlow(Graph* graph) {
     map<Edge*, int> result();
     vector<Edge*> allEdges = graph->getAllEdges();
@@ -210,4 +213,3 @@ vector<Edge*> kargerMinCut(Graph* graph) {
     }
 
     return best; */
-}
