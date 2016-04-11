@@ -99,10 +99,10 @@
 
         var x = (e.pageX - ImgPos[0] - chart.clientWidth/2);    // pixels count
         x = x / (chart.clientWidth / 2);                        // pixels / axis width
-        x = x * 1.33 * r;                                       // relative to R
+        x = x * 1.28 * r;                                       // relative to R
         var y = -(e.pageY - ImgPos[1] - chart.clientHeight/2);
         y = y / (chart.clientHeight / 2);
-        y = y * 1.4 * r;
+        y = y * 1.35 * r;
 
         if (isRValid())
             window.location = "/AreaCheck?x=" + x + "&y=" + y + "&r=" + r ;
