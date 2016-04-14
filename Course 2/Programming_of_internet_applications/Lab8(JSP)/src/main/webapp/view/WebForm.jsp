@@ -15,7 +15,7 @@
         <h3>
             Старался: Никита Шкаруба <br/>
             Группа: P3218 <br/>
-            Вариант: 424
+            Вариант: 989
         </h3>
     </div>
     <div id="content">
@@ -105,7 +105,7 @@
         y = y * 1.35 * r;
 
         if (isRValid())
-            window.location = "/AreaCheck?x=" + x + "&y=" + y + "&r=" + r ;
+            window.location = "/Lab8/WebForm?x=" + x + "&y=" + y + "&r=" + r ;
         else
             alert("Не могу выполнить запрос, т.к. r не выбран.")
     }

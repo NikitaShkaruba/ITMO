@@ -3,13 +3,13 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>ITMO-labs</groupId>
-  <artifactId>Lab7</artifactId>
+  <artifactId>Lab8</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Lab7</name>
+  <name>Lab8</name>
 
   <build>
-    <finalName>Lab7</finalName>
+    <finalName>Lab8</finalName>
       <plugins>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>

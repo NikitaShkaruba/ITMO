@@ -67,7 +67,7 @@ public class AreaCheckServlet extends HttpServlet {
         "    <div> \n" +
         "        <label>Point is  <b>" + (isInArea? "in figure!" : "not in figure!") + "</b></label> \n" +
         "        <br/> <br/> \n" +
-        "        <a href=\"/Lab7/\">back</a> \n" +
+        "        <a href=\"/Lab8/\">back</a> \n" +
         "    </div> \n" +
         "</body> \n" +
         "</html>");

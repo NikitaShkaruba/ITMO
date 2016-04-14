@@ -4,7 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
-  <display-name>Lab7 Application</display-name>
+  <display-name>Lab8 Application</display-name>
 
   <servlet>
     <servlet-name>controller</servlet-name>
@@ -18,9 +18,13 @@
     <servlet-name>AreaCheck</servlet-name>
     <servlet-class>AreaCheckServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DefaultServlet</servlet-name>
+    <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
-    <servlet-name>default</servlet-name>
+    <servlet-name>DefaultServlet</servlet-name>
     <url-pattern>/resources/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
