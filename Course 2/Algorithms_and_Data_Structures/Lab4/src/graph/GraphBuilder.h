@@ -7,13 +7,8 @@ public:
     GraphBuilder(size_t graphSize);
     GraphBuilder(Graph* graph);
 
-    void generateRandomDirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
-    void generateRandomUndirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
-
-    void generateDijkstraTestGraph();
-    void generateBellmanFordTestGraph();
-    void generatePrimTestGraph();
-    void generateKruskalTestGraph();
+    void generateTestWeb();
+    void generateOptionWeb();
 
     void copyGraph(Graph& graph);
 

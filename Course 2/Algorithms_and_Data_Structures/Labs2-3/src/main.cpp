@@ -94,17 +94,6 @@ void runKruskalTest() {
     cout << "Expected vertices, edges amounts: \t(7, (7-1)*2);" << endl;
     cout << "Output vertices, edges amounts: \t(" << minSpanningTree->getVerticesAmount() << ", " << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
 }
-/* void runCalculateFlowTest() {
-    cout << "Testing Flow calculation algorithm" << endl;
-
-    GraphBuilder builder(6);
-    builder.generateTestWeb();
-    Graph* g = builder.getResult();
-
-    vector<Edge*> eges = calculateFlow(g);
-    cout << "Expected vertices, edges amounts: \t(7, (7-1)*2);" << endl;
-    cout << "Output vertices, edges amounts: \t(" << minSpanningTree->getVerticesAmount() << ", " << minSpanningTree->getEdgesAmount() << ");" << endl << endl;
-} */
 void runAllTests() {
     runDijkstraTest();
     runBellmanFordTest();
@@ -116,27 +105,11 @@ void runAlgorithm(map<string, int> options) {
     GraphBuilder builder(options["vertexAmount"]);
 
     time_t buildTime = time(nullptr);
-    if (options["directed"] == 1) {
-        builder.generateRandomDirectedGraph(options["vertexAmount"], options["edgesAmount"], options["minWeight"],
-                                            options["maxWeight"]);
-
-    }
+    if (options["directed"] == 1)
+        builder.generateRandomDirectedGraph(options["vertexAmount"], options["edgesAmount"], options["minWeight"], options["maxWeight"]);
     else
         builder.generateRandomUndirectedGraph(options["vertexAmount"], options["edgesAmount"], options["minWeight"], options["maxWeight"]);
     buildTime = time(nullptr) - buildTime;
-
-    auto vertices = builder.getResult()->getAllVertices();
-    int hit = 0;
-    int miss = 0;
-    for (int i = 0; i < vertices.size(); ++i) {
-        if (vertices.at(i)->neighborhood.size() == 0)
-            miss++;
-        else
-            hit++;
-    }
-
-    cout << endl << "RESULT: " << (double)((double)miss / (double)hit) << endl;
-        flush(cout);
 
     time_t executionTime = time(nullptr);
     switch(options["algorithm"]) {
@@ -182,11 +155,6 @@ void runAlgorithm(map<string, int> options) {
 // 3. Prim's algorithm
 // 4. Kruskal's algorithm
 int main(int argc, char* argv[]) {
-    if (argc < 2 || argc % 2 == 1) {
-        cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
-        return 0;
-    }
-
     map<string, int> customOptions = {{"algorithm", 0}, {"directed", 0}, {"vertexAmount", 10}, {"edgesAmount", 10}, {"minWeight", 0}, {"maxWeight", 100} };
     string key = argv[1];
 

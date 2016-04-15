@@ -10,7 +10,7 @@ end
 nextPair = Pair.new
 
 File.open( ARGV[0] ).each do |line|
-  if line =~ /vertices amount: /
+  if line =~ /vertexes count: /
     nextPair.verticesAmount= line.scan(/\d+/)
   elsif line =~ /Execution time: /
     nextPair.executionTime= line.scan(/\d+/)

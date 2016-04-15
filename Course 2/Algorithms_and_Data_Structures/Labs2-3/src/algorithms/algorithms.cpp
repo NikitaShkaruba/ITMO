@@ -65,7 +65,6 @@ list<Vertex*> Dijkstra(Graph* graph, size_t startId, size_t destinationId) {
 
     return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
-
 list<Vertex*> BellmanFord(Graph* graph, size_t startId, size_t destinationId) {
     vector<Vertex*> vertices = graph->getAllVertices();
     bool isDistancesUpdated = false;
@@ -92,14 +91,12 @@ list<Vertex*> BellmanFord(Graph* graph, size_t startId, size_t destinationId) {
         }
 
         if (isDistancesUpdated == false)
-            goto AllMinimumPathsFound;
+            goto AllMinimumPathsHaveFoundLabel;
         else
             isDistancesUpdated = false;
     }
 
-    AllMinimumPathsFound:
-
-
+    AllMinimumPathsHaveFoundLabel:
     return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
 
@@ -141,7 +138,6 @@ Graph* Prim(Graph* graph) {
 
     return builder.getResult();
 }
-
 Graph* Kruskal(Graph* graph) {
     GraphBuilder builder(graph->getVerticesAmount());
 
@@ -183,33 +179,3 @@ Graph* Kruskal(Graph* graph) {
     return builder.getResult();
 }
 
-// Lab 4
-/*
-map<Edge*, int> calculateFlow(Graph* graph) {
-    map<Edge*, int> result();
-    vector<Edge*> allEdges = graph->getAllEdges();
-    vector<list<Edge*>> increaseChains();
-
-    for(vector<Edge*>::iterator it = allEdges.begin(); it != allEdges.end(); it++)
-        map
-}
-vector<Edge*> kargerMinCut(Graph* graph) {
-        /*size_t n = graph.edgeCount_;
-        Graph best = Graph(graph);
-
-        for (size_t i = 0; i < pow(n, 2)*log(n); i++) {		// O(log(n)*n^2)
-            Graph copy = Graph(graph);
-
-                while (copy.nodes_.size() != 2) {				// O(m/log(n))
-                    size_t j = rand() / copy.edgeCount_;
-                    Edge* chosen = copy.nodes_[j].edges_[rand() / copy.nodes_[j].edges_.size()]; //!
-                    Node* merged = chosen->from_;
-                    copy.fuse(chosen);
-                    copy.removeSelfLoops(*merged);
-                }
-
-                if (copy.edgeCount_ < best.edgeCount_)
-                    best = copy;
-    }
-
-    return best; */
