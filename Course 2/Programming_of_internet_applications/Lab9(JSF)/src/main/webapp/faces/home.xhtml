@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <h:outputStylesheet name="style.css" library="css"/>
+</h:head>
+
+<h:body>
+    <div id="header">
+        <p:outputLabel>
+            Старался: Никита Шкаруба
+            <br/>
+            Группа: P3218
+            <br/>
+            Вариант: 1131(batman)
+        </p:outputLabel>
+    </div>
+
+    <br/>
+    <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
+    <br/>
+    <br/>
+    <p:link value="To main" outcome="#{controller.page}" />
+</h:body>
+</html>

@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Hello World</title>
+</h:head>
+
+<h:body>
+    <h:outputStylesheet name="style.css" library="css"/>
+
+    <h:form>
+        <p:graphicImage id="chart" value="#{chart.image}" />
+
+        <h:panelGrid columns="1" style="margin-bottom: 10px">
+            <h:outputText id="xOutput" value="x: #{logger.x}" />
+            <h:inputHidden id="x" value="#{logger.x}" />
+            <p:slider for="x" display="xOutput" displayTemplate="x: {value}" minValue="-4" maxValue="4" />
+
+            <p:inputText id="y" value="#{logger.y}" >
+                <f:validateLongRange minimum="-5" maximum="5" />
+            </p:inputText>
+
+            <h:outputText id="rOutput" value="x: #{chart.radius}" />
+            <h:inputHidden id="r" value="#{chart.radius}" />
+            <p:slider for="r" display="rOutput" displayTemplate="r: {value}" minValue="2" maxValue="5" >
+                <p:ajax event="slideEnd" update="chart" listener="#{chart.onRadiusChange}" />
+            </p:slider>
+        </h:panelGrid>
+    </h:form>
+
+    <p:link value="To home" outcome="#{controller.page}" />
+</h:body>
+</html>
