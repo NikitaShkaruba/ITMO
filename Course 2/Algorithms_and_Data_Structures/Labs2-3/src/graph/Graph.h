@@ -17,7 +17,6 @@ public:
     list<Edge*> neighborhood;
 };
 
-// TODO: consider creation of UndirectedEdge class
 struct Edge {
     Edge(Vertex* v1, Vertex* v2, int weight) : weight(weight) {
         this->source = v1;
@@ -39,9 +38,9 @@ struct Edge {
     int weight;
 };
 
-// Graph is a data structure which points to some vertices, which point to an edges.
-// So, two graphs is able to point to same vertices
 class Graph {
+    // Graph - законченная структура данных, в нём определены операции поиска вершины 
+    // GraphBuilder - класс, изменяющий граф, в нём определены операции удаления, добавления 
     friend class GraphBuilder;
 
 public:
@@ -57,6 +56,7 @@ public:
     vector<Edge *> getAllEdges();
 
 private:
+    // Приватный конструктор, доступный лишь для GraphBuilder 
     Graph(size_t verticesAmount);
 
     void DepthFirstSearch(bool marked[], size_t currentIndex);

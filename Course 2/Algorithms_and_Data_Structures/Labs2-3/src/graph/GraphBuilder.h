@@ -4,9 +4,10 @@
 
 class GraphBuilder {
 public:
-    GraphBuilder(size_t graphSize);
-    GraphBuilder(Graph* graph);
+    GraphBuilder(size_t graphSize); // Начать конструировать новый граф
+    GraphBuilder(Graph* graph);     // Изменить существующий граф
 
+    // Сгенерировать тестовые графы, на которых я теоретически знаю, как работают алгоритмы 
     void generateRandomDirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
     void generateRandomUndirectedGraph(size_t verticesCount, size_t edgesCount, int minEdgeWeight, int maxEdgeWeight);
 

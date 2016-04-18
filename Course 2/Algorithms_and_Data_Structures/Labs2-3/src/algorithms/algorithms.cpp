@@ -119,6 +119,7 @@ Graph* Prim(Graph* graph) {
     for(list<Edge*>::iterator startEdgesIt = vertices[startId]->neighborhood.begin(); startEdgesIt != vertices[startId]->neighborhood.end(); startEdgesIt++ )
         allAvailableEdges.insert(**startEdgesIt);
 
+    // main loop
     while(builder.getResult()->getVerticesAmount() != graph->getVerticesAmount() && !allAvailableEdges.empty()) {
         vector<Vertex*> currentVertices = builder.getResult()->getAllVertices();
         multiset<Edge>::iterator lightweight = allAvailableEdges.begin();
