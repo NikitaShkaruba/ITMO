@@ -145,7 +145,7 @@ void runAlgorithm(map<string, int> options) {
     }
     executionTime = time(nullptr) - executionTime;
 
-    cout << "Graph build time: " << buildTime << "seconds;" << endl;
+    cout << "Graph build time: " << buildTime << " seconds;" << endl;
     cout << "Execution time: " << executionTime << " seconds;" << endl;
 }
 
@@ -155,11 +155,6 @@ void runAlgorithm(map<string, int> options) {
 // 3. Prim's algorithm
 // 4. Kruskal's algorithm
 int main(int argc, char* argv[]) {
-    if (argc < 2 || argc % 2 == 1) {
-        cout << "Try 'GraphAlgorithms help' for information about usage" << endl;
-        return 0;
-    }
-
     map<string, int> customOptions = {{"algorithm", 0}, {"directed", 0}, {"vertexAmount", 10}, {"edgesAmount", 10}, {"minWeight", 0}, {"maxWeight", 100} };
     string key = argv[1];
 

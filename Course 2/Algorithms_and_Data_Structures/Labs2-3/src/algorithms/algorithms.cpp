@@ -23,18 +23,19 @@ list<Vertex*> recoverShortestPath(vector<Vertex*> shortestPaths, Vertex* first, 
     result.reverse();
     return result;
 }
-int getMinDistanceIndex(vector<int> &distances, vector<bool> &marked) {
+size_t getMinDistanceIndex(vector<int> &distances, vector<bool> &marked) {
     int min = INT_MAX;
-    size_t minIndex = -1;
+    ssize_t minIndex = -1;
 
-    for (int i = 0; i < distances.size(); i++)
+    for (int i = 0; i < distances.size(); i++) {
         if (!marked[i] && distances[i] <= min) {
             min = distances[i];
             minIndex = i;
         }
+    }
 
-    assert(minIndex != -1);
-    return minIndex;
+    assert(minIndex >= 0);
+    return (size_t)minIndex;
 }
 list<Vertex*> Dijkstra(Graph* graph, size_t startId, size_t destinationId) {
     vector<Vertex*> vertices = graph->getAllVertices();
@@ -64,9 +65,9 @@ list<Vertex*> Dijkstra(Graph* graph, size_t startId, size_t destinationId) {
 
     return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
-
 list<Vertex*> BellmanFord(Graph* graph, size_t startId, size_t destinationId) {
     vector<Vertex*> vertices = graph->getAllVertices();
+    bool isDistancesUpdated = false;
 
     // Preparation
     vector<int> distances(graph->getVerticesAmount(), INT_MAX);
@@ -78,17 +79,24 @@ list<Vertex*> BellmanFord(Graph* graph, size_t startId, size_t destinationId) {
             if (distances[(*vertexIt)->id] == INT_MAX) { // int overflow may screw comparison up
                 continue;
             } else {
-                for (list<Edge *>::iterator neighborhoodIt = (*vertexIt)->neighborhood.begin();
-                     neighborhoodIt != (*vertexIt)->neighborhood.end(); neighborhoodIt++) {
+                for (list<Edge *>::iterator neighborhoodIt = (*vertexIt)->neighborhood.begin(); neighborhoodIt != (*vertexIt)->neighborhood.end(); neighborhoodIt++) {
                     if (distances[(*neighborhoodIt)->destination->id] > distances[(*neighborhoodIt)->source->id] + (*neighborhoodIt)->weight) {
+                        isDistancesUpdated = true;
                         distances[(*neighborhoodIt)->destination->id] = distances[(*neighborhoodIt)->source->id] + (*neighborhoodIt)->weight;
                         shortestPreviouses[(*neighborhoodIt)->destination->id] = (*neighborhoodIt)->source;
                     }
                 }
+
             }
         }
+
+        if (isDistancesUpdated == false)
+            goto AllMinimumPathsHaveFoundLabel;
+        else
+            isDistancesUpdated = false;
     }
 
+    AllMinimumPathsHaveFoundLabel:
     return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
 
@@ -111,6 +119,7 @@ Graph* Prim(Graph* graph) {
     for(list<Edge*>::iterator startEdgesIt = vertices[startId]->neighborhood.begin(); startEdgesIt != vertices[startId]->neighborhood.end(); startEdgesIt++ )
         allAvailableEdges.insert(**startEdgesIt);
 
+    // main loop
     while(builder.getResult()->getVerticesAmount() != graph->getVerticesAmount() && !allAvailableEdges.empty()) {
         vector<Vertex*> currentVertices = builder.getResult()->getAllVertices();
         multiset<Edge>::iterator lightweight = allAvailableEdges.begin();
@@ -130,7 +139,6 @@ Graph* Prim(Graph* graph) {
 
     return builder.getResult();
 }
-
 Graph* Kruskal(Graph* graph) {
     GraphBuilder builder(graph->getVerticesAmount());
 
@@ -171,3 +179,4 @@ Graph* Kruskal(Graph* graph) {
 
     return builder.getResult();
 }
+

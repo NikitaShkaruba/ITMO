@@ -118,16 +118,13 @@ void GraphBuilder::generateKruskalTestGraph() {
     addEdges(5, {{3, 7}, {4, 8}, {6, 9}});
     addEdges(6, {{5, 9}});
 }
-
 void GraphBuilder::addVertex(size_t id) {
-    // pair<string, Vertex> pr(name, Vertex(name));
     constructed->vertices[id] = new Vertex(id);
     constructed->verticesCount++;
 }
 void GraphBuilder::addEdge(size_t sourceId, size_t destinationId, int weight) {
     Vertex* source = constructed->vertices[sourceId];
     Vertex* destination = constructed->vertices[destinationId];
-    vector<Vertex*> vertexes = constructed->getAllVertices();
 
     source->neighborhood.push_back(new Edge(source, destination, weight));
     constructed->edgesCount++;
@@ -180,4 +177,15 @@ Graph* GraphBuilder::getResult() {
 void GraphBuilder::addEdges(size_t sourceId, vector<pair<size_t, int>> ids) {
     for(vector<pair<size_t, int>>::iterator it = ids.begin(); it != ids.end(); it++)
         addEdge(sourceId, it->first, it->second);
+}
+
+void GraphBuilder::copyGraph(Graph& graph) {
+    this->constructed = new Graph(graph.getVerticesAmount());
+
+    for(vector<Vertex*>::iterator vIt = constructed->vertices.begin(); vIt != constructed->vertices.end(); vIt++) {
+        addVertex((*vIt)->id);
+        for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end(); eIt++) {
+            addEdge((*eIt)->source->id, (*eIt)->destination->id, (*eIt)->weight);
+        }
+    }
 }
