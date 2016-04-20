@@ -61,3 +61,16 @@ void GraphBuilder::copyGraph(Graph& graph) {
         }
     }
 }
+
+void GraphBuilder::removeEdge(Edge *edge) {
+    edge->source->neighborhood.remove(edge);
+}
+
+Edge *GraphBuilder::getOppositeEdge(Edge *edge) {
+    for (list<Edge *>::iterator i = edge->destination->neighborhood.begin(); i != edge->destination->neighborhood.end(); i++) {
+        if (*i == edge)
+            return *i;
+    }
+
+    return nullptr;
+}

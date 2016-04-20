@@ -5,17 +5,14 @@
 
 using namespace std;
 
-void runGetPositiveChainsTest() {
-    cout << "Testing positive chains retrieving algorithm" << endl;
+void runGetAugmentPathsTest() {
+    cout << "Testing augment paths retrieving algorithm" << endl;
 
     GraphBuilder builder(6);
     builder.generateTestWeb();
     Graph* g = builder.getResult();
 
-    vector<list<Edge*>> increaseChains = getIncreaseChains(g, g->getVertex(0), g->getVertex(5));
-
-    cout << "Positive edges:" << endl;
-    for(vector<list<Edge*>>::iterator it = increaseChains.begin(); it != increaseChains.end(); it++) {
+    while (Edge* augmentPath = getAugmentPaths(g, g->getVertex(0), g->getVertex(5)))
         cout << (*it->begin())->source->id;
         for (list<Edge*>::iterator it2 = it->begin(); it2 != it->end(); it2++) {
             cout << " -{" << (*it2)->throughput << "}> " << (*it2)->destination->id;
@@ -39,11 +36,10 @@ void runCalculateFlowTest() {
     cout << "Pattern is: \"src -{throughput}> dest : flow\"" << endl;
     for (map<Edge*, int>::iterator i = flow.begin(); i != flow.end() ; i++)
         printf("%lu -{%d}> %lu : %d\n", i->first->source->id, i->first->throughput, i->first->destination->id, i->second);
-
 }
 
 // Add undirected flow calculation :/
 int main() {
-    runGetPositiveChainsTest();
+    runGetAugmentPathsTest();
     runCalculateFlowTest();
 }

@@ -15,6 +15,9 @@ public:
     void addVertex(size_t id);
     void addEdge(size_t startId, size_t destinationId, int weight);
     void addUndirectedEdge(size_t firstId, size_t secondId, int weight);
+    void removeEdge(Edge* edge);
+
+    Edge* getOppositeEdge(Edge*);
     void removeLoops();
     void removeDoubles();
 
