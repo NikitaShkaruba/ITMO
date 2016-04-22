@@ -1,27 +1,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <meta charset="UTF-8" />
-    <title>Hello World</title>
-    <h:outputStylesheet name="style.css" library="css"/>
-</h:head>
+<ui:composition>
+    <h:head>
+        <meta charset="UTF-8" />
+        <title>Home page</title>
 
-<h:body>
-    <div id="header">
-        <p:outputLabel>
-            Старался: Никита Шкаруба
-            <br/>
-            Группа: P3218
-            <br/>
-            Вариант: 1131(batman)
-        </p:outputLabel>
-    </div>
+        <h:outputStylesheet name="style.css" library="css"/>
+    </h:head>
 
-    <br/>
-    <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
-    <br/>
-    <br/>
-    <p:link value="To main" outcome="#{controller.page}" />
-</h:body>
+    <h:body>
+
+        <div id="header">
+            <p:outputLabel>
+                Старался: Никита Шкаруба
+                <br/>
+                Группа: P3218
+                <br/>
+                Вариант: 1131(batman)
+            </p:outputLabel>
+        </div>
+
+        <br/>
+        <p:outputLabel value="currentTime is:" />
+        <p:outputLabel id="clock" />
+        <br/>
+
+        <p:link value="To main" outcome="#{controller.page}" />
+    </h:body>
+
+    <h:outputScript>
+        window.setInterval(tick, 9000);
+
+        function tick() {
+            var date = new Date();
+            document.getElementById("clock").innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        }
+    </h:outputScript>
+</ui:composition>
 </html>
