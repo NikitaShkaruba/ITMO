@@ -18,11 +18,11 @@ int getMaxFlow(map<Edge*, int> flow, Vertex* source) {
 }
 int getMinDifference(list<Edge*> chain, map<Edge*, int> flow) {
     int min = INT_MAX;
-    for(list<Edge*>::iterator edgeIt = chain.begin(); edgeIt != chain.end(); edgeIt++)
-        if ((*edgeIt)->throughput - flow[*edgeIt] < min)
-            min = (*edgeIt)->throughput - flow[*edgeIt];
 
-    assert(min != INT_MAX);
+    for(list<Edge*>::iterator edgeIt = chain.begin(); edgeIt != chain.end(); edgeIt++)
+        if ((*edgeIt)->throughput < min)
+            min = (*edgeIt)->throughput;
+
     return min;
 }
 list<Vertex*> recoverShortestPath(vector<Vertex*> shortestPaths, Vertex* first, Vertex* last) {
@@ -46,7 +46,7 @@ size_t getMinDistanceIndex(vector<int> &distances, vector<bool> &marked) {
     ssize_t minIndex = -1;
 
     for (int i = 0; i < distances.size(); i++) {
-        if (!marked[i] && distances[i] <= min) {
+        if (!marked[i] && ((distances[i] <= min && distances[i] != 0) || (i == 0))) {
             min = distances[i];
             minIndex = i;
         }
@@ -74,7 +74,7 @@ list<Vertex*> Dijkstra(Graph* graph, size_t startId, size_t destinationId) {
 
         // Update dist value of the adjacent vertices of the picked vertex.
         for (list<Edge*>::iterator edgeIt = vertices[minIndex]->neighborhood.begin(); edgeIt != vertices[minIndex]->neighborhood.end(); edgeIt++) {
-            if (!marked[(*edgeIt)->destination->id] && distances[minIndex] + (*edgeIt)->throughput < distances[(*edgeIt)->destination->id]) {
+            if ((*edgeIt)->throughput != 0 && (!marked[(*edgeIt)->destination->id] && distances[minIndex] + (*edgeIt)->throughput < distances[(*edgeIt)->destination->id])) {
                 distances[(*edgeIt)->destination->id] = distances[minIndex] + (*edgeIt)->throughput;
                 shortestPreviouses[(*edgeIt)->destination->id] = (*edgeIt)->source;
             }
@@ -84,40 +84,80 @@ list<Vertex*> Dijkstra(Graph* graph, size_t startId, size_t destinationId) {
     return recoverShortestPath(shortestPreviouses, vertices[startId], vertices[destinationId]);
 }
 list<Edge*> getEdgesBetweenVertices(list<Vertex*> vertices) {
+    list<Edge*> edgePath;
 
+    list<Vertex*>::iterator next = vertices.begin();
+    next++;
+    for (list<Vertex *>::iterator cur = vertices.begin(); cur != vertices.end(); cur++, next++) {
+        for(list<Edge*>::iterator neighbour = (*cur)->neighborhood.begin(); neighbour != (*cur)->neighborhood.end(); neighbour++) {
+            if((*neighbour)->destination == *next) {
+                edgePath.push_back(*neighbour);
+                break;
+            }
+        }
+    }
+
+    return edgePath;
+}
+Edge* findOppositeEdge(Edge* edge) {
+    for (list<Edge *>::iterator i = edge->destination->neighborhood.begin(); i != edge->destination->neighborhood.end(); i++)
+        if (edge->isOpposite(**i))
+            return *i;
+
+    return nullptr;
 }
 map<Edge*, int> calculateFlow(Graph* graph, Vertex* source, Vertex* sink) {
     GraphBuilder builder(graph);
+    map<Edge*, int> edgesBefore;
     map<Edge*, int> flow;
 
-    while(true) {
-        list<Edge*> shortestPath = getEdgesBetweenVertices(Dijkstra(graph, source->id, sink->id));
+    // I have to remember edges before, because my algorithm changes their throughputs
+    vector<Edge *> allEdges = graph->getAllEdges();
+    for(vector<Edge *>::iterator edgeIt = allEdges.begin(); edgeIt != allEdges.end(); edgeIt++)
+        edgesBefore.insert(std::pair<Edge*, int>(*edgeIt, (*edgeIt)->throughput));
+
+    list<Vertex*> v = Dijkstra(graph, source->id, sink->id);
+    list<Edge*> shortestPath = getEdgesBetweenVertices(v);
+    for(; !shortestPath.empty(); shortestPath = getEdgesBetweenVertices(Dijkstra(graph, source->id, sink->id))) {
         int bottleneck = getMinDifference(shortestPath, flow);
 
         for (list<Edge*>::iterator edge = shortestPath.begin(); edge != shortestPath.end() ; ++edge) {
-            // What to do with it?
-            flow[*edgeIt] = flow[*edgeIt] + bottleneck;
+            flow[*edge] = flow[*edge] + bottleneck;
 
-            if (flow[*edge] + bottleneck == (*edge)->throughput) {
-                builder.removeEdge(*edge);
-                builder.addEdge((*edge)->destination->id, (*edge)->source->id, (*edge)->throughput);
-            } else if (flow[*edge] + bottleneck == 0) {
-                assert(false);
-            } else {
-                Edge* opposite = builder.getOppositeEdge(*edge);
-                if (opposite == nullptr) {
+            Edge* opposite = findOppositeEdge(*edge);
+
+            if ((*edge)->throughput - bottleneck == 0) {                       // edge is filled
+                (*edge)->throughput = 0;
+
+                if(opposite == nullptr)
+                    builder.addEdge((*edge)->destination->id, (*edge)->source->id, bottleneck);
+                else
+                    opposite->throughput += bottleneck;
+            } else if ((opposite == nullptr && bottleneck == (*edge)->throughput) || (opposite != nullptr && opposite->throughput == 0)) {     // edge is empty
+                if (opposite == nullptr)
                     builder.addEdge((*edge)->destination->id, (*edge)->source->id, (*edge)->throughput);
-                    builder.getOppositeEdge(*edge)->throughput = flow[*edge] = flow[*edge] + bottleneck;
-                    (*edge)->throughput =
-                    opposite->throughput =
-                }
+                else
+                    opposite->throughput += bottleneck;
 
+                (*edge)->throughput = 0;
+            } else {             // normal case, edge is not empty, but not filled
+                if (opposite == nullptr)
+                    builder.addEdge((*edge)->destination->id, (*edge)->source->id, bottleneck);
+                else
+                    opposite->throughput += bottleneck;
+
+                (*edge)->throughput -= bottleneck;
             }
-
         }
+    }
 
-
-        for (list<Edge*>::iterator edgeIt = increaseChains.begin(); edgeIt != increaseChains.end(); edgeIt++)
+    // recover throughputs, delete algorithm-added edges
+    allEdges = graph->getAllEdges();
+    for(vector<Edge *>::iterator edgeIt = allEdges.begin(); edgeIt != allEdges.end(); edgeIt++) {
+        if (edgesBefore.count(*edgeIt) == 0)
+            builder.removeEdge(*edgeIt);
+        else
+            (*edgeIt)->throughput = edgesBefore[*edgeIt];
     }
 
     return flow;

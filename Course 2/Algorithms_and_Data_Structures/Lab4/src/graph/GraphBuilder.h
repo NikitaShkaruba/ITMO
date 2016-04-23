@@ -9,6 +9,7 @@ public:
 
     void generateTestWeb();
     void generateOptionWeb();
+    void generateFlowTestGraph();
 
     void copyGraph(Graph& graph);
 
@@ -27,6 +28,8 @@ private:
     void addEdges(size_t sourceId, vector<pair<size_t, int>> ids);
 
     Graph* constructed;
+
+    void addUndirectedEdges(size_t sourceId, vector<pair<size_t, int>> ids);
 };
 
 
