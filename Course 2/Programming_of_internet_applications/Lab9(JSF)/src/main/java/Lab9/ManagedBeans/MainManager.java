@@ -11,27 +11,27 @@ import Lab9.Chart;
 @ManagedBean(name="mainManager", eager=true)
 @ApplicationScoped
 public class MainManager {
-    List<Point2D.Float> pointLog = new ArrayList<>();
+    private List<Point2D.Float> pointsLog = new ArrayList<>();
     private Chart chart = new Chart();
     private float nextX;
     private float nextY;
 
     public void addPoint(float x, float y) {
-        pointLog.add(0, new Point2D.Float(x, y));
+        pointsLog.add(0, new Point2D.Float(x, y));
 
-        // free lst if it' large
-        if (pointLog.size() > 10)
-            pointLog.remove(pointLog.size()-1);
+        // free lst if it's too large
+        if (pointsLog.size() > 10)
+            pointsLog.remove(pointsLog.size()-1);
     }
 
     public void addCurrentPoint() {
         addPoint(nextX, nextY);
     }
-    public List<Point2D.Float> getPointLog() {
-        return pointLog;
+    public List<Point2D.Float> getPointsLog() {
+        return pointsLog;
     }
     public StreamedContent getChartImage() {
-        return chart.getImage(pointLog);
+        return chart.getImage(pointsLog);
     }
 
     public float getX() {
@@ -53,6 +53,6 @@ public class MainManager {
         chart.setRadius(value);
     }
     public void redrawChart() {
-        chart.getImage(pointLog);
+        chart.getImage(pointsLog);
     }
 }

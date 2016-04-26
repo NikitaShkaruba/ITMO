@@ -6,12 +6,10 @@
     <h:head>
         <meta charset="UTF-8" />
         <title>Home page</title>
-
         <h:outputStylesheet name="style.css" library="css"/>
     </h:head>
 
     <h:body>
-
         <div id="header">
             <p:outputLabel>
                 Старался: Никита Шкаруба
@@ -31,6 +29,7 @@
     </h:body>
 
     <h:outputScript>
+        // Makes the 'clock' ticking
         window.setInterval(tick, 9000);
 
         function tick() {

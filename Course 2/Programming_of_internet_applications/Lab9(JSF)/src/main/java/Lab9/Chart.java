@@ -1,23 +1,22 @@
 package Lab9;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYItemRenderer;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 import org.primefaces.model.DefaultStreamedContent;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.data.xy.XYSeriesCollection;
 import org.primefaces.model.StreamedContent;
-
-import java.awt.*;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.xy.XYSeries;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
+import java.io.File;
+import java.awt.*;
 
 public class Chart {
     private float radius = 2;
@@ -68,7 +67,7 @@ public class Chart {
 
         return series;
     }
-    private XYSeries calculateHitPointSeries(List<Point2D.Float> points) {
+    private XYSeries calculateHitSeries(List<Point2D.Float> points) {
         final XYSeries series = new XYSeries("Hits");
 
         for(Point2D.Float point: points)
@@ -77,7 +76,7 @@ public class Chart {
 
         return series;
     }
-    private XYSeries calculateMissPointSeries(List<Point2D.Float> points) {
+    private XYSeries calculateMissSeries(List<Point2D.Float> points) {
         final XYSeries series = new XYSeries("Misses");
 
         for(Point2D.Float point: points)
@@ -88,6 +87,7 @@ public class Chart {
     }
 
     private boolean isHit(Point2D.Float point) {
+        // I do rescaling for the comfort's sake
         Point2D.Float copy = new Point2D.Float();
         copy.x = point.x / radius;
         copy.y = point.y / radius;
@@ -130,12 +130,12 @@ public class Chart {
         radius = value;
     }
     public StreamedContent getImage(List log) {
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries(calculateChartSeries(radius));
-        dataset.addSeries(calculateHitPointSeries(log));
-        dataset.addSeries(calculateMissPointSeries(log));
+        XYSeriesCollection dataSet = new XYSeriesCollection();
+        dataSet.addSeries(calculateChartSeries(radius));
+        dataSet.addSeries(calculateHitSeries(log));
+        dataSet.addSeries(calculateMissSeries(log));
 
-        JFreeChart chart = ChartFactory.createScatterPlot("Chart", "X", "Y", dataset, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart chart = ChartFactory.createScatterPlot("Chart", "X", "Y", dataSet, PlotOrientation.VERTICAL, true, true, false);
         XYPlot plot = (XYPlot) chart.getPlot();
 
         // Set plot colors
