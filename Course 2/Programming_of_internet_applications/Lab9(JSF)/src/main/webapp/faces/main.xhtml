@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition>
+
+<h:head>
+    <title>Main page</title>
+    <h:outputStylesheet name="style.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:form id="form">
+        <h:panelGrid id="chartPanel" columns="2">
+            <h:commandLink>
+                <p:graphicImage id="chart" value="#{mainManager.chartImage}" cache="false" />
+                <!-- hidden inputs are for chart's coordinates detection -->
+                <h:inputHidden id="chartX" value="#{mainManager.x}" />
+                <h:inputHidden id="chartY" value="#{mainManager.y}" />
+
+                <p:ajax id="aj2" execute="chartX chartY" listener="#{mainManager.addCurrentPoint}" update="chartPanel"/>
+                <h:outputScript>
+                    // This script is reloaded everytime chart-ajax call fires
+                    jQuery("img[id$='form:chart']").on("mousedown", function(event) {
+                        var $form = jQuery(this).closest("form");
+
+                        $form.find("input[id$='form:chartX']").val((event.pageX - this.width / 2 - 34.5) * 40 / 141);        // 34.5 and 9.0 is extra width, coz JFreeChart print not only
+                        $form.find("input[id$='form:chartY']").val(-(event.pageY - this.height / 2 + 9.0) * 20 / 70);     // chart grid, but others things like labels and headers
+                    });
+                </h:outputScript>
+            </h:commandLink>
+
+            <p:dataList id="pointsLog" value="#{mainManager.pointsLog}" var="point" type="ordered" emptyMessage="No points inserted yet!">
+                <f:facet name="header">
+                    Points log
+                </f:facet>
+
+                {
+                <h:outputText value="#{point.x}" >
+                    <f:convertNumber minFractionDigits="2" />
+                </h:outputText>
+                ;
+                <h:outputText value="#{point.y}" >
+                    <f:convertNumber minFractionDigits="2" />
+                </h:outputText>
+                }
+            </p:dataList>
+        </h:panelGrid>
+
+        <!-- hidden inputs for sliders -->
+        <h:inputHidden id="x" value="#{mainManager.x}" />
+        <h:inputHidden id="r" value="#{mainManager.radius}" />
+        <p:messages autoUpdate="true"/>
+
+        <h:panelGrid columns="2" >
+            <f:facet name="header">
+                Add new points
+            </f:facet>
+            <h:outputText id="xOutput" value="x: #{mainManager.x}" />
+            <p:slider for="x" display="xOutput" displayTemplate="x: {value}" minValue="-4" maxValue="4" />
+
+            <h:outputLabel for="y" value="y:" style="font-weight:bold"/>
+            <p:inputText id="y" value="#{mainManager.y}" label="y">
+                <f:validateDoubleRange minimum="-5" maximum="5" />
+            </p:inputText>
+
+            <h:outputText id="rOutput" value="r: #{mainManager.radius}" />
+            <p:slider for="r" id="rSlider" display="rOutput" displayTemplate="r: {value}" minValue="2" maxValue="5" >
+                <p:ajax event="slideEnd" process="r" listener="#{mainManager.redrawChart}" update="chart" />
+            </p:slider>
+
+            <p:commandButton value="Add" update="chart pointsLog" actionListener="#{mainManager.addCurrentPoint}" />
+        </h:panelGrid>
+    </h:form>
+
+    <p:link value="To home" outcome="#{controller.page}" />
+</h:body>
+
+<!-- script for '0.1 step r-slider -->
+<h:outputScript>
+    $(window).load(function(){
+        $('#form\\:rSlider').slider({
+            step: 0.1
+        });
+    });
+</h:outputScript>
+
+</ui:composition>
+</html>
