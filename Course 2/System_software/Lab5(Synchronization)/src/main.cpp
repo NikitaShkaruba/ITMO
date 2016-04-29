@@ -1,9 +1,10 @@
-#include<stdio.h>
-#include<pthread.h>
-#include<stdlib.h>
-#include<unistd.h>
+#include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <vector>
 #include <semaphore.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ static pthread_mutex_t condMutex = PTHREAD_MUTEX_INITIALIZER;
 void* sortAndFindCS(void *args) {
     pthread_mutex_lock( &cs_mutex );
 
-    printf("Thread processing\n");
+    printf("Thread with PID %d processing\n", pthread_self());
     sleep(1);
     printf("Thread finished\n");
 
@@ -27,7 +28,7 @@ void* sortAndFindCS(void *args) {
 void* sortAndFindMutex(void *args) {
     pthread_mutex_lock(&mutex);
 
-    printf("Thread processing\n");
+    printf("Thread with PID %d processing\n", pthread_self());
     sleep(1);
     printf("Thread finished\n");
 
@@ -36,7 +37,7 @@ void* sortAndFindMutex(void *args) {
 void* sortAndFindSemaphore(void *args) {
     sem_wait(&semaphore);
 
-    printf("Thread processing\n");
+    printf("Thread with PID %d processing\n", pthread_self());
     sleep(1);
     printf("Thread finished\n");
 
@@ -47,7 +48,7 @@ void* sortAndFindConditionVariable(void* args) {
     pthread_mutex_lock(&condMutex);
     pthread_cond_wait(&conditionVariable, &condMutex);
 
-    printf("Thread have waited hiw turn\n");
+    printf("Thread with PID %d had waited his turn\n", pthread_self());
     sleep(1);
     printf("Thread finished processing\n");
 
