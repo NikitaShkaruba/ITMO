@@ -35,8 +35,8 @@ void runCalculateFlowTest2() {
     for (map<Edge*, int>::iterator i = flow.begin(); i != flow.end() ; i++)
         printf("%lu -{%d}> %lu : %d\n", i->first->source->id, i->first->throughput, i->first->destination->id, i->second);
 }
-void runCalculateFlowOptionGraph() {
-    cout << "Running Option Flow calculation algorithm" << endl;
+void runCalculateFlowOptionGraphTest() {
+    cout << "Running Option Flow calculation algorithm" << endl << endl;
 
     GraphBuilder builder(6);
     builder.generateOptionWeb();
@@ -46,13 +46,12 @@ void runCalculateFlowOptionGraph() {
 
     cout << "maxFlow is: " << getMaxFlow(flow, g->getVertex(0)) << endl;
 
-    cout << "Pattern is: \"src -{throughput}> dest : flow\"" << endl;
     for (map<Edge*, int>::iterator i = flow.begin(); i != flow.end() ; i++)
         printf("%lu -{%d}> %lu : %d\n", i->first->source->id, i->first->throughput, i->first->destination->id, i->second);
 }
 
 int main() {
-    // runCalculateFlowTest();
-    // runCalculateFlowTest2();
-    runCalculateFlowOptionGraph();
+    runCalculateFlowTest();
+    runCalculateFlowTest2();
+    runCalculateFlowOptionGraphTest();
 }

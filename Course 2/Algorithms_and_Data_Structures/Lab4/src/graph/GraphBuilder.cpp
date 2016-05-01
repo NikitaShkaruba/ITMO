@@ -56,10 +56,10 @@ void GraphBuilder::generateOptionWeb() {
 
     srand(time(0));
 
-    addUndirectedEdges(0, {{1, 1 + (rand() % 100)}, {2, 1 + (rand() % 100)}, {3, 1 + (rand() % 100)}, {4, 1 + (rand() % 100)}});
-    addUndirectedEdges(5, {{1, 1 + (rand() % 100)}, {2, 1 + (rand() % 100)}, {3, 1 + (rand() % 100)}, {4, 1 + (rand() % 100)}});
-    addUndirectedEdge(1, 3, 1 + (rand() % 100));
-    addUndirectedEdge(2, 4, 1 + (rand() % 100));
+    addUndirectedEdges(0, {{1, 1 + (rand() % 1000)}, {2, 1 + (rand() % 1000)}, {3, 1 + (rand() % 1000)}, {4, 1 + (rand() % 1000)}});
+    addUndirectedEdges(5, {{1, 1 + (rand() % 1000)}, {2, 1 + (rand() % 1000)}, {3, 1 + (rand() % 1000)}, {4, 1 + (rand() % 1000)}});
+    addUndirectedEdge(1, 3, 1 + (rand() % 1000));
+    addUndirectedEdge(2, 4, 1 + (rand() % 1000));
 }
 
 void GraphBuilder::addVertex(size_t id) {
