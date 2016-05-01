@@ -106,6 +106,16 @@ Edge* findOppositeEdge(Edge* edge) {
 
     return nullptr;
 }
+
+void getOneSideOfMinCut(Vertex *currentVertex, set<Vertex *> &result) {
+    if (result.find(currentVertex) == result.end()) {
+        result.insert(currentVertex);
+
+        for (list<Edge *>::iterator eIt = currentVertex->neighborhood.begin(); eIt != currentVertex->neighborhood.end(); eIt++)
+            if ((*eIt)->throughput != 0)
+                getOneSideOfMinCut((*eIt)->destination, result);
+    }
+}
 map<Edge*, int> calculateFlow(Graph* graph, Vertex* source, Vertex* sink) {
     GraphBuilder builder(graph);
     map<Edge*, int> edgesBefore;
@@ -151,6 +161,16 @@ map<Edge*, int> calculateFlow(Graph* graph, Vertex* source, Vertex* sink) {
         }
     }
 
+    // get minimum cut
+    vector<Edge*> minCut;
+    set<Vertex*> oneSideOfMinCut;
+
+    getOneSideOfMinCut(source, oneSideOfMinCut);
+    for(set<Vertex*>::iterator vIt = oneSideOfMinCut.begin(); vIt != oneSideOfMinCut.end(); vIt++)
+        for(list<Edge*>::iterator eIt = (*vIt)->neighborhood.begin(); eIt != (*vIt)->neighborhood.end(); eIt++)
+            if (oneSideOfMinCut.find((*eIt)->destination) == oneSideOfMinCut.end())
+                minCut.push_back((*eIt));
+
     // recover throughputs, delete algorithm-added edges
     allEdges = graph->getAllEdges();
     for(vector<Edge *>::iterator edgeIt = allEdges.begin(); edgeIt != allEdges.end(); edgeIt++) {
@@ -159,6 +179,15 @@ map<Edge*, int> calculateFlow(Graph* graph, Vertex* source, Vertex* sink) {
         else
             (*edgeIt)->throughput = edgesBefore[*edgeIt];
     }
+
+    // I print only here because first of all i need to recover throughputs
+    cout << "minCut edges:" << endl;
+    int maxFlow = 0;
+    for(vector<Edge*>::iterator eIt = minCut.begin(); eIt != minCut.end(); eIt++) {
+        maxFlow += (*eIt)->throughput;
+        cout << (*eIt)->source->id << " -{" << (*eIt)->throughput << "}> " << (*eIt)->destination->id << endl;
+    }
+    cout << "minCut sum is: " << maxFlow << endl << endl;
 
     return flow;
 }
