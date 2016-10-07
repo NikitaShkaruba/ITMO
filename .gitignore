@@ -42,6 +42,14 @@ Thumbs.db
 **/out/
 *.iml
 
-# Maven trash #
+# Maven's trash #
 ###############
 **/target/
+
+# Gradle's trash #
+# ################
+**/.idea/
+**/.gradle/
+**/gradle/
+**/build/
+gradlew*
