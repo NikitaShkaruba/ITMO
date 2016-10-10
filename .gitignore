@@ -52,4 +52,5 @@ Thumbs.db
 **/.gradle/
 **/gradle/
 **/build/
+**/classes/
 gradlew*
