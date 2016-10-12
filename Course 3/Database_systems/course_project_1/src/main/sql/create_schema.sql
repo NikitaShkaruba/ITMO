@@ -38,10 +38,10 @@ create table user_photoes (
 create table pets (
     id number constraint pets_pk primary key not null,
     user_id number not null,
-    death_date date,
+    death_date date, 
     happiness number,
     hungriness number,
-    health number
+    health number    
 );
 
 create table animals (
