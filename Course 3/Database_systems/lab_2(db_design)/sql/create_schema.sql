@@ -6,13 +6,14 @@ create table people (
     patronymic varchar(255),
     birth_day date not null,
     gender char(1) not null,
-    birth_place varchar(255) not null,
+    birth_place varchar(255),
     address varchar(255),
     phone number(11) not null
 );
 
 create table jobs (
   id number constraint jobs_pk primary key not null,
+  name varchar(255),
   min_salary number not null,
   max_salary number not null
 );
@@ -27,9 +28,9 @@ create table salaries (
   human_id number not null,
   CONSTRAINT salaries_human_fk FOREIGN KEY (human_id) REFERENCES people(id),
   department_id number not null,
-  CONSTRAINT salaries_department_fk FOREIGN KEY (human_id) REFERENCES departments(id),
+  CONSTRAINT salaries_department_fk FOREIGN KEY (department_id) REFERENCES departments(id),
   job_id number not null,
-  CONSTRAINT salaries_job_fk FOREIGN KEY (human_id) REFERENCES jobs(id),
+  CONSTRAINT salaries_job_fk FOREIGN KEY (job_id) REFERENCES jobs(id),
   salary number not null
 );
 
@@ -121,9 +122,9 @@ end;
 create sequence salary_id_seq increment by 1 start with 1;
 
 create or replace trigger salaries_insert
-before insert on departments for each row
+before insert on salaries for each row
 begin
-    select department_id_seq.nextval into :new.id from dual;
+    select salary_id_seq.nextval into :new.id from dual;
 end;
 /
 
@@ -141,9 +142,8 @@ end;
 create sequence products_id_seq increment by 1 start with 1;
 
 create or replace trigger products_insert
-before insert on days
-for each row
-    begin
-        select products_id_seq.nextval into :new.id from dual;
-    end;
+before insert on days for each row
+begin
+    select products_id_seq.nextval into :new.id from dual;
+end;
 /
