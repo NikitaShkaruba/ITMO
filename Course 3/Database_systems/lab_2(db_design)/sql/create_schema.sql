@@ -1,3 +1,4 @@
+--------------------- Tables ---------------------
 create table people (
     id number constraint people_pk primary key not null,
     surname varchar(255) not null,
@@ -82,3 +83,67 @@ create table products (
   date_when date not null,
   price number not null
 );
+
+
+--------------------- Insert triggers and sequences for them ---------------------
+
+--- People
+create sequence people_id_seq increment by 1 start with 1;
+
+create or replace trigger people_insert
+before insert on people for each row
+begin
+    select people_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- Jobs
+create sequence job_id_seq increment by 1 start with 1;
+
+create or replace trigger jobs_insert
+before insert on jobs for each row
+begin
+    select job_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- Departments
+create sequence department_id_seq increment by 1 start with 1;
+
+create or replace trigger departments_insert
+before insert on departments for each row
+begin
+    select department_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- Salaries
+create sequence salary_id_seq increment by 1 start with 1;
+
+create or replace trigger salaries_insert
+before insert on departments for each row
+begin
+    select department_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- Days
+create sequence days_id_seq increment by 1 start with 1;
+
+create or replace trigger days_insert
+before insert on days for each row
+begin
+    select days_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- Products
+create sequence products_id_seq increment by 1 start with 1;
+
+create or replace trigger products_insert
+before insert on days
+for each row
+    begin
+        select products_id_seq.nextval into :new.id from dual;
+    end;
+/
