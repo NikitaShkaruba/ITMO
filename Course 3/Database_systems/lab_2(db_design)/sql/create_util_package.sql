@@ -8,7 +8,6 @@ create or replace package util as
 end util;
 /
 
-
 create or replace package body util as
   --- Salaries
   function computeEmployeeSalary(h_id number) return number is
@@ -34,7 +33,7 @@ create or replace package body util as
     result products.price%type;
   begin
     select sum(price) into result from products
-    where products.vendor in ( select id from people where people.id in (select id from days where days.department_id = d_id) );
+    where products.vendor in (select human_id from days where days.department_id = d_id);
     return result;
   exception
     when NO_DATA_FOUND then
@@ -45,7 +44,7 @@ create or replace package body util as
     result products.price%type;
   begin
     select count(price) into result from products
-    where products.vendor in ( select id from people where people.id in (select id from days where days.department_id = d_id) );
+    where products.vendor in (select human_id from days where days.department_id = d_id);
     return result;
   exception
     when NO_DATA_FOUND then
@@ -55,7 +54,7 @@ create or replace package body util as
 
   procedure printDepartmentsProfit as
   begin
-    DBMS_OUTPUT.PUT_LINE('Salaries:');
+    DBMS_OUTPUT.PUT_LINE('Departments profit:');
     for department in (select * from departments) loop
       DBMS_OUTPUT.PUT_LINE( department.NAME || ' ### Deals: ' || util.computeDepartmentDealsAmount(department.id) || '. Profit: ' || util.computeDepartmentProfit(department.id));
     end loop;

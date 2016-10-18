@@ -1,4 +1,4 @@
-DECLARE
+declare
   nikita_id number;
   vika_id number;
   programmers_department_id number;
