@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="HelloWorldPortlet( JPA + EJB + JSF ):war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="jsf2-portlet-4.2.5-ga6.war">
-      <element id="artifact" artifact-name="HelloWorldPortlet( JPA + EJB + JSF ):war exploded" />
-    </root>
-  </artifact>
-</component>
