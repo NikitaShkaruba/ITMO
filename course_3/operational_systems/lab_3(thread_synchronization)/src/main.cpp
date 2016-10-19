@@ -1,19 +1,41 @@
 #include <iostream>
 #include <zconf.h>
+#include <semaphore.h>
+#include <semaphore.h>
 using namespace std;
+
 
 int* arr;
 int arr_size;
 uint sleep_time;
 
-void* work(void* args) {
-    // lock semaphore
+pthread_t* threadIds = new pthread_t[2];
+sem_t semaphore;
+int sort_pivot = -1;
 
+void* work(void* args) {
     cout << "Input sleep time after each element is processed: ";
     cin >> sleep_time;
 
-    // sort elements, when element i is ready - send it to main
-    // release mutex
+    for (int i = 0; i < arr_size; i++) {
+        sem_wait(&semaphore);
+
+        int min = i;
+        for(int j = i+1; j < arr_size; j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
+            }
+            int buf = arr[min];
+            arr[min] = arr[i];
+            arr[i] = buf;
+            sort_pivot++;
+        }
+
+        cout << "Sleeping";
+        sleep(sleep_time);
+        sem_post(&semaphore);
+        sleep(100);
+    }
     return 0;
 }
 
@@ -31,6 +53,7 @@ void* multiplyElements(void* args) {
 // 3.12
 int main() {
     cout << "OS. Lab 3" << endl;
+    sem_init(&semaphore, 1, 1);
 
     cout << "array's size: ";
     cin >> arr_size;
@@ -42,8 +65,16 @@ int main() {
         cin >> arr[i];
     }
 
-    // Run work in new thread
-    // Run multiplyElement in new thread
+    pthread_create(&(threadIds[0]), NULL, &work, NULL);
+    // pthread_create(&(threadIds[1]), NULL, &multiplyElements, NULL);
+
+    while(sort_pivot != arr_size - 1) {
+        sem_wait(&semaphore);
+        if (sort_pivot != -1) {
+            cout << arr[sort_pivot] << ", ";
+        }
+        sem_post(&semaphore);
+    }
 
     return 0;
 }
