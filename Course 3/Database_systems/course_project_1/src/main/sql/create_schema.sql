@@ -1,4 +1,5 @@
 --- Script to create all the tables and relations between them
+--- Todo: Add triggers for automatic Id generation
 
 create table textures(
     id number constraint textures_pk primary key not null,
@@ -37,6 +38,9 @@ create table user_photoes (
 
 create table pets (
     id number constraint pets_pk primary key not null,
+    name varchar(255),
+    animal_id number not null,
+    CONSTRAINT pets_fk FOREIGN KEY (animal_id) REFERENCES animals(id),
     user_id number not null,
     death_date date, 
     happiness number,
@@ -54,7 +58,7 @@ create table animals (
 create table users (
     id number constraint users_pk primary key not null,
     name varchar(255)  not null,
-    pet_id number not null,
+    pet_id number,
     photo_id number not null,
     money_amount number,
     phone number(11),
