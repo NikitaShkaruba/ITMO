@@ -1,15 +1,14 @@
 package sigma;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
-import java.util.List;
 
 // Lexically analyzes some text
 public class Lexer {
     public String analyze(String text) {
         ArrayList<Token> words = new ArrayList<>();
         ArrayList<Token> word = new ArrayList<>();
+        Token root;
 
         // Gather words
         for (int i = 0; i < text.length(); i++) {
@@ -37,7 +36,11 @@ public class Lexer {
 
         // Return root's type
         if (words.size() == 1) {
-            return words.get(0).getType();
+            String content = getStringFromTokens(words);
+            root = words.get(0);
+            printLexicalTree(root);
+
+            return root.getType();
         } else if (words.size() == 0) {
             return "Syntax error";
         } else {
@@ -49,7 +52,7 @@ public class Lexer {
         StringBuilder str = new StringBuilder();
 
         for(Token token: tokens) {
-            str.append(token.getValue()).append(" ");
+            str.append(token.getText()).append(" ");
         }
 
         return str.toString();
@@ -58,7 +61,7 @@ public class Lexer {
         StringBuilder str = new StringBuilder();
 
         for(Token token: tokens) {
-            str.append(token.getValue());
+            str.append(token.getText());
         }
 
         return str.toString();
@@ -168,5 +171,21 @@ public class Lexer {
     }
     private boolean isSpace(char c) {
         return Character.isSpaceChar(c);
+    }
+
+    private void printLexicalTree(Token root) {
+        printNode(root, 0);
+    }
+    private void printNode(Token token, int indentCount) {
+        StringBuffer indent = new StringBuffer();
+        for(int i = 0; i < indentCount; i++) {
+            indent.append("\t");
+        }
+
+        System.out.println(indent + token.getText());
+
+        for(Token child : token.getChildren()) {
+            printNode(child, indentCount + 1);
+        }
     }
 }
