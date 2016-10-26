@@ -9,7 +9,7 @@ drop table pets cascade constraints purge;
 drop table animals cascade constraints purge;
 drop table users cascade constraints purge;
 drop table ratings cascade constraints purge;
---- junction tables auto generated id
+--- junction tables without auto generated id
 drop table user_cosmetics cascade constraints purge;
 drop table friends cascade constraints purge;
 drop table admin_users cascade constraints purge;
@@ -27,4 +27,4 @@ drop sequence users_id_seq;
 drop sequence ratings_id_seq;
 
 --- Drop custom type
-drop type condition;
+drop type health_condition;
