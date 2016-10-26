@@ -13,3 +13,18 @@ drop table ratings cascade constraints purge;
 drop table user_cosmetics cascade constraints purge;
 drop table friends cascade constraints purge;
 drop table admin_users cascade constraints purge;
+
+--- Drop sequences
+drop sequence textures_id_seq;
+drop sequence cosmetics_id_seq;
+drop sequence food_id_seq;
+drop sequence entertainments_id_seq;
+drop sequence sceneries_id_seq;
+drop sequence user_photoes_id_seq;
+drop sequence pets_id_seq;
+drop sequence animals_id_seq;
+drop sequence users_id_seq;
+drop sequence ratings_id_seq;
+drop sequence user_cosmetics_id_seq;
+drop sequence friends_id_seq;
+drop sequence admin_users_id_seq;
