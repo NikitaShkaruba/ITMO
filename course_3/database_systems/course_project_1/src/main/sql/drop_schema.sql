@@ -25,3 +25,6 @@ drop sequence pets_id_seq;
 drop sequence animals_id_seq;
 drop sequence users_id_seq;
 drop sequence ratings_id_seq;
+
+--- Drop custom type
+drop type condition;

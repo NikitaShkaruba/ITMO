@@ -1,6 +1,8 @@
 --- Script to create all the tables and relations between them
 --- Todo: Add triggers for automatic Id generation
 
+CREATE OR REPLACE DIRECTORY images AS 'data/images';
+
 create table textures(
     id number constraint textures_pk primary key not null,
     texture blob
@@ -64,7 +66,7 @@ create table users (
     id number constraint users_pk primary key not null,
     name varchar(255)  not null,
     pet_id number,
-    photo_id number not null,
+    photo_id number,
     money_amount number,
     phone number(11),
     CONSTRAINT users_fk FOREIGN KEY (pet_id) REFERENCES pets(id),
