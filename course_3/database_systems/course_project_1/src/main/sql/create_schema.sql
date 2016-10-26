@@ -36,18 +36,19 @@ create table user_photoes (
     data blob
 );
 
-create TYPE condition_animal as OBJECT (
-happiness number,
-hungriness number,
-health number);
-/
-
 create table animals (
     id number constraint animals_pk primary key not null,
     name varchar(255)  not null,
     texture_id number not null,
     CONSTRAINT animals_fk FOREIGN KEY (texture_id) REFERENCES textures(id)
 );
+
+create TYPE health_condition as OBJECT (
+    happiness number,
+    hungriness number,
+    illness number
+);
+/
 
 create table pets (
     id number constraint pets_pk primary key not null,
@@ -197,40 +198,5 @@ create or replace trigger ratings_insert
 before insert on ratings for each row
 begin
     select ratings_id_seq.nextval into :new.id from dual;
-end;
-/
-
-
---- TODO: find bug, this doesn`t work
---- user_cosmetics
-create sequence user_cosmetics_id_seq increment by 1 start with 1;
-
-create or replace trigger user_cosmetics_insert
-before insert on user_cosmetics for each row
-begin
-    select user_cosmetics_id_seq.nextval into :new.id from dual;
-end;
-/
-
---- TODO: find bug, this doesn`t work
---- friends
-create sequence friends_id_seq increment by 1 start with 1;
-
-create or replace trigger friends_insert
-before insert on friends for each row
-begin
-    select friends_id_seq.nextval into :new.id from dual;
-end;
-/
-
-
---- TODO: find bug, this doesn`t work
---- admin_users
-create sequence admin_users_id_seq increment by 1 start with 1;
-
-create or replace trigger admin_users_insert
-before insert on admin_users for each row
-begin
-    select admin_users_id_seq.nextval into :new.id from dual;
 end;
 /

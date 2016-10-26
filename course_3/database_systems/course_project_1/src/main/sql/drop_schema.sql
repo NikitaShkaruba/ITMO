@@ -1,5 +1,4 @@
 --- Script to drop all the tables
-
 drop table textures cascade constraints purge;
 drop table cosmetics cascade constraints purge;
 drop table food cascade constraints purge;
@@ -10,6 +9,7 @@ drop table pets cascade constraints purge;
 drop table animals cascade constraints purge;
 drop table users cascade constraints purge;
 drop table ratings cascade constraints purge;
+--- junction tables auto generated id
 drop table user_cosmetics cascade constraints purge;
 drop table friends cascade constraints purge;
 drop table admin_users cascade constraints purge;
@@ -25,6 +25,3 @@ drop sequence pets_id_seq;
 drop sequence animals_id_seq;
 drop sequence users_id_seq;
 drop sequence ratings_id_seq;
-drop sequence user_cosmetics_id_seq;
-drop sequence friends_id_seq;
-drop sequence admin_users_id_seq;
