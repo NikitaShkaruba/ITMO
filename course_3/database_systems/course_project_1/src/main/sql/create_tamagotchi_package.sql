@@ -1,12 +1,12 @@
 create or replace package tamagotchi as
   function createUser(user_name varchar2, phone number) return number;
-  ---procedure printUsersAmount();
+  procedure printUsersAmount;
   procedure deleteUser(u_id number);
 
   function updateUserName(u_id number, user_name varchar2) return number;
   function addPetToUser(u_id number, a_id number, petName varchar2) return number;
   ---function addUserPhoto(u_id number, path_to_photo varchar(255)) return number;
-  ---function addMoneyToUser(u_id number, moneyAmount number) return number;
+  function addMoneyToUser(u_id number, moneyAmount number) return number;
   procedure readUserById(u_id number);
   procedure readUserPetByUserId(u_id number);
 end tamagotchi;
@@ -53,6 +53,18 @@ function updateUserName(u_id number, user_name varchar2) return number is
     return NULL;
   end;
 
+  function addMoneyToUser(u_id number, moneyAmount number)  return number is
+      result users.money_amount%type;
+    begin
+          UPDATE users
+      	   SET money_amount = money_amount + moneyAmount
+      	   WHERE id = u_id returning money_amount into result;
+      return result;
+    exception
+      when NO_DATA_FOUND then
+      return NULL;
+    end;
+
   ---  procedure readUserById(u_id number);
     procedure readUserById(u_id number) as result users.name%type;
   begin
@@ -68,11 +80,18 @@ function updateUserName(u_id number, user_name varchar2) return number is
   end;
  --- insert into users values(9, 'Tuck', 1, NULL, 0, 9997755);
 
-  ---procedure printUsersAmount as
-  ---  users_amount number;
-  ---begin
-  ---  select count(*) into users_amount from users;
-  ---  DBMS_OUTPUT.PUT_LINE('users amount: ' || users_amount);
-  ---end;
+  procedure printUsersAmount as
+    users_amount number;
+  begin
+    select count(*) into users_amount from users;
+    DBMS_OUTPUT.PUT_LINE('users amount: ' || users_amount);
+  end;
 end tamagotchi;
 /
+
+
+
+
+
+
+
