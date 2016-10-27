@@ -57,7 +57,7 @@ create table pets (
     CONSTRAINT pets_fk FOREIGN KEY (animal_id) REFERENCES animals(id),
     user_id number not null,
     death_date date,
-    condition health_condition
+    state health_condition
 );
 
 create table users (
