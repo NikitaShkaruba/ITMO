@@ -1,4 +1,4 @@
-Database Systems Course Project 1 on Oracle DB
+Database Systems Course Project 2 on MongoDB
 ========================================
 
 ### Prerequisites
