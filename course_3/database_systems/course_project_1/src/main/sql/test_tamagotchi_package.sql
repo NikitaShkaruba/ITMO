@@ -16,3 +16,12 @@ execute DBMS_OUTPUT.PUT_LINE('new pet_id: ' || tamagotchi.addPetToUser(2, 1, 'Pu
 execute tamagotchi.readUserById(2);
 execute tamagotchi.readUserPetByUserId(9);
 execute DBMS_OUTPUT.PUT_LINE('add 50 money: ' || tamagotchi.addMoneyToUser(1, 50));
+
+execute DBMS_OUTPUT.PUT_LINE('testing health_condition');
+DECLARE
+    result HEALTH_CONDITION;
+BEGIN
+    select state into result from pets where (rownum = 1);
+    dbms_output.put_line('is Healthy? ' || result.isHealthy());
+END;
+/

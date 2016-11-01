@@ -37,5 +37,5 @@ drop sequence users_id_seq;
 drop sequence ratings_id_seq;
 
 --- Drop custom type
-drop type health_condition;
+drop type health_condition force;
 

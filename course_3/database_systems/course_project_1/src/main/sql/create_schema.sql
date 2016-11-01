@@ -48,8 +48,30 @@ CREATE UNIQUE INDEX i_animals_texture_id ON animals(texture_id);
 create TYPE health_condition as OBJECT (
     happiness number,
     hungriness number,
-    illness number
+    illness number,
+    --- returns 0 if ill, 1 if healthy
+    MAP MEMBER FUNCTION isHealthy RETURN NUMBER
 );
+/
+
+CREATE TYPE BODY health_condition AS
+    MAP MEMBER FUNCTION isHealthy RETURN NUMBER IS
+    BEGIN
+        if happiness < 2 then
+            return 0;
+        end if;
+
+        if hungriness > 9 then
+            return 0;
+        end if;
+
+        if illness > 9 then
+            return 0;
+        end if;
+
+        return 1;
+    END;
+END;
 /
 
 create table pets (
