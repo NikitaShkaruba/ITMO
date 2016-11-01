@@ -43,6 +43,8 @@ create table animals (
     CONSTRAINT animals_fk FOREIGN KEY (texture_id) REFERENCES textures(id)
 );
 
+CREATE UNIQUE INDEX i_animals_texture_id ON animals(texture_id);
+
 create TYPE health_condition as OBJECT (
     happiness number,
     hungriness number,
@@ -60,6 +62,8 @@ create table pets (
     state health_condition
 );
 
+CREATE INDEX i_pets_animal_id ON pets(animal_id);
+
 create table users (
     id number constraint users_pk primary key not null,
     name varchar(255)  not null,
@@ -71,7 +75,11 @@ create table users (
     CONSTRAINT users_fk2 FOREIGN KEY (photo_id) REFERENCES user_photoes(id)
 );
 
+CREATE UNIQUE INDEX i_users_petid_photoid ON users(pet_id, photo_id);
+
 ALTER TABLE pets ADD FOREIGN KEY (user_id) REFERENCES users(id);
+
+CREATE INDEX i_pets_user_id ON pets(user_id);
 
 create table ratings (
     id number constraint rating_pk primary key not null,
@@ -80,12 +88,16 @@ create table ratings (
     CONSTRAINT rating_fk FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE UNIQUE INDEX i_ratings_user_id ON ratings(user_id);
+
 create table user_cosmetics (
     user_id number not null,
     cosmetic_id number not null,
     CONSTRAINT user_cosmetic_fk FOREIGN KEY (user_id) REFERENCES users(id),
     CONSTRAINT user_cosmetic_fk2 FOREIGN KEY (cosmetic_id) REFERENCES cosmetics(id)
 );
+
+CREATE UNIQUE INDEX i_user_cosmetics_uid_cosmid ON user_cosmetics(user_id, cosmetic_id);
 
 create table friends(
     from_id number not null,
@@ -94,10 +106,14 @@ create table friends(
     CONSTRAINT friends_fk2 FOREIGN KEY (to_id) REFERENCES users(id)
 );
 
+CREATE UNIQUE INDEX i_friends_fromid_toid ON friends(from_id, to_id);
+
 create table admin_users (
     user_id number,
     CONSTRAINT admin_users_fk FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE UNIQUE INDEX i_admin_users_user_id ON admin_users (user_id);
 
 --------------------- Insert triggers and sequences for them ---------------------
 
