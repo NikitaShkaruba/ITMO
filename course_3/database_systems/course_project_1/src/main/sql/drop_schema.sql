@@ -1,3 +1,13 @@
+--- Drop index
+DROP INDEX i_animals_texture_id;
+DROP INDEX i_pets_animal_id;
+DROP INDEX i_users_petid_photoid;
+DROP INDEX i_pets_user_id;
+DROP INDEX i_ratings_user_id;
+DROP INDEX i_user_cosmetics_uid_cosmid;
+DROP INDEX i_friends_fromid_toid;
+DROP INDEX i_admin_users_user_id;
+
 --- Script to drop all the tables
 drop table textures cascade constraints purge;
 drop table cosmetics cascade constraints purge;
@@ -28,14 +38,4 @@ drop sequence ratings_id_seq;
 
 --- Drop custom type
 drop type health_condition;
-
---- Drop index
-DROP INDEX i_animals_texture_id;
-DROP INDEX i_pets_animal_id;
-DROP INDEX i_users_petid_photoid;
-DROP INDEX i_pets_user_id;
-DROP INDEX i_ratings_user_id;
-DROP INDEX i_user_cosmetics_uid_cosmid;
-DROP INDEX i_friends_fromid_toid;
-DROP INDEX i_admin_users_user_id;
 
