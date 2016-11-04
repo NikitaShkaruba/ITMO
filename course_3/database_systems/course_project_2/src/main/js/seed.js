@@ -10,7 +10,6 @@ function saveToDbCallback(error) {
         console.log('Saved instance');
 }
 
-
 // Register callback if db connection fails
 db.on('error', console.error.bind(console, 'connection error:'));
 
