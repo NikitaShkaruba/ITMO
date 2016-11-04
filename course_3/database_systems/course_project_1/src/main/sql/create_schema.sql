@@ -48,7 +48,7 @@ CREATE UNIQUE INDEX i_animals_texture_id ON animals(texture_id);
 create TYPE health_condition as OBJECT (
     happiness number,
     hungriness number,
-    illness number,
+    cleanliness number,
     --- returns 0 if ill, 1 if healthy
     MAP MEMBER FUNCTION isHealthy RETURN NUMBER
 );
@@ -65,7 +65,7 @@ CREATE TYPE BODY health_condition AS
             return 0;
         end if;
 
-        if illness > 9 then
+        if cleanliness < 2 then
             return 0;
         end if;
 
@@ -80,8 +80,22 @@ create table pets (
     animal_id number not null,
     CONSTRAINT pets_fk FOREIGN KEY (animal_id) REFERENCES animals(id),
     user_id number not null,
+    birth_date date,
     death_date date,
+    age_type_id number not null,
+    CONSTRAINT pets_fk2 FOREIGN KEY (age_type_id) REFERENCES age_types(id),
     state health_condition
+);
+
+--- Egg
+--- Baby
+--- Child
+--- Teenager
+--- Adult
+--- Senior
+create table age_types (
+    id number constraint age_types_pk primary key not null,
+    name varchar(255)
 );
 
 CREATE INDEX i_pets_animal_id ON pets(animal_id);
