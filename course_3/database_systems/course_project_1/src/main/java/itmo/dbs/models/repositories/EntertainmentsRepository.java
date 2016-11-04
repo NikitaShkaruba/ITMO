@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
-public interface EntertainmentRepository extends CrudRepository<Entertainment, Long> {
+public interface EntertainmentsRepository extends CrudRepository<Entertainment, Long> {
 }

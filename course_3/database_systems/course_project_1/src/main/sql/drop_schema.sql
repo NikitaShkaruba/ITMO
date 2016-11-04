@@ -19,6 +19,7 @@ drop table pets cascade constraints purge;
 drop table animals cascade constraints purge;
 drop table users cascade constraints purge;
 drop table ratings cascade constraints purge;
+drop table age_types cascade constraints purge;
 --- junction tables without auto generated id
 drop table user_cosmetics cascade constraints purge;
 drop table friends cascade constraints purge;
@@ -31,6 +32,7 @@ drop sequence food_id_seq;
 drop sequence entertainments_id_seq;
 drop sequence sceneries_id_seq;
 drop sequence user_photoes_id_seq;
+drop sequence age_types_id_seq;
 drop sequence pets_id_seq;
 drop sequence animals_id_seq;
 drop sequence users_id_seq;

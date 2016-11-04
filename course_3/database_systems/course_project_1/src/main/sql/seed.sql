@@ -25,8 +25,15 @@ insert into textures values(0, utl_raw.cast_to_raw('chupokabra_texture.png'));
 insert into animals values(0, 'Cat', 1);
 insert into animals values(0, 'Chupokabra', 2);
 
-insert into pets values(0, 'Fluffy', 1, 1, TO_DATE('17-05-2017', 'dd-mm-yyyy'), health_condition(3, 4, 2));
-insert into pets values(0, 'Smokey', 2, 2, TO_DATE('17-05-2017', 'dd-mm-yyyy'), health_condition(3, 4, 2));
+insert into age_types values(0, 'Egg');
+insert into age_types values(0, 'Baby');
+insert into age_types values(0, 'Child');
+insert into age_types values(0, 'Teenager');
+insert into age_types values(0, 'Adult');
+insert into age_types values(0, 'Senior');
+
+insert into pets values(0, 'Fluffy', 1, 1, TO_DATE('10-05-2017', 'dd-mm-yyyy'), TO_DATE('17-05-2017', 'dd-mm-yyyy'), 1, health_condition(3, 4, 2));
+insert into pets values(0, 'Smokey', 2, 2, TO_DATE('10-05-2017', 'dd-mm-yyyy'), TO_DATE('17-05-2017', 'dd-mm-yyyy'), 1, health_condition(3, 4, 2));
 
 insert into admin_users values(1);
 insert into admin_users values(2);

@@ -8,8 +8,8 @@ create table textures(
 
 create table cosmetics (
     id number constraint cosmetics_pk primary key not null,
-    name varchar(255)  not null,
-    type varchar(255)  not null,
+    name varchar(255) not null,
+    type varchar(255) not null,
     priсe number not null
 );
 
@@ -74,6 +74,12 @@ CREATE TYPE BODY health_condition AS
 END;
 /
 
+--- Egg, Baby, Child, Teenager, Adult, Senior
+create table age_types (
+    id number constraint age_types_pk primary key not null,
+    name varchar(255)
+);
+
 create table pets (
     id number constraint pets_pk primary key not null,
     name varchar(255),
@@ -83,19 +89,8 @@ create table pets (
     birth_date date,
     death_date date,
     age_type_id number not null,
-    CONSTRAINT pets_fk2 FOREIGN KEY (age_type_id) REFERENCES age_types(id),
+    CONSTRAINT pets_fk3 FOREIGN KEY (age_type_id) REFERENCES age_types(id),
     state health_condition
-);
-
---- Egg
---- Baby
---- Child
---- Teenager
---- Adult
---- Senior
-create table age_types (
-    id number constraint age_types_pk primary key not null,
-    name varchar(255)
 );
 
 CREATE INDEX i_pets_animal_id ON pets(animal_id);
@@ -210,6 +205,16 @@ create or replace trigger user_photoes_insert
 before insert on user_photoes for each row
 begin
     select user_photoes_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- age_types
+create sequence age_types_id_seq increment by 1 start with 1;
+
+create or replace trigger age_types_insert
+before insert on age_types for each row
+begin
+    select age_types_id_seq.nextval into :new.id from dual;
 end;
 /
 
