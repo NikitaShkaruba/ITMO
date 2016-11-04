@@ -7,3 +7,9 @@ var db = mongoose.connection;
 models.Pet.remove({}, function(err) {
     console.log('Collection Pet removed');
 });
+models.User.remove({}, function(err) {
+    console.log('Collection User removed');
+});
+models.Species.remove({}, function(err) {
+    console.log('Collection User removed');
+});

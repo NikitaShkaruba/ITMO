@@ -18,5 +18,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 // Register callback if db connection successfull
 db.once('open', function() {
     // Find all Pet instances
+    models.User.find({}, findInDbCallback);
+    models.Species.find({}, findInDbCallback);
     models.Pet.find({}, findInDbCallback);
 });
