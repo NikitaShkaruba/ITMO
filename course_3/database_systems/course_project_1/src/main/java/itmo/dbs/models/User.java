@@ -30,6 +30,12 @@ public class User {
             inverseJoinColumns={@JoinColumn(name="to_id")})
     private Set<User> friends = new HashSet<User>();
 
+    @ManyToMany(cascade={CascadeType.ALL})
+    @JoinTable(name="user_cosmetics",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="cosmetic_id")})
+    private Set<Cosmetic> ownedCosmetics = new HashSet<Cosmetic>();
+
     User() {}
     public User(String name, int phone, int moneyAmount, Pet pet, Photo photo) {
         this.name = name;

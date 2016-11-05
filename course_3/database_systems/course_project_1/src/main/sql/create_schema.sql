@@ -10,7 +10,7 @@ create table cosmetics (
     id number constraint cosmetics_pk primary key not null,
     name varchar(255) not null,
     type varchar(255) not null,
-    priсe number not null
+    price number not null
 );
 
 create table food (
