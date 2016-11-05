@@ -115,7 +115,6 @@ CREATE INDEX i_pets_user_id ON pets(user_id);
 create table ratings (
     id number constraint rating_pk primary key not null,
     user_id number not null,
-    rank number,
     CONSTRAINT rating_fk FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -138,13 +137,6 @@ create table friends(
 );
 
 CREATE UNIQUE INDEX i_friends_fromid_toid ON friends(from_id, to_id);
-
-create table admin_users (
-    user_id number,
-    CONSTRAINT admin_users_fk FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE UNIQUE INDEX i_admin_users_user_id ON admin_users (user_id);
 
 --------------------- Insert triggers and sequences for them ---------------------
 

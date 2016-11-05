@@ -35,14 +35,11 @@ insert into age_types values(0, 'Senior');
 insert into pets values(0, 'Fluffy', 1, 1, TO_DATE('10-05-2017', 'dd-mm-yyyy'), TO_DATE('17-05-2017', 'dd-mm-yyyy'), 1, health_condition(3, 4, 2));
 insert into pets values(0, 'Smokey', 2, 2, TO_DATE('10-05-2017', 'dd-mm-yyyy'), TO_DATE('17-05-2017', 'dd-mm-yyyy'), 1, health_condition(3, 4, 2));
 
-insert into admin_users values(1);
-insert into admin_users values(2);
-
 insert into friends values(1, 2);
 insert into friends values(2, 1);
 
-insert into ratings values(0, 1, 1);
-insert into ratings values(0, 2, 2);
+insert into ratings values(0, 1);
+insert into ratings values(0, 2);
 
 insert into user_cosmetics values(1, 1);
 insert into user_cosmetics values(1, 2);

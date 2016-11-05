@@ -6,7 +6,6 @@ DROP INDEX i_pets_user_id;
 DROP INDEX i_ratings_user_id;
 DROP INDEX i_user_cosmetics_uid_cosmid;
 DROP INDEX i_friends_fromid_toid;
-DROP INDEX i_admin_users_user_id;
 
 --- Script to drop all the tables
 drop table textures cascade constraints purge;
@@ -23,7 +22,6 @@ drop table age_types cascade constraints purge;
 --- junction tables without auto generated id
 drop table user_cosmetics cascade constraints purge;
 drop table friends cascade constraints purge;
-drop table admin_users cascade constraints purge;
 
 --- Drop sequences
 drop sequence textures_id_seq;
