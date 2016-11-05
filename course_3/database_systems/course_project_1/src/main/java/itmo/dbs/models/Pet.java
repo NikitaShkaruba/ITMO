@@ -1,6 +1,9 @@
 package itmo.dbs.models;
 
+import itmo.dbs.models.custom_types.HealthCondition;
 import lombok.Data;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -22,8 +25,9 @@ public class Pet {
     @OneToOne @JoinColumn(name="age_type_id")
     private AgeType ageType;
 
-    // Todo: Add healthCondition
-    // private HealthCondition healthCondition;
+    @Type(type = "itmo.dbs.models.custom_types.HealthConditionType")
+    @Column(name = "state")
+    private HealthCondition healthCondition;
 
     public Pet() {}
     public Pet(String name, Animal animal, User user, Date birthDate, Date deathDate) {
