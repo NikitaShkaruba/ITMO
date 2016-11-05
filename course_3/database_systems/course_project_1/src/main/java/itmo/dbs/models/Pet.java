@@ -10,23 +10,17 @@ import java.sql.Date;
 public class Pet {
     @Id @GeneratedValue private Long id;
     private String name;
-
-    @OneToOne
-    @JoinColumn(name="animal_id")
-    private Animal animal;
-
-    @OneToOne
-    @JoinColumn(name="user_id")
-    private User user;
-
     private Date birthDate;
     private Date deathDate;
 
-    /*
-    @OneToOne
-    @JoinTable(name="age_types_id")
+    @OneToOne @JoinColumn(name="animal_id")
+    private Animal animal;
+
+    @OneToOne @JoinColumn(name="user_id")
+    private User user;
+
+    @OneToOne @JoinColumn(name="age_type_id")
     private AgeType ageType;
-    */
     // private HealthCondition healthCondition;
 
     Pet() {}
