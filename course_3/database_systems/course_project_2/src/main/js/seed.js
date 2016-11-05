@@ -48,8 +48,27 @@ db.once('open', function() {
     });
     john.pet = mikey;
 
+    var carrot = new models.Food({
+        name: "Carrot",
+        satiety: 3
+});
+
+    var playGuitar = new models.Entertainments({
+        name: "PlayGuitar",
+        quality: 5
+});
+   
+    var scoreJohn = new models.Scoreboard({
+        user: john,
+        rank: 15
+});
+
+
     john.save(saveToDbCallback);
     shaun.save(saveToDbCallback);
     dogSpecies.save(saveToDbCallback);
-    mikey.save(saveToDbCallback); 
+    mikey.save(saveToDbCallback);
+    carrot.save(saveToDbCallback);
+    playGuitar.save(saveToDbCallback);
+    scoreJohn.save(saveToDbCallback);
 });

@@ -22,7 +22,7 @@ var UserSchema = mongoose.Schema({
 var PetSchema = mongoose.Schema({
     name: { type: String, required: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    species: { type: mongoose.Schema.Types.ObjectId, ref: '', required: true },
+    species: { type: mongoose.Schema.Types.ObjectId, ref: 'Species', required: true },
     birth_date: { type: Date, required: true, default: Date.now },
     death_date: { type: Date, required: true },
     happiness: { type: Number, min: 0, max: 10, required: true },
@@ -35,13 +35,26 @@ var SpeciesSchema = mongoose.Schema({
     texture: { type: Buffer, required: true }
 });
 
-// Todo: Add logic
-var FoodSchema;
-var EntertainmentsSchema;
-var ScoreboardSchema;
+var FoodSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    satiety: { type: Number, min: 0, max: 10, required: true }
+});
+
+var EntertainmentsSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    quality: { type: Number, min: 0, max: 10, required: true }
+});
+
+var ScoreboardSchema = mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    rank: { type: Number, min: 0, required: true }
+});
 
 module.exports = {
     User: mongoose.model('User', UserSchema),
     Pet: mongoose.model('Pet', PetSchema),
-    Species: mongoose.model('Species', SpeciesSchema)
+    Species: mongoose.model('Species', SpeciesSchema),
+    Food: mongoose.model('Food', FoodSchema),
+    Entertainments: mongoose.model('Entertainments', EntertainmentsSchema),
+    Scoreboard: mongoose.model('Scoreboard', ScoreboardSchema)
 }
