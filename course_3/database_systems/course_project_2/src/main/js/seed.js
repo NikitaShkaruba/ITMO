@@ -15,14 +15,60 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 // Register callback if db connection successfull
 db.once('open', function() {
+    var john = new models.User({
+        name: "John",
+        money_amount: 10000,
+        phone: "918-333-22-11",
+        is_admin: true
+    });
+    var shaun = new models.User({
+        name: "Shaun",
+        money_amount: 0,
+        phone: "918-234-12-11",
+        is_admin: false
+    });
+    // Make them friends
+    john.friends.push(shaun);
+    shaun.friends.push(john);
+
+    var dogSpecies = new models.Species({
+        name: "Dog",
+        texture: "IMG_RAW_DATA"
+    });
+
     var mikey = new models.Pet({
         name: "Mikey",
-        species: "Dog",
+        species: dogSpecies,
+        user: john,
         birth_date: Date.now(),
         death_date: Date.now() + 7,
         happiness: 3,
         hungriness: 0,
         illness: 0
     });
-    mikey.save(saveToDbCallback); 
+    john.pet = mikey;
+
+    var carrot = new models.Food({
+        name: "Carrot",
+        satiety: 3
+});
+
+    var playGuitar = new models.Entertainments({
+        name: "PlayGuitar",
+        quality: 5
+});
+   
+    var scoreJohn = new models.Scoreboard({
+        user: john,
+        rank: 15
+});
+
+
+    john.save(saveToDbCallback);
+    shaun.save(saveToDbCallback);
+    dogSpecies.save(saveToDbCallback);
+    mikey.save(saveToDbCallback);
+    carrot.save(saveToDbCallback);
+    playGuitar.save(saveToDbCallback);
+    scoreJohn.save(saveToDbCallback);
 });

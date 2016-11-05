@@ -7,3 +7,20 @@ var db = mongoose.connection;
 models.Pet.remove({}, function(err) {
     console.log('Collection Pet removed');
 });
+models.User.remove({}, function(err) {
+    console.log('Collection User removed');
+});
+models.Species.remove({}, function(err) {
+    console.log('Collection User removed');
+});
+models.Food.remove({}, function(err) {
+    console.log('Collection Food removed');
+});
+models.Entertainments.remove({}, function(err) {
+    console.log('Collection Entertaiments removed');
+});
+models.Scoreboard.remove({}, function(err) {
+    console.log('Collection Scoreboard removed');
+});
+
+
