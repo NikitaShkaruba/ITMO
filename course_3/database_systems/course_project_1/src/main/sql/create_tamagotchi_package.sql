@@ -5,7 +5,6 @@ create or replace package tamagotchi as
 
   function updateUserName(u_id number, user_name varchar2) return number;
   function addPetToUser(u_id number, a_id number, petName varchar2) return number;
-  ---function addUserPhoto(u_id number, path_to_photo varchar(255)) return number;
   function addMoneyToUser(u_id number, moneyAmount number) return number;
   procedure readUserById(u_id number);
   procedure readUserPetByUserId(u_id number);

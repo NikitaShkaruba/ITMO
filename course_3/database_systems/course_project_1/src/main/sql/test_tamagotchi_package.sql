@@ -4,7 +4,7 @@ execute DBMS_OUTPUT.PUT_LINE('new user_id: ' || tamagotchi.createUser('Vika', 34
 execute DBMS_OUTPUT.PUT_LINE('new user_id: ' || tamagotchi.createUser('Sasha', 4557733));
 
 execute tamagotchi.printUsersAmount;
-execute tamagotchi.deleteUser(5);
+execute tamagotchi.deleteUser(1);
 execute tamagotchi.printUsersAmount;
 
 execute DBMS_OUTPUT.PUT_LINE('user_id (update name): ' || tamagotchi.updateUserName(1, 'Cygni'));
@@ -25,3 +25,8 @@ BEGIN
     dbms_output.put_line('is Healthy? ' || result.isHealthy());
 END;
 /
+
+--- Продумать:
+--- 0) Возраст животного -> сделано
+--- 1) Болезни -> стали чистотой
+--- 2) Обновление состояний -> процесс, запускающийся по расписанию

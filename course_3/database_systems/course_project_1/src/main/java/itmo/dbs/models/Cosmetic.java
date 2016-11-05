@@ -1,22 +1,25 @@
 package itmo.dbs.models;
 
+import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "food")
-public class Food {
+@Table(name = "cosmetics")
+public class Cosmetic {
     @Id @GeneratedValue private Long id;
     private String name;
-    private Integer satiety;
+    private String type;
+    private Long price;
 
-    public Food() {}
-    public Food(String name, int satiety) {
+    public Cosmetic() {}
+    public Cosmetic(String name, String type, long price) {
         this.name = name;
-        this.satiety = satiety;
+        this.type = type;
+        this.price = price;
     }
 }
+

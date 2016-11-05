@@ -13,8 +13,8 @@ insert into cosmetics values(0, 'ring with diamond', 'hands', 50);
 insert into sceneries values(0, 'waterfall', utl_raw.cast_to_raw('waterfall.png'));
 insert into sceneries values(0, 'cozy_chair', utl_raw.cast_to_raw('cozy_chair.png'));
 
-insert into user_photoes values(0, utl_raw.cast_to_raw('my_ava.png'));
-insert into user_photoes values(0, utl_raw.cast_to_raw('fabulous_nikita.png'));
+insert into photos values(0, utl_raw.cast_to_raw('my_ava.png'));
+insert into photos values(0, utl_raw.cast_to_raw('fabulous_nikita.png'));
 
 insert into users values(0, 'Nikita', NULL, NULL, 0, 9819584408);
 insert into users values(0, 'Victoria', NULL, NULL, 0, 9112489674);
@@ -25,17 +25,21 @@ insert into textures values(0, utl_raw.cast_to_raw('chupokabra_texture.png'));
 insert into animals values(0, 'Cat', 1);
 insert into animals values(0, 'Chupokabra', 2);
 
-insert into pets values(0, 'Fluffy', 1, 1, TO_DATE('17-05-2017', 'dd-mm-yyyy'), health_condition(3, 4, 2));
-insert into pets values(0, 'Smokey', 2, 2, TO_DATE('17-05-2017', 'dd-mm-yyyy'), health_condition(3, 4, 2));
+insert into age_types values(0, 'Egg');
+insert into age_types values(0, 'Baby');
+insert into age_types values(0, 'Child');
+insert into age_types values(0, 'Teenager');
+insert into age_types values(0, 'Adult');
+insert into age_types values(0, 'Senior');
 
-insert into admin_users values(1);
-insert into admin_users values(2);
+insert into pets values(0, 'Fluffy', 1, 1, TO_DATE('10-05-2017', 'dd-mm-yyyy'), TO_DATE('17-05-2017', 'dd-mm-yyyy'), 1, health_condition(3, 4, 2));
+insert into pets values(0, 'Smokey', 2, 2, TO_DATE('10-05-2017', 'dd-mm-yyyy'), TO_DATE('17-05-2017', 'dd-mm-yyyy'), 1, health_condition(3, 4, 2));
 
 insert into friends values(1, 2);
 insert into friends values(2, 1);
 
-insert into ratings values(0, 1, 1);
-insert into ratings values(0, 2, 2);
+insert into ratings values(0, 1);
+insert into ratings values(0, 2);
 
 insert into user_cosmetics values(1, 1);
 insert into user_cosmetics values(1, 2);

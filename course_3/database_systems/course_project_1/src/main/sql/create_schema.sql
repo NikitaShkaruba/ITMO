@@ -8,9 +8,9 @@ create table textures(
 
 create table cosmetics (
     id number constraint cosmetics_pk primary key not null,
-    name varchar(255)  not null,
-    type varchar(255)  not null,
-    priсe number not null
+    name varchar(255) not null,
+    type varchar(255) not null,
+    price number not null
 );
 
 create table food (
@@ -31,8 +31,8 @@ create table sceneries (
     texture blob
 );
 
-create table user_photoes (
-    id number constraint user_photoes_pk primary key not null,
+create table photos (
+    id number constraint photos_pk primary key not null,
     data blob
 );
 
@@ -48,7 +48,7 @@ CREATE UNIQUE INDEX i_animals_texture_id ON animals(texture_id);
 create TYPE health_condition as OBJECT (
     happiness number,
     hungriness number,
-    illness number,
+    cleanliness number,
     --- returns 0 if ill, 1 if healthy
     MAP MEMBER FUNCTION isHealthy RETURN NUMBER
 );
@@ -65,7 +65,7 @@ CREATE TYPE BODY health_condition AS
             return 0;
         end if;
 
-        if illness > 9 then
+        if cleanliness < 2 then
             return 0;
         end if;
 
@@ -74,13 +74,22 @@ CREATE TYPE BODY health_condition AS
 END;
 /
 
+--- Egg, Baby, Child, Teenager, Adult, Senior
+create table age_types (
+    id number constraint age_types_pk primary key not null,
+    name varchar(255)
+);
+
 create table pets (
     id number constraint pets_pk primary key not null,
     name varchar(255),
     animal_id number not null,
     CONSTRAINT pets_fk FOREIGN KEY (animal_id) REFERENCES animals(id),
     user_id number not null,
+    birth_date date,
     death_date date,
+    age_type_id number not null,
+    CONSTRAINT pets_fk3 FOREIGN KEY (age_type_id) REFERENCES age_types(id),
     state health_condition
 );
 
@@ -94,10 +103,10 @@ create table users (
     money_amount number,
     phone number(11),
     CONSTRAINT users_fk FOREIGN KEY (pet_id) REFERENCES pets(id),
-    CONSTRAINT users_fk2 FOREIGN KEY (photo_id) REFERENCES user_photoes(id)
+    CONSTRAINT users_fk2 FOREIGN KEY (photo_id) REFERENCES photos(id)
 );
 
-CREATE UNIQUE INDEX i_users_petid_photoid ON users(pet_id, photo_id);
+CREATE UNIQUE INDEX i_users_pet_id_photo_id ON users(pet_id, photo_id);
 
 ALTER TABLE pets ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
@@ -106,7 +115,6 @@ CREATE INDEX i_pets_user_id ON pets(user_id);
 create table ratings (
     id number constraint rating_pk primary key not null,
     user_id number not null,
-    rank number,
     CONSTRAINT rating_fk FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -129,13 +137,6 @@ create table friends(
 );
 
 CREATE UNIQUE INDEX i_friends_fromid_toid ON friends(from_id, to_id);
-
-create table admin_users (
-    user_id number,
-    CONSTRAINT admin_users_fk FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE UNIQUE INDEX i_admin_users_user_id ON admin_users (user_id);
 
 --------------------- Insert triggers and sequences for them ---------------------
 
@@ -189,13 +190,23 @@ begin
 end;
 /
 
---- user_photoes
-create sequence user_photoes_id_seq increment by 1 start with 1;
+--- photos
+create sequence photos_id_seq increment by 1 start with 1;
 
-create or replace trigger user_photoes_insert
-before insert on user_photoes for each row
+create or replace trigger photos_insert
+before insert on photos for each row
 begin
-    select user_photoes_id_seq.nextval into :new.id from dual;
+    select photos_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- age_types
+create sequence age_types_id_seq increment by 1 start with 1;
+
+create or replace trigger age_types_insert
+before insert on age_types for each row
+begin
+    select age_types_id_seq.nextval into :new.id from dual;
 end;
 /
 
