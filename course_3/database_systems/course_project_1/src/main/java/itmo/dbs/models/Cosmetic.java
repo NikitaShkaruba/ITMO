@@ -15,8 +15,8 @@ public class Cosmetic {
     private String type;
     private Long price;
 
-    Cosmetic() {}
-    Cosmetic(String name, String type, long price) {
+    public Cosmetic() {}
+    public Cosmetic(String name, String type, long price) {
         this.name = name;
         this.type = type;
         this.price = price;

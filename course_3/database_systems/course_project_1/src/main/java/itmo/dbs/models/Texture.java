@@ -10,7 +10,7 @@ public class Texture {
     @Id @GeneratedValue private Long id;
     @Lob private byte[] texture;
 
-    Texture() {} // Jpa only
+    public Texture() {} // Jpa only
     public Texture(byte[] texture) {
         this.texture = texture;
     }

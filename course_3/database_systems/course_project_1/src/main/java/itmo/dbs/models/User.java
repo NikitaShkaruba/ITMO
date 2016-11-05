@@ -1,9 +1,7 @@
 package itmo.dbs.models;
 
 import lombok.Data;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,12 +14,10 @@ public class User {
     private long phone;
     private long moneyAmount;
 
-    @OneToOne
-    @JoinColumn(name="pet_id")
+    @OneToOne @JoinColumn(name="pet_id")
     private Pet pet;
 
-    @OneToOne
-    @JoinColumn(name="photo_id")
+    @OneToOne @JoinColumn(name="photo_id")
     private Photo photo;
 
     @ManyToMany(cascade={CascadeType.ALL})
@@ -36,13 +32,11 @@ public class User {
             inverseJoinColumns={@JoinColumn(name="cosmetic_id")})
     private Set<Cosmetic> ownedCosmetics = new HashSet<Cosmetic>();
 
-    User() {}
-    public User(String name, int phone, int moneyAmount, Pet pet, Photo photo) {
+    public User() {}
+    public User(String name, int phone, int moneyAmount) {
         this.name = name;
         this.phone = phone;
         this.moneyAmount = moneyAmount;
-        this.pet = pet;
-        this.photo = photo;
     }
 
     @Override
@@ -54,6 +48,7 @@ public class User {
         return id.equals(account.id);
     }
 
+    // Is needed for HashSet
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));

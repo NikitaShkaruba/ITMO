@@ -15,8 +15,8 @@ public class Entertainment {
     private String name;
     private Integer quality;
 
-    Entertainment() {}
-    Entertainment(String name, int quality) {
+    public Entertainment() {}
+    public Entertainment(String name, int quality) {
         this.name = name;
         this.quality = quality;
     }

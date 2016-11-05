@@ -10,7 +10,7 @@ public class Photo {
     @Id @GeneratedValue private Long id;
     @Lob private byte[] data;
 
-    Photo() {}
+    public Photo() {}
     public Photo(byte[] data) {
         this.data = data;
     }

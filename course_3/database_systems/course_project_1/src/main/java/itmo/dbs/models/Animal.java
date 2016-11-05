@@ -10,11 +10,10 @@ public class Animal {
     @Id @GeneratedValue private Long id;
     private String name;
 
-    @OneToOne
-    @JoinColumn(name="texture_id")
+    @OneToOne @JoinColumn(name="texture_id")
     private Texture texture;
 
-    Animal() {}
+    public Animal() {}
     public Animal(String name, Texture texture) {
         this.name = name;
         this.texture = texture;

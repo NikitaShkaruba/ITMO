@@ -1,7 +1,6 @@
 package itmo.dbs.models;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Data
@@ -12,7 +11,7 @@ public class Scenery {
     private String name;
     @Lob private byte[] texture;
 
-    Scenery() {}
+    public Scenery() {}
     public Scenery(String name, byte[] texture) {
         this.name = name;
         this.texture = texture;

@@ -9,11 +9,10 @@ import javax.persistence.*;
 public class Rating {
     @Id @GeneratedValue private Long id;
 
-    @OneToOne
-    @JoinColumn(name="user_id")
+    @OneToOne @JoinColumn(name="user_id")
     private User user;
 
-    Rating() {}
+    public Rating() {}
     public Rating(User user) {
         this.user = user;
     }

@@ -21,15 +21,17 @@ public class Pet {
 
     @OneToOne @JoinColumn(name="age_type_id")
     private AgeType ageType;
+
+    // Todo: Add healthCondition
     // private HealthCondition healthCondition;
 
-    Pet() {}
-    public Pet(String name, Animal animal, User user, Date birthDate, Date deathDate/*, AgeType ageType */) {
+    public Pet() {}
+    public Pet(String name, Animal animal, User user, Date birthDate, Date deathDate) {
         this.name = name;
         this.animal = animal;
-        //this.user = user;
+        this.user = user;
         this.birthDate = birthDate;
         this.deathDate = deathDate;
-        // this.ageType = ageType;
+        this.ageType = new AgeType("Egg");
     }
 }

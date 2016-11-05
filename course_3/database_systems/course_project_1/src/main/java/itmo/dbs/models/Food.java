@@ -14,7 +14,7 @@ public class Food {
     private String name;
     private Integer satiety;
 
-    Food() {} // Jpa only
+    public Food() {}
     public Food(String name, int satiety) {
         this.name = name;
         this.satiety = satiety;

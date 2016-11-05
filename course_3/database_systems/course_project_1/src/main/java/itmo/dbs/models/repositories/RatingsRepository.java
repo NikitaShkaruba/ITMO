@@ -5,4 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
-public interface RatingRepository extends CrudRepository<Rating, Long> {}
+public interface RatingsRepository extends CrudRepository<Rating, Long> {}
