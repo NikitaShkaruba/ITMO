@@ -13,8 +13,8 @@ insert into cosmetics values(0, 'ring with diamond', 'hands', 50);
 insert into sceneries values(0, 'waterfall', utl_raw.cast_to_raw('waterfall.png'));
 insert into sceneries values(0, 'cozy_chair', utl_raw.cast_to_raw('cozy_chair.png'));
 
-insert into user_photoes values(0, utl_raw.cast_to_raw('my_ava.png'));
-insert into user_photoes values(0, utl_raw.cast_to_raw('fabulous_nikita.png'));
+insert into photos values(0, utl_raw.cast_to_raw('my_ava.png'));
+insert into photos values(0, utl_raw.cast_to_raw('fabulous_nikita.png'));
 
 insert into users values(0, 'Nikita', NULL, NULL, 0, 9819584408);
 insert into users values(0, 'Victoria', NULL, NULL, 0, 9112489674);

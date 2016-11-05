@@ -5,13 +5,13 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "user_photoes")
-public class UserPhoto {
+@Table(name = "photos")
+public class Photo {
     @Id @GeneratedValue private Long id;
     @Lob private byte[] data;
 
-    UserPhoto() {}
-    public UserPhoto(byte[] data) {
+    Photo() {}
+    public Photo(byte[] data) {
         this.data = data;
     }
 }

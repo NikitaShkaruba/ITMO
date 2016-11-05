@@ -31,8 +31,8 @@ create table sceneries (
     texture blob
 );
 
-create table user_photoes (
-    id number constraint user_photoes_pk primary key not null,
+create table photos (
+    id number constraint photos_pk primary key not null,
     data blob
 );
 
@@ -103,10 +103,10 @@ create table users (
     money_amount number,
     phone number(11),
     CONSTRAINT users_fk FOREIGN KEY (pet_id) REFERENCES pets(id),
-    CONSTRAINT users_fk2 FOREIGN KEY (photo_id) REFERENCES user_photoes(id)
+    CONSTRAINT users_fk2 FOREIGN KEY (photo_id) REFERENCES photos(id)
 );
 
-CREATE UNIQUE INDEX i_users_petid_photoid ON users(pet_id, photo_id);
+CREATE UNIQUE INDEX i_users_pet_id_photo_id ON users(pet_id, photo_id);
 
 ALTER TABLE pets ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
@@ -198,13 +198,13 @@ begin
 end;
 /
 
---- user_photoes
-create sequence user_photoes_id_seq increment by 1 start with 1;
+--- photos
+create sequence photos_id_seq increment by 1 start with 1;
 
-create or replace trigger user_photoes_insert
-before insert on user_photoes for each row
+create or replace trigger photos_insert
+before insert on photos for each row
 begin
-    select user_photoes_id_seq.nextval into :new.id from dual;
+    select photos_id_seq.nextval into :new.id from dual;
 end;
 /
 
