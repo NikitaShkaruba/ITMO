@@ -142,7 +142,7 @@ end;
 create sequence products_id_seq increment by 1 start with 1;
 
 create or replace trigger products_insert
-before insert on days for each row
+before insert on products for each row
 begin
     select products_id_seq.nextval into :new.id from dual;
 end;
