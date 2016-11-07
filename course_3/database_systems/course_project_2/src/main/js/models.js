@@ -24,7 +24,7 @@ var PetSchema = mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     species: { type: mongoose.Schema.Types.ObjectId, ref: 'Species', required: true },
     birth_date: { type: Date, required: true, default: Date.now },
-    death_date: { type: Date, required: true },
+    death_date: { type: Date },
     happiness: { type: Number, min: 0, max: 10, required: true },
     hungriness: { type: Number, min: 0, max: 10, required: true },
     illness: { type: Number, min: 0, max: 10, required: true }
@@ -45,16 +45,16 @@ var EntertainmentsSchema = mongoose.Schema({
     quality: { type: Number, min: 0, max: 10, required: true }
 });
 
-var ScoreboardSchema = mongoose.Schema({
+var RatingsSchema = mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    rank: { type: Number, min: 0, required: true }
+    position: { type: Number, min: 0, unique: true, required: true }
 });
 
 module.exports = {
     User: mongoose.model('User', UserSchema),
     Pet: mongoose.model('Pet', PetSchema),
     Species: mongoose.model('Species', SpeciesSchema),
-    Food: mongoose.model('Food', FoodSchema),
+    Food: mongoose.model('Food', FoodSchema, 'food'),
     Entertainments: mongoose.model('Entertainments', EntertainmentsSchema),
-    Scoreboard: mongoose.model('Scoreboard', ScoreboardSchema)
+    Ratings: mongoose.model('Ratings', RatingsSchema)
 }

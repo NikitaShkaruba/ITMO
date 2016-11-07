@@ -13,7 +13,7 @@ function saveToDbCallback(error) {
 // Register callback if db connection fails
 db.on('error', console.error.bind(console, 'connection error:'));
 
-// Register callback if db connection successfull
+// Register callback if db connection successful
 db.once('open', function() {
     var john = new models.User({
         name: "John",
@@ -41,7 +41,6 @@ db.once('open', function() {
         species: dogSpecies,
         user: john,
         birth_date: Date.now(),
-        death_date: Date.now() + 7,
         happiness: 3,
         hungriness: 0,
         illness: 0
@@ -51,24 +50,23 @@ db.once('open', function() {
     var carrot = new models.Food({
         name: "Carrot",
         satiety: 3
-});
+    });
 
-    var playGuitar = new models.Entertainments({
+    var playingGuitarEntertainment = new models.Entertainments({
         name: "PlayGuitar",
         quality: 5
-});
+    });
    
-    var scoreJohn = new models.Scoreboard({
+    var johnRating = new models.Ratings({
         user: john,
-        rank: 15
-});
-
+        position: 15
+    });
 
     john.save(saveToDbCallback);
     shaun.save(saveToDbCallback);
     dogSpecies.save(saveToDbCallback);
     mikey.save(saveToDbCallback);
     carrot.save(saveToDbCallback);
-    playGuitar.save(saveToDbCallback);
-    scoreJohn.save(saveToDbCallback);
+    playingGuitarEntertainment.save(saveToDbCallback);
+    johnRating.save(saveToDbCallback);
 });
