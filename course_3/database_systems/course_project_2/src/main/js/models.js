@@ -24,7 +24,7 @@ var PetSchema = mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     species: { type: mongoose.Schema.Types.ObjectId, ref: 'Species', required: true },
     birth_date: { type: Date, required: true, default: Date.now },
-    death_date: { type: Date, required: true },
+    death_date: { type: Date },
     happiness: { type: Number, min: 0, max: 10, required: true },
     hungriness: { type: Number, min: 0, max: 10, required: true },
     illness: { type: Number, min: 0, max: 10, required: true }

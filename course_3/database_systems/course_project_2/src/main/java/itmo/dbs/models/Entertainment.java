@@ -14,4 +14,8 @@ public class Entertainment {
         this.name = name;
         this.quality = quality;
     }
+
+    public String getId() {
+        return this.id;
+    }
 }

@@ -41,7 +41,6 @@ db.once('open', function() {
         species: dogSpecies,
         user: john,
         birth_date: Date.now(),
-        death_date: Date.now() + 7,
         happiness: 3,
         hungriness: 0,
         illness: 0
@@ -51,17 +50,17 @@ db.once('open', function() {
     var carrot = new models.Food({
         name: "Carrot",
         satiety: 3
-});
+    });
 
-    var playGuitar = new models.Entertainments({
+    var guitarEntertainment = new models.Entertainments({
         name: "PlayGuitar",
         quality: 5
-});
+    });
    
-    var scoreJohn = new models.Scoreboard({
+    var johnScore = new models.Scoreboard({
         user: john,
         rank: 15
-});
+    });
 
 
     john.save(saveToDbCallback);
@@ -69,6 +68,6 @@ db.once('open', function() {
     dogSpecies.save(saveToDbCallback);
     mikey.save(saveToDbCallback);
     carrot.save(saveToDbCallback);
-    playGuitar.save(saveToDbCallback);
-    scoreJohn.save(saveToDbCallback);
+    guitarEntertainment.save(saveToDbCallback);
+    johnScore.save(saveToDbCallback);
 });
