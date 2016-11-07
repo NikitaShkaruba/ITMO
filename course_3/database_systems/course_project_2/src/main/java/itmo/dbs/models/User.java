@@ -27,8 +27,4 @@ public class User {
         this.phone = phone;
         this.isAdmin = isAdmin;
     }
-
-    public String getId() {
-        return this.id;
-    }
 }

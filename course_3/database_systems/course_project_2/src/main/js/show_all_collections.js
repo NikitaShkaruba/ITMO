@@ -23,5 +23,5 @@ db.once('open', function() {
     models.Pet.find({}, findInDbCallback);
     models.Food.find({}, findInDbCallback);
     models.Entertainments.find({}, findInDbCallback);
-    models.Scoreboard.find({}, findInDbCallback);
+    models.Ratings.find({}, findInDbCallback);
 });

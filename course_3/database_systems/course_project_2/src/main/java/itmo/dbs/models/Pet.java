@@ -27,16 +27,12 @@ public class Pet {
     public Pet() {}
     public Pet(String name, Species species, User user) {
         this.name = name;
-        this.species = species.getId();
-        this.user = user.getId();
+        this.species = species.id;
+        this.user = user.id;
 
         this.birthDate = new Date();
         this.happiness = 2;
         this.hungriness = 8;
         this.illness = 0;
-    }
-
-    public String getId() {
-        return this.id;
     }
 }
