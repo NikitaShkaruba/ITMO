@@ -10,21 +10,20 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'spring-boot'
 
-jar {
-    baseName = 'gs-rest-service'
-    version =  '0.1.0'
-}
-
 repositories {
     mavenCentral()
+}
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile('org.springframework.boot:spring-boot-starter-data-rest') 
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('com.jayway.jsonpath:json-path')
+jar {
+    baseName = 'tamagotchi_mongodb_api'
+    version =  '0.1.0'
 }
-

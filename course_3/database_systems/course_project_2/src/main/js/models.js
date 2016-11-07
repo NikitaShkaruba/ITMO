@@ -54,7 +54,7 @@ module.exports = {
     User: mongoose.model('User', UserSchema),
     Pet: mongoose.model('Pet', PetSchema),
     Species: mongoose.model('Species', SpeciesSchema),
-    Food: mongoose.model('Food', FoodSchema),
+    Food: mongoose.model('Food', FoodSchema, 'food'),
     Entertainments: mongoose.model('Entertainments', EntertainmentsSchema),
     Scoreboard: mongoose.model('Scoreboard', ScoreboardSchema)
 }
