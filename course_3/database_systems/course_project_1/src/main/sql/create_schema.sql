@@ -36,23 +36,28 @@ create table user_photoes (
     data blob
 );
 
+create table animals (
+    id number constraint animals_pk primary key not null,
+    name varchar(255)  not null,
+    texture_id number not null,
+    CONSTRAINT animals_fk FOREIGN KEY (texture_id) REFERENCES textures(id)
+);
+
+create TYPE health_condition as OBJECT (
+    happiness number,
+    hungriness number,
+    illness number
+);
+/
+
 create table pets (
     id number constraint pets_pk primary key not null,
     name varchar(255),
     animal_id number not null,
     CONSTRAINT pets_fk FOREIGN KEY (animal_id) REFERENCES animals(id),
     user_id number not null,
-    death_date date, 
-    happiness number,
-    hungriness number,
-    health number    
-);
-
-create table animals (
-    id number constraint animals_pk primary key not null,
-    name varchar(255)  not null,
-    texture_id number not null,
-    CONSTRAINT animals_fk FOREIGN KEY (texture_id) REFERENCES textures(id)
+    death_date date,
+    state condition_animal
 );
 
 create table users (
@@ -93,3 +98,105 @@ create table admin_users (
     user_id number,
     CONSTRAINT admin_users_fk FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+--------------------- Insert triggers and sequences for them ---------------------
+
+--- textures
+create sequence textures_id_seq increment by 1 start with 1;
+
+create or replace trigger textures_insert
+before insert on textures for each row
+begin
+    select textures_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- cosmetics
+create sequence cosmetics_id_seq increment by 1 start with 1;
+
+create or replace trigger cosmetics_insert
+before insert on cosmetics for each row
+begin
+    select cosmetics_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- food
+create sequence food_id_seq increment by 1 start with 1;
+
+create or replace trigger food_insert
+before insert on food for each row
+begin
+    select food_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- entertainments
+create sequence entertainments_id_seq increment by 1 start with 1;
+
+create or replace trigger entertainments_insert
+before insert on entertainments for each row
+begin
+    select entertainments_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- sceneries
+create sequence sceneries_id_seq increment by 1 start with 1;
+
+create or replace trigger sceneries_insert
+before insert on sceneries for each row
+begin
+    select sceneries_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- user_photoes
+create sequence user_photoes_id_seq increment by 1 start with 1;
+
+create or replace trigger user_photoes_insert
+before insert on user_photoes for each row
+begin
+    select user_photoes_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- pets
+create sequence pets_id_seq increment by 1 start with 1;
+
+create or replace trigger pets_insert
+before insert on pets for each row
+begin
+    select pets_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- animals
+create sequence animals_id_seq increment by 1 start with 1;
+
+create or replace trigger animals_insert
+before insert on animals for each row
+begin
+    select animals_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- users
+create sequence users_id_seq increment by 1 start with 1;
+
+create or replace trigger users_insert
+before insert on users for each row
+begin
+    select users_id_seq.nextval into :new.id from dual;
+end;
+/
+
+--- ratings
+create sequence ratings_id_seq increment by 1 start with 1;
+
+create or replace trigger ratings_insert
+before insert on ratings for each row
+begin
+    select ratings_id_seq.nextval into :new.id from dual;
+end;
+/
