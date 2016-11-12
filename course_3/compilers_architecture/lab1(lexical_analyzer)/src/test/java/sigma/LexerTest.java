@@ -12,4 +12,8 @@ public class LexerTest {
     @Test public void isIdentifier() {
         assert(lexer.analyze("myVar").equals("Identifier"));
     }
+
+    @Test public void isVariablesList() {
+        assert(lexer.analyze("myVar, box, x, y").equals("Variables list"));
+    }
 }

@@ -3,8 +3,9 @@ package sigma;
 import java.util.ArrayList;
 import java.util.List;
 
+// Todo: Make type private variable a Enum, not String
 public class Token {
-    private String type;
+    private String type; 
     private String text;
 
     private Token parent;
