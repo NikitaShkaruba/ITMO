@@ -1,9 +1,9 @@
 package sigma;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.lang.UnsupportedOperationException;
 import java.util.ArrayList;
 
-// Lexically analyzes some text
+// Lexically analyzes one code line
 public class Lexer {
     public String analyze(String text) {
         ArrayList<Token> words = new ArrayList<>();
@@ -41,10 +41,11 @@ public class Lexer {
             printLexicalTree(root);
 
             return root.getType();
-        } else if (words.size() == 0) {
-            return "Syntax error";
+        } else if (words.size() > 1) {
+            String content = getStringFromTokens(words);
+            return null;
         } else {
-            throw new NotImplementedException();
+            return "Syntax error";
         }
     }
 
@@ -68,54 +69,54 @@ public class Lexer {
     }
 
     private boolean isVariableDeclarations(String text) {
-        // Var <Список переменных>;
-        return false;
+        // Var <List of variables>;
+        throw new UnsupportedOperationException();
     }
     private boolean isOperandList(String str) {
-        //  <Идент> | <Идент> , <Список переменных>
-        return false;
+        //  <Identifier> | <Identifier> , <List of variables>
+        throw new UnsupportedOperationException();
     }
     private boolean isOperand(String str) {
-        // <Идент> | <Const>
-        return false;
+        // <Identifier> | <Const>
+        throw new UnsupportedOperationException();
     }
 
     private boolean areComputations(String str) {
-        // <Список операторов>
-        return false;
+        // <List of operators>
+        throw new UnsupportedOperationException();
     }
     private boolean isOperatorsLists(String str) {
-        // <Оператор> | <Оператор> <Список операторов>
-        return false;
+        // <Operator> | <Operator> <List of operators>
+        throw new UnsupportedOperationException();
     }
     private boolean isOperator(String str) {
-        // <Присваивание> | < Сложный оператор >
-        return false;
+        // <Assignment> | <Complex operator> | <Unary operator> | <Binary operator>
+        throw new UnsupportedOperationException();
     }
     private boolean isUnaryOperator(String str) {
         // '-'
-        return false;
+        throw new UnsupportedOperationException();
     }
     private boolean isBinaryOperator(String str) {
 		// '-' | '+' | '*' | '/' | '<' | '>' | '=='
-        return false;
+        throw new UnsupportedOperationException();
 	}
     private boolean isComplexOperator(String str) {
-		// IF <Выражение> THEN <Оператор> | IF <Выражение> THEN <Оператор> ELSE <Оператор>
-        return false;
+		// IF <Expression> THEN <Operator> | IF <Expression> THEN <Operator> ELSE <Operator>
+        throw new UnsupportedOperationException();
 	}
 
     private boolean isAssignment(String str) {
-		// <Идент> := <Выражение>;
-        return false;
+		// <Identifier> := <Expression>;
+        throw new UnsupportedOperationException();
 	}
     private boolean isExpression(String str) {
-		// <Ун.оп.><Подвыражение> | <Подвыражение>
-        return false;
+		// <Unary operator><Subexpression> | <Subexpression>
+        throw new UnsupportedOperationException();
 	}
     private boolean isSubExpression(String str) {
-		// <Бин.оп.> <Подвыражение>
-        return false;
+		// <Binary operator> <Subexpression>
+        throw new UnsupportedOperationException();
 	}
 
 	private String detectWordType(ArrayList<Token> tokens) throws Exception {
@@ -127,24 +128,24 @@ public class Lexer {
             throw new Exception("No such word in Grammar");
     }
     private boolean isIdentifier(ArrayList<Token> tokens) {
-		// <Буква> <Идент> | <Буква>
+		// <Letter><Identifier> | <Letter>
 
         if (tokens.size() == 1 && tokens.get(0).getType() == "Letter")
             return true;
 
-        ArrayList<Token> others = new ArrayList(tokens.subList(1, tokens.size()));
+        ArrayList<Token> others = new ArrayList<>(tokens.subList(1, tokens.size()));
         if (tokens.get(0).getType() == "Letter" && isIdentifier(others))
             return true;
 
         return false;
 	}
     private boolean isConst(ArrayList<Token> tokens) {
-		// <Цифра> <Const> | <Цифра>
+		// <Digit><Const> | <Digit>
 
         if (tokens.size() == 1 && tokens.get(0).getType() == "Digit")
             return true;
 
-        ArrayList<Token> others = new ArrayList(tokens.subList(1, tokens.size()));
+        ArrayList<Token> others = new ArrayList<>(tokens.subList(1, tokens.size()));
         if (tokens.get(0).getType() == "Digit" && isConst(others))
             return true;
 
@@ -162,11 +163,11 @@ public class Lexer {
             throw new Exception("No such char in Grammar");
     }
     private boolean isLetter(char c) {
-        // <letter>
+        // <Letter>
         return Character.isLetter(c);
     }
 	private boolean isDigit(char c) {
-	    // <digit>
+	    // <Digit>
 	    return Character.isDigit(c);
     }
     private boolean isSpace(char c) {
