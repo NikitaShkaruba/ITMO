@@ -4,28 +4,22 @@
 #include <iostream> 
 #include <fstream>
 
-// Human readable signals for 
-#define LOAD	1
-#define APPLY	2
-#define APPLY_GETPIXEL	3
+// Human readable signals for window action handlers
+#define OPEN	1
+#define APPLY_BITBLT	2
+#define APPLY_SETPIXEL	3
 #define START_TESTS	4
 
 // Prototypes for functions below
-LPCTSTR OpenFile();
-int save_bmp(HDC hdc, HBITMAP bm, int width, int height);
+LPCTSTR getFileName();
+int saveBitmap(HDC hdc, HBITMAP bm, int width, int height);
 LRESULT CALLBACK handleWindowEvents(HWND, UINT, WPARAM, LPARAM);
 void setPixelDisplay(HWND hwnd, HBITMAP hBitmap);
 void setBlt(HWND hWnd, HBITMAP hBitmap);
-void execute(HWND hwnd);
+void runTests(HWND hwnd);
 
-// Just global variables to be accessed from everywhere
+// Just global variables to be accessed from everywhere - It's not my code :)
 bool isLoaded = false;
-LPCTSTR fileName;
-HDC hDC;
-PAINTSTRUCT PaintStruct;
-HDC hCompatibleDC;
-HANDLE hOldBitmap;
-BITMAP Bitmap;
 HBITMAP hBitmap;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow) {
@@ -60,10 +54,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
 		hInstance, NULL);
 
 	HMENU MainMenu = CreateMenu();
-	AppendMenu(MainMenu, MF_STRING, LOAD, TEXT("Open blt file"));
-	AppendMenu(MainMenu, MF_STRING, APPLY, TEXT("Change color by BitBlt"));
+	AppendMenu(MainMenu, MF_STRING, OPEN, TEXT("Open blt file"));
+	AppendMenu(MainMenu, MF_STRING, APPLY_BITBLT, TEXT("Change color by BitBlt"));
 	AppendMenu(MainMenu, MF_STRING, START_TESTS, TEXT("Run tests"));
-	AppendMenu(MainMenu, MF_STRING, APPLY_GETPIXEL, TEXT("GetPixel"));
+	AppendMenu(MainMenu, MF_STRING, APPLY_SETPIXEL, TEXT("GetPixel"));
 	SetMenu(hWnd, MainMenu);
 
 	if (!hWnd) {
@@ -71,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdPa
 		return 0;
 	}
 
-	// Show window, append menus and start handling his messages
+	// Show window, start handling his messages
 	ShowWindow(hWnd, SW_SHOWDEFAULT);
 	UpdateWindow(hWnd);
 	while (GetMessage(&Msg, NULL, 0, 0)) {
@@ -91,7 +85,7 @@ LRESULT CALLBACK handleWindowEvents(HWND hwnd, UINT message, WPARAM wParam, LPAR
 		case WM_PAINT: {
 			BITMAP bm;
 			PAINTSTRUCT ps;
-			hDC = BeginPaint(hwnd, &ps);
+			HDC hDC = BeginPaint(hwnd, &ps);
 
 			HDC hCompatibleDC = CreateCompatibleDC(hDC);
 			HBITMAP hOldBitmap = (HBITMAP)SelectObject(hCompatibleDC, hBitmap);
@@ -104,26 +98,23 @@ LRESULT CALLBACK handleWindowEvents(HWND hwnd, UINT message, WPARAM wParam, LPAR
 			break;
 		}
 		case WM_COMMAND: {
-			if (LOWORD(wParam) == LOAD) {
-				fileName = OpenFile();
+			if (LOWORD(wParam) == OPEN) {
+				LPCTSTR fileName = getFileName();
 				hBitmap = (HBITMAP)LoadImage(0, fileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION);
 				InvalidateRect(hwnd, NULL, TRUE);
 				isLoaded = true;
 			}
-
 			if (LOWORD(wParam) == START_TESTS) {
-				execute(hwnd);
+				runTests(hwnd);
 				break;
 			}
-
-			if (LOWORD(wParam) == APPLY) {
+			if (LOWORD(wParam) == APPLY_BITBLT) {
 				if (!isLoaded) {
 					break;
 				}
 				setBlt(hwnd, hBitmap);
 			}
-
-			if (LOWORD(wParam) == APPLY_GETPIXEL) {
+			if (LOWORD(wParam) == APPLY_SETPIXEL) {
 				if (!isLoaded) {
 					break;
 				}
@@ -131,16 +122,15 @@ LRESULT CALLBACK handleWindowEvents(HWND hwnd, UINT message, WPARAM wParam, LPAR
 			}
 			break;
 		}
-	
-		/* All other messages (a lot of them) are processed using default procedures */
-		default:
+		default: {
 			return DefWindowProc(hwnd, message, wParam, lParam);
 			break;
+		}
 	}
 	return 0;
 }
 
-void execute(HWND hwnd) {
+void runTests(HWND hwnd) {
 	HBITMAP cpy;
 	time_t start_time;
 	time_t stats[20];
@@ -178,7 +168,7 @@ void setBlt(HWND hwnd, HBITMAP hBitmap) {
 	SetDCBrushColor(hCompatibleDC, RGB(255, 0, 0));
 
 	BitBlt(hCompatibleDC, 0, 0, bm.bmWidth, bm.bmHeight, hCompatibleDC, 0, 0, MERGECOPY);
-	save_bmp(hCompatibleDC, hBitmap, bm.bmWidth, bm.bmHeight);
+	saveBitmap(hCompatibleDC, hBitmap, bm.bmWidth, bm.bmHeight);
 
 	InvalidateRect(hwnd, NULL, TRUE);
 
@@ -205,13 +195,13 @@ void setPixelDisplay(HWND hwnd, HBITMAP hBitmap) {
 	}
 
 	SelectObject(hCompatibleDC, hOldBitmap);
-	save_bmp(hCompatibleDC, hBitmap, bm.bmWidth, bm.bmHeight);
+	saveBitmap(hCompatibleDC, hBitmap, bm.bmWidth, bm.bmHeight);
 	InvalidateRect(hwnd, NULL, TRUE);
 	DeleteDC(hCompatibleDC);
 	DeleteObject(hOldBitmap);
 }
 
-LPCTSTR OpenFile(){
+LPCTSTR getFileName(){
 	OPENFILENAME ofn;
 
 	ZeroMemory(&ofn, sizeof(ofn));
@@ -231,7 +221,7 @@ LPCTSTR OpenFile(){
 	return ofn.lpstrFile;
 }
 
-int save_bmp(HDC hdc, HBITMAP H, int width, int height) {
+int saveBitmap(HDC hdc, HBITMAP H, int width, int height) {
 	BITMAPFILEHEADER   bmfHeader;
 	BITMAPINFOHEADER   bi;
 
