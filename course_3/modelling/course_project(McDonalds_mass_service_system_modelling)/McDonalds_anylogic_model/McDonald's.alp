@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.3.6.201610042019" AlpVersion="7.3.3">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="7.3.6.201610041917" AlpVersion="7.3.3">
 <Model>
 	<Id>1481316175702</Id>
 	<Name><![CDATA[McDonald's]]></Name>
@@ -101,7 +101,7 @@
 				<Connector>
 					<Id>1481316219642</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>620</X><Y>40</Y>
+					<X>570</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -134,7 +134,7 @@
 				<Connector>
 					<Id>1481316305845</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>620</X><Y>90</Y>
+					<X>570</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -167,7 +167,7 @@
 				<Connector>
 					<Id>1481316312418</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>620</X><Y>140</Y>
+					<X>570</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -200,7 +200,7 @@
 				<Connector>
 					<Id>1481316445676</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>320</X><Y>90</Y>
+					<X>270</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -208,7 +208,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsCashier]]></ItemName>
+						<ItemName><![CDATA[selectCashier]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -233,7 +233,7 @@
 				<Connector>
 					<Id>1481316460144</Id>
 					<Name><![CDATA[connector9]]></Name>
-					<X>660</X><Y>90</Y>
+					<X>610</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -260,13 +260,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>110</Y></Point>
+						<Point><X>210</X><Y>110</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481316465148</Id>
 					<Name><![CDATA[connector10]]></Name>
-					<X>660</X><Y>140</Y>
+					<X>610</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -293,13 +293,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>60</Y></Point>
+						<Point><X>210</X><Y>60</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481316674931</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>170</X><Y>200</Y>
+					<X>120</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -317,7 +317,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[entersRestraunt]]></ItemName>
+						<ItemName><![CDATA[source]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -326,13 +326,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-90</X><Y>0</Y></Point>
+						<Point><X>-70</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481316831168</Id>
 					<Name><![CDATA[connector12]]></Name>
-					<X>620</X><Y>290</Y>
+					<X>570</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -365,7 +365,7 @@
 				<Connector>
 					<Id>1481316837637</Id>
 					<Name><![CDATA[connector13]]></Name>
-					<X>620</X><Y>340</Y>
+					<X>570</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -398,7 +398,7 @@
 				<Connector>
 					<Id>1481316843334</Id>
 					<Name><![CDATA[connector14]]></Name>
-					<X>620</X><Y>390</Y>
+					<X>570</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -431,7 +431,7 @@
 				<Connector>
 					<Id>1481316849676</Id>
 					<Name><![CDATA[connector15]]></Name>
-					<X>620</X><Y>440</Y>
+					<X>570</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -464,7 +464,7 @@
 				<Connector>
 					<Id>1481317699098</Id>
 					<Name><![CDATA[connector21]]></Name>
-					<X>660</X><Y>440</Y>
+					<X>610</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -491,13 +491,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>-240</Y></Point>
+						<Point><X>210</X><Y>-240</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481317703774</Id>
 					<Name><![CDATA[connector22]]></Name>
-					<X>660</X><Y>390</Y>
+					<X>610</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -524,13 +524,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>-190</Y></Point>
+						<Point><X>210</X><Y>-190</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481317707419</Id>
 					<Name><![CDATA[connector23]]></Name>
-					<X>660</X><Y>340</Y>
+					<X>610</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -557,13 +557,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>-140</Y></Point>
+						<Point><X>210</X><Y>-140</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481317711197</Id>
 					<Name><![CDATA[connector24]]></Name>
-					<X>660</X><Y>290</Y>
+					<X>610</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -590,13 +590,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>-90</Y></Point>
+						<Point><X>210</X><Y>-90</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481317765677</Id>
 					<Name><![CDATA[connector25]]></Name>
-					<X>900</X><Y>200</Y>
+					<X>920</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -604,7 +604,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[leavesServiced]]></ItemName>
+						<ItemName><![CDATA[sink]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -623,13 +623,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-90</X><Y>0</Y></Point>
+						<Point><X>-60</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481317811358</Id>
 					<Name><![CDATA[connector29]]></Name>
-					<X>320</X><Y>380</Y>
+					<X>270</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -637,7 +637,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsTerminal]]></ItemName>
+						<ItemName><![CDATA[selectTerminal]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -662,7 +662,7 @@
 				<Connector>
 					<Id>1481317838558</Id>
 					<Name><![CDATA[connector30]]></Name>
-					<X>320</X><Y>400</Y>
+					<X>270</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -670,7 +670,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsTerminal]]></ItemName>
+						<ItemName><![CDATA[selectTerminal]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -695,7 +695,7 @@
 				<Connector>
 					<Id>1481321894701</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>660</X><Y>40</Y>
+					<X>610</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -722,13 +722,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>160</Y></Point>
+						<Point><X>210</X><Y>160</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481324620417</Id>
 					<Name><![CDATA[connector19]]></Name>
-					<X>180</X><Y>210</Y>
+					<X>130</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -761,7 +761,7 @@
 				<Connector>
 					<Id>1481324620418</Id>
 					<Name><![CDATA[connector27]]></Name>
-					<X>190</X><Y>270</Y>
+					<X>140</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -779,7 +779,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsTerminal]]></ItemName>
+						<ItemName><![CDATA[selectTerminal]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -794,7 +794,7 @@
 				<Connector>
 					<Id>1481324678263</Id>
 					<Name><![CDATA[connector34]]></Name>
-					<X>200</X><Y>260</Y>
+					<X>150</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -812,7 +812,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsCashier]]></ItemName>
+						<ItemName><![CDATA[selectCashier]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -827,7 +827,7 @@
 				<Connector>
 					<Id>1481327409067</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>190</X><Y>200</Y>
+					<X>140</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -845,7 +845,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsCashier]]></ItemName>
+						<ItemName><![CDATA[selectCashier]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -860,7 +860,7 @@
 				<Connector>
 					<Id>1481327417518</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>480</X><Y>90</Y>
+					<X>430</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -878,7 +878,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsCashier]]></ItemName>
+						<ItemName><![CDATA[selectCashier]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -893,7 +893,7 @@
 				<Connector>
 					<Id>1481327420147</Id>
 					<Name><![CDATA[connector7]]></Name>
-					<X>480</X><Y>140</Y>
+					<X>430</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -911,7 +911,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsCashier]]></ItemName>
+						<ItemName><![CDATA[selectCashier]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -926,7 +926,7 @@
 				<Connector>
 					<Id>1481316899902</Id>
 					<Name><![CDATA[connector18]]></Name>
-					<X>660</X><Y>540</Y>
+					<X>610</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -953,13 +953,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>-340</Y></Point>
+						<Point><X>210</X><Y>-340</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481317695081</Id>
 					<Name><![CDATA[connector20]]></Name>
-					<X>660</X><Y>490</Y>
+					<X>610</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -986,13 +986,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>-290</Y></Point>
+						<Point><X>210</X><Y>-290</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481316866029</Id>
 					<Name><![CDATA[connector17]]></Name>
-					<X>620</X><Y>540</Y>
+					<X>570</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1025,7 +1025,7 @@
 				<Connector>
 					<Id>1481316857698</Id>
 					<Name><![CDATA[connector16]]></Name>
-					<X>620</X><Y>490</Y>
+					<X>570</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1058,7 +1058,7 @@
 				<Connector>
 					<Id>1481484078176</Id>
 					<Name><![CDATA[connector11]]></Name>
-					<X>320</X><Y>150</Y>
+					<X>270</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1066,7 +1066,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsCashier]]></ItemName>
+						<ItemName><![CDATA[selectCashier]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1076,7 +1076,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[leavesUnserviced]]></ItemName>
+						<ItemName><![CDATA[lost]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1085,13 +1085,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>70</X><Y>80</Y></Point>
+						<Point><X>60</X><Y>100</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481317807399</Id>
 					<Name><![CDATA[connector28]]></Name>
-					<X>320</X><Y>360</Y>
+					<X>270</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1099,7 +1099,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsTerminal]]></ItemName>
+						<ItemName><![CDATA[selectTerminal]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1124,7 +1124,7 @@
 				<Connector>
 					<Id>1481484195375</Id>
 					<Name><![CDATA[connector36]]></Name>
-					<X>320</X><Y>340</Y>
+					<X>270</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1132,7 +1132,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsTerminal]]></ItemName>
+						<ItemName><![CDATA[selectTerminal]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1142,7 +1142,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[leavesUnserviced]]></ItemName>
+						<ItemName><![CDATA[lost]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1151,13 +1151,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>70</X><Y>-110</Y></Point>
+						<Point><X>60</X><Y>-90</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1481484653054</Id>
 					<Name><![CDATA[connector31]]></Name>
-					<X>50</X><Y>0</Y>
+					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1175,7 +1175,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[mcdonald_s]]></PackageName>
 						<ClassName><![CDATA[McDonaldsModel]]></ClassName>
-						<ItemName><![CDATA[selectsTerminal]]></ItemName>
+						<ItemName><![CDATA[selectTerminal]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -1190,7 +1190,7 @@
 				<Connector>
 					<Id>1481484657182</Id>
 					<Name><![CDATA[connector32]]></Name>
-					<X>480</X><Y>440</Y>
+					<X>430</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1223,7 +1223,7 @@
 				<Connector>
 					<Id>1481484659797</Id>
 					<Name><![CDATA[connector33]]></Name>
-					<X>380</X><Y>460</Y>
+					<X>330</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1256,7 +1256,7 @@
 				<Connector>
 					<Id>1481484664894</Id>
 					<Name><![CDATA[connector35]]></Name>
-					<X>380</X><Y>480</Y>
+					<X>330</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1312,9 +1312,9 @@
 			<EmbeddedObjects>
 				<EmbeddedObject>
 					<Id>1481316195724</Id>
-					<Name><![CDATA[entersRestraunt]]></Name>
-					<X>50</X><Y>190</Y>
-					<Label><X>-40</X><Y>-10</Y></Label>
+					<Name><![CDATA[source]]></Name>
+					<X>20</X><Y>190</Y>
+					<Label><X>-15</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -1342,7 +1342,7 @@
 						<Parameter>
 							<Name><![CDATA[interarrivalTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[exponential( 1/10.0 )]]></Code>
+								<Code><![CDATA[exponential( 1/16.0 )]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 							</Value>
 						</Parameter>
@@ -1557,7 +1557,7 @@
 				<EmbeddedObject>
 					<Id>1481316213084</Id>
 					<Name><![CDATA[cashierQueue0]]></Name>
-					<X>480</X><Y>20</Y>
+					<X>430</X><Y>20</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1678,7 +1678,7 @@
 				<EmbeddedObject>
 					<Id>1481316217166</Id>
 					<Name><![CDATA[cashier0]]></Name>
-					<X>620</X><Y>20</Y>
+					<X>570</X><Y>20</Y>
 					<Label><X>-5</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1785,7 +1785,7 @@
 				<EmbeddedObject>
 					<Id>1481316305777</Id>
 					<Name><![CDATA[cashierQueue1]]></Name>
-					<X>480</X><Y>70</Y>
+					<X>430</X><Y>70</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1906,7 +1906,7 @@
 				<EmbeddedObject>
 					<Id>1481316305827</Id>
 					<Name><![CDATA[cashier1]]></Name>
-					<X>620</X><Y>70</Y>
+					<X>570</X><Y>70</Y>
 					<Label><X>-5</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2013,7 +2013,7 @@
 				<EmbeddedObject>
 					<Id>1481316312364</Id>
 					<Name><![CDATA[cashierQueue2]]></Name>
-					<X>480</X><Y>120</Y>
+					<X>430</X><Y>120</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2134,7 +2134,7 @@
 				<EmbeddedObject>
 					<Id>1481316312400</Id>
 					<Name><![CDATA[cashier2]]></Name>
-					<X>620</X><Y>120</Y>
+					<X>570</X><Y>120</Y>
 					<Label><X>-5</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2241,7 +2241,7 @@
 				<EmbeddedObject>
 					<Id>1481316669128</Id>
 					<Name><![CDATA[hasCreditCard]]></Name>
-					<X>160</X><Y>190</Y>
+					<X>110</X><Y>190</Y>
 					<Label><X>-25</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2333,7 +2333,7 @@
 				<EmbeddedObject>
 					<Id>1481316687296</Id>
 					<Name><![CDATA[terminalQueue0]]></Name>
-					<X>480</X><Y>270</Y>
+					<X>430</X><Y>270</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2454,7 +2454,7 @@
 				<EmbeddedObject>
 					<Id>1481316703064</Id>
 					<Name><![CDATA[terminalQueue1]]></Name>
-					<X>480</X><Y>320</Y>
+					<X>430</X><Y>320</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2575,7 +2575,7 @@
 				<EmbeddedObject>
 					<Id>1481316727644</Id>
 					<Name><![CDATA[terminalQueue2]]></Name>
-					<X>480</X><Y>370</Y>
+					<X>430</X><Y>370</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2696,7 +2696,7 @@
 				<EmbeddedObject>
 					<Id>1481316754192</Id>
 					<Name><![CDATA[terminalQueue3]]></Name>
-					<X>480</X><Y>420</Y>
+					<X>430</X><Y>420</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2817,7 +2817,7 @@
 				<EmbeddedObject>
 					<Id>1481316767346</Id>
 					<Name><![CDATA[terminalQueue4]]></Name>
-					<X>480</X><Y>470</Y>
+					<X>430</X><Y>470</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2938,7 +2938,7 @@
 				<EmbeddedObject>
 					<Id>1481316797660</Id>
 					<Name><![CDATA[terminalQueue5]]></Name>
-					<X>480</X><Y>520</Y>
+					<X>430</X><Y>520</Y>
 					<Label><X>-25</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3059,7 +3059,7 @@
 				<EmbeddedObject>
 					<Id>1481316829145</Id>
 					<Name><![CDATA[terminal0]]></Name>
-					<X>620</X><Y>270</Y>
+					<X>570</X><Y>270</Y>
 					<Label><X>-10</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3166,7 +3166,7 @@
 				<EmbeddedObject>
 					<Id>1481316835410</Id>
 					<Name><![CDATA[terminal1]]></Name>
-					<X>620</X><Y>320</Y>
+					<X>570</X><Y>320</Y>
 					<Label><X>-10</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3273,7 +3273,7 @@
 				<EmbeddedObject>
 					<Id>1481316840609</Id>
 					<Name><![CDATA[terminal2]]></Name>
-					<X>620</X><Y>370</Y>
+					<X>570</X><Y>370</Y>
 					<Label><X>-10</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3380,7 +3380,7 @@
 				<EmbeddedObject>
 					<Id>1481316847496</Id>
 					<Name><![CDATA[terminal3]]></Name>
-					<X>620</X><Y>420</Y>
+					<X>570</X><Y>420</Y>
 					<Label><X>-10</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3487,7 +3487,7 @@
 				<EmbeddedObject>
 					<Id>1481316854736</Id>
 					<Name><![CDATA[terminal4]]></Name>
-					<X>620</X><Y>470</Y>
+					<X>570</X><Y>470</Y>
 					<Label><X>-10</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3594,7 +3594,7 @@
 				<EmbeddedObject>
 					<Id>1481316863180</Id>
 					<Name><![CDATA[terminal5]]></Name>
-					<X>620</X><Y>520</Y>
+					<X>570</X><Y>520</Y>
 					<Label><X>-10</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3701,7 +3701,7 @@
 				<EmbeddedObject>
 					<Id>1481316927871</Id>
 					<Name><![CDATA[foodDeliveryPoint]]></Name>
-					<X>770</X><Y>180</Y>
+					<X>820</X><Y>180</Y>
 					<Label><X>-35</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3813,9 +3813,9 @@
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1481317763889</Id>
-					<Name><![CDATA[leavesServiced]]></Name>
-					<X>900</X><Y>190</Y>
-					<Label><X>-40</X><Y>-10</Y></Label>
+					<Name><![CDATA[sink]]></Name>
+					<X>920</X><Y>190</Y>
+					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3883,8 +3883,8 @@
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1481317784881</Id>
-					<Name><![CDATA[selectsTerminal]]></Name>
-					<X>290</X><Y>330</Y>
+					<Name><![CDATA[selectTerminal]]></Name>
+					<X>240</X><Y>330</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4042,7 +4042,7 @@ else
 				<EmbeddedObject>
 					<Id>1481324618236</Id>
 					<Name><![CDATA[doPrefersCashierOrTerminal]]></Name>
-					<X>170</X><Y>250</Y>
+					<X>120</X><Y>250</Y>
 					<Label><X>-65</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4126,8 +4126,8 @@ else
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1481327325649</Id>
-					<Name><![CDATA[selectsCashier]]></Name>
-					<X>290</X><Y>80</Y>
+					<Name><![CDATA[selectCashier]]></Name>
+					<X>240</X><Y>80</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4269,9 +4269,9 @@ else
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1481484069702</Id>
-					<Name><![CDATA[leavesUnserviced]]></Name>
-					<X>390</X><Y>220</Y>
-					<Label><X>-45</X><Y>-10</Y></Label>
+					<Name><![CDATA[lost]]></Name>
+					<X>330</X><Y>240</Y>
+					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -4340,7 +4340,7 @@ else
 				<EmbeddedObject>
 					<Id>1481484089868</Id>
 					<Name><![CDATA[selectTerminalHelper]]></Name>
-					<X>350</X><Y>430</Y>
+					<X>300</X><Y>430</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4496,6 +4496,328 @@ _value = min_id;
 					<Longitude>0.0</Longitude>
 				</EmbeddedObjectPresentation>
 			</Shapes>
+			<Charts>
+    			<BarChart>
+					<Id>1482176725305</Id>
+					<Name><![CDATA[chart]]></Name>
+					<X>740</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1482220800000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>310</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>180</Width>
+						<Height>140</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>130</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[terminalQueue0.statsSize.mean()]]></Expression>
+					<Color>-23296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина terminalQueue0]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminalQueue1.statsSize.mean()]]></Expression>
+					<Color>-4343957</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина terminalQueue1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminalQueue2.statsSize.mean()]]></Expression>
+					<Color>-12004916</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина terminalQueue2]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminalQueue3.statsSize.mean()]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина terminalQueue3]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminalQueue4.statsSize.mean()]]></Expression>
+					<Color>-60269</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина terminalQueue4]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminalQueue5.statsSize.mean()]]></Expression>
+					<Color>-29696</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина terminalQueue5]]></Title>
+					</DataItem>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
+    			<BarChart>
+					<Id>1482178335495</Id>
+					<Name><![CDATA[chart1]]></Name>
+					<X>1010</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1482220800000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>280</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>180</Width>
+						<Height>130</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>90</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[cashierQueue0.statsSize.mean()]]></Expression>
+					<Color>-256</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина cashierQueue0]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[cashierQueue1.statsSize.mean()]]></Expression>
+					<Color>-16711936</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина cashierQueue1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[cashierQueue2.statsSize.mean()]]></Expression>
+					<Color>-14774017</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Ср. длина cashierQueue2]]></Title>
+					</DataItem>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
+    			<BarChart>
+					<Id>1482179684759</Id>
+					<Name><![CDATA[chart2]]></Name>
+					<X>-20</X><Y>300</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1482220800000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>310</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>180</Width>
+						<Height>140</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>130</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[terminal0.statsUtilization.mean()]]></Expression>
+					<Color>-23296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка terminal0]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminal1.statsUtilization.mean()]]></Expression>
+					<Color>-4343957</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка terminal1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminal2.statsUtilization.mean()]]></Expression>
+					<Color>-12004916</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка terminal2]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminal3.statsUtilization.mean()]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка terminal3]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminal4.statsUtilization.mean()]]></Expression>
+					<Color>-60269</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка terminal4]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[terminal5.statsUtilization.mean()]]></Expression>
+					<Color>-29696</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка terminal5]]></Title>
+					</DataItem>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
+    			<BarChart>
+					<Id>1482179880685</Id>
+					<Name><![CDATA[chart3]]></Name>
+					<X>1000</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1482220800000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>280</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>180</Width>
+						<Height>130</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>90</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[cashier0.statsUtilization.mean()]]></Expression>
+					<Color>-256</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка cashier0]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[cashier1.statsUtilization.mean()]]></Expression>
+					<Color>-16711936</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка cashier1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[cashier2.statsUtilization.mean()]]></Expression>
+					<Color>-14774017</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Загрузка cashier2]]></Title>
+					</DataItem>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
+			</Charts>
 
 		</ActiveObjectClass>
 		<!--   =========   Active Object Class   ========  -->
@@ -4670,7 +4992,7 @@ _value = min_id;
 			</Frame>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>256</MaximumMemory>
-			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
