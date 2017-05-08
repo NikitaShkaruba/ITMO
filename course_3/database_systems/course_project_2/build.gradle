@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile('org.springframework.boot:spring-boot-starter-data-rest') 
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'tamagotchi_mongodb_api'
+    version =  '0.1.0'
+}

@@ -1,0 +1,44 @@
+device_1_table      TABLE  M1,1,1,50
+device_2_table      TABLE  M1,1,1,50
+device_3_table      TABLE  M1,1,1,50 
+queue_3_table       QTABLE queue_2,1,1,50 
+
+     GENERATE     (Uniform(1,5,15)) ; Generate transaction every 10 seconds average
+     
+     transfer .66,path_1,trsf_2 
+trsf_2 transfer .5,path_2,path_3 
+
+path_1 TEST L     Q$queue_1,1,miss_1      ; Check if fake queue_1 isn't empty
+     QUEUE        queue_1                 ; Add statistic to quque_1_table    
+     SEIZE        device_1                ; Try to capture device_1 or w8
+
+     ADVANCE      (Uniform(1,10,40))   ; Sleep for 25 seconds average
+     RELEASE      device_1                ; Free device_1
+     DEPART       queue_1                 ; Free fake queue_1
+     TABULATE     device_1_table          ; Add statistic to device_1_table
+     TERMINATE    1                       ; End transaction
+
+path_2 TEST L     Q$queue_2,1,miss_2 
+     QUEUE        queue_2        
+     SEIZE        device_2
+
+     ADVANCE      (Uniform(1,10,40)) 
+     RELEASE      device_2
+     DEPART       queue_2   
+     TABULATE     device_2_table 
+     TERMINATE    1
+
+path_3 TEST L     Q$queue_3,1,miss_3 
+     QUEUE        queue_3        
+     SEIZE        device_3
+     DEPART       queue_3    
+
+
+     ADVANCE      (Uniform(1,10,40)) 
+     RELEASE      device_3
+     TABULATE     device_3_table 
+     TERMINATE    1
+
+miss_1 TERMINATE    1
+miss_2 TERMINATE    1
+miss_3 TERMINATE    1
