@@ -2,14 +2,18 @@ apply plugin: 'java'
 
 repositories {
     jcenter()
+    maven { url "http://m2.neo4j.org/content/repositories/snapshots" }
 }
 
 dependencies {
     compile 'com.google.guava:guava:20.0'
-    compile group: 'com.datastax.cassandra', name: 'cassandra-driver-core', version: '2.1.1'
-    compile group: 'org.neo4j.driver', name: 'neo4j-java-driver', version: '1.0-SNAPSHOT'
-    //compile group: 'org.elasticsearch', name: 'elasticsearch', version: '5.4.0'
-
     testCompile 'junit:junit:4.12'
+
+    compile group: 'com.datastax.cassandra', name: 'cassandra-driver-core', version: '2.1.1'
+
+    compile 'org.neo4j:neo4j-ogm-core:2.1'
+    compile 'org.neo4j.driver:neo4j-java-driver:1.2.1'
+
+    //compile group: 'org.elasticsearch', name: 'elasticsearch', version: '5.4.0'
 }
 
