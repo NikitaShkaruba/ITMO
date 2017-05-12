@@ -53,3 +53,6 @@ Thumbs.db
 **/build/
 **/classes/
 gradlew*
+
+# Composer's trash #
+**/vendor/
