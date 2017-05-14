@@ -15,4 +15,8 @@ public class ControllerTests {
     neoFourJController.fillDatabase();
     neoFourJController.searchDatabase();
   }
+
+  @Test public void mongoDbTest() {
+    MongoController mongoController = new MongoController();
+  }
 }

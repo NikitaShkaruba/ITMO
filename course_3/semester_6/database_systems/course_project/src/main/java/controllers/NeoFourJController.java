@@ -8,7 +8,9 @@ public class NeoFourJController {
   private Session session;
 
   public NeoFourJController() {
-    AuthToken authToken = AuthTokens.basic(System.getenv("JOVIAN_NEO4J_USER"), System.getenv("JOVIAN_NEO4J_PASS"));
+    String username = System.getenv("JOVIAN_NEO4J_USER");
+    String password = System.getenv("JOVIAN_NEO4J_PASS");
+    AuthToken authToken = AuthTokens.basic(username, password);
     driver = GraphDatabase.driver( "bolt://146.185.143.190:7687", authToken);
     session = driver.session();
   }
