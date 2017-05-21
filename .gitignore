@@ -52,7 +52,7 @@ Thumbs.db
 **/gradle/
 **/build/
 **/classes/
-gradlew
+gradlew.bat
 
 # Cmake's trash #
 # ###############

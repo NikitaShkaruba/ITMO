@@ -1,6 +1,6 @@
-package itmo;
+package itmo.YandexPages;
 
-import org.openqa.selenium.NoSuchElementException;
+import itmo.ChromeWebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class MailPage {
+public class LoginPage extends YandexPage {
   private WebDriver webDriver;
 
   private String login = "shkaruba.nikita";
@@ -26,12 +26,12 @@ public class MailPage {
   @FindBy(name = "passwd")
   private static WebElement passwordField;
 
-  public MailPage(WebDriver webDriver) {
+  public LoginPage(WebDriver webDriver) {
     this.webDriver = webDriver;
 
     this.webDriver.get("http://yandex.ru");
     PageFactory.initElements(this.webDriver, this);
-    waitForPageToLoad();
+    waitSecond();
   }
 
   public void insertLogin(String text) {
@@ -43,7 +43,7 @@ public class MailPage {
   public InboxPage tryToLogin() {
     submitButton.click();
     webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-    if (ChromeWebDriverInstance.getDriver().getTitle().toLowerCase().contains("авторизация")) {
+    if (ChromeWebDriverFactory.getDriver().getTitle().toLowerCase().contains("авторизация")) {
       return null;
     }
 
@@ -55,23 +55,8 @@ public class MailPage {
     return this.tryToLogin();
   }
 
-  private void waitForPageToLoad() {
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-
-    if (!isSearchStringDisplayed()) {
-      throw new Error("Page can't be opened");
-    }
-  }
-  private boolean isSearchStringDisplayed() {
-    try {
-      return tabMail.isDisplayed();
-    } catch (NoSuchElementException e) {
-      return false;
-    }
+  public String getMyEmail() {
+    return this.login + "@yandex.ru";
   }
 }
 
