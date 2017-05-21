@@ -1,4 +1,4 @@
-Compiled source #
+# Compiled source #
 ###################
 *.com
 *.class
@@ -52,7 +52,7 @@ Thumbs.db
 **/gradle/
 **/build/
 **/classes/
-gradlew*
+gradlew
 
 # Cmake's trash #
 # ###############
