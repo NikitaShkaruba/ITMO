@@ -53,3 +53,7 @@ Thumbs.db
 **/build/
 **/classes/
 gradlew*
+
+# Cmake's trash #
+# ###############
+**/cmake-build-debug/
