@@ -62,11 +62,11 @@ typedef struct {
  *
  * @param self    Any data structure implemented by students to perform I/O
  * @param dst     ID of recepient
- * @param message     Message to send
+ * @param msg     Message to send
  *
  * @return 0 on success, any non-zero value on error
  */
-int send_one(void * self, local_id dst, const Message * message);
+int send_one(void * self, local_id dst, const Message * msg);
 
 //------------------------------------------------------------------------------
 
@@ -76,11 +76,11 @@ int send_one(void * self, local_id dst, const Message * message);
  * Should stop on the first error.
  * 
  * @param self    Any data structure implemented by students to perform I/O
- * @param message     Message to multicast.
+ * @param msg     Message to multicast.
  *
  * @return 0 on success, any non-zero value on error
  */
-int send_multicast(void * self, const Message * message);
+int send_multicast(void * self, const Message * msg);
 
 //------------------------------------------------------------------------------
 
@@ -90,11 +90,11 @@ int send_multicast(void * self, const Message * message);
  *
  * @param self    Any data structure implemented by students to perform I/O
  * @param from    ID of the process to receive message from
- * @param message     Message structure allocated by the caller
+ * @param msg     Message structure allocated by the caller
  *
  * @return 0 on success, any non-zero value on error
  */
-int receive(void * self, local_id from, Message * message);
+int receive(void * self, local_id from, Message * msg);
 
 //------------------------------------------------------------------------------
 
@@ -104,11 +104,11 @@ int receive(void * self, local_id from, Message * message);
  * with extra care to avoid deadlocks.
  *
  * @param self    Any data structure implemented by students to perform I/O
- * @param message     Message structure allocated by the caller
+ * @param msg     Message structure allocated by the caller
  *
  * @return 0 on success, any non-zero value on error
  */
-int receive_any(void * self, Message * message);
+int receive_any(void * self, Message * msg);
 
 //------------------------------------------------------------------------------
 
