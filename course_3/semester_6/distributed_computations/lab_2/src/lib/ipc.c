@@ -1,11 +1,7 @@
 #include "vendor/ipc.h"
 
 #include "structs.h"
-
 #include <errno.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <unistd.h>
 
 int receive(void* self, local_id from, Message* msg) {
