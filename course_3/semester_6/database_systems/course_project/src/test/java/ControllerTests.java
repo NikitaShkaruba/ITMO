@@ -18,5 +18,8 @@ public class ControllerTests {
 
   @Test public void mongoDbTest() {
     MongoController mongoController = new MongoController();
+
+    mongoController.fillDatabase();
+    mongoController.searchDatabase();
   }
 }

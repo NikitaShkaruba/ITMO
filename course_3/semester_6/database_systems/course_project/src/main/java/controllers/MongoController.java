@@ -1,21 +1,14 @@
 package controllers;
 
 import com.mongodb.*;
-import org.neo4j.driver.v1.StatementResult;
-
-import static org.neo4j.driver.v1.Values.parameters;
 
 public class MongoController {
-  MongoClient mongoClient;
-  DB db;
-  DBCollection users;
+  private DBCollection users;
 
   public MongoController() {
-    mongoClient = new MongoClient("146.185.143.190", 27017);
-    db = mongoClient.getDB("course_project_2_db");
+    MongoClient mongoClient = new MongoClient("146.185.143.190", 27017);
+    DB db = mongoClient.getDB("course_project_2_db");
     users = db.getCollection("users");
-
-    this.insertUser("Nikita", "Shkaruba", "sh.sigmaone@gmail.com");
   }
 
   public void fillDatabase() {
@@ -33,11 +26,11 @@ public class MongoController {
     System.out.println(user);
   }
 
-  public WriteResult insertUser(String name, String surname, String email) {
+  private WriteResult insertUser(String name, String surname, String email) {
     BasicDBObject doc = new BasicDBObject("type", "user").append("name", name).append("surname", surname).append("email", email);
     return users.insert(doc);
   }
-  public DBObject selectOneUser() {
+  private DBObject selectOneUser() {
     DBObject user = users.findOne();
     return user;
   }

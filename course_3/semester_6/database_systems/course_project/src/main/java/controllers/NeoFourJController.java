@@ -39,11 +39,7 @@ public class NeoFourJController {
     }
   }
 
-  public StatementResult insertUser(String name, String surname, String email) {
+  private StatementResult insertUser(String name, String surname, String email) {
     return session.run("CREATE (a:User { name: {name}, surname: {surname}, email: {email} })", parameters("name", name, "surname", surname, "email", email));
-  }
-  public Record selectUser(String surname) {
-    StatementResult result = session.run("MATCH (a:User) WHERE a.surname = {surname} RETURN a.name AS name, a.surname AS surname, a.email as email", parameters("surname", surname));
-    return result.hasNext() ? result.next() : null;
   }
 }
