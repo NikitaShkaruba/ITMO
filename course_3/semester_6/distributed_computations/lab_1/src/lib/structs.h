@@ -4,20 +4,31 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+/**
+ * Stores information about channel socket points
+ */
 typedef struct {
-  int rf;
-  int wf;
-} Channel;
+  int from_id;
+  int to_id;
+} Pipe;
 
+/**
+ * Stores current context
+ */
 typedef struct {
-  pid_t n_process_pid;
-  pid_t n_parent_pid;
-  int n_process_id; // current Node ID, 0 for parent, > 0 for child
-  int n_parent_id;
-  int n_processes_count;
-  FILE* main_log; // file descriptor for logging
+  // Node descriptions
+  pid_t parent_pid;
+  pid_t current_pid;
+  int parent_id;
+  int current_id;
+
+  // File descriptors for logging
+  FILE* events_log;
   FILE* pipes_log;
-  Channel** channels; // N x N
-} Lab;
+
+  Pipe** pipes;
+  int processes_amount;
+  int process_statuses[];
+} Context;
 
 #endif

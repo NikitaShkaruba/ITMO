@@ -8,19 +8,19 @@
 #include <unistd.h>
 
 int receive(void* self, local_id from, Message* msg) {
-  Lab* lab = (Lab*) self;
+  Context* lab = (Context*) self;
 
   while (1) {
-    ssize_t bytes_read = read(lab->channels[from][lab->n_process_id].rf, &msg->s_header, sizeof(MessageHeader));
+    ssize_t bytes_read = read(lab->pipes[from][lab->current_id].from_id, &msg->s_header, sizeof(MessageHeader));
     if (bytes_read > 0) {
-      bytes_read += read(lab->channels[from][lab->n_process_id].rf, msg->s_payload, msg->s_header.s_payload_len);
+      bytes_read += read(lab->pipes[from][lab->current_id].from_id, msg->s_payload, msg->s_header.s_payload_len);
       msg->s_payload[msg->s_header.s_payload_len] = 0;
     }
 
     if (bytes_read == (sizeof(MessageHeader) + msg->s_header.s_payload_len)) {
       return 0;
     } else if (errno == EAGAIN) {
-      for (int i = 0; i < 100000; ++i) {} // handmade usleep analog!
+      for (int i = 0; i < 100000; ++i) {}
     } else {
       printf("Error occured in receive!\n");
       return -1;
@@ -29,20 +29,20 @@ int receive(void* self, local_id from, Message* msg) {
 }
 
 int receive_any(void* self, Message* msg) {
-  Lab* lab = (Lab*) self;
+  Context* lab = (Context*) self;
   ssize_t bytes_read = 0;
 
-  for (int i = 0; i < lab->n_processes_count; ++i) {
-    if (i == lab->n_process_id) {
+  for (int i = 0; i < lab->processes_amount; ++i) {
+    if (i == lab->current_id) {
       continue;  // skip current node
     }
 
-    bytes_read = read(lab->channels[i][lab->n_process_id].rf, msg, MAX_MESSAGE_LEN);
+    bytes_read = read(lab->pipes[i][lab->current_id].from_id, msg, MAX_MESSAGE_LEN);
 
     if (bytes_read > 0) {
       return 0;
     } else if (bytes_read == -1 && errno == EAGAIN) {
-      if (i == lab->n_processes_count - 1) {
+      if (i == lab->processes_amount - 1) {
         i = 0;
       } else {
         continue;
@@ -56,18 +56,18 @@ int receive_any(void* self, Message* msg) {
 }
 
 int send_one(void* self, local_id dst, const Message* msg) {
-  Lab* lab = (Lab*) self;
+  Context* lab = (Context*) self;
 
-  write(lab->channels[lab->n_process_id][dst].wf, msg, msg->s_header.s_payload_len + sizeof(MessageHeader));
+  write(lab->pipes[lab->current_id][dst].to_id, msg, msg->s_header.s_payload_len + sizeof(MessageHeader));
   return 0;
 }
 
 int send_multicast(void* self, const Message* msg) {
-  Lab* lab = (Lab*) self;
+  Context* lab = (Context*) self;
 
-  for (int i = 0; i < lab->n_processes_count; ++i) {
-    if (i != lab->n_process_id) {
-      if (write(lab->channels[lab->n_process_id][i].wf, msg, msg->s_header.s_payload_len + sizeof(MessageHeader)) != msg->s_header.s_payload_len + sizeof(MessageHeader)) {
+  for (int i = 0; i < lab->processes_amount; ++i) {
+    if (i != lab->current_id) {
+      if (write(lab->pipes[lab->current_id][i].to_id, msg, msg->s_header.s_payload_len + sizeof(MessageHeader)) != msg->s_header.s_payload_len + sizeof(MessageHeader)) {
         printf("Error in sendmulticast\n");
       }
     }
