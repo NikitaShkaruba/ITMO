@@ -1,4 +1,4 @@
-#include "../core/headers/init.lib.h"
+#include "headers/init.lib.h"
 
 void init_new_context(Context *context, int current_id, int parent_pid, int *initial_balances) {
   context->current_id = current_id;

@@ -1,4 +1,4 @@
-#include "../core/headers/run.lib.h"
+#include "headers/run.lib.h"
 #include "headers/include.h"
 
 typedef struct {
@@ -22,9 +22,6 @@ void print_history(const AllHistory * history) {
     for (int j = 0; j < history->s_history[i].s_history_len; ++j) {
       const BalanceState * change = &history->s_history[i].s_history[j];
       int id = history->s_history[i].s_id;
-      if (change->s_time > 50) {
-        continue;
-      }
       table[id][change->s_time].balance = change->s_balance;
       table[id][change->s_time].pending = change->s_balance_pending_in;
       if (max_time < change->s_time) {
@@ -91,14 +88,14 @@ void print_history(const AllHistory * history) {
   } else {
     printf("\nFull balance history for time range [0;%d], $balance:\n", max_time);
   }
-  printf(hline);
+  printf("%s", hline);
 
   printf("%s ", first_column_header);
   for (int j = 0; j <= max_time; ++j) {
     printf("%*d |", max_cell_width - 1, j);
   }
   printf("\n");
-  printf(hline);
+  printf("%s", hline);
 
   for (int i = 1; i <= history->s_history_len; ++i) {
     printf("%11d | ", i);
@@ -111,7 +108,7 @@ void print_history(const AllHistory * history) {
       printf("%*s|", max_cell_width, buf);
     }
     printf("\n");
-    printf(hline);
+    printf("%s", hline);
   }
 
   printf("      Total | ");
@@ -119,7 +116,7 @@ void print_history(const AllHistory * history) {
     printf("%*d |", max_cell_width - 1, table[nrows-1][j].balance);
   }
   printf("\n");
-  printf(hline);
+  printf("%s", hline);
 }
 
 void run(Context* context) {
@@ -223,6 +220,7 @@ void wait_for_children(Context* context) {
   while (waiting_processes) {
     wait(NULL);
     --waiting_processes;
+    printf("Root waits for children, %d left\n", waiting_processes);
   }
 }
 
@@ -235,7 +233,6 @@ void root_do_work(Context* context) {
   stop_msg.s_header.s_magic = MESSAGE_MAGIC;
   stop_msg.s_header.s_payload_len = 0;
   stop_msg.s_header.s_local_time = get_lamport_time();
-
   send_multicast(context, &stop_msg);
 }
 void child_do_work(Context *context) {
@@ -257,6 +254,7 @@ void child_do_work(Context *context) {
           printf("Error: wrong recipient\n");
         }
       } else if (received_message.s_header.s_type == STOP) {
+        set_max_lamport_time(get_lamport_time(), received_message.s_header.s_local_time);
         break;
       } else {
         printf("Error: Strange wrong header!\n");
@@ -376,7 +374,7 @@ void root_start_receive_histories(Context* context) {
   AllHistory history;
   history.s_history_len = (uint8_t) (context->processes_amount - 1);
 
-  printf("Roots listens for histories\n");
+  printf("Root listens for histories\n");
 
   int histories_remaining = context->processes_amount - 1;
   while (histories_remaining) {
@@ -388,11 +386,13 @@ void root_start_receive_histories(Context* context) {
 
       set_max_lamport_time(get_lamport_time(), history_message.s_header.s_local_time);
       inc_lamport_time();
+      printf("Root got history, %d remaining\n", histories_remaining);
     } else {
       printf("Root received garbage in root_start_receive_histories\n");
     }
   }
 
+  // nsh: Uncomment if needed with a piece on top
   print_history(&history);
 }
 void child_send_history_to_root(Context* context) {
@@ -416,12 +416,6 @@ void child_send_history_to_root(Context* context) {
     } else {
       current_balance = context->balance_history.s_history[i].s_balance;
       current_pending_balance = context->balance_history.s_history[i].s_balance_pending_in;
-    }
-
-    if (context->current_id == 1) {
-      printf("BALANCE_HISTORY[%d] balance: %d", i, context->balance_history.s_history[i].s_balance);
-      printf("pending: %d", context->balance_history.s_history[i].s_balance_pending_in);
-      printf("time: %d\n", context->balance_history.s_history[i].s_balance_pending_in);
     }
   }
 

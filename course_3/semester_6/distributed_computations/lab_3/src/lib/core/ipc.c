@@ -36,6 +36,7 @@ int receive_any(void* self, Message* message) {
       continue;
     }
 
+    // Todo: add check, if it reads wrong
     if ((bytes_read = read(context->pipes[current_node][context->current_id].from_id, &message->s_header, sizeof(MessageHeader))) > 0) {
       bytes_read += read(context->pipes[current_node][context->current_id].from_id, message->s_payload, message->s_header.s_payload_len);
       message->s_payload[message->s_header.s_payload_len] = 0;

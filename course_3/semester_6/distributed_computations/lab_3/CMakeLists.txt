@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_library(libruntime STATIC IMPORTED)
 # Add path to your provided library here
-set_property(TARGET libruntime PROPERTY IMPORTED_LOCATION /Users/sigma/code/ITMO/course_3/semester_6/distributed_computations/resources/lib32/libruntime.so)
+set_property(TARGET libruntime PROPERTY IMPORTED_LOCATION /Users/sigma/code/ITMO/course_3/semester_6/distributed_computations/resources/lib64/libruntime.so)
 
 set(SOURCE_FILES
         src/lib/vendor/common.h
