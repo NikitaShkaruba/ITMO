@@ -6,7 +6,7 @@ int main(int argc, const char* argv[]) {
   }
 
   int processes_amount = atoi(argv[2]) + 1;
-  initRoot(processes_amount);
+  init_root(processes_amount);
 
   return 0;
 }

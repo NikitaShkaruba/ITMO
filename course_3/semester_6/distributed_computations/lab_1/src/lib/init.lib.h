@@ -4,12 +4,13 @@
 #include "include.h"
 #include "run.lib.h"
 
-void initIds(Context* context, int current_id, int parent_pid);
+void init_ids(Context *context, int current_id, int parent_pid);
 
-void initRoot(int processes_amount);
-void initRootPipes(Context *context);
+void init_root(int processes_amount);
+void init_root_pipes(Context *context);
 
-void initChildren(Context* context);
-void initChildrenPipes(Context *context);
+void init_children(Context *context);
+void init_children_pipes(Context *context);
 
+void close_pipes(Context* context);
 #endif

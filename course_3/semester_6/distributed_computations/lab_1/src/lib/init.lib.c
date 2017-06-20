@@ -1,22 +1,22 @@
 #include "init.lib.h"
 
-void initIds(Context* context, int current_id, int parent_pid) {
+void init_ids(Context *context, int current_id, int parent_pid) {
   context->current_id = current_id;
   context->current_pid = getpid();
   context->parent_pid = parent_pid;
 }
 
-void initRoot(int processes_amount) {
+void init_root(int processes_amount) {
   Context context;
   context.processes_amount = processes_amount;
   context.events_log = fopen(events_log, "a");
 
-  initIds(&context, 0, 0);
-  initRootPipes(&context);
-  initChildren(&context);
+  init_ids(&context, 0, 0);
+  init_root_pipes(&context);
+  init_children(&context);
   run(&context);
 }
-void initRootPipes(Context *context) {
+void init_root_pipes(Context *context) {
   context->pipes_log = fopen(pipes_log, "w");
 
   context->pipes = calloc((size_t) context->processes_amount, sizeof(Pipe*));
@@ -45,20 +45,33 @@ void initRootPipes(Context *context) {
 
   fclose(context->pipes_log);
 }
+void close_pipes(Context* context) {
+  fclose(context->events_log);
 
-void initChildren(Context* context) {
+  for (int i = 0; i < context->processes_amount; ++i) {
+    for (int j = 0; j < context->processes_amount; ++j) {
+      close(context->pipes[i][j].from_id);
+      close(context->pipes[i][j].to_id);
+    }
+    free(context->pipes[i]);
+  }
+
+  free(context->pipes);
+}
+
+void init_children(Context *context) {
   pid_t parent_pid = getpid();
 
   for (int i = 0; i < context->processes_amount - 1; ++i) {
     if (fork() == 0) {
-      initIds(context, i + 1, parent_pid);
+      init_ids(context, i + 1, parent_pid);
       break;
     }
   }
 
-  initChildrenPipes(context);
+  init_children_pipes(context);
 }
-void initChildrenPipes(Context *context) {
+void init_children_pipes(Context *context) {
   close(context->pipes[context->current_id][context->current_id].from_id);
   close(context->pipes[context->current_id][context->current_id].to_id);
 

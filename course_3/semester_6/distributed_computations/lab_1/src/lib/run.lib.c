@@ -4,62 +4,63 @@ void run(Context* context) {
   int process_statuses[context->processes_amount];
   memset(process_statuses, -1, (context->processes_amount) * sizeof(int));
 
-  if (context->current_id == 0) { // parent code
-    runParent(context, process_statuses);
+  if (context->current_id == 0) {
+    run_parent(context, process_statuses);
   } else {
-    runChild(context, process_statuses);
+    run_child(context, process_statuses);
   }
 }
+void run_parent(Context *context, int *process_statuses) {
+  start_parent(context, process_statuses);
+  do_work(context);
+  finish_parent(context, process_statuses);
 
-void runParent(Context* context, int process_statuses[]) {
-  int msg_len = 0;
-  char msg_buf[4096];
+  close_pipes(context);
+  exit(0);
+}
+void run_child(Context *context, int *process_statuses) {
+  start_child(context, process_statuses);
+  do_work(context);
+  finish_child(context, process_statuses);
 
-  msg_len = sprintf(msg_buf, log_started_fmt, context->current_id, context->current_pid, context->parent_pid);
-  fwrite(msg_buf, 1, (size_t) msg_len, context->events_log);
-  printf("%s", msg_buf);
+  close_pipes(context);
+  exit(0);
+}
 
-  int starts_receiving = 1;
-  while (starts_receiving) {
+void wait_until_everyone_starts(Context *context, int *process_statuses) {
+  int isListening = 1;
+  while (isListening) {
     for (int i = 1; i < context->processes_amount; ++i) {
       if (process_statuses[i] == STARTED) {
         continue;
       }
 
-      Message msg;
-      if (receive(context, i, &msg) == 0) {
-        if (msg.s_header.s_type == STARTED) {
+      Message message;
+      if (receive(context, (local_id) i, &message) == 0) {
+        if (message.s_header.s_type == STARTED) {
           process_statuses[i] = STARTED;
-          printf("%s", msg.s_payload);
-          fwrite(msg.s_payload, 1, msg.s_header.s_payload_len, context->events_log);
+          if (context->current_id == 0) {
+            log_message(context, message);
+          }
         } else {
-          printf("Error occured in parent\n");
+          printf("Error occured in wait_until_everyone_starts\n");
         }
       }
     }
 
-    starts_receiving = 0;
+    isListening = 0;
     for (int i = 1; i < context->processes_amount; ++i) {
       if (process_statuses[i] != STARTED) {
-        starts_receiving = 1;
+        isListening = 1;
       }
     }
   }
 
-  // log 'received all started'
-  msg_len = sprintf(msg_buf, log_received_all_started_fmt, context->current_id); fwrite(msg_buf, 1, (size_t) msg_len, context->events_log);
-  printf("%s", msg_buf);
-
-  // work goes here
-  // ...
-  // work ends here
-
-  // work done msg
-  msg_len = sprintf(msg_buf, log_done_fmt, context->current_id); fwrite(msg_buf, 1, (size_t) msg_len, context->events_log);
-  printf("%s", msg_buf);
-
-  int ends_receiving = 1;
-  while (ends_receiving) {
+  log_all_started(context);
+}
+void wait_until_everyone_finishes(Context *context, int* process_statuses) {
+  int isListening = 1;
+  while (isListening) {
     for (int i = 1; i < context->processes_amount; ++i) {
       if (process_statuses[i] == DONE) {
         continue;
@@ -69,151 +70,116 @@ void runParent(Context* context, int process_statuses[]) {
       if (receive(context, i, &msg) == 0) {
         if (msg.s_header.s_type == DONE) {
           process_statuses[i] = DONE;
-          printf("%s", msg.s_payload);
+          if (context->current_id == 0) {
+            printf("%s", msg.s_payload);
+          }
           fwrite(msg.s_payload, 1, msg.s_header.s_payload_len, context->events_log);
         } else {
-          printf("Error occured in parent\n");
+          printf("Error occured in wait_until_everyone_finishes\n");
         }
       }
     }
 
-    ends_receiving = 0;
+    isListening = 0;
     for (int i = 1; i < context->processes_amount; ++i) {
       if (process_statuses[i] != DONE) {
-        ends_receiving = 1;
+        isListening = 1;
       }
     }
   }
 
-  // all done
-  msg_len = sprintf(msg_buf, log_received_all_done_fmt, context->current_id);
-  fwrite(msg_buf, 1, (size_t) msg_len, context->events_log);
-  printf("%s", msg_buf);
-
+  log_all_finished(context);
+}
+void wait_for_children(Context* context) {
   int waiting_processes = context->processes_amount - 1;
+
   while (waiting_processes) {
     wait(NULL);
     --waiting_processes;
   }
-
-  // close everything
-  fclose(context->events_log);
-  for (int i = 0; i < context->processes_amount; ++i) {
-    for (int j = 0; j < context->processes_amount; ++j) {
-      close(context->pipes[i][j].from_id);
-      close(context->pipes[i][j].to_id);
-    }
-    free(context->pipes[i]);
-  }
-  free(context->pipes);
-
-  exit(0); // everything worked fine!
 }
 
-void runChild(Context* context, int process_statuses[]) {
-  int msg_len = 0;
-  char msg_buf[4096];
+void do_work(Context* context) {
 
-  // firstly - send STARTED to everyone
-  Message msg;
-  msg.s_header.s_type = STARTED;
-  msg.s_header.s_magic = MESSAGE_MAGIC;
-  msg.s_header.s_local_time = (timestamp_t) time(NULL);
-  msg_len = sprintf(msg_buf, log_started_fmt, context->current_id, context->current_pid, context->parent_pid);
+}
 
-  // Mark process itself as started
+void send_started_to_everyone(Context* context) {
+  char message_buffer[4096];
+  int message_size = sprintf(message_buffer, log_started_fmt, context->current_id, context->current_pid, context->parent_pid);
+
+  Message message;
+  message.s_header.s_type = STARTED;
+  message.s_header.s_magic = MESSAGE_MAGIC;
+  message.s_header.s_local_time = (timestamp_t) time(NULL);
+  message.s_header.s_payload_len = (uint16_t) message_size;
+
+  memcpy(message.s_payload, message_buffer, (size_t) message_size);
+  send_multicast(context, &message);
+}
+void send_finished_to_everyone(Context* context) {
+  char message_buffer[4096];
+  int message_size = sprintf(message_buffer, log_done_fmt, context->current_id);
+
+  Message message;
+  message.s_header.s_type = DONE;
+  message.s_header.s_magic = MESSAGE_MAGIC;
+  message.s_header.s_payload_len = (uint16_t) message_size;
+  message.s_header.s_local_time = (timestamp_t) time(NULL);
+  memcpy(message.s_payload, message_buffer, (size_t) message_size);
+  send_multicast(context, &message);
+}
+
+void start_child(Context *context, int *process_statuses) {
   process_statuses[context->current_id] = STARTED;
 
-  // send to other processes
-  msg.s_header.s_payload_len = (uint16_t) msg_len;
-  memcpy(msg.s_payload, msg_buf, (size_t) msg_len);
-  send_multicast(context, &msg);
-
-  int starts_receiving = 1;
-  while (starts_receiving) {
-    for (int i = 1; i < context->processes_amount; ++i) {
-      if (process_statuses[i] == STARTED)
-        continue;
-
-      Message received_message;
-      if (receive(context, i, &received_message) == 0) {
-        if (received_message.s_header.s_type == STARTED) {
-          process_statuses[i] = STARTED;
-        } else {
-          printf("1: Error occured in child %d, received %d\n", context->current_id, received_message.s_header.s_type);
-        }
-      }
-    }
-
-    starts_receiving = 0;
-    for (int i = 1; i < context->processes_amount; ++i) {
-      if (process_statuses[i] != STARTED) {
-        starts_receiving = 1;
-      }
-    }
-  }
-
-  // all started
-  msg_len = sprintf(msg_buf, log_received_all_started_fmt, context->current_id);
-  fwrite(msg_buf, 1, (size_t) msg_len, context->events_log);
-  printf("%s", msg_buf);
-
-  // work goes here
-  // ...
-  // work ends here
-
-  // work done msg
-  msg_len = sprintf(msg_buf, log_done_fmt, context->current_id);
-
-  // Mark process itself as done
+  send_started_to_everyone(context);
+  wait_until_everyone_starts(context, process_statuses);
+}
+void finish_child(Context *context, int *process_statuses) {
   process_statuses[context->current_id] = DONE;
 
-  // send to other processes
-  msg.s_header.s_type = DONE;
-  msg.s_header.s_payload_len = (uint16_t) msg_len;
-  msg.s_header.s_local_time = (timestamp_t) time(NULL);
-  memcpy(msg.s_payload, msg_buf, (size_t) msg_len);
-  send_multicast(context, &msg);
+  send_finished_to_everyone(context);
+  wait_until_everyone_finishes(context, process_statuses);
+}
+void start_parent(Context *context, int *process_statuses) {
+  log_parent_started(context);
+  wait_until_everyone_starts(context, process_statuses);
+}
+void finish_parent(Context *context, int *process_statuses) {
+  log_parent_finished(context);
 
-  int ends_receiveing = 1;
-  while (ends_receiveing) {
-    for (int i = 1; i < context->processes_amount; ++i) {
-      if (process_statuses[i] == DONE) {
-        continue;
-      }
+  wait_until_everyone_finishes(context, process_statuses);
+  wait_for_children(context);
+}
 
-      Message received_message;
-      if (receive(context, i, &received_message) == 0) {
-        if (received_message.s_header.s_type == DONE) {
-          process_statuses[i] = DONE;
-        } else {
-          printf("2: Error occured in child %d, received %d\n", context->current_id, received_message.s_header.s_type);
-        }
-      }
-    }
+void log_parent_started(Context *context) {
+  char message_buffer[4096];
+  int message_size = sprintf(message_buffer, log_started_fmt, context->current_id, context->current_pid, context->parent_pid);
 
-    ends_receiveing = 0;
-    for (int i = 1; i < context->processes_amount; ++i) {
-      if (process_statuses[i] != DONE) {
-        ends_receiveing = 1;
-      }
-    }
-  }
+  fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
+  printf("%s", message_buffer);
+}
+void log_parent_finished(Context *context) {
+  char message_buffer[4096];
+  int message_size = sprintf(message_buffer, log_done_fmt, context->current_id); fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
 
-  // all done
-  msg_len = sprintf(msg_buf, log_received_all_done_fmt, context->current_id);
-  printf("%s", msg_buf);
-  fwrite(msg_buf, 1, (size_t) msg_len, context->events_log);
+  printf("%s", message_buffer);
+}
+void log_all_started(Context *context) {
+  char message_buffer[4096];
+  int message_size = sprintf(message_buffer, log_received_all_started_fmt, context->current_id);
 
-  // close everything
-  fclose(context->events_log);
-  for (int i = 0; i < context->processes_amount; ++i) {
-    for (int j = 0; j < context->processes_amount; ++j) {
-      close(context->pipes[i][j].from_id);
-      close(context->pipes[i][j].to_id);
-    }
-    free(context->pipes[i]);
-  }
-  free(context->pipes);
-  exit(0);
+  fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
+  printf("%s", message_buffer);
+}
+void log_all_finished(Context* context) {
+  char message_buffer[4096];
+  int message_size = sprintf(message_buffer, log_received_all_done_fmt, context->current_id);
+
+  fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
+  printf("%s", message_buffer);
+}
+void log_message(Context* context, Message message) {
+  printf("%s", message.s_payload);
+  fwrite(message.s_payload, 1, message.s_header.s_payload_len, context->events_log);
 }

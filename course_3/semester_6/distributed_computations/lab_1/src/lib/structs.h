@@ -28,7 +28,6 @@ typedef struct {
 
   Pipe** pipes;
   int processes_amount;
-  int process_statuses[];
 } Context;
 
 #endif
