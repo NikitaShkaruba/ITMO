@@ -104,11 +104,11 @@ int receive(void * self, local_id from, Message * msg);
  * with extra care to avoid deadlocks.
  *
  * @param self    Any data structure implemented by students to perform I/O
- * @param msg     Message structure allocated by the caller
+ * @param message     Message structure allocated by the caller
  *
  * @return 0 on success, any non-zero value on error
  */
-int receive_any(void * self, Message * msg);
+int receive_any(void * self, Message * message);
 
 //------------------------------------------------------------------------------
 

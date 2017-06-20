@@ -6,6 +6,10 @@ timestamp_t get_lamport_time() {
   return lamport_local_time;
 }
 
+void set_max_lamport_time(timestamp_t timestamp1, timestamp_t timestamp2) {
+  timestamp_t max_timextamp = max_timestamp(timestamp1, timestamp2);
+  set_lamport_time(max_timextamp);
+}
 void set_lamport_time(timestamp_t timestamp) {
   lamport_local_time = timestamp;
 }
@@ -36,7 +40,7 @@ void transfer(void* parent_data, local_id src, local_id dst, balance_t amount) {
     printf("%d: error: received garbage in transfer_order from %d\n", get_lamport_time(), dst);
   }
 
-  lamport_local_time = max_timestamp(lamport_local_time, message.s_header.s_local_time);
+  set_max_lamport_time(get_lamport_time(), message.s_header.s_local_time);
   inc_lamport_time();
 }
 

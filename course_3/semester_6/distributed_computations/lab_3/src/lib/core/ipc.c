@@ -22,7 +22,7 @@ int receive(void* self, local_id from, Message* msg) {
   }
 }
 
-int receive_any(void* self, Message* msg) {
+int receive_any(void* self, Message* message) {
   Context* context = (Context*) self;
   ssize_t bytes_read = 0;
 
@@ -36,11 +36,11 @@ int receive_any(void* self, Message* msg) {
       continue;
     }
 
-    if ((bytes_read = read(context->pipes[current_node][context->current_id].from_id, &msg->s_header, sizeof(MessageHeader))) > 0) {
-      bytes_read += read(context->pipes[current_node][context->current_id].from_id, msg->s_payload, msg->s_header.s_payload_len);
-      msg->s_payload[msg->s_header.s_payload_len] = 0;
+    if ((bytes_read = read(context->pipes[current_node][context->current_id].from_id, &message->s_header, sizeof(MessageHeader))) > 0) {
+      bytes_read += read(context->pipes[current_node][context->current_id].from_id, message->s_payload, message->s_header.s_payload_len);
+      message->s_payload[message->s_header.s_payload_len] = 0;
     }
-    if (bytes_read == (sizeof(MessageHeader) + msg->s_header.s_payload_len)) {
+    if (bytes_read == (sizeof(MessageHeader) + message->s_header.s_payload_len)) {
       return 0;
     } else if (errno == EAGAIN) {
       ++current_node;
@@ -50,12 +50,12 @@ int receive_any(void* self, Message* msg) {
 
       for (int i = 0; i < 100000; ++i) {}
     } else {
-      printf("undefined error in receive_any\n");
+      printf("undefined error in receive any\n");
     }
   } 
 }
 
-int send_one(void* self, local_id dst, const Message* msg) {
+int send(void* self, local_id dst, const Message* msg) {
   Context* context = (Context*) self;
 
   write(context->pipes[context->current_id][dst].to_id, msg, msg->s_header.s_payload_len + sizeof(MessageHeader));
@@ -75,4 +75,3 @@ int send_multicast(void* self, const Message* msg) {
 
   return 0;
 }
-

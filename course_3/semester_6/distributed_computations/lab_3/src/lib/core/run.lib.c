@@ -1,4 +1,126 @@
 #include "../core/headers/run.lib.h"
+#include "headers/include.h"
+
+typedef struct {
+  int balance;
+  int pending;
+} Pair;
+
+void print_history(const AllHistory * history) {
+  if (history == NULL) {
+    fprintf(stderr, "print_history: history is NULL!\n");
+    exit(1);
+  }
+
+  int max_time = 0;
+  int has_pending = 0;
+  int nrows = history->s_history_len + 2; // 0 row (parent) is not used + Total row
+  Pair table[nrows][MAX_T];
+  memset(table, 0, sizeof(table));
+
+  for (int i = 0; i < history->s_history_len; ++i) {
+    for (int j = 0; j < history->s_history[i].s_history_len; ++j) {
+      const BalanceState * change = &history->s_history[i].s_history[j];
+      int id = history->s_history[i].s_id;
+      if (change->s_time > 50) {
+        continue;
+      }
+      table[id][change->s_time].balance = change->s_balance;
+      table[id][change->s_time].pending = change->s_balance_pending_in;
+      if (max_time < change->s_time) {
+        max_time = change->s_time;
+      }
+      if (change->s_balance_pending_in > 0) {
+        has_pending = 1;
+      }
+    }
+  }
+
+  if (max_time > MAX_T) {
+    fprintf(stderr, "print_history: max value of s_time: %d, expected s_time < %d!\n",
+            max_time, MAX_T);
+    return;
+  }
+
+  // Calculate total sum
+  for (int j = 0; j <= max_time; ++j) {
+    int sum = 0;
+    for (int i = 1; i <= history->s_history_len; ++i) {
+      sum += table[i][j].balance + table[i][j].pending;
+    }
+    table[nrows-1][j].balance = sum;
+    table[nrows-1][j].pending = 0;
+  }
+
+  // pretty print
+  fflush(stderr);
+  fflush(stdout);
+
+  const char * cell_format_pending = " %d (%d) ";
+  const char * cell_format = " %d ";
+
+  char buf[128];
+  int max_cell_width = 0;
+  for (int i = 1; i <= history->s_history_len; ++i) {
+    for (int j = 0; j <= max_time; ++j) {
+      if (has_pending) {
+        sprintf(buf, cell_format_pending, table[i][j].balance, table[i][j].pending);
+      } else {
+        sprintf(buf, cell_format, table[i][j].balance);
+      }
+      int width = strlen(buf);
+      if (max_cell_width < width) {
+        max_cell_width = width;
+      }
+    }
+  }
+
+  const char * const first_column_header = "Proc \\ time |";
+  const int first_column_width = strlen(first_column_header);
+  const int underscrores = (first_column_width + 1) + (max_cell_width + 1) * (max_time + 1);
+
+  char hline[underscrores + 2];
+  for (int i = 0; i < underscrores; ++i) {
+    hline[i] = '-';
+  }
+  hline[underscrores] = '\n';
+  hline[underscrores + 1] = '\0';
+
+  if (has_pending) {
+    printf("\nFull balance history for time range [0;%d], $balance ($pending):\n", max_time);
+  } else {
+    printf("\nFull balance history for time range [0;%d], $balance:\n", max_time);
+  }
+  printf(hline);
+
+  printf("%s ", first_column_header);
+  for (int j = 0; j <= max_time; ++j) {
+    printf("%*d |", max_cell_width - 1, j);
+  }
+  printf("\n");
+  printf(hline);
+
+  for (int i = 1; i <= history->s_history_len; ++i) {
+    printf("%11d | ", i);
+    for (int j = 0; j <= max_time; ++j) {
+      if (has_pending) {
+        sprintf(buf, cell_format_pending, table[i][j].balance, table[i][j].pending);
+      } else {
+        sprintf(buf, cell_format, table[i][j].balance);
+      }
+      printf("%*s|", max_cell_width, buf);
+    }
+    printf("\n");
+    printf(hline);
+  }
+
+  printf("      Total | ");
+  for (int j = 0; j <= max_time; ++j) {
+    printf("%*d |", max_cell_width - 1, table[nrows-1][j].balance);
+  }
+  printf("\n");
+  printf(hline);
+}
 
 void run(Context* context) {
   int process_statuses[context->processes_amount];
@@ -42,11 +164,10 @@ void wait_until_everyone_starts(Context *context, int *process_statuses) {
           if (context->current_id == 0) {
             log_message(context, message);
           }
-          timestamp_t  max_lamport_time = max_timestamp(get_lamport_time(), message.s_header.s_local_time);
-          set_lamport_time(max_lamport_time);
+          set_max_lamport_time(get_lamport_time(), message.s_header.s_local_time);
           inc_lamport_time();
         } else {
-          printf("Error occured in wait_until_everyone_starts\n");
+          printf("Error occured in wait until everyone starts\n");
         }
       }
     }
@@ -78,11 +199,8 @@ void wait_until_everyone_finishes(Context *context, int* process_statuses) {
             log_message(context, message);
           }
 
-          timestamp_t  max_lamport_time = max_timestamp(get_lamport_time(), message.s_header.s_local_time);
-          set_lamport_time(max_lamport_time);
+          set_max_lamport_time(get_lamport_time(), message.s_header.s_local_time);
           inc_lamport_time();
-
-          fwrite(message.s_payload, 1, message.s_header.s_payload_len, context->events_log);
         } else {
           printf("Error occured in wait_until_everyone_finishes\n");
         }
@@ -125,8 +243,7 @@ void child_do_work(Context *context) {
 
   while (1) {
     if (receive_any(context, &received_message) == 0) {
-      timestamp_t max_lamport_local_time = max_timestamp(get_lamport_time(), received_message.s_header.s_local_time);
-      set_lamport_time(max_lamport_local_time);
+      set_max_lamport_time(get_lamport_time(), received_message.s_header.s_local_time);
       inc_lamport_time();
 
       if (received_message.s_header.s_type == TRANSFER) {
@@ -220,10 +337,12 @@ void send_finished_to_everyone(Context* context) {
 }
 
 void init_balance_history(Context* context) {
+  memset(context->balance_history.s_history, 0, sizeof(context->balance_history));
   context->balance_history.s_id = (local_id) context->current_id;
 
   context->balance_history.s_history[0].s_balance_pending_in = 0;
   context->balance_history.s_history[0].s_balance = context->balance;
+  printf("HST %d\n", context->balance);
   context->balance_history.s_history[0].s_time = get_lamport_time();
 }
 
@@ -255,6 +374,7 @@ void finish_root(Context *context, int *process_statuses) {
 
 void root_start_receive_histories(Context* context) {
   AllHistory history;
+  history.s_history_len = (uint8_t) (context->processes_amount - 1);
 
   printf("Roots listens for histories\n");
 
@@ -266,26 +386,27 @@ void root_start_receive_histories(Context* context) {
       memcpy(&history.s_history[balance_history->s_id - 1], history_message.s_payload, history_message.s_header.s_payload_len);
       histories_remaining--;
 
-      timestamp_t  max_lamport_time = max_timestamp(get_lamport_time(), history_message.s_header.s_local_time);
-      set_lamport_time(max_lamport_time);
+      set_max_lamport_time(get_lamport_time(), history_message.s_header.s_local_time);
       inc_lamport_time();
     } else {
       printf("Root received garbage in root_start_receive_histories\n");
     }
   }
+
+  print_history(&history);
 }
 void child_send_history_to_root(Context* context) {
+  // Add last row
   timestamp_t current_time = get_lamport_time();
   timestamp_t last_history_row = current_time;
-
   context->balance_history.s_history[current_time].s_time = get_lamport_time();
   context->balance_history.s_history[current_time].s_balance = context->balance;
   context->balance_history.s_history[current_time].s_balance_pending_in = 0;
   context->balance_history.s_history_len = (uint8_t) (last_history_row + 1);
 
   balance_t current_balance = context->balance_history.s_history[0].s_balance;
-  balance_t current_pending_balance = context->balance_history.s_history[0].s_balance_pending_in;
-  current_time = context->balance_history.s_history[0].s_time;
+  balance_t current_pending_balance = 0;
+  current_time = 0;
   for (int i = 1; i < context->balance_history.s_history_len; i++) {
     ++current_time;
     if (context->balance_history.s_history[i].s_balance == 0 && context->balance_history.s_history[i].s_time == 0) {
@@ -295,7 +416,12 @@ void child_send_history_to_root(Context* context) {
     } else {
       current_balance = context->balance_history.s_history[i].s_balance;
       current_pending_balance = context->balance_history.s_history[i].s_balance_pending_in;
-      current_time = context->balance_history.s_history[i].s_time;
+    }
+
+    if (context->current_id == 1) {
+      printf("BALANCE_HISTORY[%d] balance: %d", i, context->balance_history.s_history[i].s_balance);
+      printf("pending: %d", context->balance_history.s_history[i].s_balance_pending_in);
+      printf("time: %d\n", context->balance_history.s_history[i].s_balance_pending_in);
     }
   }
 

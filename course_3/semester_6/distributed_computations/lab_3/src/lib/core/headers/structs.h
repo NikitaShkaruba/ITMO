@@ -31,8 +31,8 @@ typedef struct {
   int         processes_amount;
 
   // Banking
-  balance_t      balance;
-  BalanceHistory balance_history;
+  balance_t       balance;
+  BalanceHistory  balance_history;
 } Context;
 
 #endif
