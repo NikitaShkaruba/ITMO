@@ -9,11 +9,11 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/wait.h>
-#include <sys/time.h>
+#include <time.h>
 
-#include "vendor/ipc.h"
-#include "vendor/pa1.h"
-#include "vendor/common.h"
+#include "../headers/vendor/ipc.h"
+#include "../headers/vendor/pa1.h"
+#include "../headers/vendor/common.h"
 
 #include "structs.h"
 

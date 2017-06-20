@@ -1,6 +1,6 @@
-#include "vendor/ipc.h"
+#include "../headers/vendor/ipc.h"
 
-#include "structs.h"
+#include "../headers/structs.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>

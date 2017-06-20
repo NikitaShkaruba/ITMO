@@ -1,4 +1,4 @@
-#include "lib/init.lib.h"
+#include "lib/headers/init.lib.h"
 
 int main(int argc, const char* argv[]) {
   if (argc < 3 || strcmp(argv[1], "-p") != 0) {

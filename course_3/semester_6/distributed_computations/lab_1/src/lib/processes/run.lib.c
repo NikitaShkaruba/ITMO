@@ -1,4 +1,4 @@
-#include "run.lib.h"
+#include "../headers/run.lib.h"
 
 void run(Context* context) {
   int process_statuses[context->processes_amount];

@@ -4,16 +4,16 @@ project(lab_1)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
-        src/lib/vendor/common.h
-        src/lib/vendor/ipc.h
-        src/lib/vendor/pa1.h
-        src/lib/ipc.c
-        src/lib/structs.h
-        src/lib/init.lib.c
-        src/lib/init.lib.h
+        src/lib/headers/vendor/common.h
+        src/lib/headers/vendor/ipc.h
+        src/lib/headers/vendor/pa1.h
+        src/lib/processes/ipc.c
+        src/lib/headers/structs.h
+        src/lib/processes/init.lib.c
+        src/lib/headers/init.lib.h
         src/main.c
-        src/lib/run.lib.c
-        src/lib/run.lib.h
-        src/lib/include.h)
+        src/lib/processes/run.lib.c
+        src/lib/headers/run.lib.h
+        src/lib/headers/include.h)
 
 add_executable(lab_1 ${SOURCE_FILES})

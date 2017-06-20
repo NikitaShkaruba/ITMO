@@ -1,4 +1,4 @@
-#include "init.lib.h"
+#include "../headers/init.lib.h"
 
 void init_ids(Context *context, int current_id, int parent_pid) {
   context->current_id = current_id;
