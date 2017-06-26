@@ -22,6 +22,6 @@ set(SOURCE_FILES
         util.h
         lamport.h
 
-        main.c priority_queue.c priority_queue.h)
+        main.c)
 
 add_executable(lab_5 ${SOURCE_FILES})

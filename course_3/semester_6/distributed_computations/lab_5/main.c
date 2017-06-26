@@ -1,4 +1,4 @@
-#include "lib/core/headers/include.h"
+#include "include.h"
 
 void transfer(void* parent_data, local_id src, local_id dst, balance_t amount) {
   Context* app = (Context*) parent_data;
@@ -31,12 +31,12 @@ int main(int argc, const char* argv[]) {
   int processes_amount = 0;
 
   for (int i = 0; i < argc; i++) {
-    char* key = argv[i];
+    char* key = (char*) argv[i];
     if (!strcmp(key, "--mutexl")) {
       is_mutex_mode = 1;
     }
     if (!strcmp(key, "-p")) {
-      processes_amount = atoi(argv[i + 1]);
+      processes_amount = atoi(argv[i + 1]) + 1;
     }
   }
 
@@ -44,7 +44,7 @@ int main(int argc, const char* argv[]) {
     return 1;
   }
 
-  setvbuf(stdout, NULL, _IONBF, 0);
+  // setvbuf(stdout, NULL, _IONBF, 0);
   init_root(processes_amount, is_mutex_mode);
 
   return 0;

@@ -27,20 +27,24 @@ void transfer(void* parent_data, local_id src, local_id dst, balance_t amount) {
 }
 
 int main(int argc, const char* argv[]) {
-  if (argc < 3 || strcmp(argv[1], "-p") != 0) {
-    return 1;
-  }
-
-  int processes_amount = atoi(argv[2]) + 1;
-
   int is_mutex_mode = 0;
+  int processes_amount = 0;
+
   for (int i = 0; i < argc; i++) {
-    if (!strcmp(argv[i], "--mutexl")) {
+    char* key = (char*) argv[i];
+    if (!strcmp(key, "--mutexl")) {
       is_mutex_mode = 1;
+    }
+    if (!strcmp(key, "-p")) {
+      processes_amount = atoi(argv[i + 1]) + 1;
     }
   }
 
-  setbuf(stdout, NULL);
+  if (!processes_amount) {
+    return 1;
+  }
+
+  setvbuf(stdout, NULL, _IONBF, 0);
   init_root(processes_amount, is_mutex_mode);
 
   return 0;

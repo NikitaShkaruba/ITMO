@@ -3,17 +3,6 @@
 
 #include "include.h"
 
-typedef struct {
-  int priority;
-  int data;
-} pqnode;
-
-typedef struct {
-  pqnode* nodes;
-  int len;
-  int size;
-} pqueue;
-
 /**
  * Stores information about channel socket points
  */
@@ -40,15 +29,13 @@ typedef struct {
   Pipe** pipes;
   int processes_amount;
 
-  // Banking
+  // Banking - Is this still needed ?
   balance_t balance;
-  BalanceHistory balance_history;
 
   // Priorities
   int is_mutex_mode;
-  pqueue* pQueue;
-  char* paProcessesStatuses;
-  char* paDRs;
+  char* process_statuses;
+  char* process_locks;
 } Context;
 
 #endif

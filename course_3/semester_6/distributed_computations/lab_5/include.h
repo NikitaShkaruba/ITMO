@@ -12,10 +12,10 @@
 #include <time.h>
 #include <errno.h>
 
-#include "../../vendor/pa2345.h"
-#include "../../vendor/ipc.h"
-#include "../../vendor/common.h"
-#include "../../vendor/banking.h"
+#include "pa2345.h"
+#include "ipc.h"
+#include "common.h"
+#include "banking.h"
 
 #include "structs.h"
 #include "util.h"

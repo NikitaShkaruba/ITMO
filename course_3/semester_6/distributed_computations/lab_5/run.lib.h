@@ -4,7 +4,7 @@
 #include "include.h"
 
 void run(Context* context);
-void run_parent(Context *context);
+void run_root(Context* context);
 void run_child(Context *context);
 
 void wait_until_everyone_starts(Context *context);
@@ -26,9 +26,6 @@ void log_root_started(Context *context);
 void log_root_finished(Context *context);
 void log_all_started(Context *context);
 void log_all_finished(Context* context);
-void log_transfer_sended(Context *context, TransferOrder *transferOrder);
-void log_transfer_received(Context *context, TransferOrder *transferOrder);
-void log_message(Context* context, Message message);
 
 #endif
 

@@ -4,24 +4,24 @@ project(lab_5)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
-        src/lib/vendor/common.h
-        src/lib/vendor/ipc.h
-        src/lib/vendor/bank_robbery.c
-        src/lib/vendor/pa2345.h
-        src/lib/vendor/banking.h
+        common.h
+        ipc.h
+        bank_robbery.c
+        pa2345.h
+        banking.h
 
-        src/lib/core/ipc.c
-        src/lib/core/headers/structs.h
-        src/lib/core/init.lib.c
-        src/lib/core/headers/init.lib.h
-        src/lib/core/run.lib.c
-        src/lib/core/headers/run.lib.h
-        src/lib/core/headers/include.h
-        src/lib/core/banking.c
-        src/lib/core/util.c
-        src/lib/core/headers/util.h
-        src/lib/core/headers/lamport.h
+        ipc.c
+        structs.h
+        init.lib.c
+        init.lib.h
+        run.lib.c
+        run.lib.h
+        include.h
+        banking.c
+        util.c
+        util.h
+        lamport.h
 
-        src/main.c)
+        main.c)
 
 add_executable(lab_5 ${SOURCE_FILES})

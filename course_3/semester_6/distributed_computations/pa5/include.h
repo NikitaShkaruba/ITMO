@@ -17,7 +17,6 @@
 #include "common.h"
 #include "banking.h"
 
-#include "priority_queue.h"
 #include "structs.h"
 #include "util.h"
 #include "lamport.h"

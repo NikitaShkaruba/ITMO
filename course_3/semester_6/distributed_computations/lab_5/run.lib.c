@@ -1,4 +1,4 @@
-#include "headers/include.h"
+#include "include.h"
 
 void run(Context* context) {
   context->process_statuses = (char*)malloc((size_t) context->processes_amount);
@@ -7,12 +7,12 @@ void run(Context* context) {
   memset(context->process_locks, 0, context->processes_amount * sizeof(char));
 
   if (context->current_id == 0) {
-    run_parent(context);
+    run_root(context);
   } else {
     run_child(context);
   }
 }
-void run_parent(Context *context) {
+void run_root(Context* context) {
   start_root(context);
   root_do_work(context);
   finish_root(context);
@@ -38,7 +38,7 @@ void wait_until_everyone_starts(Context *context) {
     if ((sender_id = receive_any(context, &started_message)) >= 0) {
       if (started_message.s_header.s_type == STARTED) {
         context->process_statuses[sender_id] = STARTED;
-        printf("%s", started_message.s_payload);
+        //printf("%s", started_message.s_payload);
         fwrite(started_message.s_payload, 1, started_message.s_header.s_payload_len, context->events_log);
       }
     } else {
@@ -107,6 +107,7 @@ void child_do_work(Context *context) {
 
     // Uncomment for debugging
     printf("%s", message_buffer);
+    // puts(message_buffer);
     // print(message_buffer);
 
     if (context->is_mutex_mode) {
@@ -176,7 +177,7 @@ void log_root_started(Context *context) {
   int message_size = sprintf(message_buffer, log_started_fmt, get_lamport_time(), context->current_id, context->current_pid, context->parent_pid, context->balance);
 
   fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
-  printf("%s", message_buffer);
+  // printf("%s", message_buffer);
 }
 void log_root_finished(Context *context) {
   char message_buffer[4096];

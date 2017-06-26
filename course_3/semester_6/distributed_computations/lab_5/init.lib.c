@@ -1,4 +1,4 @@
-#include "headers/include.h"
+#include "include.h"
 
 void init_new_context(Context *context, int current_id, int parent_pid) {
   context->current_id = current_id;
@@ -63,9 +63,9 @@ void close_pipes(Context* context) {
 void init_children(Context *context) {
   pid_t parent_pid = getpid();
 
-  for (int i = 0; i < context->processes_amount - 1; ++i) {
+  for (int i = 1; i <= context->processes_amount; ++i) {
     if (fork() == 0) {
-      init_new_context(context, i + 1, parent_pid);
+      init_new_context(context, i, parent_pid);
       break;
     }
   }

@@ -1,4 +1,4 @@
-#include "headers/include.h"
+#include "include.h"
 
 int receive(void* self, local_id from, Message* msg) {
   Context* context = (Context*) self;
@@ -75,7 +75,7 @@ void send_request(Context* context, timestamp_t request_time) {
   lock_message.s_header.s_local_time = request_time;
   lock_message.s_header.s_payload_len = 0;
   lock_message.s_header.s_magic = MESSAGE_MAGIC;
-  
+
   send_multicast(context, &lock_message);
 }
 
@@ -99,7 +99,7 @@ int request_cs(const void* self) {
 
   inc_lamport_time();
   timestamp_t request_time = get_lamport_time();
-  
+
   send_request(context, request_time);
 
   char responses[context->processes_amount];
@@ -128,21 +128,26 @@ int request_cs(const void* self) {
       continue;
     }
 
+    char* type = "SHIasdfasd";
     if (request_message.s_header.s_type == CS_REQUEST) {
       handle_request_message(context, request_message, sender_id, request_time);
+      type = "REQUEST";
     } else if (request_message.s_header.s_type == CS_REPLY) {
       responses[sender_id] = 1;
+      type = "REPLY";
     } else if (request_message.s_header.s_type == DONE) {
       context->process_statuses[sender_id] = DONE;
       responses[sender_id] = 1;
+      type = "DONE";
     }
 
     need_managing_replies = 0;
     for (int i = 1; i < context->processes_amount; ++i) {
-      if (responses[i] == 0) {
+      if (responses[i] != DONE) {
         need_managing_replies = 1;
       }
     }
+    // printf("%d Received from %d %s [ %d, %d, %d, %d, %d, %d, %d, %d, %d ]\n", context->current_id, sender_id,  type, responses[0], responses[1], responses[2], responses[3], responses[4], responses[5], responses[6], responses[7], responses[8]);
   }
 
   return 0;

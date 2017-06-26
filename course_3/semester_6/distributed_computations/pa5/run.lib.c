@@ -1,22 +1,18 @@
 #include "include.h"
 
-void print(const char * s) {
-  printf(s);
-}
-
 void run(Context* context) {
-  context->paProcessesStatuses = (char*)malloc((size_t) context->processes_amount);
-  memset(context->paProcessesStatuses, -1, context->processes_amount * sizeof(char));
-  context->paDRs = (char*)malloc((size_t) context->processes_amount);
-  memset(context->paDRs, 0, context->processes_amount * sizeof(char));
+  context->process_statuses = (char*)malloc((size_t) context->processes_amount);
+  memset(context->process_statuses, -1, context->processes_amount * sizeof(char));
+  context->process_locks = (char*)malloc((size_t) context->processes_amount);
+  memset(context->process_locks, 0, context->processes_amount * sizeof(char));
 
   if (context->current_id == 0) {
-    run_parent(context);
+    run_root(context);
   } else {
     run_child(context);
   }
 }
-void run_parent(Context *context) {
+void run_root(Context* context) {
   start_root(context);
   root_do_work(context);
   finish_root(context);
@@ -41,8 +37,8 @@ void wait_until_everyone_starts(Context *context) {
 
     if ((sender_id = receive_any(context, &started_message)) >= 0) {
       if (started_message.s_header.s_type == STARTED) {
-        context->paProcessesStatuses[sender_id] = STARTED;
-        printf("%s", started_message.s_payload);
+        context->process_statuses[sender_id] = STARTED;
+        //printf("%s", started_message.s_payload);
         fwrite(started_message.s_payload, 1, started_message.s_header.s_payload_len, context->events_log);
       }
     } else {
@@ -51,8 +47,9 @@ void wait_until_everyone_starts(Context *context) {
 
     is_listening = 0;
     for (int i = 1; i < context->processes_amount; ++i) {
-      if (context->paProcessesStatuses[i] != STARTED)
+      if (context->process_statuses[i] != STARTED) {
         is_listening = 1;
+      }
     }
   }
 
@@ -66,8 +63,8 @@ void wait_until_everyone_finishes(Context *context) {
 
     if ((sender_id = receive_any(context, &finished_message)) >= 0) {
       if (finished_message.s_header.s_type == DONE) {
-        context->paProcessesStatuses[sender_id] = DONE;
-        //printf("%s", finished_message.s_payload);
+        context->process_statuses[sender_id] = DONE;
+        printf("%s", finished_message.s_payload);
         fwrite(finished_message.s_payload, 1, finished_message.s_header.s_payload_len, context->events_log);
       }
     } else {
@@ -76,8 +73,9 @@ void wait_until_everyone_finishes(Context *context) {
 
     is_listening = 0;
     for (int i = 1; i < context->processes_amount; ++i) {
-      if (context->paProcessesStatuses[i] != DONE)
+      if (context->process_statuses[i] != DONE) {
         is_listening = 1;
+      }
     }
   }
 
@@ -97,6 +95,7 @@ void root_do_work(Context* context) {
   // Root only searches for setup and shutdown in this lab
 }
 void child_do_work(Context *context) {
+  sleep(1);
   int iter_num = 1;
   int iter_count = context->current_id * 5;
   while (iter_num <= iter_count) {
@@ -104,10 +103,14 @@ void child_do_work(Context *context) {
       request_cs(context);
     }
 
+    printf("DONE FFS");
     char message_buffer[4096];
     sprintf(message_buffer, log_loop_operation_fmt, context->current_id, iter_num, iter_count);
-    // printf("%s", message_buffer);
-    print(message_buffer);
+
+    // Uncomment for debugging
+    printf("%s", message_buffer);
+    // puts(message_buffer);
+    // print(message_buffer);
 
     if (context->is_mutex_mode) {
       release_cs(context);
@@ -128,8 +131,8 @@ void send_started_to_everyone(Context* context) {
   message.s_header.s_magic = MESSAGE_MAGIC;
   message.s_header.s_local_time = (timestamp_t) get_lamport_time();
   message.s_header.s_payload_len = (uint16_t) message_size;
-
   memcpy(message.s_payload, message_buffer, (size_t) message_size);
+
   send_multicast(context, &message);
 }
 void send_finished_to_everyone(Context* context) {
@@ -144,18 +147,18 @@ void send_finished_to_everyone(Context* context) {
   message.s_header.s_payload_len = (uint16_t) message_size;
   message.s_header.s_local_time = (timestamp_t) get_lamport_time();
   memcpy(message.s_payload, message_buffer, (size_t) message_size);
+
   send_multicast(context, &message);
 }
 
 void start_child(Context *context) {
-  context->pQueue = create_pqueue(50);
-  context->paProcessesStatuses[context->current_id] = STARTED;
+  context->process_statuses[context->current_id] = STARTED;
 
   send_started_to_everyone(context);
   wait_until_everyone_starts(context);
 }
 void finish_child(Context *context) {
-  context->paProcessesStatuses[context->current_id] = DONE;
+  context->process_statuses[context->current_id] = DONE;
 
   send_finished_to_everyone(context);
   wait_until_everyone_finishes(context);
@@ -176,7 +179,7 @@ void log_root_started(Context *context) {
   int message_size = sprintf(message_buffer, log_started_fmt, get_lamport_time(), context->current_id, context->current_pid, context->parent_pid, context->balance);
 
   fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
-  printf("%s", message_buffer);
+  // printf("%s", message_buffer);
 }
 void log_root_finished(Context *context) {
   char message_buffer[4096];
@@ -199,22 +202,4 @@ void log_all_finished(Context* context) {
   fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
   printf("%s", message_buffer);
 }
-void log_transfer_sended(Context *context, TransferOrder *transferOrder) {
-  char message_buffer[4096];
-  int message_size = sprintf(message_buffer, log_transfer_out_fmt, get_lamport_time(), context->current_id, transferOrder->s_amount, transferOrder->s_dst);
 
-  fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
-  printf("%s", message_buffer);
-}
-void log_transfer_received(Context *context, TransferOrder *transferOrder) {
-  char message_buffer[4096];
-  int message_size = sprintf(message_buffer, log_transfer_in_fmt, get_lamport_time(), context->current_id, transferOrder->s_amount, transferOrder->s_src);
-
-  fwrite(message_buffer, 1, (size_t) message_size, context->events_log);
-  printf("%s", message_buffer);
-}
-
-void log_message(Context* context, Message message) {
-  printf("%s", message.s_payload);
-  fwrite(message.s_payload, 1, message.s_header.s_payload_len, context->events_log);
-}

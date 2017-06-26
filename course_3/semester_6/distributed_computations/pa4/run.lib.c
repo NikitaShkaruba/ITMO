@@ -251,8 +251,8 @@ void child_do_work(Context *context) {
     }
 
     sprintf(message_buffer, log_loop_operation_fmt, context->current_id, iter_num, iter_count);
-    // printf(message_buffer);
-    print(message_buffer);
+    printf(message_buffer);
+    // print(message_buffer);
 
     if (context->is_mutex_mode) {
       release_cs(context);
