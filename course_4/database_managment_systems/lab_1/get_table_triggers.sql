@@ -1,5 +1,5 @@
-SET SERVEROUTPUT ON FORMAT WRAPPED; # Is needed for server output, without it it's empty
-
+SET SERVEROUTPUT ON 
+--Is needed for server output, without it it's empty
 DECLARE
   TAB_NAME VARCHAR2(30) := 'TRIGGER_TEST';
   CURSOR CURSY IS SELECT * FROM ALL_TRIGGERS;
