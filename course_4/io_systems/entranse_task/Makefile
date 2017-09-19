@@ -1,4 +1,4 @@
-SYSTEMC_HOME    = /opt/systemc-2.3.1
+SYSTEMC_HOME    = systemc-2.3.1a
 TARGET_ARCH     = linux64
 
 SYSTEMC_INC_DIR = $(SYSTEMC_HOME)/include
@@ -11,7 +11,6 @@ LDFLAGS         = -L$(SYSTEMC_LIB_DIR) -lsystemc -lm
 
 SRCS = src/mips32.cpp src/mem.cpp src/main.cpp
 OBJS = $(SRCS:.cpp=.o)
-	
-main:
-	g++ -o model $(LDFLAGS) $(FLAGS) $(SRCS)
 
+main:
+	g++ -std=c++11 -Wall -pedantic -o model $(LDFLAGS) $(FLAGS) $(SRCS)

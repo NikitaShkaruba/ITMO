@@ -1,0 +1,25 @@
+в директории systemc-2.3.1a как бы все сбилдено, но под другими системами придется сбилдить снова
+cd objdir
+export CXX=g++
+../configure
+make
+make install(без рута)
+
+
+В итоге .h и либы лежат в systemc-2.3.1a
+мейкфайл чуток подправлен, чтобы грузить их оттуда и юзать С++11
+с либами сложнее, надо создать файл systemc.conf с путём  </полный путь/>systemc-2.3.1a/lib-linux64
+в /etc/ld.so.conf.d и выполнить ldconfig(под рутом естественно)
+
+ну и естественно на сбилдить makefile и запустить ./model
+
+
+
+
+
+
+
+
+
+C++ ist eine Scheiße und ich bin sicher wie nie.
+Wer fremde Sprachen nicht kennt, weiß nichts von seiner eigenen. (с)Goethe
