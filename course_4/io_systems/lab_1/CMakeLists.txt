@@ -3,13 +3,31 @@ set(CMAKE_CXX_STANDARD 11)
 project(entranse_task)
 
 include_directories(../lib/systemc-2.3.1a/include) # Set your include path from lib here if version is not 2.3.1a
+include_directories(../src) # Set your include path from lib here if version is not 2.3.1a
 set(
   SOURCE_FILES
+
   src/main.cpp
   src/mem.cpp
   src/mem.h
   src/mips32.h
   src/mips32.cpp
+  src/bus.cpp
+  src/bus.h
+  src/common.h
+  src/fifo.cpp
+  src/fifo.h
+  src/icconf.cpp
+  src/input_capture.cpp
+  src/input_capture.h
+  src/ins.cpp
+  src/ins.h
+  src/mux_control.cpp
+  src/mux_control.h
+  src/prescaler.cpp
+  src/prescaler.h
+  src/timer.cpp
+  src/timer.h
 )
 add_executable(lab_1 ${SOURCE_FILES})
 

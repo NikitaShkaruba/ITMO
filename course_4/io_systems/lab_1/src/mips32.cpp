@@ -15,9 +15,9 @@ MIPS32::MIPS32(sc_module_name nm)
     data_bo.initialize(0);
     wr_o.initialize(0);
     rd_o.initialize(0);
-    
+
     SC_CTHREAD(mainThread, clk_i.pos());
-    
+
 }
 
 MIPS32::~MIPS32()
@@ -27,56 +27,60 @@ MIPS32::~MIPS32()
 
 void MIPS32::mainThread()
 {
-    int data_size = 5;
-    
-    for(int i = 0; i < data_size; i++)
-    {
-        bus_write(i, (i+1)*2);
-    }
-    
-    for(int i = 0; i < data_size; i++)
-    {
-        bus_read(i);
-    }
-    
-    sc_stop();
+    //bus_write(0,323);
+    bus_write(ICCONF_ADDRESS,94);
 
+    bus_read(ICCONF_ADDRESS);
+    //bus_write(0,323);
+    //bus_write(0,323);
+    //bus_write(0,323);
+
+    sc_stop();
 }
 
-int MIPS32::bus_read(int addr)
+int MIPS32::bus_read(u32 addr)
 {
+    cout << "MIPS32: READ " << endl;
+    cout << "  -> addr: " << hex << addr << endl;
+
     int data;
 
     wait();
     addr_bo.write(addr);
     rd_o.write(1);
-    
+
     wait();
     rd_o.write(0);
-    
     wait();
     data = data_bi.read();
-    
-    cout << "MIPS32: READ " << endl;
-    cout << "  -> addr: " << hex << addr << endl;
-    cout << "  -> data: " << hex << data << endl;
-    
+
+    //wait();
+    //rd_o.write(0);
+    wait();
+
+    //wait();
+    //data = data_bi.read();
+    //wait();
+    //rd_o.write(0);
+
+    cout << "  -> data: " << data << endl;
+
     return data;
-    
+
 }
 
-void MIPS32::bus_write(int addr, int data)
+void MIPS32::bus_write(u32 addr, u32 data)
 {
-    wait();
-    addr_bo.write(addr);
-    data_bo.write(data);
-    wr_o.write(1);
-    
-    wait();
-    wr_o.write(0);
-    
     cout << "MIPS32: WRITE " << endl;
     cout << "  -> addr: " << hex << addr << endl;
-    cout << "  -> data: " << hex << data << endl;
+    cout << "  -> data: " << data << endl;
 
+    wait();
+    addr_bo.write(addr);
+    wr_o.write(1);
+    data_bo.write(data);
+
+    wait();
+    wr_o.write(0);
+    wait();
 }
