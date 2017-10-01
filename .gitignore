@@ -1,3 +1,6 @@
+# Vendor libs #
+**/io_systems/lib/
+
 # Compiled source #
 ###################
 *.com
