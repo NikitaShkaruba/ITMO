@@ -10,8 +10,8 @@ SC_MODULE(ICCONF)
     sc_in<bool>  clk_i;
     sc_in<bool>  icconf_wr_i;
     sc_in<bool>  icconf_rd_i;
-    sc_out<u32>  icconf_data_bo;
 
+    sc_out<u32>  data_bo;
     sc_in<u32>   data_bi;
 
     SC_HAS_PROCESS(ICCONF);
@@ -24,6 +24,7 @@ SC_MODULE(ICCONF)
 
 private:
     u32 reg;
+    bool ret_data;
 
 };
 

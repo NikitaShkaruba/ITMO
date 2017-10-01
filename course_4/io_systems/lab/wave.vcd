@@ -1,5 +1,5 @@
 $date
-     Oct 01, 2017       21:20:10
+     Oct 01, 2017       22:32:02
 $end
 
 $version
@@ -17,6 +17,8 @@ $var wire   32  aaaac  data_bi [31:0]  $end
 $var wire   32  aaaad  data_bo [31:0]  $end
 $var wire    1  aaaae  wr       $end
 $var wire    1  aaaaf  rd       $end
+$var wire    1  aaaag  icconf_wr       $end
+$var wire    1  aaaah  icconf_rd       $end
 $upscope $end
 $enddefinitions  $end
 
@@ -27,10 +29,12 @@ $end
 $dumpvars
 1aaaaa
 b0 aaaab
-b0 aaaac
+b10001 aaaac
 b0 aaaad
 0aaaae
 0aaaaf
+0aaaag
+0aaaah
 $end
 
 #5000
@@ -48,25 +52,41 @@ b1011110 aaaad
 #20000
 1aaaaa
 0aaaae
+1aaaag
 
 #25000
 0aaaaa
 
 #30000
 1aaaaa
-1aaaaf
+0aaaag
 
 #35000
 0aaaaa
 
 #40000
 1aaaaa
-0aaaaf
+1aaaaf
 
 #45000
 0aaaaa
 
 #50000
 1aaaaa
-b1100010100 aaaac
+0aaaaf
+1aaaah
+
+#55000
+0aaaaa
+
+#60000
+1aaaaa
+b100010 aaaac
+0aaaah
+
+#65000
+0aaaaa
+
+#70000
+1aaaaa
 

@@ -31,6 +31,9 @@ void MIPS32::mainThread()
     bus_write(ICCONF_ADDRESS,94);
 
     bus_read(ICCONF_ADDRESS);
+    //bus_write(0,323);
+    //bus_write(0,323);
+    //bus_write(0,323);
 
     sc_stop();
 }
@@ -48,9 +51,17 @@ int MIPS32::bus_read(u32 addr)
 
     wait();
     rd_o.write(0);
-
     wait();
     data = data_bi.read();
+
+    //wait();
+    //rd_o.write(0);
+    wait();
+
+    //wait();
+    //data = data_bi.read();
+    //wait();
+    //rd_o.write(0);
 
     cout << "  -> data: " << data << endl;
 
@@ -71,4 +82,5 @@ void MIPS32::bus_write(u32 addr, u32 data)
 
     wait();
     wr_o.write(0);
+    wait();
 }

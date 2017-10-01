@@ -4,16 +4,14 @@ Bus::Bus(sc_module_name nm)
     :sc_module(nm),
     clk_i("clk_i"),
     addr_bi("addr_bi"),
-    //data_bi("data_bi"),
-    data_bo("data_bo"),
+    //data_bo("data_bo"),
     wr_i("wr_i"),
     rd_i("rd_i"),
 
     icconf_wr_o("icconf_wr_o"),
     icconf_rd_o("icconf_rd_o")
-    //icconf_data_bi("icconf_data_bi")
 {
-    data_bo.initialize(0);
+    //data_bo.initialize(0);
 
     icconf_wr_o.initialize(0);
     icconf_rd_o.initialize(0);
@@ -30,6 +28,7 @@ Bus::~Bus(){
 }
 
 void Bus::bus_read() {
+    cout<<"bus_r\n";
     if(rd_i.read()) {
         switch(addr_bi.read()) {
             case ICCONF_ADDRESS:
@@ -42,7 +41,7 @@ void Bus::bus_read() {
                 break;
         }
     }else{
-        //cout<<"bus not read\n";
+        cout<<"bus not read\n";
         icconf_rd_o.write(0);
     }
 }
