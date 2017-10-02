@@ -1,4 +1,4 @@
-#include "mips32.h"
+#include "include/mips32.h"
 
 using namespace std;
 

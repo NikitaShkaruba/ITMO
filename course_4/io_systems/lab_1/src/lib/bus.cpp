@@ -1,4 +1,4 @@
-#include "bus.h"
+#include "include/bus.h"
 
 Bus::Bus(sc_module_name nm)
     :sc_module(nm),

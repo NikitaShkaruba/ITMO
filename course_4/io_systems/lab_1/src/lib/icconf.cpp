@@ -1,4 +1,4 @@
-#include "icconf.h"
+#include "include/icconf.h"
 
 ICCONF::ICCONF(sc_module_name nm)
     :sc_module(nm),

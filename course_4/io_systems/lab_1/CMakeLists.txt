@@ -7,27 +7,28 @@ include_directories(../src) # Set your include path from lib here if version is 
 set(
   SOURCE_FILES
 
-  src/main.cpp
-  src/mem.cpp
-  src/mem.h
-  src/mips32.h
-  src/mips32.cpp
-  src/bus.cpp
-  src/bus.h
-  src/common.h
-  src/fifo.cpp
-  src/fifo.h
-  src/icconf.cpp
-  src/input_capture.cpp
-  src/input_capture.h
-  src/ins.cpp
-  src/ins.h
-  src/mux_control.cpp
-  src/mux_control.h
-  src/prescaler.cpp
-  src/prescaler.h
-  src/timer.cpp
-  src/timer.h
+        src/main.cpp
+        src/lib/mem.cpp
+        src/lib/include/mem.h
+        src/lib/include/mips32.h
+        src/lib/mips32.cpp
+        src/lib/bus.cpp
+        src/lib/include/bus.h
+        src/lib/include/common.h
+        src/lib/fifo.cpp
+        src/lib/include/fifo.h
+        src/lib/icconf.cpp
+        src/lib/input_capture.cpp
+        src/lib/include/input_capture.h
+        src/lib/ins.cpp
+        src/lib/include/ins.h
+        src/lib/mux_control.cpp
+        src/lib/include/mux_control.h
+        src/lib/prescaler.cpp
+        src/lib/include/prescaler.h
+        src/lib/timer.cpp
+        src/lib/include/timer.h
+        src/lib/include/icconf.h
 )
 add_executable(lab_1 ${SOURCE_FILES})
 
