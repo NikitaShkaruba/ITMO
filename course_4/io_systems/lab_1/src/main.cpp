@@ -1,32 +1,37 @@
-#include "mips32.h"
-#include "mem.h"
+#include "lib/include/core.h"
+#include "lib/include/bus.h"
 
 int sc_main(int argc, char* argv[]) {
-  sc_clock clk("clk", sc_time(1000, SC_NS));
+  CORE core("core");
+  Bus bus("bus");
+
+  //region Bind bus and core
   sc_signal<int> addr;
-  sc_signal<int> data_mips32_bo;
-  sc_signal<int> data_mips32_bi;
-  sc_signal<bool> wr;
-  sc_signal<bool> rd;
+  core.address_out(addr);
+  bus.address_in(addr);
 
-  // Create core
-  MIPS32 mips32_core("mips32");
-  mips32_core.clk_i(clk);
-  mips32_core.addr_bo(addr);
-  mips32_core.data_bi(data_mips32_bi);
-  mips32_core.data_bo(data_mips32_bo);
-  mips32_core.wr_o(wr);
-  mips32_core.rd_o(rd);
+  sc_signal<int> core_bus_i;
+  core.data_in(core_bus_i);
+  bus.data_out(core_bus_i);
 
-  // Create memory
-  Mem memory("memory");
-  memory.clk_i(clk);
-  memory.addr_bi(addr);
-  memory.data_bi(data_mips32_bo);
-  memory.data_bo(data_mips32_bi);
-  memory.rd_i(rd);
-  memory.wr_i(wr);
+  sc_signal<int> core_but_o;
+  core.data_out(core_but_o);
+  bus.data_in(core_but_o);
+
+  sc_signal<bool> core_bus_write;
+  core.write_out(core_bus_write);
+  bus.write_in(core_bus_write);
+
+  sc_signal<bool> core_bus_read;
+  core.read_out(core_bus_read);
+  bus.read_in(core_bus_read);
+
+  sc_clock clock("clock", sc_time(10, SC_NS));
+  core.clock_in(clock);
+  bus.clock_in(clock);
+  //endregion
 
   sc_start();
+
   return (0);
 }

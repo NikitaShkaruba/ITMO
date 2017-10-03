@@ -8,10 +8,10 @@ set(
   SOURCE_FILES
 
   src/main.cpp
-  src/mem.cpp
-  src/mem.h
-  src/mips32.cpp
-  src/mips32.h
+  src/lib/core.cpp
+  src/lib/include/core.h
+  src/lib/bus.cpp src/lib/include/bus.h
+        src/lib/include/addresses.h
 )
 add_executable(lab_1 ${SOURCE_FILES})
 

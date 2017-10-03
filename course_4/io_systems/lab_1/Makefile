@@ -9,7 +9,7 @@ FLAGS           = -g -Wall -pedantic -Wno-long-long \
                  -I$(SYSTEMC_INC_DIR)
 LDFLAGS         = -L$(SYSTEMC_LIB_DIR) -lsystemc -lm
 
-SRCS = src/mips32.cpp src/mem.cpp src/main.cpp
+SRCS = src/mips32.cpp src/memory.cpp src/main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 main:
