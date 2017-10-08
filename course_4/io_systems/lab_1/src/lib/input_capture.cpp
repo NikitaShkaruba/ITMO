@@ -67,8 +67,27 @@ void InputCapture::setConfig() {
       break;
 
     default:
-      throw std::invalid_argument("Error in setConfig");
+      throw std::invalid_argument("Error in ic setConfig");
   }
+
+  unsigned int timer_config = (data >> 5) & 0x5;
+  switch (timer_config) {
+    case 0x0:
+      break;
+
+    case 0x01:
+      break;
+
+    case 0x10:
+      break;
+
+    case 0x11:
+      break;
+
+    default:
+      throw std::invalid_argument("Error in timer_config setConfig");
+  }
+
 }
 
 void InputCapture::tick() {

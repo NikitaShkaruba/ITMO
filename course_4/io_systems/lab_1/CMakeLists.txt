@@ -16,7 +16,6 @@ set(SOURCE_FILES
         src/lib/input_capture.cpp
         src/lib/include/input_capture/input_capture.h
         src/lib/include/input_capture/config.h
-        src/lib/include/input_capture/prescaler.h
 )
 
 add_executable(lab_1 ${SOURCE_FILES})

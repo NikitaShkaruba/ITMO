@@ -30,4 +30,5 @@ private:
   Config config;
   unsigned int scale_iteration = 0;
   bool remembered_signal = 0;
+
 };
