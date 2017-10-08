@@ -20,7 +20,7 @@ void Bus::readFromCore() {
     return;
   }
 
-  unsigned_int address = (unsigned_int) core_address_in.read();
+  unsigned int address = (unsigned int) core_address_in.read();
   core_data_out.write(memory[address]);
 }
 
@@ -29,8 +29,8 @@ void Bus::writeFromCore() {
     return;
   }
 
-  unsigned_int address = (unsigned_int) core_address_in.read();
-  unsigned_int data = (unsigned_int) core_data_in.read();
+  unsigned int address = (unsigned int) core_address_in.read();
+  unsigned int data = (unsigned int) core_data_in.read();
   memory[address] = data;
 }
 
@@ -39,6 +39,6 @@ void Bus::readFromIC() {
     return;
   }
 
-  unsigned_int address = (unsigned_int) ic_address_in.read();
+  unsigned int address = (unsigned int) ic_address_in.read();
   ic_data_out.write(memory[address]);
 }

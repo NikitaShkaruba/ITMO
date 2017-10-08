@@ -21,6 +21,7 @@ SC_MODULE(InputCapture) {
   ~InputCapture();
 
   void setConfig();
+  void tick();
 
 private:
   Config config;

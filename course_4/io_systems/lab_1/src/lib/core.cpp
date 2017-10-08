@@ -15,7 +15,7 @@ CORE::CORE(sc_module_name nm) : sc_module(nm), clock_in("clock_in"), address_out
 CORE::~CORE() = default;
 
 void CORE::mainThread() {
-  configure_input_capture(0x5, 0x3);
+  configure_input_capture(0x1, 0x0);
 
   for (int i = 0; i < 1000; i++) {
     cout << "tick" << endl;

@@ -7,19 +7,72 @@ InputCapture::InputCapture(sc_module_name name) : sc_module(name) {
 
   SC_METHOD(setConfig);
   sensitive << clock_in.pos();
+
+  SC_METHOD(tick);
+  sensitive << clock_in.pos();
 }
 
 InputCapture::~InputCapture() = default;
 
 void InputCapture::setConfig() {
-  unsigned_int data = (unsigned_int) data_in.read();
+  unsigned int data = (unsigned int) data_in.read();
 
-  // Fill them by yourself
-  config.capture_config = data & 0x7;
-  config.timer_config = (data >> 5) & 0x3;
+  unsigned int input_capture_config = data & 0x7;
+  switch (input_capture_config) {
+    case 0x0:
+      config.is_enabled = false;
+      break;
 
-  // Don't used. Fill them by yourself
-  config.is_buffer_empty = false;
-  config.is_buffer_full = false;
-  config.reserve = 0;
+    case 0x1:
+      config.is_enabled = true;
+      config.prescaler_interval = 1;
+      config.edge_detector_edge = EDGE_DETECTOR_EDGE_ANY;
+      break;
+
+    case 0x2:
+      config.is_enabled = true;
+      config.prescaler_interval = 1;
+      config.edge_detector_edge = EDGE_DETECTOR_EDGE_FALLING;
+      break;
+
+    case 0x3:
+      config.is_enabled = true;
+      config.prescaler_interval = 1;
+      config.edge_detector_edge = EDGE_DETECTOR_EDGE_RISING;
+      break;
+
+    case 0x4:
+      config.is_enabled = true;
+      config.prescaler_interval = 4;
+      config.edge_detector_edge = EDGE_DETECTOR_EDGE_RISING;
+      break;
+
+    case 0x5:
+      config.is_enabled = true;
+      config.prescaler_interval = 16;
+      config.edge_detector_edge = EDGE_DETECTOR_EDGE_RISING;
+      break;
+
+    case 0x6:
+      config.is_enabled = true;
+      config.prescaler_interval = 4;
+      config.edge_detector_edge = EDGE_DETECTOR_EDGE_FALLING;
+      break;
+
+    case 0x7:
+      config.is_enabled = true;
+      config.prescaler_interval = 16;
+      config.edge_detector_edge = EDGE_DETECTOR_EDGE_FALLING;
+      break;
+
+    default:
+      throw std::invalid_argument("Default case in InputCapture:setConfig");
+  }
+}
+
+void InputCapture::tick() {
+  if (!config.is_enabled) {
+    return;
+  }
+
 }
