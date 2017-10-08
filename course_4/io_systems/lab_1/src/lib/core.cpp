@@ -3,11 +3,11 @@
 
 using namespace std;
 
-CORE::CORE(sc_module_name nm) : sc_module(nm), clock_in("clock_in"), address_out("address_out"), data_in("core_data_in"), data_out("core_data_out"), write_out("write_out"), read_out("read_out") {
-  address_out.initialize(0);
-  data_out.initialize(0);
-  write_out.initialize(0);
-  read_out.initialize(0);
+CORE::CORE(sc_module_name nm) : sc_module(nm), clock_in("clock_in"), bus_address_out("bus_address_out"), bus_data_in("core_data_in"), bus_data_out("core_data_out"), bus_write_out("bus_write_out"), bus_read_out("bus_read_out") {
+  bus_address_out.initialize(0);
+  bus_data_out.initialize(0);
+  bus_write_out.initialize(0);
+  bus_read_out.initialize(0);
 
   SC_CTHREAD(mainThread, clock_in.pos());
 }
@@ -15,10 +15,11 @@ CORE::CORE(sc_module_name nm) : sc_module(nm), clock_in("clock_in"), address_out
 CORE::~CORE() = default;
 
 void CORE::mainThread() {
-  configure_input_capture(0x1, 0x0);
+  configure_input_capture(0x4, 0x0);
 
   for (int i = 0; i < 1000; i++) {
     cout << "tick" << endl;
+    changeInputCaptureSignal(i % 3 == 0);
     wait();
   }
 
@@ -29,14 +30,14 @@ int CORE::readFromBus(int address) {
   int data;
 
   wait();
-  address_out.write(address);
-  read_out.write(1);
+  bus_address_out.write(address);
+  bus_read_out.write(1);
 
   wait();
-  read_out.write(1);
+  bus_read_out.write(1);
 
   wait();
-  data = data_in.read();
+  data = bus_data_in.read();
 
   cout << "CORE: READ " << endl;
   cout << "  -> address: " << hex << address << endl;
@@ -47,12 +48,12 @@ int CORE::readFromBus(int address) {
 
 void CORE::write_to_bus(int address, int data) {
   wait();
-  address_out.write(address);
-  data_out.write(data);
-  write_out.write(1);
+  bus_address_out.write(address);
+  bus_data_out.write(data);
+  bus_write_out.write(1);
 
   wait();
-  write_out.write(0);
+  bus_write_out.write(0);
 
   cout << "CORE: WRITE " << endl;
   cout << "  -> address: " << hex << address << endl;
@@ -63,4 +64,12 @@ void CORE::configure_input_capture(unsigned int input_capture_mode, unsigned int
   int config_bits = 0 | input_capture_mode | timers_config << 5;
 
   write_to_bus(BUS_ADDRESS_INPUT_CAPTURE_CONFIG, config_bits);
+}
+
+void CORE::changeInputCaptureSignal(bool signal) {
+  wait();
+  ic_signal_out.write(signal);
+
+  cout << "CORE: changed input capture signal " << endl;
+  cout << "  -> signal: " << hex << signal << endl;
 }
