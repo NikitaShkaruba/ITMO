@@ -1,5 +1,4 @@
-#ifndef _MIPS32_H
-#define _MIPS32_H
+#pragma once
 
 #include "systemc.h"
 
@@ -19,10 +18,10 @@ SC_MODULE(CORE) {
 
   void mainThread();
 
+  // Probably needs to be defined in other module
+  void configure_input_capture(unsigned int input_capture_mode, unsigned int timers_config);
+
 private:
   void write_to_bus(int address, int data);
-  int read_from_bus(int address);
+  int readFromBus(int address);
 };
-
-
-#endif

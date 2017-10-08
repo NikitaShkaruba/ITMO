@@ -3,16 +3,16 @@ set(CMAKE_CXX_STANDARD 11)
 project(entranse_task)
 
 include_directories(../lib/systemc-2.3.1a/include) # Set your include path from lib here if version is not 2.3.1a
-include_directories(../src) # Set your include path from lib here if version is not 2.3.1a
-set(
-  SOURCE_FILES
+set(SOURCE_FILES
+        src/main.cpp
+        src/lib/core.cpp
+        src/lib/include/core.h
+        src/lib/bus.cpp
+        src/lib/include/bus/bus.h
+        src/lib/include/bus/addresses.h
+        src/lib/input_capture.cpp
+        src/lib/include/input_capture/input_capture.h src/lib/input_capture/config.cpp src/lib/include/input_capture/config.h)
 
-  src/main.cpp
-  src/lib/core.cpp
-  src/lib/include/core.h
-  src/lib/bus.cpp src/lib/include/bus.h
-        src/lib/include/addresses.h
-)
 add_executable(lab_1 ${SOURCE_FILES})
 
 add_library(systemc_lib STATIC IMPORTED)
