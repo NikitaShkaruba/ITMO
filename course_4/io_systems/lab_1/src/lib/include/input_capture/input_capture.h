@@ -1,3 +1,5 @@
+/*
+
 #pragma once
 
 #include "systemc.h"
@@ -32,3 +34,5 @@ private:
   bool remembered_signal = 0;
 
 };
+
+*/

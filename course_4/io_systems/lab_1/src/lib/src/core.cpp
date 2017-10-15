@@ -3,18 +3,31 @@
 
 using namespace std;
 
-CORE::CORE(sc_module_name nm) : sc_module(nm), clock_in("clock_in"), bus_address_out("bus_address_out"), bus_data_in("core_data_in"), bus_data_out("core_data_out"), bus_write_out("bus_write_out"), bus_read_out("bus_read_out") {
-  bus_address_out.initialize(0);
-  bus_data_out.initialize(0);
-  bus_write_out.initialize(0);
-  bus_read_out.initialize(0);
+CORE::CORE(sc_module_name nm) : sc_module(nm),
+    clock_in("clock_in"),
+    data_to_bus("data_to_bus"),
+    address_to_bus("address_to_bus"),
+    write_signal_to_bus("write_signal_to_bus"),
+    data_from_bus("data_from_bus"),
+    read_signal_to_bus("read_signal_to_bus")
+{
+    //bus_address_out.initialize(0);
+    //bus_data_out.initialize(0);
+    //bus_write_out.initialize(0);
+    //bus_read_out.initialize(0);
+    data_to_bus.initialize(0);
+    address_to_bus.initialize(0);
+    write_signal_to_bus.initialize(0);
 
-  SC_CTHREAD(mainThread, clock_in.pos());
+    read_signal_to_bus.initialize(0);
+
+    SC_CTHREAD(main_thread, clock_in.pos());
 }
 
 CORE::~CORE() = default;
 
-void CORE::mainThread() {
+void CORE::main_thread() {
+  /*
   configure_input_capture(0x4, 0x0);
 
   for (int i = 0; i < 1000; i++) {
@@ -22,9 +35,68 @@ void CORE::mainThread() {
     changeInputCaptureSignal(i % 3 == 0);
     wait();
   }
+  */
 
-  sc_stop();
+
+    write_to_bus(BUS_ADDRESS_ICCONF,0x43);
+    read_from_bus(BUS_ADDRESS_ICCONF);
+
+    sc_stop();
 }
+
+void CORE::write_to_bus(u32 address, u32 data) {
+    //wait();
+    printf("==0==\n");
+    address_to_bus.write(address);
+    data_to_bus.write(data);
+    write_signal_to_bus.write(1);
+    wait();
+    printf("==1==\n");
+
+    write_signal_to_bus.write(0);
+    wait();
+    printf("==2==\n");
+
+    cout << "CORE: WRITE " << endl;
+    cout << "  -> address: " << hex << address << endl;
+    cout << "  -> data: " << hex << data << endl;
+}
+
+u32 CORE::read_from_bus(u32 address) {
+    u32 data;
+
+    printf("==0==\n");
+    address_to_bus.write(address);
+    read_signal_to_bus.write(1);
+    wait();
+
+    printf("==1==\n");
+    read_signal_to_bus.write(0);
+    wait();
+
+    printf("==2==\n");
+    wait();
+
+    printf("==3==\n");
+    wait();
+
+    printf("==4==\n");
+    wait();
+
+    printf("read\n");
+    data = data_from_bus.read();
+    wait();
+
+    printf("==3==\n");
+
+    cout << "CORE: READ " << endl;
+    cout << "  -> address: " << hex << address << endl;
+    cout << "  -> data: " << hex << data << endl;
+
+    return data;
+}
+
+/*
 
 int CORE::readFromBus(int address) {
   int data;
@@ -73,3 +145,4 @@ void CORE::changeInputCaptureSignal(bool signal) {
   cout << "CORE: changed input capture signal " << endl;
   cout << "  -> signal: " << hex << signal << endl;
 }
+*/

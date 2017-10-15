@@ -1,61 +1,66 @@
 #include "lib/include/core.h"
 #include "lib/include/bus.h"
-#include "lib/include/input_capture/input_capture.h"
+#include "lib/include/icconf.h"
+
 
 int sc_main(int argc, char* argv[]) {
-  CORE core("core");
-  Bus bus("bus");
-  InputCapture input_capture("input_capture");
+    CORE core("core");
+    Bus bus("bus");
+    ICCONF icconf("icconf");
 
-  //region Bind Bus and Core
-  sc_signal<int> core_bus_address;
-  core.bus_address_out(core_bus_address);
-  bus.core_address_in(core_bus_address);
+    //region Bind Bus and Core
+    sc_signal<u32> address_core_bus;
+    core.address_to_bus(address_core_bus);
+    bus.address_from_core(address_core_bus);
 
-  sc_signal<int> core_bus_i;
-  core.bus_data_in(core_bus_i);
-  bus.core_data_out(core_bus_i);
+    sc_signal<u32> data_core_bus;
+    core.data_to_bus(data_core_bus);
+    bus.data_from_core(data_core_bus);
 
-  sc_signal<int> core_bus_o;
-  core.bus_data_out(core_bus_o);
-  bus.core_data_in(core_bus_o);
+    sc_signal<bool> write_signal_core_bus;
+    core.write_signal_to_bus(write_signal_core_bus);
+    bus.write_signal_from_core(write_signal_core_bus);
 
-  sc_signal<bool> core_bus_write;
-  core.bus_write_out(core_bus_write);
-  bus.core_write_in(core_bus_write);
+    sc_signal<u32> data_bus_core;
+    core.data_from_bus(data_bus_core);
+    bus.data_to_core(data_bus_core);
 
-  sc_signal<bool> core_bus_read;
-  core.bus_read_out(core_bus_read);
-  bus.core_read_in(core_bus_read);
-  //endregion
+    sc_signal<bool> read_signal_core_bus;
+    core.read_signal_to_bus(read_signal_core_bus);
+    bus.read_signal_from_core(read_signal_core_bus);
+    //endregion
 
-  // region Bind Bus and InputCapture
-  sc_signal<int> ic_bus_address;
-  input_capture.address_out(ic_bus_address);
-  bus.ic_address_in(ic_bus_address);
+    // region Bind Bus and ICCONF
+    sc_signal<u32> data_bus_icconf;
+    bus.data_to_icconf(data_bus_icconf);
+    icconf.data_from_bus(data_bus_icconf);
 
-  sc_signal<int> ic_bus_input;
-  input_capture.data_in(ic_bus_input);
-  bus.ic_data_out(ic_bus_input);
+    sc_signal<bool> write_signal_bus_icconf;
+    bus.write_signal_to_icconf(write_signal_bus_icconf);
+    icconf.write_signal_from_bus(write_signal_bus_icconf);
 
-  sc_signal<bool> ic_bus_read;
-  input_capture.read_out(ic_bus_read);
-  bus.ic_read_in(ic_bus_read);
-  // endregion
+    sc_signal<u32> data_icconf_bus;
+    bus.data_from_icconf(data_icconf_bus);
+    icconf.data_to_bus(data_icconf_bus);
 
-  // region Bind Core and InputCapture
-  sc_signal<bool> core_ic_signal;
-  core.ic_signal_out(core_ic_signal);
-  input_capture.input_signal(core_ic_signal);
-  // endregion
+    sc_signal<bool> read_signal_bus_icconf;
+    bus.read_signal_to_icconf(read_signal_bus_icconf);
+    icconf.read_signal_from_bus(read_signal_bus_icconf);
 
-  // region Bind Clock
-  sc_clock clock("clock", sc_time(10, SC_NS));
-  core.clock_in(clock);
-  bus.clock_in(clock);
-  input_capture.clock_in(clock);
-  // endregion
+    sc_signal<bool> write_signal_icconf_bus;
+    bus.write_signal_from_icconf(write_signal_icconf_bus);
+    icconf.write_signal_to_bus(write_signal_icconf_bus);
+    // endregion
 
-  sc_start();
-  return (0);
+    // region Bind Clock
+    sc_clock clock("clock", sc_time(10, SC_NS));
+    core.clock_in(clock);
+    bus.clock_in(clock);
+    icconf.clock_in(clock);
+    // endregion
+
+    printf("c");
+
+    sc_start();
+    return (0);
 }

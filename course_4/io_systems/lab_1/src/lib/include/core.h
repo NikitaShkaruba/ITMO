@@ -3,28 +3,30 @@
 #include "common.h"
 
 SC_MODULE(CORE) {
-  sc_in<bool> clock_in;
+    sc_in<bool> clock_in;
 
-  sc_in<int> bus_data_in;
-  sc_out<int> bus_data_out;
-  sc_out<int> bus_address_out;
-  sc_out<bool> bus_write_out;
-  sc_out<bool> bus_read_out;
+    //Write to bus
+    sc_out<u32> data_to_bus;
+    sc_out<u32> address_to_bus;
+    sc_out<bool> write_signal_to_bus;
 
-  sc_out<bool> ic_signal_out;
+    //Read from bus
+    sc_in<u32> data_from_bus;
+    sc_out<bool> read_signal_to_bus;
 
-  SC_HAS_PROCESS(CORE);
 
-  CORE(sc_module_name nm);
-  ~CORE();
+    SC_HAS_PROCESS(CORE);
 
-  void mainThread();
+    CORE(sc_module_name nm);
+    ~CORE();
+
+    void main_thread();
 
   // Probably needs to be defined in other module
-  void configure_input_capture(unsigned int input_capture_mode, unsigned int timers_config);
-  void changeInputCaptureSignal(bool signal);
+  //void configure_input_capture(unsigned int input_capture_mode, unsigned int timers_config);
+  //void changeInputCaptureSignal(bool signal);
 
 private:
-  void write_to_bus(int address, int data);
-  int readFromBus(int address);
+  void write_to_bus(u32 address, u32 data);
+  u32 read_from_bus(u32 address);
 };

@@ -1,3 +1,5 @@
+/*
+
 #include "include/input_capture/input_capture.h"
 #include "include/addresses.h"
 
@@ -138,3 +140,5 @@ bool InputCapture::isPassesEdgeDetector(bool input_signal) {
       throw std::invalid_argument("Error in edge detector");
   }
 }
+
+*/

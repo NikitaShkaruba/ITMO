@@ -4,27 +4,33 @@
 #include "addresses.h"
 
 SC_MODULE(Bus) {
-  sc_in<bool>  clock_in;
+    sc_in<bool>  clock_in;
 
-  sc_in<u32>   address_from_core;
-  sc_in<u32>   data_from_core;
-  sc_in<bool>  write_signal_from_core;
+    //Write from core
+    sc_in<u32>   address_from_core;
+    sc_in<u32>   data_from_core;
+    sc_in<bool>  write_signal_from_core;
 
-  sc_out<int>  core_data_out;
-  sc_in<bool>  core_read_in;
+    //Write to core
+    sc_out<u32>  data_to_core;
+    sc_in<bool>  read_signal_from_core;
 
-  sc_out<u32>   data_to_icconf;
-  //sc_out<int>  ic_data_out;
-  sc_out<bool>  write_signal_to_icconf;
+    //Write to icconf
+    sc_out<u32>   data_to_icconf;
+    sc_out<bool>  write_signal_to_icconf;
 
-  SC_HAS_PROCESS(Bus);
+    //Read from icconf
+    sc_in<u32> data_from_icconf;
+    sc_out<bool> read_signal_to_icconf;
+    sc_in<bool> write_signal_from_icconf;
 
-  Bus(sc_module_name name);
-  ~Bus();
+    SC_HAS_PROCESS(Bus);
 
-  void write_from_core();
-  //void readFromCore();
-  //void readFromIC();
+    Bus(sc_module_name name);
+    ~Bus();
+
+    void write_from_core();
+    void read_from_icconf();
 
 private:
 };

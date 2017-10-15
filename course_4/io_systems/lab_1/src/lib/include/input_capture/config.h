@@ -1,3 +1,5 @@
+/*
+
 #pragma once
 
 const unsigned int CONFIG_EDGE_ANY = 0;
@@ -12,3 +14,5 @@ public:
   unsigned int scale = 0;
   unsigned int edge = 0;
 };
+
+*/

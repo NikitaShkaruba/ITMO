@@ -9,14 +9,13 @@ set(SOURCE_FILES
         src/lib/src/core.cpp
         src/lib/include/core.h
 
-        src/lib/src/bus.cpp
         src/lib/include/bus.h
         src/lib/include/addresses.h
 
         src/lib/input_capture.cpp
         src/lib/include/input_capture/input_capture.h
         src/lib/include/input_capture/config.h
-        src/lib/include/icconf.h src/lib/include/timer1.h src/lib/include/common.h src/lib/src/timer1.cpp)
+        src/lib/include/timer1.h src/lib/include/common.h src/lib/src/timer1.cpp src/lib/src/icconf.cpp src/lib/include/icconf.h src/lib/src/bus.cpp)
 
 add_executable(lab_1 ${SOURCE_FILES})
 

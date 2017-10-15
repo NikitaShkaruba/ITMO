@@ -204,6 +204,33 @@ src/lib/src/core.cpp.s:
 	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/core.cpp.s
 .PHONY : src/lib/src/core.cpp.s
 
+src/lib/src/icconf.o: src/lib/src/icconf.cpp.o
+
+.PHONY : src/lib/src/icconf.o
+
+# target to build an object file
+src/lib/src/icconf.cpp.o:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o
+.PHONY : src/lib/src/icconf.cpp.o
+
+src/lib/src/icconf.i: src/lib/src/icconf.cpp.i
+
+.PHONY : src/lib/src/icconf.i
+
+# target to preprocess a source file
+src/lib/src/icconf.cpp.i:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i
+.PHONY : src/lib/src/icconf.cpp.i
+
+src/lib/src/icconf.s: src/lib/src/icconf.cpp.s
+
+.PHONY : src/lib/src/icconf.s
+
+# target to generate assembly for a file
+src/lib/src/icconf.cpp.s:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s
+.PHONY : src/lib/src/icconf.cpp.s
+
 src/lib/src/timer1.o: src/lib/src/timer1.cpp.o
 
 .PHONY : src/lib/src/timer1.o
@@ -276,6 +303,9 @@ help:
 	@echo "... src/lib/src/core.o"
 	@echo "... src/lib/src/core.i"
 	@echo "... src/lib/src/core.s"
+	@echo "... src/lib/src/icconf.o"
+	@echo "... src/lib/src/icconf.i"
+	@echo "... src/lib/src/icconf.s"
 	@echo "... src/lib/src/timer1.o"
 	@echo "... src/lib/src/timer1.i"
 	@echo "... src/lib/src/timer1.s"

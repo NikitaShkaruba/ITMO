@@ -105,33 +105,9 @@ CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o.provides: CMakeFiles/lab_1.dir/src/l
 CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o
 
 
-CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o: CMakeFiles/lab_1.dir/flags.make
-CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o: src/lib/src/bus.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp
-
-CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp > CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i
-
-CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s
-
-CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires:
-
-.PHONY : CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires
-
-CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires
-	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides.build
-.PHONY : CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides
-
-CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o
-
-
 CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o: src/lib/input_capture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/input_capture.cpp
 
 CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.i: cmake_force
@@ -155,7 +131,7 @@ CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o.provides.build: CMakeFiles/lab_
 
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: src/lib/src/timer1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.i: cmake_force
@@ -177,26 +153,76 @@ CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o.provides: CMakeFiles/lab_1.dir/src
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o
 
 
+CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o: CMakeFiles/lab_1.dir/flags.make
+CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o: src/lib/src/icconf.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp
+
+CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp > CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i
+
+CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp -o CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s
+
+CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.requires:
+
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.requires
+
+CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.provides: CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.provides.build
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.provides
+
+CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o
+
+
+CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o: CMakeFiles/lab_1.dir/flags.make
+CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o: src/lib/src/bus.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp
+
+CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp > CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i
+
+CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s
+
+CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires:
+
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires
+
+CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides.build
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides
+
+CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o
+
+
 # Object files for target lab_1
 lab_1_OBJECTS = \
 "CMakeFiles/lab_1.dir/src/main.cpp.o" \
 "CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o" \
-"CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o" \
 "CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o" \
-"CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
+"CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o" \
+"CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o" \
+"CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
 
 # External object files for target lab_1
 lab_1_EXTERNAL_OBJECTS =
 
 lab_1: CMakeFiles/lab_1.dir/src/main.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o
-lab_1: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o
+lab_1: CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o
+lab_1: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o
 lab_1: CMakeFiles/lab_1.dir/build.make
 lab_1: systemc-2.3.1a/lib-linux64/libsystemc.so
 lab_1: CMakeFiles/lab_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable lab_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable lab_1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab_1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -206,9 +232,10 @@ CMakeFiles/lab_1.dir/build: lab_1
 
 CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/main.cpp.o.requires
 CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o.requires
-CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires
 CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o.requires
 CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o.requires
+CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.requires
+CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires
 
 .PHONY : CMakeFiles/lab_1.dir/requires
 
