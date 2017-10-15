@@ -1,5 +1,5 @@
 #include "lib/include/core.h"
-#include "lib/include/bus/bus.h"
+#include "lib/include/bus.h"
 #include "lib/include/input_capture/input_capture.h"
 
 int sc_main(int argc, char* argv[]) {

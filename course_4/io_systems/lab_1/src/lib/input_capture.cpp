@@ -1,5 +1,5 @@
 #include "include/input_capture/input_capture.h"
-#include "include/bus/addresses.h"
+#include "include/addresses.h"
 
 InputCapture::InputCapture(sc_module_name name) : sc_module(name) {
   read_out.initialize(1);

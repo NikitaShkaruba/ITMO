@@ -1,6 +1,6 @@
 #pragma once
 
-#include "systemc.h"
+#include "common.h"
 
 SC_MODULE(CORE) {
   sc_in<bool> clock_in;
