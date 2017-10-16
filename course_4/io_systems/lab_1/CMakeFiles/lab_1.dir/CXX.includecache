@@ -22,6 +22,8 @@ addresses.h
 systemc.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/systemc.h
 
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
+
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
 common.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
@@ -34,14 +36,6 @@ common.h
 common.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/config.h
-
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/input_capture.h
-systemc.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/systemc.h
-config.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/config.h
-
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
 common.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
@@ -49,12 +43,6 @@ common.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
 common.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
-
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/input_capture.cpp
-include/input_capture/input_capture.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/input_capture.h
-include/addresses.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
 
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp
 ../include/buffer.h
@@ -69,6 +57,8 @@ include/addresses.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
 ../include/addresses.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
+../include/consts.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
 
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
 ../include/edge_detector.h

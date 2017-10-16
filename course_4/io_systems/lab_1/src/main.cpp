@@ -170,6 +170,20 @@ int sc_main(int argc, char* argv[]) {
     buffer.mode_from_icconf(mode_icconf_buffer);
     // endregion
 
+    //region Bind Bus and Buffer
+    sc_signal<u32> data_buffer_bus;
+    bus.data_from_buffer(data_buffer_bus);
+    buffer.data_to_bus(data_buffer_bus);
+
+    sc_signal<bool> read_signal_bus_buffer;
+    bus.read_signal_to_buffer(read_signal_bus_buffer);
+    buffer.read_signal_from_bus(read_signal_bus_buffer);
+
+    sc_signal<bool> write_signal_buffer_bus;
+    bus.write_signal_from_buffer(write_signal_buffer_bus);
+    buffer.write_signal_to_bus(write_signal_buffer_bus);
+    //endregion
+
     // region Bind Clock
     sc_clock clock("clock", sc_time(10, SC_NS));
     core.clock_in(clock);

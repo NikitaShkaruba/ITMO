@@ -123,33 +123,6 @@ lab_1/fast:
 	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/build
 .PHONY : lab_1/fast
 
-src/lib/input_capture.o: src/lib/input_capture.cpp.o
-
-.PHONY : src/lib/input_capture.o
-
-# target to build an object file
-src/lib/input_capture.cpp.o:
-	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o
-.PHONY : src/lib/input_capture.cpp.o
-
-src/lib/input_capture.i: src/lib/input_capture.cpp.i
-
-.PHONY : src/lib/input_capture.i
-
-# target to preprocess a source file
-src/lib/input_capture.cpp.i:
-	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.i
-.PHONY : src/lib/input_capture.cpp.i
-
-src/lib/input_capture.s: src/lib/input_capture.cpp.s
-
-.PHONY : src/lib/input_capture.s
-
-# target to generate assembly for a file
-src/lib/input_capture.cpp.s:
-	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.s
-.PHONY : src/lib/input_capture.cpp.s
-
 src/lib/src/buffer.o: src/lib/src/buffer.cpp.o
 
 .PHONY : src/lib/src/buffer.o
@@ -375,9 +348,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... lab_1"
-	@echo "... src/lib/input_capture.o"
-	@echo "... src/lib/input_capture.i"
-	@echo "... src/lib/input_capture.s"
 	@echo "... src/lib/src/buffer.o"
 	@echo "... src/lib/src/buffer.i"
 	@echo "... src/lib/src/buffer.s"

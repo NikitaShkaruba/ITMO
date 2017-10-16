@@ -1,5 +1,6 @@
 #include "../include/core.h"
 #include "../include/addresses.h"
+#include "../include/consts.h"
 
 using namespace std;
 
@@ -70,50 +71,47 @@ void CORE::main_thread() {
     read_from_bus(BUS_ADDRESS_TVAL2);
 */
 
-    /*
-    write_to_bus(BUS_ADDRESS_ICCONF,0x5);
-
-    bool sig=false;
-
-    for(int i=0;i<40;i++){
-        signal_to_edge_detector.write(sig);
-        sig=!sig;
-
-        wait();
-        wait();
-        wait();
-    }
-     */
-
+    //Complex test
+    //Настройка таймеров
     write_to_bus(BUS_ADDRESS_TMR1,10);
     write_to_bus(BUS_ADDRESS_TCONF1,0x2);
     write_to_bus(BUS_ADDRESS_TMR2,20);
     write_to_bus(BUS_ADDRESS_TCONF2,0x2);
+
+    //Настраиваем EdgeDetector, Prescaler и Buffer
     write_to_bus(BUS_ADDRESS_ICCONF,0x5 | 3 << 5);
 
+    //Генерируем входной сигнал и забиваем буфер до отказа
     bool sig=false;
 
-    for(int i=0;i<160;i++){
+    for(int i=0;i<2000;i++){
         signal_to_edge_detector.write(sig);
         sig=!sig;
 
-        wait();
-        wait();
-        wait();
+        u32 icconf=read_from_bus(BUS_ADDRESS_ICCONF);
+
+        if( icconf & 0x10 ){
+            printf("Full\n");
+            break;
+        }
+
+        //wait(); вместо read_from_bus
+        //wait();
+        //wait();
     }
 
-    /*
-    write_to_bus(BUS_ADDRESS_ICCONF,0x43);
+    //Читаем буфер пока он не опустеет
+    while(1) {
+        u32 icconf=read_from_bus(BUS_ADDRESS_ICCONF);
 
-    //write_to_bus(BUS_ADDRESS_ICCONF,read_from_bus(BUS_ADDRESS_ICCONF)|=0x02);
+        if( icconf & 0x08 ){
+            printf("Empty\n");
+            break;
+        }
 
-    read_from_bus(BUS_ADDRESS_ICCONF);
-    write_to_bus(BUS_ADDRESS_TVAL1,0x24);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    write_to_bus(BUS_ADDRESS_TMR1,0x12);
-    read_from_bus(BUS_ADDRESS_TMR1);
-    read_from_bus(BUS_ADDRESS_ICCONF);
-     */
+        u32 record=read_from_bus(BUS_ADDRESS_BUFFER);
+        printf("Record %d %d\n", record>>16, record &0xFFFF);
+    }
 
     sc_stop();
 }

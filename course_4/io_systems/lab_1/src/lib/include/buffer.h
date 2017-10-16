@@ -25,6 +25,11 @@ SC_MODULE(Buffer) {
     sc_out<bool> buffer_empty_signal_to_icconf;
     sc_out<bool> buffer_full_signal_to_icconf;
 
+    // Write to bus
+    sc_out<u32> data_to_bus;
+    sc_in<bool> read_signal_from_bus;
+    sc_out<bool> write_signal_to_bus;
+
     SC_HAS_PROCESS(Buffer);
 
     Buffer(sc_module_name name);
@@ -34,8 +39,14 @@ SC_MODULE(Buffer) {
     void read_timers();
     void buffer_empty();
     void buffer_full();
+    void write_to_bus();
 
 private:
+    bool is_full();
+    bool is_empty();
+    void push(u32 data);
+    u32 pop();
+
     u32 mem[32];
     u32 head;
     u32 tail;
