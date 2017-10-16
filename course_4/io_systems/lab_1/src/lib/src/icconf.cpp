@@ -6,10 +6,14 @@ ICCONF::ICCONF(sc_module_name nm) : sc_module(nm),
     write_signal_from_bus("icconf_write_signal_from_bus"),
     data_to_bus("icconf_data_to_bus"),
     read_signal_from_bus("icconf_read_signal_from_bus"),
-    write_signal_to_bus("icconf_write_signal_to_bus")
+    write_signal_to_bus("icconf_write_signal_to_bus"),
+
+    mode_to_edge_detector("mode_to_edge_detector")
 {
     data_to_bus.initialize(0);
     write_signal_to_bus.initialize(0);
+
+    mode_to_edge_detector.initialize(0);
 
     SC_METHOD(write_from_bus);
     sensitive << clock_in.pos();
@@ -27,6 +31,9 @@ void ICCONF::write_from_bus() {
         u32 data = data_from_bus.read();
 
         icconf = data;
+        printf("icconf %d",icconf);
+        mode_to_edge_detector.write(icconf & 0x7);
+
     }
 }
 

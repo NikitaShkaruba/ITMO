@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
   "CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o"
   "CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
+  "CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o"
+  "CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o"
   "lab_1.pdb"
   "lab_1"
 )

@@ -22,6 +22,10 @@ systemc.h
 common.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
+common.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
 common.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
@@ -33,6 +37,10 @@ systemc.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/systemc.h
 config.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/config.h
+
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
+common.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
 common.h
@@ -54,9 +62,17 @@ include/addresses.h
 ../include/addresses.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
 
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
+../include/edge_detector.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
+
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp
 ../include/icconf.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
+
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp
+../include/prescaler.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
 
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp
 ../include/timer1.h
@@ -73,6 +89,10 @@ lib/include/icconf.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
 lib/include/timer1.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
+lib/include/edge_detector.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
+lib/include/prescaler.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
 
 systemc-2.3.1a/include/sysc/communication/sc_buffer.h
 sysc/communication/sc_signal.h

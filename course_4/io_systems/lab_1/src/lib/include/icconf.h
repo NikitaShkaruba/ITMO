@@ -15,6 +15,9 @@ SC_MODULE(ICCONF) {
     sc_in<bool> read_signal_from_bus;
     sc_out<bool> write_signal_to_bus;
 
+    // To EdgeDetector
+    sc_out<u32> mode_to_edge_detector;
+
     SC_HAS_PROCESS(ICCONF);
 
     ICCONF(sc_module_name name);

@@ -14,6 +14,8 @@ SC_MODULE(CORE) {
     sc_in<u32> data_from_bus;
     sc_out<bool> read_signal_to_bus;
 
+    sc_out<bool> signal_to_edge_detector;
+
 
     SC_HAS_PROCESS(CORE);
 

@@ -9,7 +9,8 @@ CORE::CORE(sc_module_name nm) : sc_module(nm),
     address_to_bus("address_to_bus"),
     write_signal_to_bus("write_signal_to_bus"),
     data_from_bus("data_from_bus"),
-    read_signal_to_bus("read_signal_to_bus")
+    read_signal_to_bus("read_signal_to_bus"),
+    signal_to_edge_detector("signal_to_edge_detector")
 {
     //bus_address_out.initialize(0);
     //bus_data_out.initialize(0);
@@ -20,6 +21,7 @@ CORE::CORE(sc_module_name nm) : sc_module(nm),
     write_signal_to_bus.initialize(0);
 
     read_signal_to_bus.initialize(0);
+    signal_to_edge_detector.initialize(0);
 
     SC_CTHREAD(main_thread, clock_in.pos());
 }
@@ -27,6 +29,7 @@ CORE::CORE(sc_module_name nm) : sc_module(nm),
 CORE::~CORE() = default;
 
 void CORE::main_thread() {
+    /*
     write_to_bus(BUS_ADDRESS_TMR1,10);
     write_to_bus(BUS_ADDRESS_TCONF1,0x2);
     read_from_bus(BUS_ADDRESS_TVAL1);
@@ -34,6 +37,21 @@ void CORE::main_thread() {
     read_from_bus(BUS_ADDRESS_TVAL1);
     read_from_bus(BUS_ADDRESS_TVAL1);
     read_from_bus(BUS_ADDRESS_TVAL1);
+     */
+
+    write_to_bus(BUS_ADDRESS_ICCONF,0x5);
+
+    bool sig=false;
+
+    for(int i=0;i<40;i++){
+        signal_to_edge_detector.write(sig);
+        sig=!sig;
+
+        wait();
+        wait();
+        wait();
+    }
+
     /*
     write_to_bus(BUS_ADDRESS_ICCONF,0x43);
 

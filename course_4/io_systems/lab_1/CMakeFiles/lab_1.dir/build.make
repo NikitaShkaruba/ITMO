@@ -201,6 +201,54 @@ CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides: CMakeFiles/lab_1.dir/src/li
 CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o
 
 
+CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o: CMakeFiles/lab_1.dir/flags.make
+CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o: src/lib/src/edge_detector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
+
+CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp > CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i
+
+CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp -o CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s
+
+CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.requires:
+
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.requires
+
+CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.provides: CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.provides.build
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.provides
+
+CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o
+
+
+CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o: CMakeFiles/lab_1.dir/flags.make
+CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o: src/lib/src/prescaler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp
+
+CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp > CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i
+
+CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp -o CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s
+
+CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.requires:
+
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.requires
+
+CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.provides: CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.requires
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.provides.build
+.PHONY : CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.provides
+
+CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o
+
+
 # Object files for target lab_1
 lab_1_OBJECTS = \
 "CMakeFiles/lab_1.dir/src/main.cpp.o" \
@@ -208,7 +256,9 @@ lab_1_OBJECTS = \
 "CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o" \
 "CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o" \
 "CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o" \
-"CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
+"CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o" \
+"CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o" \
+"CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o"
 
 # External object files for target lab_1
 lab_1_EXTERNAL_OBJECTS =
@@ -219,10 +269,12 @@ lab_1: CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o
+lab_1: CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o
+lab_1: CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o
 lab_1: CMakeFiles/lab_1.dir/build.make
 lab_1: systemc-2.3.1a/lib-linux64/libsystemc.so
 lab_1: CMakeFiles/lab_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable lab_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable lab_1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab_1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -236,6 +288,8 @@ CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o.
 CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o.requires
 CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.requires
 CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires
+CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.requires
+CMakeFiles/lab_1.dir/requires: CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.requires
 
 .PHONY : CMakeFiles/lab_1.dir/requires
 

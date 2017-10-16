@@ -204,6 +204,33 @@ src/lib/src/core.cpp.s:
 	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/core.cpp.s
 .PHONY : src/lib/src/core.cpp.s
 
+src/lib/src/edge_detector.o: src/lib/src/edge_detector.cpp.o
+
+.PHONY : src/lib/src/edge_detector.o
+
+# target to build an object file
+src/lib/src/edge_detector.cpp.o:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o
+.PHONY : src/lib/src/edge_detector.cpp.o
+
+src/lib/src/edge_detector.i: src/lib/src/edge_detector.cpp.i
+
+.PHONY : src/lib/src/edge_detector.i
+
+# target to preprocess a source file
+src/lib/src/edge_detector.cpp.i:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i
+.PHONY : src/lib/src/edge_detector.cpp.i
+
+src/lib/src/edge_detector.s: src/lib/src/edge_detector.cpp.s
+
+.PHONY : src/lib/src/edge_detector.s
+
+# target to generate assembly for a file
+src/lib/src/edge_detector.cpp.s:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s
+.PHONY : src/lib/src/edge_detector.cpp.s
+
 src/lib/src/icconf.o: src/lib/src/icconf.cpp.o
 
 .PHONY : src/lib/src/icconf.o
@@ -230,6 +257,33 @@ src/lib/src/icconf.s: src/lib/src/icconf.cpp.s
 src/lib/src/icconf.cpp.s:
 	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s
 .PHONY : src/lib/src/icconf.cpp.s
+
+src/lib/src/prescaler.o: src/lib/src/prescaler.cpp.o
+
+.PHONY : src/lib/src/prescaler.o
+
+# target to build an object file
+src/lib/src/prescaler.cpp.o:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o
+.PHONY : src/lib/src/prescaler.cpp.o
+
+src/lib/src/prescaler.i: src/lib/src/prescaler.cpp.i
+
+.PHONY : src/lib/src/prescaler.i
+
+# target to preprocess a source file
+src/lib/src/prescaler.cpp.i:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i
+.PHONY : src/lib/src/prescaler.cpp.i
+
+src/lib/src/prescaler.s: src/lib/src/prescaler.cpp.s
+
+.PHONY : src/lib/src/prescaler.s
+
+# target to generate assembly for a file
+src/lib/src/prescaler.cpp.s:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s
+.PHONY : src/lib/src/prescaler.cpp.s
 
 src/lib/src/timer1.o: src/lib/src/timer1.cpp.o
 
@@ -303,9 +357,15 @@ help:
 	@echo "... src/lib/src/core.o"
 	@echo "... src/lib/src/core.i"
 	@echo "... src/lib/src/core.s"
+	@echo "... src/lib/src/edge_detector.o"
+	@echo "... src/lib/src/edge_detector.i"
+	@echo "... src/lib/src/edge_detector.s"
 	@echo "... src/lib/src/icconf.o"
 	@echo "... src/lib/src/icconf.i"
 	@echo "... src/lib/src/icconf.s"
+	@echo "... src/lib/src/prescaler.o"
+	@echo "... src/lib/src/prescaler.i"
+	@echo "... src/lib/src/prescaler.s"
 	@echo "... src/lib/src/timer1.o"
 	@echo "... src/lib/src/timer1.i"
 	@echo "... src/lib/src/timer1.s"

@@ -96,6 +96,9 @@
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h">
 			<Option target="lab_1"/>
 		</Unit>
+		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h">
+			<Option target="lab_1"/>
+		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h">
 			<Option target="lab_1"/>
 		</Unit>
@@ -103,6 +106,9 @@
 			<Option target="lab_1"/>
 		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/input_capture/input_capture.h">
+			<Option target="lab_1"/>
+		</Unit>
+		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h">
 			<Option target="lab_1"/>
 		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h">
@@ -117,7 +123,13 @@
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp">
 			<Option target="lab_1"/>
 		</Unit>
+		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp">
+			<Option target="lab_1"/>
+		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp">
+			<Option target="lab_1"/>
+		</Unit>
+		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp">
 			<Option target="lab_1"/>
 		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp">

@@ -2,6 +2,8 @@
 #include "lib/include/bus.h"
 #include "lib/include/icconf.h"
 #include "lib/include/timer1.h"
+#include "lib/include/edge_detector.h"
+#include "lib/include/prescaler.h"
 
 
 int sc_main(int argc, char* argv[]) {
@@ -9,6 +11,8 @@ int sc_main(int argc, char* argv[]) {
     Bus bus("bus");
     ICCONF icconf("icconf");
     Timer1 timer1("timer1");
+    EdgeDetector edge_detector("edge_detector");
+    Prescaler prescaler("prescaler");
 
     //region Bind Bus and Core
     sc_signal<u32> address_core_bus;
@@ -80,12 +84,33 @@ int sc_main(int argc, char* argv[]) {
     timer1.write_signal_to_bus(write_signal_timer1_bus);
     // endregion
 
+    // region Bind EdgeDetector and Prescaler
+    sc_signal<u32> mode_icconf_edge_detector_prescaler;
+    edge_detector.mode_from_icconf(mode_icconf_edge_detector_prescaler);
+    icconf.mode_to_edge_detector(mode_icconf_edge_detector_prescaler);
+    prescaler.mode_from_icconf(mode_icconf_edge_detector_prescaler);
+
+    sc_signal<bool> signal_core_edge_detector;
+    edge_detector.input_signal(signal_core_edge_detector);
+    core.signal_to_edge_detector(signal_core_edge_detector);
+
+    sc_signal<bool> edge_signal_edge_detector_prescaler;
+    edge_detector.edge_signal_to_prescaler(edge_signal_edge_detector_prescaler);
+    prescaler.edge_signal_from_edge_detector(edge_signal_edge_detector_prescaler);
+
+    //sc_signal<bool> signal_core_edge_detector;
+    //edge_detector.input_signal(signal_core_edge_detector);
+    //core.signal_to_edge_detector(signal_core_edge_detector);
+    // endregion
+
     // region Bind Clock
     sc_clock clock("clock", sc_time(10, SC_NS));
     core.clock_in(clock);
     bus.clock_in(clock);
     icconf.clock_in(clock);
     timer1.clock_in(clock);
+    edge_detector.clock_in(clock);
+    prescaler.clock_in(clock);
     // endregion
 
     sc_start();
