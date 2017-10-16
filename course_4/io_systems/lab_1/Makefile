@@ -150,6 +150,33 @@ src/lib/input_capture.cpp.s:
 	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.s
 .PHONY : src/lib/input_capture.cpp.s
 
+src/lib/src/buffer.o: src/lib/src/buffer.cpp.o
+
+.PHONY : src/lib/src/buffer.o
+
+# target to build an object file
+src/lib/src/buffer.cpp.o:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o
+.PHONY : src/lib/src/buffer.cpp.o
+
+src/lib/src/buffer.i: src/lib/src/buffer.cpp.i
+
+.PHONY : src/lib/src/buffer.i
+
+# target to preprocess a source file
+src/lib/src/buffer.cpp.i:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.i
+.PHONY : src/lib/src/buffer.cpp.i
+
+src/lib/src/buffer.s: src/lib/src/buffer.cpp.s
+
+.PHONY : src/lib/src/buffer.s
+
+# target to generate assembly for a file
+src/lib/src/buffer.cpp.s:
+	$(MAKE) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.s
+.PHONY : src/lib/src/buffer.cpp.s
+
 src/lib/src/bus.o: src/lib/src/bus.cpp.o
 
 .PHONY : src/lib/src/bus.o
@@ -351,6 +378,9 @@ help:
 	@echo "... src/lib/input_capture.o"
 	@echo "... src/lib/input_capture.i"
 	@echo "... src/lib/input_capture.s"
+	@echo "... src/lib/src/buffer.o"
+	@echo "... src/lib/src/buffer.i"
+	@echo "... src/lib/src/buffer.s"
 	@echo "... src/lib/src/bus.o"
 	@echo "... src/lib/src/bus.i"
 	@echo "... src/lib/src/bus.s"

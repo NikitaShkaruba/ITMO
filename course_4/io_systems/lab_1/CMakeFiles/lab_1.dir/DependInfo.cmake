@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/input_capture.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/input_capture.cpp.o"
+  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o"
   "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
   "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o"
   "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o"

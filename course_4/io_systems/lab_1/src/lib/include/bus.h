@@ -36,6 +36,17 @@ SC_MODULE(Bus) {
     sc_in<bool> write_signal_from_timer1;
     sc_out<u32> address_to_timer1;
 
+    //TIMER2
+    //Write
+    sc_out<u32>   data_to_timer2;
+    sc_out<bool>  write_signal_to_timer2;
+
+    //Read
+    sc_in<u32> data_from_timer2;
+    sc_out<bool> read_signal_to_timer2;
+    sc_in<bool> write_signal_from_timer2;
+    sc_out<u32> address_to_timer2;
+
     SC_HAS_PROCESS(Bus);
 
     Bus(sc_module_name name);
@@ -46,6 +57,9 @@ SC_MODULE(Bus) {
 
     void write_to_timer1();
     void read_from_timer1();
+
+    void write_to_timer2();
+    void read_from_timer2();
 
 private:
 };

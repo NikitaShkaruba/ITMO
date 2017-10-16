@@ -16,6 +16,11 @@ SC_MODULE(Timer1) {
     sc_in<bool> read_signal_from_bus;
     sc_out<bool> write_signal_to_bus;
 
+    // Write to buffer
+    sc_out<u32> data_to_buffer;
+    sc_in<bool> read_signal_from_buffer;
+    sc_out<bool> data_signal_to_buffer;
+
     SC_HAS_PROCESS(Timer1);
 
     Timer1(sc_module_name name);
@@ -23,8 +28,9 @@ SC_MODULE(Timer1) {
 
     void write_from_bus();
     void write_to_bus();
-
+    void write_to_buffer();
     void tick();
+
     bool decremental();
     bool working();
 private:

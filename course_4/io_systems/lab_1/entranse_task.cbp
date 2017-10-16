@@ -87,6 +87,9 @@
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h">
 			<Option target="lab_1"/>
 		</Unit>
+		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/buffer.h">
+			<Option target="lab_1"/>
+		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h">
 			<Option target="lab_1"/>
 		</Unit>
@@ -115,6 +118,9 @@
 			<Option target="lab_1"/>
 		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/input_capture.cpp">
+			<Option target="lab_1"/>
+		</Unit>
+		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp">
 			<Option target="lab_1"/>
 		</Unit>
 		<Unit filename="/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp">

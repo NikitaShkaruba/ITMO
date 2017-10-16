@@ -3,21 +3,30 @@
 #include "../include/addresses.h"
 
 Timer1::Timer1(sc_module_name nm) : sc_module(nm),
-    clock_in("timer1_clock_in"),
-    data_from_bus("timer1_data_from_bus"),
-    write_signal_from_bus("timer1_write_signal_from_bus"),
-    address_from_bus("timer1_address_from_bus"),
-    data_to_bus("timer1_data_to_bus"),
-    read_signal_from_bus("timer1_read_signal_from_bus"),
-    write_signal_to_bus("timer1_write_signal_to_bus")
+    clock_in("clock_in"),
+    data_from_bus("data_from_bus"),
+    write_signal_from_bus("write_signal_from_bus"),
+    address_from_bus("address_from_bus"),
+    data_to_bus("data_to_bus"),
+    read_signal_from_bus("read_signal_from_bus"),
+    write_signal_to_bus("write_signal_to_bus"),
+    data_to_buffer("data_to_buffer"),
+    read_signal_from_buffer("read_signal_from_buffer"),
+    data_signal_to_buffer("data_signal_to_buffer")
 {
     data_to_bus.initialize(0);
     write_signal_to_bus.initialize(0);
+
+    data_to_buffer.initialize(0);
+    data_signal_to_buffer.initialize(0);
 
     SC_METHOD(write_from_bus);
     sensitive << clock_in.pos();
 
     SC_METHOD(write_to_bus);
+    sensitive << clock_in.pos();
+
+    SC_METHOD(write_to_buffer);
     sensitive << clock_in.pos();
 
     SC_METHOD(tick);
@@ -63,6 +72,16 @@ void Timer1::write_to_bus() {
         write_signal_to_bus.write(1);
     }else{
         write_signal_to_bus.write(0);
+    }
+}
+
+void Timer1::write_to_buffer() {
+    if( read_signal_from_buffer.read() ){
+        data_to_buffer.write(tval);
+
+        data_signal_to_buffer.write(1);
+    }else{
+        data_signal_to_buffer.write(0);
     }
 }
 

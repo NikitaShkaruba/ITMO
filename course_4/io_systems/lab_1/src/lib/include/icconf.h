@@ -15,8 +15,15 @@ SC_MODULE(ICCONF) {
     sc_in<bool> read_signal_from_bus;
     sc_out<bool> write_signal_to_bus;
 
-    // To EdgeDetector
+    // To EdgeDetector and Prescaler
     sc_out<u32> mode_to_edge_detector;
+
+    // To Buffer
+    sc_out<u32> mode_to_buffer;
+
+    // From buffer
+    sc_in<bool> buffer_empty_signal_from_buffer;
+    sc_in<bool> buffer_full_signal_from_buffer;
 
     SC_HAS_PROCESS(ICCONF);
 
@@ -25,6 +32,8 @@ SC_MODULE(ICCONF) {
 
     void write_from_bus();
     void write_to_bus();
+    void buffer_empty();
+    void buffer_full();
 
 private:
     u32 icconf;

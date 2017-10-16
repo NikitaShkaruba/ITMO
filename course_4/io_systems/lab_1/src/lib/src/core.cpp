@@ -29,7 +29,19 @@ CORE::CORE(sc_module_name nm) : sc_module(nm),
 CORE::~CORE() = default;
 
 void CORE::main_thread() {
-    /*
+    /* //Bus test
+    write_to_bus(BUS_ADDRESS_ICCONF,0x43);
+
+    read_from_bus(BUS_ADDRESS_ICCONF);
+    write_to_bus(BUS_ADDRESS_TVAL1,0x24);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    write_to_bus(BUS_ADDRESS_TMR1,0x12);
+    read_from_bus(BUS_ADDRESS_TMR1);
+    read_from_bus(BUS_ADDRESS_ICCONF);
+    */
+
+
+    /* //Timer1 test
     write_to_bus(BUS_ADDRESS_TMR1,10);
     write_to_bus(BUS_ADDRESS_TCONF1,0x2);
     read_from_bus(BUS_ADDRESS_TVAL1);
@@ -39,11 +51,49 @@ void CORE::main_thread() {
     read_from_bus(BUS_ADDRESS_TVAL1);
      */
 
+    /* //Timer 1 and 2 tests
+    write_to_bus(BUS_ADDRESS_TMR1,10);
+    write_to_bus(BUS_ADDRESS_TCONF1,0x2);
+    write_to_bus(BUS_ADDRESS_TMR2,20);
+    write_to_bus(BUS_ADDRESS_TCONF2,0x2);
+
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+*/
+
+    /*
     write_to_bus(BUS_ADDRESS_ICCONF,0x5);
 
     bool sig=false;
 
     for(int i=0;i<40;i++){
+        signal_to_edge_detector.write(sig);
+        sig=!sig;
+
+        wait();
+        wait();
+        wait();
+    }
+     */
+
+    write_to_bus(BUS_ADDRESS_TMR1,10);
+    write_to_bus(BUS_ADDRESS_TCONF1,0x2);
+    write_to_bus(BUS_ADDRESS_TMR2,20);
+    write_to_bus(BUS_ADDRESS_TCONF2,0x2);
+    write_to_bus(BUS_ADDRESS_ICCONF,0x5 | 3 << 5);
+
+    bool sig=false;
+
+    for(int i=0;i<160;i++){
         signal_to_edge_detector.write(sig);
         sig=!sig;
 
@@ -111,7 +161,7 @@ u32 CORE::read_from_bus(u32 address) {
     data = data_from_bus.read();
     wait();
 
-    printf("==3==\n");
+    //printf("==3==\n");
 
     cout << "CORE: READ " << endl;
     cout << "  -> address: " << hex << address << endl;

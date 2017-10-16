@@ -13,7 +13,7 @@ SC_MODULE(Prescaler) {
     sc_in<bool> edge_signal_from_edge_detector;
 
     // Write to prescaler
-    //sc_out<bool> edge_signal_to_prescaler;
+    sc_out<bool> edge_signal_to_buffer;
 
     SC_HAS_PROCESS(Prescaler);
 
