@@ -1,12 +1,12 @@
 #include "../include/icconf.h"
 
 ICCONF::ICCONF(sc_module_name nm) : sc_module(nm),
-    clock_in("clock_in"),
-    data_from_bus("data_from_bus"),
-    write_signal_from_bus("write_signal_from_bus"),
-    data_to_bus("data_to_bus"),
-    read_signal_from_bus("read_signal_from_bus"),
-    write_signal_to_bus("write_signal_to_bus")
+    clock_in("icconf_clock_in"),
+    data_from_bus("icconf_data_from_bus"),
+    write_signal_from_bus("icconf_write_signal_from_bus"),
+    data_to_bus("icconf_data_to_bus"),
+    read_signal_from_bus("icconf_read_signal_from_bus"),
+    write_signal_to_bus("icconf_write_signal_to_bus")
 {
     data_to_bus.initialize(0);
     write_signal_to_bus.initialize(0);

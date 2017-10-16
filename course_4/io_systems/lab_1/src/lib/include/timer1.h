@@ -3,26 +3,30 @@
 #include "common.h"
 
 SC_MODULE(Timer1) {
-  // Input to capture
-    sc_in<bool> input_signal;
-
-    // Read from bus
-    sc_in<u32> data_in;
-    //sc_out<bool> read_out;
-    //sc_out<u32> address_out;
-
     // Clock
     sc_in<bool> clock_in;
+
+    // Read from bus
+    sc_in<u32> data_from_bus;
+    sc_in<bool> write_signal_from_bus;
+    sc_in<u32> address_from_bus;
+
+    // Write to bus
+    sc_out<u32> data_to_bus;
+    sc_in<bool> read_signal_from_bus;
+    sc_out<bool> write_signal_to_bus;
 
     SC_HAS_PROCESS(Timer1);
 
     Timer1(sc_module_name name);
     ~Timer1();
 
+    void write_from_bus();
+    void write_to_bus();
+
     void tick();
     bool decremental();
     bool working();
-
 private:
     u32 tmr;
     u32 tconf;

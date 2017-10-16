@@ -600,6 +600,7 @@ CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o: systemc-2.3.1a/include/sysc/utils
 CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o: systemc-2.3.1a/include/systemc
 CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o: systemc-2.3.1a/include/systemc.h
 
+CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: src/lib/include/addresses.h
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: src/lib/include/common.h
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: src/lib/include/timer1.h
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: src/lib/src/timer1.cpp
@@ -754,6 +755,7 @@ CMakeFiles/lab_1.dir/src/main.cpp.o: src/lib/include/bus.h
 CMakeFiles/lab_1.dir/src/main.cpp.o: src/lib/include/common.h
 CMakeFiles/lab_1.dir/src/main.cpp.o: src/lib/include/core.h
 CMakeFiles/lab_1.dir/src/main.cpp.o: src/lib/include/icconf.h
+CMakeFiles/lab_1.dir/src/main.cpp.o: src/lib/include/timer1.h
 CMakeFiles/lab_1.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/lab_1.dir/src/main.cpp.o: systemc-2.3.1a/include/sysc/communication/sc_buffer.h
 CMakeFiles/lab_1.dir/src/main.cpp.o: systemc-2.3.1a/include/sysc/communication/sc_clock.h

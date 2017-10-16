@@ -1,12 +1,14 @@
 #include "lib/include/core.h"
 #include "lib/include/bus.h"
 #include "lib/include/icconf.h"
+#include "lib/include/timer1.h"
 
 
 int sc_main(int argc, char* argv[]) {
     CORE core("core");
     Bus bus("bus");
     ICCONF icconf("icconf");
+    Timer1 timer1("timer1");
 
     //region Bind Bus and Core
     sc_signal<u32> address_core_bus;
@@ -21,7 +23,7 @@ int sc_main(int argc, char* argv[]) {
     core.write_signal_to_bus(write_signal_core_bus);
     bus.write_signal_from_core(write_signal_core_bus);
 
-    sc_signal<u32> data_bus_core;
+    sc_signal<u32, SC_MANY_WRITERS> data_bus_core;
     core.data_from_bus(data_bus_core);
     bus.data_to_core(data_bus_core);
 
@@ -52,14 +54,39 @@ int sc_main(int argc, char* argv[]) {
     icconf.write_signal_to_bus(write_signal_icconf_bus);
     // endregion
 
+    // region Bind Bus and Timer1
+    sc_signal<u32> data_bus_timer1;
+    bus.data_to_timer1(data_bus_timer1);
+    timer1.data_from_bus(data_bus_timer1);
+
+    sc_signal<u32, SC_MANY_WRITERS> address_bus_timer1;
+    bus.address_to_timer1(address_bus_timer1);
+    timer1.address_from_bus(address_bus_timer1);
+
+    sc_signal<bool> write_signal_bus_timer1;
+    bus.write_signal_to_timer1(write_signal_bus_timer1);
+    timer1.write_signal_from_bus(write_signal_bus_timer1);
+
+    sc_signal<u32> data_timer1_bus;
+    bus.data_from_timer1(data_timer1_bus);
+    timer1.data_to_bus(data_timer1_bus);
+
+    sc_signal<bool> read_signal_bus_timer1;
+    bus.read_signal_to_timer1(read_signal_bus_timer1);
+    timer1.read_signal_from_bus(read_signal_bus_timer1);
+
+    sc_signal<bool> write_signal_timer1_bus;
+    bus.write_signal_from_timer1(write_signal_timer1_bus);
+    timer1.write_signal_to_bus(write_signal_timer1_bus);
+    // endregion
+
     // region Bind Clock
     sc_clock clock("clock", sc_time(10, SC_NS));
     core.clock_in(clock);
     bus.clock_in(clock);
     icconf.clock_in(clock);
+    timer1.clock_in(clock);
     // endregion
-
-    printf("c");
 
     sc_start();
     return (0);

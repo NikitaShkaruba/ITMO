@@ -27,35 +27,41 @@ CORE::CORE(sc_module_name nm) : sc_module(nm),
 CORE::~CORE() = default;
 
 void CORE::main_thread() {
-  /*
-  configure_input_capture(0x4, 0x0);
-
-  for (int i = 0; i < 1000; i++) {
-    cout << "tick" << endl;
-    changeInputCaptureSignal(i % 3 == 0);
-    wait();
-  }
-  */
-
-
+    write_to_bus(BUS_ADDRESS_TMR1,10);
+    write_to_bus(BUS_ADDRESS_TCONF1,0x2);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    /*
     write_to_bus(BUS_ADDRESS_ICCONF,0x43);
+
+    //write_to_bus(BUS_ADDRESS_ICCONF,read_from_bus(BUS_ADDRESS_ICCONF)|=0x02);
+
     read_from_bus(BUS_ADDRESS_ICCONF);
+    write_to_bus(BUS_ADDRESS_TVAL1,0x24);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    write_to_bus(BUS_ADDRESS_TMR1,0x12);
+    read_from_bus(BUS_ADDRESS_TMR1);
+    read_from_bus(BUS_ADDRESS_ICCONF);
+     */
 
     sc_stop();
 }
 
 void CORE::write_to_bus(u32 address, u32 data) {
     //wait();
-    printf("==0==\n");
+    //printf("==0==\n");
     address_to_bus.write(address);
     data_to_bus.write(data);
     write_signal_to_bus.write(1);
     wait();
-    printf("==1==\n");
+    //printf("==1==\n");
 
     write_signal_to_bus.write(0);
     wait();
-    printf("==2==\n");
+    //printf("==2==\n");
 
     cout << "CORE: WRITE " << endl;
     cout << "  -> address: " << hex << address << endl;
@@ -65,25 +71,25 @@ void CORE::write_to_bus(u32 address, u32 data) {
 u32 CORE::read_from_bus(u32 address) {
     u32 data;
 
-    printf("==0==\n");
+    //printf("==0==\n");
     address_to_bus.write(address);
     read_signal_to_bus.write(1);
     wait();
 
-    printf("==1==\n");
+    //printf("==1==\n");
     read_signal_to_bus.write(0);
     wait();
 
-    printf("==2==\n");
+    //printf("==2==\n");
     wait();
 
-    printf("==3==\n");
+    //printf("==3==\n");
     wait();
 
-    printf("==4==\n");
+    //printf("==4==\n");
     wait();
 
-    printf("read\n");
+    //printf("read\n");
     data = data_from_bus.read();
     wait();
 

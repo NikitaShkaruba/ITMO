@@ -11,66 +11,97 @@ Bus::Bus(sc_module_name nm) : sc_module(nm),
     write_signal_to_icconf("write_signal_to_icconf"),
     data_from_icconf("data_from_icconf"),
     read_signal_to_icconf("read_signal_to_icconf"),
-    write_signal_from_icconf("write_signal_from_icconf")
+    write_signal_from_icconf("write_signal_from_icconf"),
+    data_from_timer1("data_from_timer1"),
+    read_signal_to_timer1("read_signal_to_timer1"),
+    write_signal_from_timer1("write_signal_from_timer1"),
+    address_to_timer1("address_to_timer1"),
+    data_to_timer1("data_to_timer1"),
+    write_signal_to_timer1("write_signal_to_timer1")
 {
-    write_signal_to_icconf.initialize(0);
-    read_signal_to_icconf.initialize(0);
     data_to_core.initialize(0);
 
-    SC_METHOD(write_from_core);
+    write_signal_to_icconf.initialize(0);
+    read_signal_to_icconf.initialize(0);
+
+    write_signal_to_timer1.initialize(0);
+    read_signal_to_timer1.initialize(0);
+    address_to_timer1.initialize(0);
+
+    SC_METHOD(write_to_icconf);
     sensitive << clock_in.pos();
 
-    SC_METHOD(write_to_core);
+    SC_METHOD(read_from_icconf);
     sensitive << clock_in.pos();
 
-  //SC_METHOD(readFromCore);
-  //sensitive << clock_in.pos();
+    SC_METHOD(write_to_timer1);
+    sensitive << clock_in.pos();
 
-  //SC_METHOD(readFromIC);
-  //sensitive << clock_in.pos();
+    SC_METHOD(read_from_timer1);
+    sensitive << clock_in.pos();
 }
 
 Bus::~Bus() = default;
 
-void Bus::write_from_core() {
-    if( write_signal_from_core.read() ){
-        u32 address=address_from_core.read();
+//ICCONF
+void Bus::write_to_icconf() {
+    if( write_signal_from_core.read() && address_from_core.read()==BUS_ADDRESS_ICCONF ){
         u32 data=data_from_core.read();
 
-        switch (address) {
-            case BUS_ADDRESS_ICCONF:
-                write_signal_to_icconf.write(1);
-                data_to_icconf.write(data);
-
-                printf("BUS_WRITE%d\n");
-
-                break;
-        }
+        write_signal_to_icconf.write(1);
+        data_to_icconf.write(data);
     }else{
         write_signal_to_icconf.write(0);
     }
 }
 
 void Bus::read_from_icconf() {
-    if( read_signal_from_core.read() && address_from_core.read()==){
-        u32 address=address_from_core.read();
-
-        printf("lol\n");
-
-        switch (address) {
-            case BUS_ADDRESS_ICCONF:
-                read_signal_to_icconf.write(1);
-                printf("read_signal_to_icconf\n");
-
-                break;
-        }
+    if( read_signal_from_core.read() && address_from_core.read()==BUS_ADDRESS_ICCONF ){
+        read_signal_to_icconf.write(1);
     }else{
         read_signal_to_icconf.write(0);
     }
 
     if( write_signal_from_icconf.read() ){
         u32 data=data_from_icconf.read();
-        printf("BUS READ FROM ICCONF%d\n",data);
+        data_to_core.write(data);
+    }
+}
+
+//TIMER1
+void Bus::write_to_timer1() {
+    if( write_signal_from_core.read() ){
+        u32 address=address_from_core.read();
+
+        if( address==BUS_ADDRESS_TVAL1 || address==BUS_ADDRESS_TMR1 || address==BUS_ADDRESS_TCONF1 ){
+            u32 data=data_from_core.read();
+            write_signal_to_timer1.write(1);
+            data_to_timer1.write(data);
+            address_to_timer1.write(address);
+        }else{
+            write_signal_to_timer1.write(0);
+        }
+    }else{
+        write_signal_to_timer1.write(0);
+    }
+}
+
+void Bus::read_from_timer1() {
+    if( read_signal_from_core.read() ){
+        u32 address=address_from_core.read();
+
+        if( address==BUS_ADDRESS_TVAL1 || address==BUS_ADDRESS_TMR1 || address==BUS_ADDRESS_TCONF1 ){
+            read_signal_to_timer1.write(1);
+            address_to_timer1.write(address);
+        }else{
+            read_signal_to_timer1.write(0);
+        }
+    }else{
+        read_signal_to_timer1.write(0);
+    }
+
+    if( write_signal_from_timer1.read() ){
+        u32 data=data_from_timer1.read();
         data_to_core.write(data);
     }
 }

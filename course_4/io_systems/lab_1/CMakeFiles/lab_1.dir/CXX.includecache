@@ -61,6 +61,8 @@ include/addresses.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp
 ../include/timer1.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
+../include/addresses.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
 
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/main.cpp
 lib/include/core.h
@@ -69,6 +71,8 @@ lib/include/bus.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h
 lib/include/icconf.h
 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
+lib/include/timer1.h
+/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
 
 systemc-2.3.1a/include/sysc/communication/sc_buffer.h
 sysc/communication/sc_signal.h
