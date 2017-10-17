@@ -303,7 +303,6 @@ CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o
 CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o
  /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
  /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
- /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
  /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
  /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp
  /Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_buffer.h

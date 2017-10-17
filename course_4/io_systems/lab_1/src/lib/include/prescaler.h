@@ -5,25 +5,26 @@
 class Prescaler;
 
 SC_MODULE(Prescaler) {
-    // Clock
-    sc_in<bool> clock_in;
+  // Clock
+  sc_in<bool> clock_in;
 
-    // Read from icconf
-    sc_in<u32> mode_from_icconf;
+  // Read from icconf
+  sc_in<u32> mode_from_icconf;
 
-    // Read from prescaler
-    sc_in<bool> edge_signal_from_edge_detector;
+  // Read from prescaler
+  sc_in<bool> edge_signal_from_edge_detector;
 
-    // Write to prescaler
-    sc_out<bool> edge_signal_to_buffer;
+  // Write to prescaler
+  sc_out<bool> edge_signal_to_buffer;
 
-    SC_HAS_PROCESS(Prescaler);
+  SC_HAS_PROCESS(Prescaler);
 
-    Prescaler(sc_module_name name);
-    ~Prescaler();
+  Prescaler(sc_module_name name);
 
-    void tick();
+  ~Prescaler();
+
+  void tick();
 
 private:
-    u32 counter;
+  u32 counter;
 };

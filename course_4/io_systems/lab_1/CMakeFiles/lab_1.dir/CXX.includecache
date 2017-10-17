@@ -22,8 +22,6 @@ addresses.h
 systemc.h
 /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/systemc.h
 
-/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
-
 /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
 common.h
 /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
@@ -59,8 +57,6 @@ common.h
 /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
 ../include/addresses.h
 /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
-../include/consts.h
-/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
 
 /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
 ../include/edge_detector.h

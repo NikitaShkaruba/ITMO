@@ -1,32 +1,29 @@
 #include "../include/core.h"
 #include "../include/addresses.h"
-#include "../include/consts.h"
 
 using namespace std;
 
 CORE::CORE(sc_module_name nm) : sc_module(nm),
-    clock_in("clock_in"),
-    data_to_bus("data_to_bus"),
-    address_to_bus("address_to_bus"),
-    write_signal_to_bus("write_signal_to_bus"),
-    data_from_bus("data_from_bus"),
-    read_signal_to_bus("read_signal_to_bus"),
-    signal_to_edge_detector("signal_to_edge_detector")
-{
-    data_to_bus.initialize(0);
-    address_to_bus.initialize(0);
-    write_signal_to_bus.initialize(0);
+                                clock_in("clock_in"),
+                                data_to_bus("data_to_bus"),
+                                address_to_bus("address_to_bus"),
+                                write_signal_to_bus("write_signal_to_bus"),
+                                data_from_bus("data_from_bus"),
+                                read_signal_to_bus("read_signal_to_bus"),
+                                signal_to_edge_detector("signal_to_edge_detector") {
+  data_to_bus.initialize(0);
+  address_to_bus.initialize(0);
+  write_signal_to_bus.initialize(0);
 
-    read_signal_to_bus.initialize(0);
-    signal_to_edge_detector.initialize(0);
+  read_signal_to_bus.initialize(0);
+  signal_to_edge_detector.initialize(0);
 
-    SC_CTHREAD(main_thread, clock_in.pos());
+  SC_CTHREAD(main_thread, clock_in.pos());
 }
 
 CORE::~CORE() = default;
 
 void CORE::main_thread() {
-  cout << endl << endl << endl << endl << endl << endl << endl;
   cout << "Choose mode:" << endl;
   cout << "  5 - check neither signal is periodic" << endl;
   cout << "  4 - test full system" << endl;
@@ -69,73 +66,58 @@ void CORE::main_thread() {
 }
 
 void CORE::write_to_bus(u32 address, u32 data) {
-    //wait();
-    //printf("==0==\n");
-    address_to_bus.write(address);
-    data_to_bus.write(data);
-    write_signal_to_bus.write(1);
-    wait();
-    //printf("==1==\n");
+  address_to_bus.write(address);
+  data_to_bus.write(data);
+  write_signal_to_bus.write(1);
+  wait();
 
-    write_signal_to_bus.write(0);
-    wait();
-    //printf("==2==\n");
-
-//    cout << "CORE: WRITE " << endl;
-//    cout << "  -> address: " << hex << address << endl;
-//    cout << "  -> data: " << hex << data << endl;
+  write_signal_to_bus.write(0);
+  wait();
 }
 
 u32 CORE::read_from_bus(u32 address) {
-    u32 data;
+  u32 data;
 
-    //printf("==0==\n");
-    address_to_bus.write(address);
-    read_signal_to_bus.write(1);
-    wait();
+  address_to_bus.write(address);
+  read_signal_to_bus.write(1);
+  wait();
 
-    //printf("==1==\n");
-    read_signal_to_bus.write(0);
-    wait();
+  read_signal_to_bus.write(0);
+  wait();
 
-    //printf("==2==\n");
-    wait();
+  wait();
 
-    //printf("==3==\n");
-    wait();
+  wait();
 
-    //printf("==4==\n");
-    wait();
+  wait();
 
-    //printf("read\n");
-    data = data_from_bus.read();
-    wait();
+  data = data_from_bus.read();
+  wait();
 
-    //printf("==3==\n");
 
 //    cout << "CORE: READ " << endl;
 //    cout << "  -> address: " << hex << address << endl;
 //    cout << "  -> data: " << hex << data << endl;
 
-    return data;
+  return data;
 }
 
 // region Tests
 
 void CORE::test_bus() {
-    write_to_bus(BUS_ADDRESS_ICCONF,0x43);
+  write_to_bus(BUS_ADDRESS_ICCONF, 0x43);
 
-    read_from_bus(BUS_ADDRESS_ICCONF);
-    write_to_bus(BUS_ADDRESS_TVAL1,0x24);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    write_to_bus(BUS_ADDRESS_TMR1,0x12);
-    read_from_bus(BUS_ADDRESS_TMR1);
-    read_from_bus(BUS_ADDRESS_ICCONF);
+  read_from_bus(BUS_ADDRESS_ICCONF);
+  write_to_bus(BUS_ADDRESS_TVAL1, 0x24);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  write_to_bus(BUS_ADDRESS_TMR1, 0x12);
+  read_from_bus(BUS_ADDRESS_TMR1);
+  read_from_bus(BUS_ADDRESS_ICCONF);
 }
 
 void CORE::test_timer() {
-  write_to_bus(BUS_ADDRESS_TMR1,10);
-  write_to_bus(BUS_ADDRESS_TCONF1,0x2);
+  write_to_bus(BUS_ADDRESS_TMR1, 10);
+  write_to_bus(BUS_ADDRESS_TCONF1, 0x2);
   read_from_bus(BUS_ADDRESS_TVAL1);
   read_from_bus(BUS_ADDRESS_TVAL1);
   read_from_bus(BUS_ADDRESS_TVAL1);
@@ -144,65 +126,63 @@ void CORE::test_timer() {
 };
 
 void CORE::test_timers() {
-    write_to_bus(BUS_ADDRESS_TMR1, 10);
-    write_to_bus(BUS_ADDRESS_TCONF1, 0x2);
-    write_to_bus(BUS_ADDRESS_TMR2, 20);
-    write_to_bus(BUS_ADDRESS_TCONF2, 0x2);
+  write_to_bus(BUS_ADDRESS_TMR1, 10);
+  write_to_bus(BUS_ADDRESS_TCONF1, 0x2);
+  write_to_bus(BUS_ADDRESS_TMR2, 20);
+  write_to_bus(BUS_ADDRESS_TCONF2, 0x2);
 
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
 
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
+  read_from_bus(BUS_ADDRESS_TVAL2);
+  read_from_bus(BUS_ADDRESS_TVAL2);
+  read_from_bus(BUS_ADDRESS_TVAL2);
+  read_from_bus(BUS_ADDRESS_TVAL2);
+  read_from_bus(BUS_ADDRESS_TVAL2);
 };
 
 void CORE::test_system() {
-    // Настройка таймеров
-    write_to_bus(BUS_ADDRESS_TMR1, 10);
-    write_to_bus(BUS_ADDRESS_TCONF1, 0x2);
-    write_to_bus(BUS_ADDRESS_TMR2, 20);
-    write_to_bus(BUS_ADDRESS_TCONF2, 0x2);
+  // Настройка таймеров
+  write_to_bus(BUS_ADDRESS_TMR1, 10);
+  write_to_bus(BUS_ADDRESS_TCONF1, 0x2);
+  write_to_bus(BUS_ADDRESS_TMR2, 20);
+  write_to_bus(BUS_ADDRESS_TCONF2, 0x2);
 
-    // Настраиваем EdgeDetector, Prescaler и Buffer
-    write_to_bus(BUS_ADDRESS_ICCONF, 0x1 | 3 << 5);
+  // Настраиваем EdgeDetector, Prescaler и Buffer
+  write_to_bus(BUS_ADDRESS_ICCONF, 0x1 | 3 << 5);
 
-    // Генерируем входной сигнал и забиваем буфер до отказа
-    bool sig = false;
+  // Генерируем входной сигнал и забиваем буфер до отказа
+  bool sig = false;
 
-    for (int i = 0; i < 64; i++) {
-        signal_to_edge_detector.write(sig);
-        sig = !sig;
+  for (int i = 0; i < 64; i++) {
+    signal_to_edge_detector.write(sig);
+    sig = !sig;
 
-        u32 icconf = read_from_bus(BUS_ADDRESS_ICCONF);
+    u32 icconf = read_from_bus(BUS_ADDRESS_ICCONF);
 
-        if (icconf & 0x10) {
-//            printf("Full\n");
-            break;
-        }
-
-        //wait(); вместо read_from_bus
-        //wait();
-        //wait();
+    if (icconf & 0x10) {
+      break;
     }
 
-    // Читаем буфер пока он не опустеет
-    while (1) {
-        u32 icconf = read_from_bus(BUS_ADDRESS_ICCONF);
+    //wait(); вместо read_from_bus
+    //wait();
+    //wait();
+  }
 
-        if (icconf & 0x08) {
-//            printf("Empty\n");
-            break;
-        }
+  // Читаем буфер пока он не опустеет
+  while (1) {
+    u32 icconf = read_from_bus(BUS_ADDRESS_ICCONF);
 
-        u32 record = read_from_bus(BUS_ADDRESS_BUFFER);
-        printf("Record %d %d\n", record >> 16, record & 0xFFFF);
+    if (icconf & 0x08) {
+      break;
     }
+
+    u32 record = read_from_bus(BUS_ADDRESS_BUFFER);
+    printf("Record %d %d\n", record >> 16, record & 0xFFFF);
+  }
 }
 
 // region Variant task
@@ -266,7 +246,7 @@ void CORE::check_if_signal_periodic() {
     bool is_buffer_full = static_cast<bool>(icconf & 0x08);
 
     continue_checking = !is_buffer_full && is_periodic;
-  } while(continue_checking);
+  } while (continue_checking);
 
   if (is_periodic && period) {
     cout << "Is periodic: true" << endl;
