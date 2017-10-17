@@ -49,7 +49,7 @@ Buffer::~Buffer() = default;
 
 void Buffer::tick() {
     if( edge_signal_from_prescaler.read() ){
-        printf("EDGE\n");
+//        printf("EDGE\n");
         u32 mode=mode_from_icconf.read();
 
         if( mode==1 ) {

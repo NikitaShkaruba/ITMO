@@ -2,6 +2,8 @@
 
 #include "common.h"
 
+class Buffer;
+
 SC_MODULE(Buffer) {
     // Clock
     sc_in<bool> clock_in;

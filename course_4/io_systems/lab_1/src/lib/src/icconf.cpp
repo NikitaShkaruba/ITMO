@@ -41,7 +41,7 @@ void ICCONF::write_from_bus() {
         u32 data = data_from_bus.read();
 
         icconf = data | (icconf & 0x18);//не затрагиваем биты, выставляемые буффером
-        printf("icconf %d\n",icconf & 0x08);
+//        printf("icconf: %d\n",icconf & 0x08);
         mode_to_edge_detector.write(icconf & 0x7);
         mode_to_buffer.write(icconf >> 5);
 

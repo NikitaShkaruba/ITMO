@@ -33,10 +33,12 @@ SC_MODULE(CORE) {
 private:
   void write_to_bus(u32 address, u32 data);
   u32 read_from_bus(u32 address);
-
+  void write_to_ins(bool signal);
 
   void test_bus();
   void test_timer();
   void test_timers();
   void test_system();
+
+  void check_if_signal_periodic();
 };
