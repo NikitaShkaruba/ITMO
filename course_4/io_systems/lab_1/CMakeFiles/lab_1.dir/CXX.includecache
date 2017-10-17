@@ -6,551 +6,551 @@
 
 #IncludeRegexTransform: 
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/buffer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/buffer.h
 common.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h
 common.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 addresses.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 systemc.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/systemc.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/systemc.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
 common.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
 common.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
 common.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
 common.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
 common.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/common.h
+../include/addresses.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp
 ../include/buffer.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/buffer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/buffer.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp
 ../include/bus.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp
 ../include/core.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
 ../include/addresses.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
 ../include/consts.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/consts.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
 ../include/edge_detector.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp
 ../include/icconf.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp
 ../include/prescaler.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp
 ../include/timer1.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
-../include/addresses.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/addresses.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
 
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/main.cpp
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/main.cpp
 lib/include/core.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/core.h
 lib/include/bus.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/bus.h
 lib/include/icconf.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/icconf.h
 lib/include/timer1.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/timer1.h
 lib/include/edge_detector.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/edge_detector.h
 lib/include/prescaler.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/prescaler.h
 lib/include/buffer.h
-/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/include/buffer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/include/buffer.h
 
-systemc-2.3.1a/include/sysc/communication/sc_buffer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_buffer.h
 sysc/communication/sc_signal.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
 
-systemc-2.3.1a/include/sysc/communication/sc_clock.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_clock.h
 sysc/kernel/sc_module.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_module.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_module.h
 sysc/communication/sc_signal.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
 sysc/tracing/sc_trace.h
-systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
 
-systemc-2.3.1a/include/sysc/communication/sc_clock_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_clock_ports.h
 sysc/communication/sc_signal_ports.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ports.h
 
-systemc-2.3.1a/include/sysc/communication/sc_communication_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_communication_ids.h
 sysc/utils/sc_report.h
-systemc-2.3.1a/include/sysc/communication/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/utils/sc_report.h
 
-systemc-2.3.1a/include/sysc/communication/sc_event_finder.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_event_finder.h
 sysc/communication/sc_port.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
 
-systemc-2.3.1a/include/sysc/communication/sc_event_queue.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_event_queue.h
 sysc/communication/sc_interface.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
 sysc/kernel/sc_module.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_module.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_module.h
 sysc/kernel/sc_event.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
 sysc/communication/sc_port.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
 
-systemc-2.3.1a/include/sysc/communication/sc_export.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_export.h
 typeinfo
 -
 sysc/communication/sc_communication_ids.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
 sysc/communication/sc_interface.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
 
-systemc-2.3.1a/include/sysc/communication/sc_fifo.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_fifo.h
 sysc/communication/sc_communication_ids.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
 sysc/communication/sc_prim_channel.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_prim_channel.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_prim_channel.h
 sysc/communication/sc_fifo_ifs.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_fifo_ifs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_fifo_ifs.h
 sysc/kernel/sc_event.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
 sysc/kernel/sc_simcontext.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_simcontext.h
 sysc/tracing/sc_trace.h
-systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
 typeinfo
 -
 
-systemc-2.3.1a/include/sysc/communication/sc_fifo_ifs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_fifo_ifs.h
 sysc/communication/sc_interface.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
 
-systemc-2.3.1a/include/sysc/communication/sc_fifo_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_fifo_ports.h
 sysc/communication/sc_port.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
 sysc/communication/sc_fifo_ifs.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_fifo_ifs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_fifo_ifs.h
 
-systemc-2.3.1a/include/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_interface.h
 
-systemc-2.3.1a/include/sysc/communication/sc_mutex.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_mutex.h
 sysc/kernel/sc_event.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
 sysc/kernel/sc_wait.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_wait.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_wait.h
 sysc/communication/sc_mutex_if.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_mutex_if.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_mutex_if.h
 
-systemc-2.3.1a/include/sysc/communication/sc_mutex_if.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_mutex_if.h
 sysc/communication/sc_interface.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
 
-systemc-2.3.1a/include/sysc/communication/sc_port.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_port.h
 sysc/communication/sc_communication_ids.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
 sysc/communication/sc_interface.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
 sysc/kernel/sc_event.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
 sysc/kernel/sc_process.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_process.h
 typeinfo
 -
 
-systemc-2.3.1a/include/sysc/communication/sc_prim_channel.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_prim_channel.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
 sysc/kernel/sc_wait.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_wait.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_wait.h
 sysc/kernel/sc_wait_cthread.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_wait_cthread.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_wait_cthread.h
 
-systemc-2.3.1a/include/sysc/communication/sc_semaphore.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_semaphore.h
 sysc/kernel/sc_event.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_object.h
 sysc/communication/sc_semaphore_if.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_semaphore_if.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_semaphore_if.h
 
-systemc-2.3.1a/include/sysc/communication/sc_semaphore_if.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_semaphore_if.h
 sysc/communication/sc_interface.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
 
-systemc-2.3.1a/include/sysc/communication/sc_signal.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal.h
 sysc/communication/sc_port.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
 sysc/communication/sc_prim_channel.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_prim_channel.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_prim_channel.h
 sysc/communication/sc_signal_ifs.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ifs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ifs.h
 sysc/communication/sc_writer_policy.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_writer_policy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_writer_policy.h
 sysc/kernel/sc_event.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_event.h
 sysc/kernel/sc_process.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_process.h
 sysc/kernel/sc_simcontext.h
-systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/kernel/sc_simcontext.h
 sysc/datatypes/bit/sc_logic.h
-systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_logic.h
 sysc/tracing/sc_trace.h
-systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
 typeinfo
 -
 
-systemc-2.3.1a/include/sysc/communication/sc_signal_ifs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_ifs.h
 sysc/communication/sc_interface.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_interface.h
 sysc/communication/sc_writer_policy.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_writer_policy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_writer_policy.h
 
-systemc-2.3.1a/include/sysc/communication/sc_signal_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_ports.h
 sysc/communication/sc_event_finder.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_event_finder.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_event_finder.h
 sysc/communication/sc_port.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_port.h
 sysc/communication/sc_signal_ifs.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ifs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ifs.h
 sysc/datatypes/bit/sc_logic.h
-systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_logic.h
 sysc/tracing/sc_trace.h
-systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/tracing/sc_trace.h
 
-systemc-2.3.1a/include/sysc/communication/sc_signal_resolved.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_resolved.h
 sysc/communication/sc_signal.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
 
-systemc-2.3.1a/include/sysc/communication/sc_signal_resolved_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_resolved_ports.h
 sysc/communication/sc_signal_ports.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ports.h
 sysc/datatypes/bit/sc_logic.h
-systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_logic.h
 
-systemc-2.3.1a/include/sysc/communication/sc_signal_rv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_rv.h
 sysc/communication/sc_signal.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal.h
 sysc/datatypes/bit/sc_lv.h
-systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_lv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_lv.h
 
-systemc-2.3.1a/include/sysc/communication/sc_signal_rv_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_rv_ports.h
 cstdio
 -
 sysc/communication/sc_communication_ids.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_communication_ids.h
 sysc/communication/sc_signal_ports.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_ports.h
 sysc/communication/sc_signal_rv.h
-systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_rv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/communication/sc_signal_rv.h
 sysc/datatypes/bit/sc_lv.h
-systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_lv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sysc/datatypes/bit/sc_lv.h
 
-systemc-2.3.1a/include/sysc/communication/sc_writer_policy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_writer_policy.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_nbdefs.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_iostream.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit_ids.h
 sysc/utils/sc_report.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_report.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit_proxies.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit_proxies.h
 sysc/datatypes/bit/sc_bit_ids.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
 sysc/datatypes/bit/sc_proxy.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_proxy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_proxy.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_bv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_bv.h
 sysc/datatypes/bit/sc_bv_base.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bv_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bv_base.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_bv_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_bv_base.h
 sysc/datatypes/bit/sc_bit_ids.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
 sysc/datatypes/bit/sc_bit_proxies.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_proxies.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_proxies.h
 sysc/datatypes/bit/sc_proxy.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_proxy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_proxy.h
 sysc/datatypes/int/sc_length_param.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_length_param.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_length_param.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_logic.h
 cstdio
 -
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_iostream.h
 sysc/kernel/sc_macros.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/kernel/sc_macros.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/kernel/sc_macros.h
 sysc/utils/sc_mempool.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_mempool.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_mempool.h
 sysc/datatypes/bit/sc_bit.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_lv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_lv.h
 sysc/datatypes/bit/sc_lv_base.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_lv_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_lv_base.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_lv_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_lv_base.h
 sysc/datatypes/bit/sc_bit_ids.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
 sysc/datatypes/bit/sc_bv_base.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bv_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bv_base.h
 sysc/datatypes/bit/sc_logic.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_logic.h
 sysc/datatypes/int/sc_length_param.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_length_param.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_length_param.h
 
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_proxy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_proxy.h
 sysc/kernel/sc_cmnhdr.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/kernel/sc_cmnhdr.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/kernel/sc_cmnhdr.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/utils/sc_iostream.h
 sysc/datatypes/int/sc_signed.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_signed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_signed.h
 sysc/datatypes/int/sc_unsigned.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_unsigned.h
 sysc/datatypes/int/sc_int_base.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_int_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_int_base.h
 sysc/datatypes/int/sc_uint_base.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_uint_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/int/sc_uint_base.h
 sysc/datatypes/bit/sc_bit.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit.h
 sysc/datatypes/bit/sc_bit_ids.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_bit_ids.h
 sysc/datatypes/bit/sc_logic.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/datatypes/bit/sc_logic.h
 sysc/kernel/sc_macros.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sysc/kernel/sc_macros.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sysc/kernel/sc_macros.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/fx.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/fx.h
 sysc/datatypes/fx/sc_fixed.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fixed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fixed.h
 sysc/datatypes/fx/sc_fxcast_switch.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxcast_switch.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxcast_switch.h
 sysc/datatypes/fx/sc_fxtype_params.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxtype_params.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxtype_params.h
 sysc/datatypes/fx/sc_ufixed.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_ufixed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_ufixed.h
 sysc/datatypes/fx/scfx_other_defs.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_other_defs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_other_defs.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_context.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_context.h
 sysc/datatypes/fx/sc_fx_ids.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
 sysc/kernel/sc_simcontext.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/kernel/sc_simcontext.h
 sysc/utils/sc_hash.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/utils/sc_hash.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/utils/sc_hash.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fix.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fix.h
 sysc/datatypes/fx/sc_fxnum.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxnum.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxnum.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fixed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fixed.h
 sysc/datatypes/fx/sc_fix.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fix.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fix.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fx_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fx_ids.h
 sysc/utils/sc_report.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/utils/sc_report.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxcast_switch.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxcast_switch.h
 sysc/datatypes/fx/sc_context.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_context.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_context.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxdefs.h
 sysc/utils/sc_machine.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/utils/sc_machine.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/utils/sc_machine.h
 sysc/datatypes/fx/sc_fx_ids.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
 sysc/datatypes/int/sc_nbutils.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_nbutils.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_nbutils.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxnum.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxnum.h
 sysc/datatypes/bit/sc_lv_base.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/bit/sc_lv_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/bit/sc_lv_base.h
 sysc/datatypes/fx/sc_fxval.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxval.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxval.h
 sysc/datatypes/fx/scfx_params.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_params.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_params.h
 sysc/datatypes/fx/sc_fxnum_observer.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxnum_observer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxnum_observer.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxnum_observer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxnum_observer.h
 sysc/datatypes/fx/sc_fxdefs.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxtype_params.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxtype_params.h
 sysc/datatypes/fx/sc_context.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_context.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_context.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxval.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxval.h
 sysc/datatypes/fx/scfx_rep.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_rep.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_rep.h
 sysc/datatypes/int/sc_int_base.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_int_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_int_base.h
 sysc/datatypes/int/sc_uint_base.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_uint_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_uint_base.h
 sysc/datatypes/int/sc_signed.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_signed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_signed.h
 sysc/datatypes/int/sc_unsigned.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_unsigned.h
 sysc/datatypes/fx/sc_fxval_observer.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxval_observer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxval_observer.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxval_observer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_fxval_observer.h
 sysc/datatypes/fx/sc_fxdefs.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_ufix.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_ufix.h
 sysc/datatypes/fx/sc_fxnum.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxnum.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxnum.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/sc_ufixed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sc_ufixed.h
 sysc/datatypes/fx/sc_ufix.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_ufix.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_ufix.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/scfx_ieee.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/scfx_ieee.h
 sysc/datatypes/fx/sc_fxdefs.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/scfx_mant.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/scfx_mant.h
 sysc/datatypes/fx/scfx_ieee.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_ieee.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_ieee.h
 sysc/datatypes/fx/scfx_utils.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_utils.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_utils.h
 sysc/kernel/sc_macros.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/kernel/sc_macros.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/kernel/sc_macros.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/scfx_other_defs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/scfx_other_defs.h
 sysc/datatypes/fx/sc_fx_ids.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
 sysc/datatypes/int/sc_signed.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_signed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_signed.h
 sysc/datatypes/int/sc_unsigned.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_unsigned.h
 sysc/datatypes/int/sc_int_base.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_int_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_int_base.h
 sysc/datatypes/int/sc_uint_base.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_uint_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/int/sc_uint_base.h
 sysc/tracing/sc_trace.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/tracing/sc_trace.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/tracing/sc_trace.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/scfx_params.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/scfx_params.h
 sysc/datatypes/fx/sc_fx_ids.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fx_ids.h
 sysc/datatypes/fx/sc_fxcast_switch.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxcast_switch.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxcast_switch.h
 sysc/datatypes/fx/sc_fxtype_params.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxtype_params.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxtype_params.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/scfx_rep.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/scfx_rep.h
 climits
 -
 sysc/datatypes/fx/scfx_mant.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_mant.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_mant.h
 sysc/datatypes/fx/scfx_params.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_params.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_params.h
 sysc/datatypes/fx/scfx_string.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_string.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_string.h
 
-systemc-2.3.1a/include/sysc/datatypes/fx/scfx_string.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/scfx_string.h
 cstdio
 -
 
-systemc-2.3.1a/include/sysc/datatypes/fx/scfx_utils.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/scfx_utils.h
 sysc/datatypes/fx/sc_fxdefs.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/sc_fxdefs.h
 sysc/datatypes/fx/scfx_params.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_params.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_params.h
 sysc/datatypes/fx/scfx_string.h
-systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_string.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/sysc/datatypes/fx/scfx_string.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_bigint.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_bigint.h
 sysc/datatypes/int/sc_signed.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_signed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_signed.h
 sysc/datatypes/int/sc_unsigned.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_unsigned.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_biguint.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_biguint.h
 sysc/datatypes/int/sc_signed.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_signed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_signed.h
 sysc/datatypes/int/sc_unsigned.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_unsigned.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_int.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_int.h
 sysc/datatypes/int/sc_int_base.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_base.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_int_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_int_base.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
 sysc/datatypes/misc/sc_value_base.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
 sysc/datatypes/int/sc_int_ids.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_ids.h
 sysc/datatypes/int/sc_length_param.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
 sysc/datatypes/int/sc_uint_base.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_uint_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_uint_base.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
 sysc/utils/sc_temporary.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_int_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_int_ids.h
 sysc/utils/sc_report.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_report.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_length_param.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_length_param.h
 sysc/datatypes/fx/sc_context.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/fx/sc_context.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/fx/sc_context.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_nbdefs.h
 sysc/kernel/sc_cmnhdr.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_cmnhdr.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_cmnhdr.h
 climits
 -
 inttypes.h
@@ -558,129 +558,129 @@ inttypes.h
 stdint.h
 -
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
 sysc/kernel/sc_constants.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_constants.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_constants.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_nbexterns.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_nbexterns.h
 sysc/datatypes/int/sc_nbutils.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbutils.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbutils.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_nbutils.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_nbutils.h
 cmath
 -
 limits
 -
 sysc/datatypes/bit/sc_bit_ids.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/bit/sc_bit_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/bit/sc_bit_ids.h
 sysc/datatypes/int/sc_int_ids.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_ids.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
 sysc/utils/sc_report.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_report.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_signed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_signed.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
 sysc/datatypes/misc/sc_value_base.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
 sysc/utils/sc_temporary.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
 sysc/datatypes/int/sc_length_param.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
 sysc/datatypes/int/sc_nbutils.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbutils.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbutils.h
 sysc/datatypes/int/sc_nbexterns.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbexterns.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbexterns.h
 sysc/datatypes/int/sc_unsigned.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_unsigned.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_uint.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_uint.h
 sysc/datatypes/int/sc_uint_base.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_uint_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_uint_base.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_uint_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_uint_base.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
 sysc/datatypes/misc/sc_value_base.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
 sysc/datatypes/int/sc_int_ids.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_int_ids.h
 sysc/datatypes/int/sc_length_param.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
 sysc/datatypes/fx/scfx_ieee.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/fx/scfx_ieee.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/fx/scfx_ieee.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
 sysc/utils/sc_temporary.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
 
-systemc-2.3.1a/include/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_unsigned.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/kernel/sc_object.h
 sysc/datatypes/misc/sc_value_base.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/misc/sc_value_base.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_iostream.h
 sysc/utils/sc_temporary.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
 sysc/datatypes/int/sc_length_param.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_length_param.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbdefs.h
 sysc/datatypes/int/sc_nbutils.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbutils.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbutils.h
 sysc/datatypes/int/sc_nbexterns.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbexterns.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/datatypes/int/sc_nbexterns.h
 sysc/utils/sc_temporary.h
-systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sysc/utils/sc_temporary.h
 
-systemc-2.3.1a/include/sysc/datatypes/misc/sc_concatref.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sc_concatref.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/kernel/sc_object.h
 sysc/datatypes/misc/sc_value_base.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/misc/sc_value_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/misc/sc_value_base.h
 sysc/utils/sc_temporary.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/utils/sc_temporary.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/utils/sc_temporary.h
 sysc/datatypes/bit/sc_bv.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/bit/sc_bv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/bit/sc_bv.h
 sysc/datatypes/bit/sc_lv.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/bit/sc_lv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/bit/sc_lv.h
 sysc/datatypes/int/sc_int_base.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_int_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_int_base.h
 sysc/datatypes/int/sc_uint_base.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_uint_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_uint_base.h
 sysc/datatypes/int/sc_signed.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_signed.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_signed.h
 sysc/datatypes/int/sc_unsigned.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_unsigned.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_unsigned.h
 
-systemc-2.3.1a/include/sysc/datatypes/misc/sc_value_base.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sc_value_base.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sysc/datatypes/int/sc_nbdefs.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_attribute.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_attribute.h
 string
 -
 vector
 -
 
-systemc-2.3.1a/include/sysc/kernel/sc_boost.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_boost.h
 sysc/packages/boost/bind.hpp
-systemc-2.3.1a/include/sysc/kernel/sysc/packages/boost/bind.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/packages/boost/bind.hpp
 sysc/packages/boost/ref.hpp
-systemc-2.3.1a/include/sysc/kernel/sysc/packages/boost/ref.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/packages/boost/ref.hpp
 
-systemc-2.3.1a/include/sysc/kernel/sc_cmnhdr.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_cmnhdr.h
 sysc/packages/boost/config.hpp
-systemc-2.3.1a/include/sysc/kernel/sysc/packages/boost/config.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/packages/boost/config.hpp
 cassert
 -
 cstdio
@@ -690,159 +690,159 @@ cstdlib
 Windows.h
 -
 
-systemc-2.3.1a/include/sysc/kernel/sc_constants.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_constants.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_dynamic_processes.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_dynamic_processes.h
 sysc/kernel/sc_except.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_except.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_except.h
 sysc/kernel/sc_spawn.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_spawn.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_spawn.h
 sysc/kernel/sc_join.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_join.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_join.h
 sysc/kernel/sc_boost.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_boost.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_boost.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_event.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_event.h
 sysc/kernel/sc_cmnhdr.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_cmnhdr.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_cmnhdr.h
 sysc/kernel/sc_kernel_ids.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_kernel_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_kernel_ids.h
 sysc/kernel/sc_simcontext.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_simcontext.h
 sysc/communication/sc_writer_policy.h
-systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_writer_policy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_writer_policy.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_except.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_except.h
 exception
 -
 
-systemc-2.3.1a/include/sysc/kernel/sc_externs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_externs.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_join.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_join.h
 sysc/kernel/sc_process.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
 sysc/kernel/sc_wait.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_wait.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_wait.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_kernel_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_kernel_ids.h
 sysc/utils/sc_report.h
-systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_report.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_macros.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_macros.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_module.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_module.h
 sysc/kernel/sc_kernel_ids.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_kernel_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_kernel_ids.h
 sysc/kernel/sc_process.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
 sysc/kernel/sc_module_name.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_module_name.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_module_name.h
 sysc/kernel/sc_sensitive.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_sensitive.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_sensitive.h
 sysc/kernel/sc_time.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_time.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_time.h
 sysc/kernel/sc_wait.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_wait.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_wait.h
 sysc/kernel/sc_wait_cthread.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_wait_cthread.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_wait_cthread.h
 sysc/kernel/sc_process.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
 sysc/kernel/sc_process_handle.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process_handle.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process_handle.h
 sysc/utils/sc_list.h
-systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_list.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_list.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_module_name.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_module_name.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_object.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_iostream.h
 sysc/kernel/sc_attribute.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_attribute.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_attribute.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_process.h
 cassert
 -
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_iostream.h
 sysc/kernel/sc_constants.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_constants.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_constants.h
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_object.h
 sysc/kernel/sc_kernel_ids.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_kernel_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_kernel_ids.h
 sysc/communication/sc_export.h
-systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_export.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_export.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_process_handle.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_process_handle.h
 sysc/kernel/sc_module.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_module.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_module.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_sensitive.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_sensitive.h
 sysc/kernel/sc_process.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_simcontext.h
 sysc/kernel/sc_cmnhdr.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_cmnhdr.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_cmnhdr.h
 sysc/kernel/sc_process.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process.h
 sysc/kernel/sc_status.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_status.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_status.h
 sysc/kernel/sc_time.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_time.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_time.h
 sysc/utils/sc_hash.h
-systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_hash.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_hash.h
 sysc/utils/sc_pq.h
-systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_pq.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_pq.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_spawn.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_spawn.h
 sysc/kernel/sc_process_handle.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process_handle.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_process_handle.h
 sysc/kernel/sc_spawn_options.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_spawn_options.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_spawn_options.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_spawn_options.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_spawn_options.h
 vector
 -
 sysc/communication/sc_export.h
-systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_export.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_export.h
 sysc/communication/sc_signal_ports.h
-systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_signal_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_signal_ports.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_status.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_status.h
 iosfwd
 -
 
-systemc-2.3.1a/include/sysc/kernel/sc_time.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_time.h
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/kernel/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/datatypes/int/sc_nbdefs.h
 sysc/datatypes/fx/scfx_ieee.h
-systemc-2.3.1a/include/sysc/kernel/sysc/datatypes/fx/scfx_ieee.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/datatypes/fx/scfx_ieee.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/utils/sc_iostream.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_ver.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_ver.h
 sysc/kernel/sc_macros.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_macros.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_macros.h
 sysc/communication/sc_writer_policy.h
-systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_writer_policy.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_writer_policy.h
 string
 -
 
-systemc-2.3.1a/include/sysc/kernel/sc_wait.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_wait.h
 sysc/kernel/sc_simcontext.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_simcontext.h
 
-systemc-2.3.1a/include/sysc/kernel/sc_wait_cthread.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_wait_cthread.h
 sysc/kernel/sc_simcontext.h
-systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/kernel/sc_simcontext.h
 sysc/datatypes/bit/sc_logic.h
-systemc-2.3.1a/include/sysc/kernel/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/datatypes/bit/sc_logic.h
 sysc/communication/sc_signal_ifs.h
-systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_signal_ifs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sysc/communication/sc_signal_ifs.h
 
-systemc-2.3.1a/include/sysc/packages/boost/bind.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind.hpp
 sysc/packages/boost/config.hpp
 -
 sysc/packages/boost/ref.hpp
@@ -880,27 +880,27 @@ sysc/packages/boost/bind/bind_mf_cc.hpp
 sysc/packages/boost/bind/placeholders.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/arg.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/arg.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/bind_cc.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/bind_cc.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/bind_mf_cc.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/bind_mf_cc.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/bind_template.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/bind_template.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/mem_fn_cc.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/mem_fn_cc.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/mem_fn_template.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/mem_fn_template.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/mem_fn_vw.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/mem_fn_vw.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/bind/placeholders.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/bind/placeholders.hpp
 sysc/packages/boost/bind/arg.hpp
 -
 sysc/packages/boost/config.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/config.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config.hpp
 sysc/packages/boost/config/select_compiler_config.hpp
 -
 sysc/packages/boost/config/select_stdlib_config.hpp
@@ -910,41 +910,41 @@ sysc/packages/boost/config/select_platform_config.hpp
 sysc/packages/boost/config/suffix.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/config/posix_features.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config/posix_features.hpp
 unistd.h
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/config/select_compiler_config.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config/select_compiler_config.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/config/select_platform_config.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config/select_platform_config.hpp
 sysc/packages/boost/config/posix_features.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/config/select_stdlib_config.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config/select_stdlib_config.hpp
 utility
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/config/suffix.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config/suffix.hpp
 limits.h
 -
 cstddef
 -
 sysc/packages/boost/type.hpp
-systemc-2.3.1a/include/sysc/packages/boost/config/sysc/packages/boost/type.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config/sysc/packages/boost/type.hpp
 sysc/packages/boost/non_type.hpp
-systemc-2.3.1a/include/sysc/packages/boost/config/sysc/packages/boost/non_type.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/config/sysc/packages/boost/non_type.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/detail/endian.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/detail/endian.hpp
 endian.h
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/detail/workaround.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/detail/workaround.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/get_pointer.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/get_pointer.hpp
 memory
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mem_fn.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mem_fn.hpp
 sysc/packages/boost/config.hpp
 -
 sysc/packages/boost/get_pointer.hpp
@@ -992,7 +992,7 @@ sysc/packages/boost/bind/mem_fn_cc.hpp
 sysc/packages/boost/bind/mem_fn_cc.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/adl_barrier.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/adl_barrier.hpp
 sysc/packages/boost/mpl/aux_/config/adl.hpp
 -
 sysc/packages/boost/mpl/aux_/config/gcc.hpp
@@ -1000,7 +1000,7 @@ sysc/packages/boost/mpl/aux_/config/gcc.hpp
 sysc/packages/boost/mpl/aux_/config/workaround.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/adl.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/adl.hpp
 sysc/packages/boost/mpl/aux_/config/msvc.hpp
 -
 sysc/packages/boost/mpl/aux_/config/intel.hpp
@@ -1010,25 +1010,25 @@ sysc/packages/boost/mpl/aux_/config/gcc.hpp
 sysc/packages/boost/mpl/aux_/config/workaround.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/gcc.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/gcc.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/intel.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/intel.hpp
 sysc/packages/boost/config.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/msvc.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/msvc.hpp
 sysc/packages/boost/config.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/static_constant.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/static_constant.hpp
 sysc/packages/boost/config.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/workaround.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/aux_/config/workaround.hpp
 sysc/packages/boost/detail/workaround.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/bool.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/bool.hpp
 sysc/packages/boost/mpl/bool_fwd.hpp
 -
 sysc/packages/boost/mpl/integral_c_tag.hpp
@@ -1036,19 +1036,19 @@ sysc/packages/boost/mpl/integral_c_tag.hpp
 sysc/packages/boost/mpl/aux_/config/static_constant.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/bool_fwd.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/bool_fwd.hpp
 sysc/packages/boost/mpl/aux_/adl_barrier.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/mpl/integral_c_tag.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/mpl/integral_c_tag.hpp
 sysc/packages/boost/mpl/aux_/adl_barrier.hpp
 -
 sysc/packages/boost/mpl/aux_/config/static_constant.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/non_type.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/non_type.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/ref.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/ref.hpp
 sysc/packages/boost/config.hpp
 -
 sysc/packages/boost/utility/addressof.hpp
@@ -1058,29 +1058,29 @@ sysc/packages/boost/mpl/bool.hpp
 sysc/packages/boost/type.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/type.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/type.hpp
 
-systemc-2.3.1a/include/sysc/packages/boost/utility/addressof.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/utility/addressof.hpp
 sysc/packages/boost/config.hpp
 -
 sysc/packages/boost/detail/workaround.hpp
 -
 
-systemc-2.3.1a/include/sysc/packages/boost/utility/enable_if.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/utility/enable_if.hpp
 sysc/packages/boost/config.hpp
-systemc-2.3.1a/include/sysc/packages/boost/utility/sysc/packages/boost/config.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/packages/boost/utility/sysc/packages/boost/config.hpp
 
-systemc-2.3.1a/include/sysc/tracing/sc_trace.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/tracing/sc_trace.h
 cstdio
 -
 sysc/datatypes/int/sc_nbdefs.h
-systemc-2.3.1a/include/sysc/tracing/sysc/datatypes/int/sc_nbdefs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/tracing/sysc/datatypes/int/sc_nbdefs.h
 sysc/kernel/sc_time.h
-systemc-2.3.1a/include/sysc/tracing/sysc/kernel/sc_time.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/tracing/sysc/kernel/sc_time.h
 
-systemc-2.3.1a/include/sysc/utils/sc_hash.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_hash.h
 
-systemc-2.3.1a/include/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_iostream.h
 ios
 -
 iostream
@@ -1094,49 +1094,49 @@ cstddef
 cstring
 -
 
-systemc-2.3.1a/include/sysc/utils/sc_list.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_list.h
 
-systemc-2.3.1a/include/sysc/utils/sc_machine.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_machine.h
 climits
 -
 sysc/packages/boost/detail/endian.hpp
-systemc-2.3.1a/include/sysc/utils/sysc/packages/boost/detail/endian.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/packages/boost/detail/endian.hpp
 
-systemc-2.3.1a/include/sysc/utils/sc_mempool.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_mempool.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_iostream.h
 
-systemc-2.3.1a/include/sysc/utils/sc_pq.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_pq.h
 cassert
 -
 
-systemc-2.3.1a/include/sysc/utils/sc_pvector.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_pvector.h
 vector
 -
 
-systemc-2.3.1a/include/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_report.h
 exception
 -
 string
 -
 sysc/utils/sc_report_handler.h
-systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_report_handler.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_report_handler.h
 
-systemc-2.3.1a/include/sysc/utils/sc_report_handler.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_report_handler.h
 
-systemc-2.3.1a/include/sysc/utils/sc_string.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_string.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_iostream.h
 sysc/utils/sc_report.h
-systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_report.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/utils/sc_report.h
 
-systemc-2.3.1a/include/sysc/utils/sc_temporary.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_temporary.h
 cstddef
 -
 
-systemc-2.3.1a/include/sysc/utils/sc_utils_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_utils_ids.h
 
-systemc-2.3.1a/include/sysc/utils/sc_vector.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_vector.h
 vector
 -
 iterator
@@ -1146,93 +1146,93 @@ string
 algorithm
 -
 sysc/kernel/sc_object.h
-systemc-2.3.1a/include/sysc/utils/sysc/kernel/sc_object.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/kernel/sc_object.h
 sysc/packages/boost/config.hpp
-systemc-2.3.1a/include/sysc/utils/sysc/packages/boost/config.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/packages/boost/config.hpp
 sysc/packages/boost/utility/enable_if.hpp
-systemc-2.3.1a/include/sysc/utils/sysc/packages/boost/utility/enable_if.hpp
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sysc/packages/boost/utility/enable_if.hpp
 
-systemc-2.3.1a/include/systemc
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/systemc
 sysc/kernel/sc_cmnhdr.h
-systemc-2.3.1a/include/sysc/kernel/sc_cmnhdr.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_cmnhdr.h
 sysc/kernel/sc_externs.h
-systemc-2.3.1a/include/sysc/kernel/sc_externs.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_externs.h
 sysc/kernel/sc_except.h
-systemc-2.3.1a/include/sysc/kernel/sc_except.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_except.h
 sysc/kernel/sc_module.h
-systemc-2.3.1a/include/sysc/kernel/sc_module.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_module.h
 sysc/kernel/sc_simcontext.h
-systemc-2.3.1a/include/sysc/kernel/sc_simcontext.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_simcontext.h
 sysc/kernel/sc_process_handle.h
-systemc-2.3.1a/include/sysc/kernel/sc_process_handle.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_process_handle.h
 sysc/kernel/sc_ver.h
-systemc-2.3.1a/include/sysc/kernel/sc_ver.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_ver.h
 sysc/communication/sc_buffer.h
-systemc-2.3.1a/include/sysc/communication/sc_buffer.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_buffer.h
 sysc/communication/sc_clock.h
-systemc-2.3.1a/include/sysc/communication/sc_clock.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_clock.h
 sysc/communication/sc_clock_ports.h
-systemc-2.3.1a/include/sysc/communication/sc_clock_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_clock_ports.h
 sysc/communication/sc_event_queue.h
-systemc-2.3.1a/include/sysc/communication/sc_event_queue.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_event_queue.h
 sysc/communication/sc_export.h
-systemc-2.3.1a/include/sysc/communication/sc_export.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_export.h
 sysc/communication/sc_fifo.h
-systemc-2.3.1a/include/sysc/communication/sc_fifo.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_fifo.h
 sysc/communication/sc_fifo_ports.h
-systemc-2.3.1a/include/sysc/communication/sc_fifo_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_fifo_ports.h
 sysc/communication/sc_mutex.h
-systemc-2.3.1a/include/sysc/communication/sc_mutex.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_mutex.h
 sysc/communication/sc_semaphore.h
-systemc-2.3.1a/include/sysc/communication/sc_semaphore.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_semaphore.h
 sysc/communication/sc_signal.h
-systemc-2.3.1a/include/sysc/communication/sc_signal.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal.h
 sysc/communication/sc_signal_ports.h
-systemc-2.3.1a/include/sysc/communication/sc_signal_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_ports.h
 sysc/communication/sc_signal_resolved.h
-systemc-2.3.1a/include/sysc/communication/sc_signal_resolved.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_resolved.h
 sysc/communication/sc_signal_resolved_ports.h
-systemc-2.3.1a/include/sysc/communication/sc_signal_resolved_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_resolved_ports.h
 sysc/communication/sc_signal_rv.h
-systemc-2.3.1a/include/sysc/communication/sc_signal_rv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_rv.h
 sysc/communication/sc_signal_rv_ports.h
-systemc-2.3.1a/include/sysc/communication/sc_signal_rv_ports.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/communication/sc_signal_rv_ports.h
 sysc/datatypes/bit/sc_bit.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_bit.h
 sysc/datatypes/bit/sc_logic.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_logic.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_logic.h
 sysc/datatypes/bit/sc_bv.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_bv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_bv.h
 sysc/datatypes/bit/sc_lv.h
-systemc-2.3.1a/include/sysc/datatypes/bit/sc_lv.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/bit/sc_lv.h
 sysc/datatypes/int/sc_bigint.h
-systemc-2.3.1a/include/sysc/datatypes/int/sc_bigint.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_bigint.h
 sysc/datatypes/int/sc_biguint.h
-systemc-2.3.1a/include/sysc/datatypes/int/sc_biguint.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_biguint.h
 sysc/datatypes/int/sc_int.h
-systemc-2.3.1a/include/sysc/datatypes/int/sc_int.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_int.h
 sysc/datatypes/int/sc_uint.h
-systemc-2.3.1a/include/sysc/datatypes/int/sc_uint.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/int/sc_uint.h
 sysc/datatypes/misc/sc_concatref.h
-systemc-2.3.1a/include/sysc/datatypes/misc/sc_concatref.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/misc/sc_concatref.h
 sysc/datatypes/fx/fx.h
-systemc-2.3.1a/include/sysc/datatypes/fx/fx.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/datatypes/fx/fx.h
 sysc/tracing/sc_trace.h
-systemc-2.3.1a/include/sysc/tracing/sc_trace.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/tracing/sc_trace.h
 sysc/utils/sc_iostream.h
-systemc-2.3.1a/include/sysc/utils/sc_iostream.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_iostream.h
 sysc/utils/sc_utils_ids.h
-systemc-2.3.1a/include/sysc/utils/sc_utils_ids.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_utils_ids.h
 sysc/utils/sc_pvector.h
-systemc-2.3.1a/include/sysc/utils/sc_pvector.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_pvector.h
 sysc/utils/sc_vector.h
-systemc-2.3.1a/include/sysc/utils/sc_vector.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_vector.h
 sysc/kernel/sc_dynamic_processes.h
-systemc-2.3.1a/include/sysc/kernel/sc_dynamic_processes.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/kernel/sc_dynamic_processes.h
 sysc/utils/sc_string.h
-systemc-2.3.1a/include/sysc/utils/sc_string.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/sysc/utils/sc_string.h
 
-systemc-2.3.1a/include/systemc.h
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/systemc.h
 cassert
 -
 climits
@@ -1270,5 +1270,5 @@ vector
 strstream
 -
 systemc
-systemc-2.3.1a/include/systemc
+/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include/systemc
 

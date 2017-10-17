@@ -1,6 +1,5 @@
 
 #include "../include/timer1.h"
-#include "../include/addresses.h"
 
 Timer1::Timer1(sc_module_name nm) : sc_module(nm),
     clock_in("clock_in"),

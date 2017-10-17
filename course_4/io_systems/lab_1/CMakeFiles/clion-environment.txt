@@ -1,2 +1,2 @@
 Options: 
-CMake: 3.8.2@/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/clion-2017.2.3/bin/cmake/bin/cmake
+CMake: 3.8.2@/Users/sigma/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/172.3544.40/CLion.app/Contents/bin/cmake/bin/cmake

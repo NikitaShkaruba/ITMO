@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/clion-2017.2.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = "/Users/sigma/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/172.3544.40/CLion.app/Contents/bin/cmake/bin/cmake"
 
 # The command to remove a file.
-RM = /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
+RM = "/Users/sigma/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/172.3544.40/CLion.app/Contents/bin/cmake/bin/cmake" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1
+CMAKE_SOURCE_DIR = /Users/sigma/code/ITMO/course_4/io_systems/lab_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1
+CMAKE_BINARY_DIR = /Users/sigma/code/ITMO/course_4/io_systems/lab_1
 
 # Include any dependencies generated for this target.
 include CMakeFiles/lab_1.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/lab_1.dir/flags.make
 
 CMakeFiles/lab_1.dir/src/main.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab_1.dir/src/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/main.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab_1.dir/src/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/main.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/main.cpp
 
 CMakeFiles/lab_1.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/main.cpp > CMakeFiles/lab_1.dir/src/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/main.cpp > CMakeFiles/lab_1.dir/src/main.cpp.i
 
 CMakeFiles/lab_1.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/main.cpp -o CMakeFiles/lab_1.dir/src/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/main.cpp -o CMakeFiles/lab_1.dir/src/main.cpp.s
 
 CMakeFiles/lab_1.dir/src/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/lab_1.dir/src/main.cpp.o.provides.build: CMakeFiles/lab_1.dir/src/mai
 
 CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o: src/lib/src/core.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/core.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/core.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp > CMakeFiles/lab_1.dir/src/lib/src/core.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp > CMakeFiles/lab_1.dir/src/lib/src/core.cpp.i
 
 CMakeFiles/lab_1.dir/src/lib/src/core.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/core.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp -o CMakeFiles/lab_1.dir/src/lib/src/core.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp -o CMakeFiles/lab_1.dir/src/lib/src/core.cpp.s
 
 CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o.provides.build: CMakeFiles/lab_1.dir
 
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o: src/lib/src/timer1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp > CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp > CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.i
 
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp -o CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp -o CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.s
 
 CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o.provides.build: CMakeFiles/lab_1.d
 
 CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o: src/lib/src/icconf.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp > CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp > CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.i
 
 CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp -o CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp -o CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.s
 
 CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o.provides.build: CMakeFiles/lab_1.d
 
 CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o: src/lib/src/bus.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp > CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp > CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.i
 
 CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp -o CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.s
 
 CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o.provides.build: CMakeFiles/lab_1.dir/
 
 CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o: src/lib/src/edge_detector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp > CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp > CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.i
 
 CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp -o CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp -o CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.s
 
 CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o: src/lib/src/prescaler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp > CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp > CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.i
 
 CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp -o CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp -o CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.s
 
 CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o.provides.build: CMakeFiles/lab_
 
 CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o: src/lib/src/buffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o -c /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o -c /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp
 
 CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp > CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp > CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.i
 
 CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp -o CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp -o CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.s
 
 CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o.requires:
 
@@ -272,9 +272,9 @@ lab_1: CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o
 lab_1: CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o
 lab_1: CMakeFiles/lab_1.dir/build.make
-lab_1: systemc-2.3.1a/lib-linux64/libsystemc.so
+lab_1: /Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/lib-macosx64/libsystemc-2.3.1.dylib
 lab_1: CMakeFiles/lab_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable lab_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable lab_1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab_1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -298,6 +298,6 @@ CMakeFiles/lab_1.dir/clean:
 .PHONY : CMakeFiles/lab_1.dir/clean
 
 CMakeFiles/lab_1.dir/depend:
-	cd /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1 /run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/sigma/code/ITMO/course_4/io_systems/lab_1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sigma/code/ITMO/course_4/io_systems/lab_1 /Users/sigma/code/ITMO/course_4/io_systems/lab_1 /Users/sigma/code/ITMO/course_4/io_systems/lab_1 /Users/sigma/code/ITMO/course_4/io_systems/lab_1 /Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/lab_1.dir/depend
 

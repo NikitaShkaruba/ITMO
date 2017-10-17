@@ -4,20 +4,20 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o"
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o"
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o"
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o"
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o"
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
-  "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/src/main.cpp" "/run/media/trionprog/ccc6f104-abca-49ec-8db7-303c8e38ab37/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/main.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/buffer.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/buffer.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/bus.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/bus.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/core.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/core.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/edge_detector.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/edge_detector.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/icconf.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/icconf.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/prescaler.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/prescaler.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/lib/src/timer1.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/lib/src/timer1.cpp.o"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/src/main.cpp" "/Users/sigma/code/ITMO/course_4/io_systems/lab_1/CMakeFiles/lab_1.dir/src/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "systemc-2.3.1a/include"
+  "/Users/sigma/code/ITMO/course_4/io_systems/lib/systemc-2.3.1a/include"
   )
 
 # Targets to which this target links.

@@ -6,7 +6,6 @@
 #include "lib/include/prescaler.h"
 #include "lib/include/buffer.h"
 
-
 int sc_main(int argc, char* argv[]) {
     CORE core("core");
     Bus bus("bus");

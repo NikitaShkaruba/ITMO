@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include "../include/addresses.h"
 
 SC_MODULE(Timer1) {
     // Clock
