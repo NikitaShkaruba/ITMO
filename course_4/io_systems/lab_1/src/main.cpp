@@ -10,8 +10,8 @@ int sc_main(int argc, char* argv[]) {
     CORE core("core");
     Bus bus("bus");
     ICCONF icconf("icconf");
-    Timer1 timer1("timer1");
-    Timer1 timer2("timer2");
+    Timer timer1("timer1");
+    Timer timer2("timer2");
     EdgeDetector edge_detector("edge_detector");
     Prescaler prescaler("prescaler");
     Buffer buffer("buffer");
@@ -60,7 +60,7 @@ int sc_main(int argc, char* argv[]) {
     icconf.write_signal_to_bus(write_signal_icconf_bus);
     // endregion
 
-    // region Bind Bus and Timer1
+    // region Bind Bus and Timer
     sc_signal<u32> data_bus_timer1;
     bus.data_to_timer1(data_bus_timer1);
     timer1.data_from_bus(data_bus_timer1);

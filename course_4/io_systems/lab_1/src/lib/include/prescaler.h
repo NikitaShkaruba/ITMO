@@ -2,6 +2,8 @@
 
 #include "common.h"
 
+class Prescaler;
+
 SC_MODULE(Prescaler) {
     // Clock
     sc_in<bool> clock_in;

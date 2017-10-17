@@ -2,6 +2,8 @@
 
 #include "common.h"
 
+class EdgeDetector;
+
 SC_MODULE(EdgeDetector) {
     // Clock
     sc_in<bool> clock_in;

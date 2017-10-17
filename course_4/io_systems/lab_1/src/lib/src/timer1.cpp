@@ -1,7 +1,7 @@
 
 #include "../include/timer1.h"
 
-Timer1::Timer1(sc_module_name nm) : sc_module(nm),
+Timer::Timer(sc_module_name nm) : sc_module(nm),
     clock_in("clock_in"),
     data_from_bus("data_from_bus"),
     write_signal_from_bus("write_signal_from_bus"),
@@ -36,9 +36,9 @@ Timer1::Timer1(sc_module_name nm) : sc_module(nm),
     tconf=0;
 }
 
-Timer1::~Timer1() = default;
+Timer::~Timer() = default;
 
-void Timer1::write_from_bus() {
+void Timer::write_from_bus() {
     if( write_signal_from_bus.read() ) {
         u32 data = data_from_bus.read();
         u32 address=address_from_bus.read();
@@ -55,7 +55,7 @@ void Timer1::write_from_bus() {
 }
 
 
-void Timer1::write_to_bus() {
+void Timer::write_to_bus() {
     if( read_signal_from_bus.read() ){
         u32 address=address_from_bus.read();
 
@@ -74,7 +74,7 @@ void Timer1::write_to_bus() {
     }
 }
 
-void Timer1::write_to_buffer() {
+void Timer::write_to_buffer() {
     if( read_signal_from_buffer.read() ){
         data_to_buffer.write(tval);
 
@@ -84,7 +84,7 @@ void Timer1::write_to_buffer() {
     }
 }
 
-void Timer1::tick() {
+void Timer::tick() {
     if( working() ){
         if( decremental() ){
             tval--;
@@ -102,11 +102,11 @@ void Timer1::tick() {
     }
 }
 
-bool Timer1::decremental() {
+bool Timer::decremental() {
     return (tconf & 0x1) > 0;
 }
 
-bool Timer1::working() {
+bool Timer::working() {
     return (tconf & 0x2) > 0;
 }
 

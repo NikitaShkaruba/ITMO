@@ -13,10 +13,6 @@ CORE::CORE(sc_module_name nm) : sc_module(nm),
     read_signal_to_bus("read_signal_to_bus"),
     signal_to_edge_detector("signal_to_edge_detector")
 {
-    //bus_address_out.initialize(0);
-    //bus_data_out.initialize(0);
-    //bus_write_out.initialize(0);
-    //bus_read_out.initialize(0);
     data_to_bus.initialize(0);
     address_to_bus.initialize(0);
     write_signal_to_bus.initialize(0);
@@ -30,90 +26,11 @@ CORE::CORE(sc_module_name nm) : sc_module(nm),
 CORE::~CORE() = default;
 
 void CORE::main_thread() {
-    /* //Bus test
-    write_to_bus(BUS_ADDRESS_ICCONF,0x43);
+  if (1) {
+      test_bus();
+  }
 
-    read_from_bus(BUS_ADDRESS_ICCONF);
-    write_to_bus(BUS_ADDRESS_TVAL1,0x24);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    write_to_bus(BUS_ADDRESS_TMR1,0x12);
-    read_from_bus(BUS_ADDRESS_TMR1);
-    read_from_bus(BUS_ADDRESS_ICCONF);
-    */
-
-
-    /* //Timer1 test
-    write_to_bus(BUS_ADDRESS_TMR1,10);
-    write_to_bus(BUS_ADDRESS_TCONF1,0x2);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-     */
-
-    /* //Timer 1 and 2 tests
-    write_to_bus(BUS_ADDRESS_TMR1,10);
-    write_to_bus(BUS_ADDRESS_TCONF1,0x2);
-    write_to_bus(BUS_ADDRESS_TMR2,20);
-    write_to_bus(BUS_ADDRESS_TCONF2,0x2);
-
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-    read_from_bus(BUS_ADDRESS_TVAL1);
-
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
-    read_from_bus(BUS_ADDRESS_TVAL2);
-*/
-
-    //Complex test
-    //Настройка таймеров
-    write_to_bus(BUS_ADDRESS_TMR1,10);
-    write_to_bus(BUS_ADDRESS_TCONF1,0x2);
-    write_to_bus(BUS_ADDRESS_TMR2,20);
-    write_to_bus(BUS_ADDRESS_TCONF2,0x2);
-
-    //Настраиваем EdgeDetector, Prescaler и Buffer
-    write_to_bus(BUS_ADDRESS_ICCONF,0x5 | 3 << 5);
-
-    //Генерируем входной сигнал и забиваем буфер до отказа
-    bool sig=false;
-
-    for(int i=0;i<2000;i++){
-        signal_to_edge_detector.write(sig);
-        sig=!sig;
-
-        u32 icconf=read_from_bus(BUS_ADDRESS_ICCONF);
-
-        if( icconf & 0x10 ){
-            printf("Full\n");
-            break;
-        }
-
-        //wait(); вместо read_from_bus
-        //wait();
-        //wait();
-    }
-
-    //Читаем буфер пока он не опустеет
-    while(1) {
-        u32 icconf=read_from_bus(BUS_ADDRESS_ICCONF);
-
-        if( icconf & 0x08 ){
-            printf("Empty\n");
-            break;
-        }
-
-        u32 record=read_from_bus(BUS_ADDRESS_BUFFER);
-        printf("Record %d %d\n", record>>16, record &0xFFFF);
-    }
-
-    sc_stop();
+  sc_stop();
 }
 
 void CORE::write_to_bus(u32 address, u32 data) {
@@ -168,53 +85,91 @@ u32 CORE::read_from_bus(u32 address) {
     return data;
 }
 
-/*
+// region Tests
 
-int CORE::readFromBus(int address) {
-  int data;
+void CORE::test_bus() {
+    write_to_bus(BUS_ADDRESS_ICCONF,0x43);
 
-  wait();
-  bus_address_out.write(address);
-  bus_read_out.write(1);
-
-  wait();
-  bus_read_out.write(1);
-
-  wait();
-  data = bus_data_in.read();
-
-  cout << "CORE: READ " << endl;
-  cout << "  -> address: " << hex << address << endl;
-  cout << "  -> data: " << hex << data << endl;
-
-  return data;
+    read_from_bus(BUS_ADDRESS_ICCONF);
+    write_to_bus(BUS_ADDRESS_TVAL1,0x24);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    write_to_bus(BUS_ADDRESS_TMR1,0x12);
+    read_from_bus(BUS_ADDRESS_TMR1);
+    read_from_bus(BUS_ADDRESS_ICCONF);
 }
 
-void CORE::write_to_bus(int address, int data) {
-  wait();
-  bus_address_out.write(address);
-  bus_data_out.write(data);
-  bus_write_out.write(1);
+void CORE::test_timer() {
+  write_to_bus(BUS_ADDRESS_TMR1,10);
+  write_to_bus(BUS_ADDRESS_TCONF1,0x2);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+  read_from_bus(BUS_ADDRESS_TVAL1);
+};
 
-  wait();
-  bus_write_out.write(0);
+void CORE::test_timers() {
+    write_to_bus(BUS_ADDRESS_TMR1, 10);
+    write_to_bus(BUS_ADDRESS_TCONF1, 0x2);
+    write_to_bus(BUS_ADDRESS_TMR2, 20);
+    write_to_bus(BUS_ADDRESS_TCONF2, 0x2);
 
-  cout << "CORE: WRITE " << endl;
-  cout << "  -> address: " << hex << address << endl;
-  cout << "  -> data: " << hex << data << endl;
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+    read_from_bus(BUS_ADDRESS_TVAL1);
+
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+    read_from_bus(BUS_ADDRESS_TVAL2);
+};
+
+void CORE::test_system() {
+    // Настройка таймеров
+    write_to_bus(BUS_ADDRESS_TMR1, 10);
+    write_to_bus(BUS_ADDRESS_TCONF1, 0x2);
+    write_to_bus(BUS_ADDRESS_TMR2, 20);
+    write_to_bus(BUS_ADDRESS_TCONF2, 0x2);
+
+    // Настраиваем EdgeDetector, Prescaler и Buffer
+    write_to_bus(BUS_ADDRESS_ICCONF, 0x5 | 3 << 5);
+
+    // Генерируем входной сигнал и забиваем буфер до отказа
+    bool sig = false;
+
+    for (int i = 0; i < 2000; i++) {
+        signal_to_edge_detector.write(sig);
+        sig = !sig;
+
+        u32 icconf = read_from_bus(BUS_ADDRESS_ICCONF);
+
+        if (icconf & 0x10) {
+            printf("Full\n");
+            break;
+        }
+
+        //wait(); вместо read_from_bus
+        //wait();
+        //wait();
+    }
+
+    // Читаем буфер пока он не опустеет
+    while (1) {
+        u32 icconf = read_from_bus(BUS_ADDRESS_ICCONF);
+
+        if (icconf & 0x08) {
+            printf("Empty\n");
+            break;
+        }
+
+        u32 record = read_from_bus(BUS_ADDRESS_BUFFER);
+        printf("Record %d %d\n", record >> 16, record & 0xFFFF);
+    }
+
+    sc_stop();
 }
 
-void CORE::configure_input_capture(unsigned int input_capture_mode, unsigned int timers_config) {
-  int config_bits = 0 | input_capture_mode | timers_config << 5;
-
-  write_to_bus(BUS_ADDRESS_INPUT_CAPTURE_CONFIG, config_bits);
-}
-
-void CORE::changeInputCaptureSignal(bool signal) {
-  wait();
-  ic_signal_out.write(signal);
-
-  cout << "CORE: changed input capture signal " << endl;
-  cout << "  -> signal: " << hex << signal << endl;
-}
-*/
+// endregion

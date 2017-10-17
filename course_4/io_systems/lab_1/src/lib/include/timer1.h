@@ -3,7 +3,9 @@
 #include "common.h"
 #include "../include/addresses.h"
 
-SC_MODULE(Timer1) {
+class Timer;
+
+SC_MODULE(Timer) {
     // Clock
     sc_in<bool> clock_in;
 
@@ -22,10 +24,10 @@ SC_MODULE(Timer1) {
     sc_in<bool> read_signal_from_buffer;
     sc_out<bool> data_signal_to_buffer;
 
-    SC_HAS_PROCESS(Timer1);
+    SC_HAS_PROCESS(Timer);
 
-    Timer1(sc_module_name name);
-    ~Timer1();
+    Timer(sc_module_name name);
+    ~Timer();
 
     void write_from_bus();
     void write_to_bus();

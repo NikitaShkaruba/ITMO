@@ -2,6 +2,8 @@
 
 #include "common.h"
 
+class ICCONF;
+
 SC_MODULE(ICCONF) {
     // Clock
     sc_in<bool> clock_in;

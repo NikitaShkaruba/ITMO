@@ -3,6 +3,8 @@
 #include "common.h"
 #include "addresses.h"
 
+class Bus;
+
 SC_MODULE(Bus) {
     sc_in<bool>  clock_in;
 

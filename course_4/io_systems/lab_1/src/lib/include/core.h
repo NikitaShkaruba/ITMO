@@ -2,6 +2,8 @@
 
 #include "common.h"
 
+class CORE;
+
 SC_MODULE(CORE) {
     sc_in<bool> clock_in;
 
@@ -31,4 +33,10 @@ SC_MODULE(CORE) {
 private:
   void write_to_bus(u32 address, u32 data);
   u32 read_from_bus(u32 address);
+
+
+  void test_bus();
+  void test_timer();
+  void test_timers();
+  void test_system();
 };
