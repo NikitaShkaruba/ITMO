@@ -1,0 +1,2 @@
+Options: 
+CMake: 3.8.2@/Users/sigma/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/172.3544.40/CLion.app/Contents/bin/cmake/bin/cmake

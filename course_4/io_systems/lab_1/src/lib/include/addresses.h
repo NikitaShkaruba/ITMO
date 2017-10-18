@@ -1,0 +1,12 @@
+#pragma once
+
+const u32 BUS_ADDRESS_TMR1 = 0x0;
+const u32 BUS_ADDRESS_TCONF1 = 0x4;
+const u32 BUS_ADDRESS_TVAL1 = 0x8;
+
+const u32 BUS_ADDRESS_TMR2 = 0xC;
+const u32 BUS_ADDRESS_TCONF2 = 0x10;
+const u32 BUS_ADDRESS_TVAL2 = 0x14;
+
+const u32 BUS_ADDRESS_ICCONF = 0x18;
+const u32 BUS_ADDRESS_BUFFER = 0x1C;
