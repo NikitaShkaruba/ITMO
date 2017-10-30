@@ -10,6 +10,8 @@ public:
 	~Painter();
 
 	void drawWorld(HDC hdc, char** map, int** character_coordinates);
+	void drawGameOverScreen(HDC hdc);
+	void drawWinScreen(HDC hdc);
 
 private:
 	void drawMap(Graphics* graphics, char** map);

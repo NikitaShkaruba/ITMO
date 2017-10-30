@@ -10,12 +10,12 @@ WorldEngine::WorldEngine() {
 
 	char map_template[MAP_HEIGHT][MAP_WIDTH] = {
 		"###############################",
-		"#      G G G G                #",
+		"#            G                #",
 		"### ################ ###### ###",
-		"#   #      #########      # ###",
-		"# # #### # ##        #### # # #",
+		"#   #  G   #########      # ###",
+		"# # #### # ##    G   #### # # #",
 		"# #      # ## ######    # # # #",
-		"# #### ### ## #  P   ## # # # #",
+		"# #### ### ## #  P   ## # # #G#",
 		"# #           ##### ##### ### #",
 		"# ###### ####       ##        #",
 		"# #  ### ######### ####### ####",
@@ -42,6 +42,8 @@ WorldEngine::WorldEngine() {
 			}
 		}
 	}
+
+	is_game_over = false;
 }
 
 
@@ -57,37 +59,91 @@ int ** WorldEngine::getCharacterCoordinates() {
 	return character_coordinates;
 }
 
-void WorldEngine::tick() {
-	for (int i = 0; i < CHARACTERS_AMOUNT; i++) {
-		int character_x = character_coordinates[i][0];
-		int character_y = character_coordinates[i][1];
-		int character_direction = directions[i];
-		char character_symbol = i == 0 ? 'P' : 'G';
+bool WorldEngine::isGameOver() {
+	return is_game_over;
+}
 
-		switch (character_direction) {
+int WorldEngine::getRandomDirection(int character_index) {
+	int character_x = character_coordinates[character_index][0];
+	int character_y = character_coordinates[character_index][1];
+	int current_direction = directions[character_index];
+
+	int directions[] = { VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT };
+	vector<int> available_choises = {};
+
+	if (character_y != 0 && map[character_y - 1][character_x] != '#') {
+		available_choises.push_back(VK_UP);
+	}
+	if (character_y != MAP_HEIGHT - 1 && map[character_y + 1][character_x] != '#') {
+		available_choises.push_back(VK_DOWN);
+	}
+	if (character_x != 0 && map[character_y][character_x - 1] != '#') {
+		available_choises.push_back(VK_LEFT);
+	}
+	if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
+		available_choises.push_back(VK_RIGHT);
+	}
+
+	if (available_choises.size() != 1) {
+		switch (current_direction) {
 		case VK_UP:
-			if (character_y != 0 && map[character_y - 1][character_x] != '#') {
-				character_coordinates[i][1]--;
-			}
+			available_choises.erase(remove(available_choises.begin(), available_choises.end(), VK_DOWN), available_choises.end());
 			break;
 		case VK_DOWN:
-			if (character_y != MAP_HEIGHT - 1 && map[character_y + 1][character_x] != '#') {
-				character_coordinates[i][1]++;
-			}
+			available_choises.erase(remove(available_choises.begin(), available_choises.end(), VK_UP), available_choises.end());
 			break;
 		case VK_LEFT:
-			if (character_x != 0 && map[character_y][character_x - 1] != '#') {
-				character_coordinates[i][0]--;
-			}
+			available_choises.erase(remove(available_choises.begin(), available_choises.end(), VK_RIGHT), available_choises.end());
 			break;
-		case VK_RIGHT:			
-			if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
-				character_coordinates[i][0]++;
-			}
+		case VK_RIGHT:
+			available_choises.erase(remove(available_choises.begin(), available_choises.end(), VK_LEFT), available_choises.end());
 			break;
 		}
 	}
 
+	int choise_index = rand() % available_choises.size();
+	return available_choises[choise_index];
+}
+
+void WorldEngine::tick() {
+	for (int character_index = 0; character_index < CHARACTERS_AMOUNT; character_index++) {
+		int character_x = character_coordinates[character_index][0];
+		int character_y = character_coordinates[character_index][1];
+		int character_direction = directions[character_index];
+		char character_symbol = character_index == 0 ? 'P' : 'G';
+
+		if (character_index > 0) {
+			int random_ghost_direction = getRandomDirection(character_index);
+			changeDirection(character_index, random_ghost_direction);
+		}
+
+		switch (character_direction) {
+		case VK_UP:
+			if (character_y != 0 && map[character_y - 1][character_x] != '#') {
+				character_coordinates[character_index][1]--;
+			}
+			break;
+		case VK_DOWN:
+			if (character_y != MAP_HEIGHT - 1 && map[character_y + 1][character_x] != '#') {
+				character_coordinates[character_index][1]++;
+			}
+			break;
+		case VK_LEFT:
+			if (character_x != 0 && map[character_y][character_x - 1] != '#') {
+				character_coordinates[character_index][0]--;
+			}
+			break;
+		case VK_RIGHT:			
+			if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
+				character_coordinates[character_index][0]++;
+			}
+			break;
+		}
+
+		if (hasGhostCollisions(PACMAN_CHARACTER_INDEX)) {
+			is_game_over = true;
+		}
+	}
 }
 
 void WorldEngine::changeDirection(int character_index, int direction) {
@@ -97,23 +153,39 @@ void WorldEngine::changeDirection(int character_index, int direction) {
 	switch (direction) {
 	case VK_UP:
 		if (character_y != 0 && map[character_y - 1][character_x] != '#') {
-			directions[PLAYER_DIRECTION_INDEX] = direction;
+			directions[character_index] = direction;
 		}
 		break;
 	case VK_DOWN:
 		if (character_y != MAP_HEIGHT - 1 && map[character_y + 1][character_x] != '#') {
-			directions[PLAYER_DIRECTION_INDEX] = direction;
+			directions[character_index] = direction;
 		}
 		break;
 	case VK_LEFT:
 		if (character_x != 0 && map[character_y][character_x - 1] != '#') {
-			directions[PLAYER_DIRECTION_INDEX] = direction;
+			directions[character_index] = direction;
 		}
 		break;
 	case VK_RIGHT:
 		if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
-			directions[PLAYER_DIRECTION_INDEX] = direction;
+			directions[character_index] = direction;
 		}
 		break;
 	}
+}
+
+bool WorldEngine::hasGhostCollisions(int character_index) {
+	int pacman_x = character_coordinates[character_index][0];
+	int pacman_y = character_coordinates[character_index][1];
+
+	for (int i = 1; i < CHARACTERS_AMOUNT; i++) {
+		int character_x = character_coordinates[i][0];
+		int character_y = character_coordinates[i][1];
+	
+		if (character_x == pacman_x && character_y == pacman_y) {
+			return true;
+		}
+	}
+
+	return false;
 }

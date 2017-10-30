@@ -41,6 +41,74 @@ void Painter::drawCharacters(Graphics* graphics, int** character_coordinates) {
 	}
 }
 
+void Painter::drawGameOverScreen(HDC hdc) {
+	Graphics* graphics = new Graphics(hdc);
+
+	char map[MAP_HEIGHT][MAP_WIDTH] = {
+		"###############################",
+		"###############################",
+		"###############################",
+		"########     ####     ########",
+		"######## ######## ### #########",
+		"######## #   #### ### #########",
+		"######## ### #### ### #########",
+		"########     ####     #########",
+		"###############################",
+		"###############################",
+		"###############################",
+		"###############################",
+		"###############################",
+		"###############################",
+	};
+
+	for (int y = 0; y < MAP_HEIGHT; y++) {
+		for (int x = 0; x < MAP_WIDTH; x++) {
+			char map_piece = map[y][x];
+
+			int piece_x = x * BLOCK_WIDTH;
+			int piece_y = y * BLOCK_HEIGHT;
+
+			if (map_piece == '#') {
+				drawWall(piece_x, piece_y, graphics);
+			}
+		}
+	}
+}
+
+void Painter::drawWinScreen(HDC hdc) {
+	Graphics* graphics = new Graphics(hdc);
+
+	char map[MAP_HEIGHT][MAP_WIDTH] = {
+		"###############################",
+		"###############################",
+		"###############################",
+		"###############################",
+		"###  ###  ### ##  ## ###   ####",
+		"####  ##   ## ##  ## ##  # ####",
+		"#####  # #  # ##  ## #  ## ####",
+		"######   ##   ##  ##   ### ####",
+		"###############################",
+		"###############################",
+		"###############################",
+		"###############################",
+		"###############################",
+		"###############################",
+	};
+
+	for (int y = 0; y < MAP_HEIGHT; y++) {
+		for (int x = 0; x < MAP_WIDTH; x++) {
+			char map_piece = map[y][x];
+
+			int piece_x = x * BLOCK_WIDTH;
+			int piece_y = y * BLOCK_HEIGHT;
+
+			if (map_piece == '#') {
+				drawWall(piece_x, piece_y, graphics);
+			}
+		}
+	}
+}
+
 void Painter::drawWall(int x, int y, Graphics* graphics) {
 	drawRectangle(x, y, Color(0, 0, 0), graphics);
 }
