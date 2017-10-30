@@ -60,3 +60,5 @@ gradlew.bat
 # Cmake's trash #
 # ###############
 **/cmake-build-debug/
+
+**/DEBUG/
