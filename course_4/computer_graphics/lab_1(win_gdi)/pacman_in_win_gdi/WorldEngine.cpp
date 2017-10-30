@@ -1,13 +1,6 @@
 #include "WorldEngine.h"
 
 WorldEngine::WorldEngine() {
-    directions = new int[CHARACTERS_AMOUNT];
-	character_coordinates = new int*[CHARACTERS_AMOUNT];
-	for (int i = 0; i < CHARACTERS_AMOUNT; i++) {
-		directions[i] = 0;
-		character_coordinates[i] = new int[2];
-	}
-
 	char map_template[MAP_HEIGHT][MAP_WIDTH] = {
 		"###############################",
 		"#            G                #",
@@ -24,21 +17,32 @@ WorldEngine::WorldEngine() {
 		"#                             #",
 		"###############################"
 	};
+
+	directions = new int[CHARACTERS_AMOUNT];
+	character_coordinates = new int*[CHARACTERS_AMOUNT];
+	for (int i = 0; i < CHARACTERS_AMOUNT; i++) {
+		directions[i] = 0;
+		character_coordinates[i] = new int[2];
+	}
+
+
 	int current_ghost_index = 1;
-
+	apples_left = 0;
 	map = new char*[MAP_HEIGHT];
-	for (int j = 0; j < MAP_HEIGHT; j++) {
-		map[j] = new char[MAP_WIDTH];
+	for (int y = 0; y < MAP_HEIGHT; y++) {
+		map[y] = new char[MAP_WIDTH];
 		for (int x = 0; x < MAP_WIDTH; x++) {
-			map[j][x] = map_template[j][x];
+			map[y][x] = map_template[y][x];
 
-			if (map[j][x] == 'P') {
+			if (map[y][x] == 'P') {
 				character_coordinates[0][0] = x;
-				character_coordinates[0][1] = j;
-			} else if (map[j][x] == 'G') {
+				character_coordinates[0][1] = y;
+			} else if (map[y][x] == 'G') {
 				character_coordinates[current_ghost_index][0] = x;
-				character_coordinates[current_ghost_index][1] = j;
+				character_coordinates[current_ghost_index][1] = y;
 				current_ghost_index++;
+			} else if (map[y][x] == ' ') {
+				apples_left++;
 			}
 		}
 	}
@@ -61,6 +65,10 @@ int ** WorldEngine::getCharacterCoordinates() {
 
 bool WorldEngine::isGameOver() {
 	return is_game_over;
+}
+
+bool WorldEngine::isPlayerWins() {
+	return apples_left == 0;
 }
 
 int WorldEngine::getRandomDirection(int character_index) {
@@ -143,6 +151,14 @@ void WorldEngine::tick() {
 		if (hasGhostCollisions(PACMAN_CHARACTER_INDEX)) {
 			is_game_over = true;
 		}
+	}
+
+	int pacman_x = character_coordinates[PACMAN_CHARACTER_INDEX][0];
+	int pacman_y = character_coordinates[PACMAN_CHARACTER_INDEX][1];
+	
+	if (map[pacman_y][pacman_x] = ' ') {
+		map[pacman_y][pacman_x] = '_';
+		apples_left--;
 	}
 }
 

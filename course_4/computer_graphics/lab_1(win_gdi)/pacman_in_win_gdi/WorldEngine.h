@@ -29,6 +29,7 @@ public:
 	char** getMap();
 	int** getCharacterCoordinates();
 	bool isGameOver();
+	bool isPlayerWins();
 
 private:
 	int getRandomDirection(int character_index);
@@ -36,6 +37,8 @@ private:
 	int** character_coordinates;
 	int* directions;
 	char** map;
+
 	bool is_game_over;
+	int apples_left;
 };
 

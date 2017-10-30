@@ -23,6 +23,10 @@ void Painter::drawMap(Graphics* graphics, char** map) {
 
 			if (map_piece == '#') {
 				drawWall(piece_x, piece_y, graphics);
+			} else if (map_piece == ' ') {
+				drawFood(piece_x, piece_y, graphics);
+			} else if (map_piece == '.') {
+				// Do nothing. It's eaten
 			}
 		}
 	}
@@ -119,6 +123,16 @@ void Painter::drapGhost(int x, int y, Graphics * graphics) {
 
 void Painter::drapPacman(int x, int y, Graphics* graphics) {
 	drawRectangle(x, y, Color(200, 200, 0), graphics);
+}
+
+void Painter::drawFood(int x, int y, Graphics * graphics) {
+	SolidBrush brush(Color(0, 200, 0));
+
+	// custom little addons
+	x = x + BLOCK_WIDTH / 2 - 3;
+	y = y + BLOCK_HEIGHT / 2 - 5 + 3;
+
+	graphics->FillEllipse(&brush, x, y, BLOCK_WIDTH / 5, BLOCK_HEIGHT / 5);
 }
 
 void Painter::drawRectangle(int x, int y, Color color, Graphics* graphics) {
