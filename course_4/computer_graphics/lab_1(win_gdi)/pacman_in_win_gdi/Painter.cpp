@@ -1,35 +1,42 @@
 #include "stdafx.h"
 #include "Painter.h"
-
-const int MAP_WIDTH = 32;
-const int MAP_HEIGHT = 14;
-
-const int BLOCK_WIDTH = 25;
-const int BLOCK_HEIGHT = 25;
+#include "WorldEngine.h"
 
 Painter::Painter() { }
 
 Painter::~Painter() { }
 
-void Painter::drawWorld(HDC hdc) {
+void Painter::drawWorld(HDC hdc, char** map, int** character_coordinates) {
 	Graphics* graphics = new Graphics(hdc);
 
-	drawMap(graphics);
+	drawMap(graphics, map);
+	drawCharacters(graphics, character_coordinates);
 }
 
-void Painter::drawMap(Graphics* graphics) {
-	char** map = this->getMap();
-
+void Painter::drawMap(Graphics* graphics, char** map) {
 	for (int y = 0; y < MAP_HEIGHT; y++) {
 		for (int x = 0; x < MAP_WIDTH; x++) {
 			char map_piece = map[y][x];
+
+			int piece_x = x * BLOCK_WIDTH;
+			int piece_y = y * BLOCK_HEIGHT;
+
 			if (map_piece == '#') {
-				drawWall(x, y, graphics);
-			} else if (map_piece == 'P') {
-				drapPacman(x, y, graphics);
-			} else if (map_piece == 'G') {
-				drapGhost(x, y, graphics);
+				drawWall(piece_x, piece_y, graphics);
 			}
+		}
+	}
+}
+
+void Painter::drawCharacters(Graphics* graphics, int** character_coordinates) {
+	for (int i = 0; i < CHARACTERS_AMOUNT; i++) {
+		int character_x = character_coordinates[i][0] * BLOCK_WIDTH;
+		int character_y = character_coordinates[i][1] * BLOCK_HEIGHT;
+		
+		if (i == 0) {
+			drapPacman(character_x, character_y, graphics);
+		} else {
+			drapGhost(character_x, character_y, graphics);
 		}
 	}
 }
@@ -49,43 +56,5 @@ void Painter::drapPacman(int x, int y, Graphics* graphics) {
 void Painter::drawRectangle(int x, int y, Color color, Graphics* graphics) {
 	SolidBrush brush(color);
 
-	x = x * BLOCK_WIDTH;
-	y = y * BLOCK_HEIGHT;
-
 	graphics->FillRectangle(&brush, x, y, BLOCK_WIDTH, BLOCK_HEIGHT);
-}
-
-char ** Painter::getMap() {
-	static char** map;
-
-	if (map == nullptr) {
-
-		char map_template[MAP_HEIGHT][MAP_WIDTH] = {
-			"###############################",
-			"#      G G G G                #",
-			"### ################ ###### ###",
-			"#   #      #########      # ###",
-			"# # #### # ##        #### # # #",
-			"# #      # ## ######    # # # #",
-			"# #### ### ## #  P   ## # # # #",
-			"# #           ##### ##### ### #",
-			"# ###### ####       ##        #",
-			"# #  ### ######### ####### ####",
-			"# # ##                        #",
-			"# # ## ############### ########",
-			"#                             #",
-			"###############################"
-		};
-
-
-		map = new char*[MAP_HEIGHT];
-		for (int i = 0; i < MAP_HEIGHT; i++) {
-			map[i] = new char[MAP_WIDTH];
-			for (int j = 0; j < MAP_WIDTH; j++) {
-				map[i][j] = map_template[i][j];
-			}
-		}
-	}
-
-	return map;
 }

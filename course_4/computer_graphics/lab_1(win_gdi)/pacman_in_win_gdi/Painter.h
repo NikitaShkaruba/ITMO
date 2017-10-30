@@ -9,10 +9,12 @@ public:
 	Painter();
 	~Painter();
 
-	void drawWorld(HDC hdc);
+	void drawWorld(HDC hdc, char** map, int** character_coordinates);
 
 private:
-	void drawMap(Graphics* graphics);
+	void drawMap(Graphics* graphics, char** map);
+	void drawCharacters(Graphics* graphics, int** character_coordinates);
+
 	void drawWall(int x, int y, Graphics* graphics);
 	void drapGhost(int x, int y, Graphics* graphics);
 	void drapPacman(int x, int y, Graphics* graphics);
