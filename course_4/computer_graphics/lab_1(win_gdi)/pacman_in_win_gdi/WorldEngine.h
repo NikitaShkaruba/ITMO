@@ -19,7 +19,7 @@ public:
 	~WorldEngine();
 
 	void tick();
-	void changeDirection(int direction);
+	void changeDirection(int character_index, int direction);
 
 	char** getMap();
 	int** getCharacterCoordinates();
