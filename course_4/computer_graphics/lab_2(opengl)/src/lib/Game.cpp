@@ -119,38 +119,46 @@ void Game::tick() {
   for (int character_index = 0; character_index < CHARACTERS_AMOUNT; character_index++) {
     int character_x = character_coordinates[character_index][0];
     int character_y = character_coordinates[character_index][1];
-    int character_direction = character_directions[character_index];
-    char character_symbol = character_index == 0 ? 'P' : 'G';
 
-    if (character_index > 0) {
-      int random_ghost_direction = getRandomDirection(character_index);
-      changeDirection(character_index, random_ghost_direction);
+    // change direction if needed
+    if (character_index == PACMAN_CHARACTER_INDEX) {
+      processPressedKeys(character_index, character_x, character_y);
+    } else {
+      setGhostDirection(character_index);
     }
 
+    int* character_directions = getCharacterDirections();
+    int character_direction = character_directions[character_index];
     switch (character_direction) {
       case KEY_UP:
-        if (character_y != 0 && map[character_y - 1][character_x] != '#') {
-          character_coordinates[character_index][1]--;
-        }
-        break;
-      case KEY_DOWN:
         if (character_y != MAP_HEIGHT - 1 && map[character_y + 1][character_x] != '#') {
           character_coordinates[character_index][1]++;
         }
         break;
+
       case KEY_LEFT:
         if (character_x != 0 && map[character_y][character_x - 1] != '#') {
           character_coordinates[character_index][0]--;
         }
         break;
+
+      case KEY_DOWN:
+        if (character_y != 0 && map[character_y - 1][character_x] != '#') {
+          character_coordinates[character_index][1]--;
+        }
+        break;
+
       case KEY_RIGHT:
         if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
           character_coordinates[character_index][0]++;
         }
         break;
+
+      default:
+        break;
     }
 
-    if (hasGhostCollisions(PACMAN_CHARACTER_INDEX)) {
+    if (PlayerHasGhostCollisions(PACMAN_CHARACTER_INDEX)) {
       is_game_over = true;
     }
   }
@@ -158,17 +166,59 @@ void Game::tick() {
   int pacman_x = character_coordinates[PACMAN_CHARACTER_INDEX][0];
   int pacman_y = character_coordinates[PACMAN_CHARACTER_INDEX][1];
 
-  if (map[pacman_y][pacman_x] = ' ') {
+  if (map[pacman_y][pacman_x] == ' ') {
     map[pacman_y][pacman_x] = '_';
     apples_left--;
   }
+}
+
+void Game::setGhostDirection(int character_index) {
+  int random_ghost_direction = getRandomDirection(character_index);
+  changeDirection(character_index, random_ghost_direction);
+}
+
+void Game::processPressedKeys(int character_index, int character_x, int character_y) {
+  int* pressed_keys = getPressedKeys();
+  for (int i = 0; i < 4; i++) {
+        if (pressed_keys[i]) {
+          switch (i) {
+            case KEY_UP:
+              if (character_y != 0 && map[character_y + 1][character_x] != '#') {
+                changeDirection(character_index, i);
+              }
+              break;
+
+            case KEY_LEFT:
+              if (character_x != 0 && map[character_y][character_x - 1] != '#') {
+                changeDirection(character_index, i);
+              }
+              break;
+
+            case KEY_DOWN:
+              if (character_y != MAP_HEIGHT - 1 && map[character_y - 1][character_x] != '#') {
+                changeDirection(character_index, i);
+              }
+              break;
+
+            case KEY_RIGHT:
+              if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
+                changeDirection(character_index, i);
+              }
+              break;
+
+            default:
+              break;
+          }
+          break;
+        }
+      }
 }
 
 void Game::changeDirection(int character_index, int direction) {
   character_directions[character_index] = direction;
 }
 
-bool Game::hasGhostCollisions(int character_index) {
+bool Game::PlayerHasGhostCollisions(int character_index) {
   int pacman_x = character_coordinates[character_index][0];
   int pacman_y = character_coordinates[character_index][1];
 

@@ -22,7 +22,13 @@ void displayHandler() {
   char** map = game->getMap();
   int** character_coordinates = game->getCharacterCoordinates();
 
-  painter->drawWorld(map, character_coordinates);
+  if (game->isGameOver()) {
+    painter->drawGameOverScreen();
+  } else if (game->isPlayerWins()) {
+    painter->drawWinScreen();
+  } else {
+    painter->drawWorld(map, character_coordinates);
+  }
 
   glEnd();   // Done drawing the pyramid
   glutSwapBuffers();  // Swap the front and back frame buffers (double buffering)
@@ -69,90 +75,11 @@ void keyUpHandler(unsigned char key, int x, int y) {
   }
 };
 
-void mainLoopHander() {
-  int** character_coordinates = game->getCharacterCoordinates();
-  char** map = game->getMap();
-
-  if (time_accumulated_ms++ % TIME_DESIRED_LIMIT == 0) {
-    for (int character_index = 0; character_index < CHARACTERS_AMOUNT; character_index++) {
-      int character_x = character_coordinates[character_index][0];
-      int character_y = character_coordinates[character_index][1];
-
-      // change direction if needed
-      if (character_index == PACMAN_CHARACTER_INDEX) {
-        int* pressed_keys = game->getPressedKeys();
-        for (int i = 0; i < 4; i++) {
-          if (pressed_keys[i]) {
-            switch (i) {
-              case KEY_UP:
-                if (character_y != 0 && map[character_y + 1][character_x] != '#') {
-                  game->changeDirection(character_index, i);
-                }
-                break;
-
-              case KEY_LEFT:
-                if (character_x != 0 && map[character_y][character_x - 1] != '#') {
-                  game->changeDirection(character_index, i);
-                }
-                break;
-
-              case KEY_DOWN:
-                if (character_y != MAP_HEIGHT - 1 && map[character_y - 1][character_x] != '#') {
-                  game->changeDirection(character_index, i);
-                }
-                break;
-
-              case KEY_RIGHT:
-                if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
-                  game->changeDirection(character_index, i);
-                }
-                break;
-
-              default:
-                break;
-            }
-            break;
-          }
-        }
-      } else {
-        int random_ghost_direction = game->getRandomDirection(character_index);
-        game->changeDirection(character_index, random_ghost_direction);
-      }
-
-      int* character_directions = game->getCharacterDirections();
-      int character_direction = character_directions[character_index];
-      switch (character_direction) {
-        case KEY_UP:
-          if (character_y != MAP_HEIGHT - 1 && map[character_y + 1][character_x] != '#') {
-            character_coordinates[character_index][1]++;
-          }
-          break;
-
-        case KEY_LEFT:
-          if (character_x != 0 && map[character_y][character_x - 1] != '#') {
-            character_coordinates[character_index][0]--;
-          }
-          break;
-
-        case KEY_DOWN:
-          if (character_y != 0 && map[character_y - 1][character_x] != '#') {
-            character_coordinates[character_index][1]--;
-          }
-          break;
-
-        case KEY_RIGHT:
-          if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
-            character_coordinates[character_index][0]++;
-          }
-          break;
-
-        default:
-          break;
-      }
-    }
+void mainLoopHandler() {
+  if (time_accumulated_ms++ % TIME_DESIRED_LIMIT == 0 && !game->isGameOver() && !game ->isPlayerWins()) {
+    game->tick();
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear color and depth buffers
-//    glLoadIdentity();                 // Reset the model-view matrix
     glutPostRedisplay();
   }
 }
@@ -170,7 +97,7 @@ int main(int argc, char** argv) {
   glutReshapeFunc(reshapeHandler);         // Register callback handler for window re-size event
   glutKeyboardFunc(keyDownHandler);
   glutKeyboardUpFunc(keyUpHandler);
-  glutIdleFunc(mainLoopHander);
+  glutIdleFunc(mainLoopHandler);
 
   game = new Game;
   painter = new Painter;

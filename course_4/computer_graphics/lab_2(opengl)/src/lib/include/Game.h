@@ -25,7 +25,7 @@ public:
   bool isGameOver();
   bool isPlayerWins();
 
-  bool hasGhostCollisions(int character_index);
+  bool PlayerHasGhostCollisions(int character_index);
   int getRandomDirection(int character_index);
 
   int** getCharacterCoordinates();
@@ -44,4 +44,8 @@ private:
 
   bool is_game_over;
   int apples_left;
+
+  void processPressedKeys(int character_index, int character_x, int character_y);
+
+  void setGhostDirection(int character_index);
 };

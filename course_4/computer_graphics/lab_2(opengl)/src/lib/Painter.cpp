@@ -65,11 +65,8 @@ void Painter::drawGameOverScreen() {
     for (int x = 0; x < MAP_WIDTH; x++) {
       char map_piece = map[y][x];
 
-      int piece_x = x * BLOCK_WIDTH;
-      int piece_y = y * BLOCK_HEIGHT;
-
       if (map_piece == '#') {
-        drawWall(piece_x, piece_y);
+        drawWall(x, y);
       }
     }
   }
@@ -97,11 +94,8 @@ void Painter::drawWinScreen() {
     for (int x = 0; x < MAP_WIDTH; x++) {
       char map_piece = map[y][x];
 
-      int piece_x = x * BLOCK_WIDTH;
-      int piece_y = y * BLOCK_HEIGHT;
-
       if (map_piece == '#') {
-        drawWall(piece_x, piece_y);
+        drawWall(x, y);
       }
     }
   }
