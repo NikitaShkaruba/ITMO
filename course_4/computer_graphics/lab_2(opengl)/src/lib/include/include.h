@@ -5,6 +5,6 @@
 #include <algorithm>
 
 #include "Painter.h"
-#include "WorldEngine.h"
+#include "Game.h"
 
 using namespace std;

@@ -10,31 +10,36 @@ const int VERTICAL_BLOCKS_AMOUNT = MAP_HEIGHT * BLOCK_HEIGHT;
 const int CHARACTERS_AMOUNT = 1 + 4;
 const int PACMAN_CHARACTER_INDEX = 0;
 
-const int KEY_UP = 1;
-const int KEY_DOWN = 2;
-const int KEY_LEFT = 3;
-const int KEY_RIGHT = 4;
+const int KEY_UP = 0;
+const int KEY_DOWN = 1;
+const int KEY_LEFT = 2;
+const int KEY_RIGHT = 3;
 
-class WorldEngine {
+class Game {
 public:
-  WorldEngine();
-  ~WorldEngine();
+  Game();
+  ~Game();
 
   void tick();
-  void changeDirection(int character_index, int direction);
-  bool hasGhostCollisions(int character_index);
-
   char** getMap();
-  int** getCharacterCoordinates();
-  void setCharacterCoordinates(int character_index, int x, int y);
   bool isGameOver();
   bool isPlayerWins();
 
-private:
+  bool hasGhostCollisions(int character_index);
   int getRandomDirection(int character_index);
 
+  int** getCharacterCoordinates();
+  void setCharacterCoordinates(int character_index, int x, int y);
+  int* getCharacterDirections();
+  void changeDirection(int character_index, int direction);
+  void setKeyPress(int direction, int value);
+  int* getPressedKeys();
+
+private:
+
   int** character_coordinates;
-  int* directions;
+  int* character_directions;
+  int* pressed_keys;
   char** map;
 
   bool is_game_over;

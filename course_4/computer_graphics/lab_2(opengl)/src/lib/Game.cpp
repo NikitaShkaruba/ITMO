@@ -1,10 +1,10 @@
-#include "include/WorldEngine.h"
+#include "include/Game.h"
 
-WorldEngine::WorldEngine() {
+Game::Game() {
   char map_template[MAP_HEIGHT][MAP_WIDTH] = {
       "###############################",
       "#P                            #",
-      "### ################ ###### ###",
+      "# # ################ ###### ###",
       "#   #      #########      # ###",
       "# # #### # ##    G   #### # # #",
       "# #      # ## ######    # # # #",
@@ -18,10 +18,15 @@ WorldEngine::WorldEngine() {
       "###############################"
   };
 
-  directions = new int[CHARACTERS_AMOUNT];
+  pressed_keys = new int[4];
+  for (int i = 0; i < 4; i++) {
+    pressed_keys[i] = 0;
+  }
+
+  character_directions = new int[CHARACTERS_AMOUNT];
   character_coordinates = new int*[CHARACTERS_AMOUNT];
   for (int i = 0; i < CHARACTERS_AMOUNT; i++) {
-    directions[i] = 0;
+    character_directions[i] = 0;
     character_coordinates[i] = new int[2];
   }
 
@@ -51,30 +56,29 @@ WorldEngine::WorldEngine() {
 }
 
 
-WorldEngine::~WorldEngine() = default;
+Game::~Game() = default;
 
-char** WorldEngine::getMap() {
+char** Game::getMap() {
   return map;
 }
 
-int ** WorldEngine::getCharacterCoordinates() {
+int ** Game::getCharacterCoordinates() {
   return character_coordinates;
 }
 
-bool WorldEngine::isGameOver() {
+bool Game::isGameOver() {
   return is_game_over;
 }
 
-bool WorldEngine::isPlayerWins() {
+bool Game::isPlayerWins() {
   return apples_left == 0;
 }
 
-int WorldEngine::getRandomDirection(int character_index) {
+int Game::getRandomDirection(int character_index) {
   int character_x = character_coordinates[character_index][0];
   int character_y = character_coordinates[character_index][1];
-  int current_direction = directions[character_index];
+  int current_direction = character_directions[character_index];
 
-  int directions[] = { KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT };
   vector<int> available_choises = {};
 
   if (character_y != 0 && map[character_y - 1][character_x] != '#') {
@@ -111,11 +115,11 @@ int WorldEngine::getRandomDirection(int character_index) {
   return available_choises[choise_index];
 }
 
-void WorldEngine::tick() {
+void Game::tick() {
   for (int character_index = 0; character_index < CHARACTERS_AMOUNT; character_index++) {
     int character_x = character_coordinates[character_index][0];
     int character_y = character_coordinates[character_index][1];
-    int character_direction = directions[character_index];
+    int character_direction = character_directions[character_index];
     char character_symbol = character_index == 0 ? 'P' : 'G';
 
     if (character_index > 0) {
@@ -160,35 +164,11 @@ void WorldEngine::tick() {
   }
 }
 
-void WorldEngine::changeDirection(int character_index, int direction) {
-  int character_x = character_coordinates[character_index][0];
-  int character_y = character_coordinates[character_index][1];
-
-  switch (direction) {
-    case KEY_UP:
-      if (character_y != 0 && map[character_y - 1][character_x] != '#') {
-        directions[character_index] = direction;
-      }
-      break;
-    case KEY_DOWN:
-      if (character_y != MAP_HEIGHT - 1 && map[character_y + 1][character_x] != '#') {
-        directions[character_index] = direction;
-      }
-      break;
-    case KEY_LEFT:
-      if (character_x != 0 && map[character_y][character_x - 1] != '#') {
-        directions[character_index] = direction;
-      }
-      break;
-    case KEY_RIGHT:
-      if (character_x != MAP_WIDTH - 1 && map[character_y][character_x + 1] != '#') {
-        directions[character_index] = direction;
-      }
-      break;
-  }
+void Game::changeDirection(int character_index, int direction) {
+  character_directions[character_index] = direction;
 }
 
-bool WorldEngine::hasGhostCollisions(int character_index) {
+bool Game::hasGhostCollisions(int character_index) {
   int pacman_x = character_coordinates[character_index][0];
   int pacman_y = character_coordinates[character_index][1];
 
@@ -204,7 +184,19 @@ bool WorldEngine::hasGhostCollisions(int character_index) {
   return false;
 }
 
-void WorldEngine::setCharacterCoordinates(int character_index, int x, int y) {
+void Game::setCharacterCoordinates(int character_index, int x, int y) {
   character_coordinates[character_index][0] = x;
   character_coordinates[character_index][1] = y;
+}
+
+void Game::setKeyPress(int direction, int value) {
+  pressed_keys[direction] = value;
+}
+
+int* Game::getCharacterDirections() {
+  return character_directions;
+}
+
+int* Game::getPressedKeys() {
+  return pressed_keys;
 }
