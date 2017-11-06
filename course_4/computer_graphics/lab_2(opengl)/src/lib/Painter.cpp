@@ -28,9 +28,9 @@ void Painter::drawWorld(char** map, int** character_coordinates) {
 
       if (character_index >= 0) {
         if (character_index == 0) {
-          drapPacman(x, y);
+          drawPacman(x, y);
         } else {
-          drapGhost(x, y);
+          drawGhost(x, y);
         }
       } else if (map_piece == '#') {
         drawWall(x, y);
@@ -48,12 +48,12 @@ void Painter::drawGameOverScreen() {
       "###############################",
       "###############################",
       "###############################",
-      "########     ####     #########",
-      "######## ######## ### #########",
-      "######## #   #### ### #########",
-      "######## ### #### ### #########",
-      "########     ####     #########",
       "###############################",
+      "########     ####     #########",
+      "######## ### #### ### #########",
+      "######## #   #### ### #########",
+      "######## ######## ### #########",
+      "########     ####     #########",
       "###############################",
       "###############################",
       "###############################",
@@ -78,10 +78,10 @@ void Painter::drawWinScreen() {
       "###############################",
       "###############################",
       "###############################",
-      "###  ###  ### ##  ## ###   ####",
-      "####  ##   ## ##  ## ##  # ####",
-      "#####  # #  # ##  ## #  ## ####",
       "######   ##   ##  ##   ### ####",
+      "#####  # #  # ##  ## #  ## ####",
+      "####  ##   ## ##  ## ##  # ####",
+      "###  ###  ### ##  ## ###   ####",
       "###############################",
       "###############################",
       "###############################",
@@ -101,7 +101,7 @@ void Painter::drawWinScreen() {
   }
 }
 
-void Painter::drapGhost(double x, double y) {
+void Painter::drawGhost(double x, double y) {
   x = x * BLOCK_SCALE;
   y = y * BLOCK_SCALE;
 
@@ -152,7 +152,7 @@ void Painter::drapGhost(double x, double y) {
   glEnd();
 }
 
-void Painter::drapPacman(double x, double y) {
+void Painter::drawPacman(double x, double y) {
   x = x * BLOCK_SCALE;
   y = y * BLOCK_SCALE;
 
@@ -205,8 +205,55 @@ void Painter::drapPacman(double x, double y) {
 
 Painter::~Painter() = default;
 
-void Painter::drawFood(int x, int y) {
+void Painter::drawFood(double x, double y) {
+  x = x * BLOCK_SCALE + BLOCK_WIDTH / 2;
+  y = y * BLOCK_SCALE + BLOCK_WIDTH / 3;
 
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  glColor3f(0.0, 1.0, 0.0);
+  glRectd(x, y, x + BLOCK_WIDTH / 3, y  + BLOCK_HEIGHT / 3);
+
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  glColor3f(0.0, 0.0, 0.0);
+  glRectd(x, y, x + BLOCK_WIDTH / 3, y  + BLOCK_HEIGHT / 3);
+
+  // Top side
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  glColor3f(0.0, 1.0, 0.0);
+  glBegin(GL_QUADS);
+  glVertex3d(x, y + BLOCK_HEIGHT / 3, 0);
+  glVertex3d(x + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_LENGTH / 3 + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+  glEnd();
+
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  glColor3f(0.0, 0.0, 0.0);
+  glBegin(GL_QUADS);
+  glVertex3d(x, y + BLOCK_HEIGHT / 3, 0);
+  glVertex3d(x + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_LENGTH / 3 + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+  glEnd();
+
+  // Right side
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  glColor3f(0.0, 1.0, 0.0);
+  glBegin(GL_QUADS);
+  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3, y, 0);
+  glEnd();
+
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  glColor3f(0.0, 0.0, 0.0);
+  glBegin(GL_QUADS);
+  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_LENGTH / 3, 0);
+  glVertex3d(x + BLOCK_WIDTH / 3, y, 0);
+  glEnd();
 }
 
 void Painter::drawRectangle(double x, double y) {

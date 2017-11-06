@@ -6,7 +6,6 @@ int time_accumulated_ms = 0;
 Game* game = nullptr;
 Painter* painter = nullptr;
 
-/* Initialize OpenGL Graphics */
 void initGL() {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
   glClearDepth(1.0f);                   // Set background depth to farthest
@@ -16,8 +15,6 @@ void initGL() {
   glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);  // Nice perspective corrections
 }
 
-/* Handler for window-repaint event. Called back when the window first appears and
-   whenever the window needs to be re-painted. */
 void displayHandler() {
   char** map = game->getMap();
   int** character_coordinates = game->getCharacterCoordinates();
@@ -34,8 +31,6 @@ void displayHandler() {
   glutSwapBuffers();  // Swap the front and back frame buffers (double buffering)
 }
 
-/* Handler for window re-size event. Called back when the window first appears and
-   whenever the window is re-sized with its new width and height */
 void reshapeHandler(GLsizei width, GLsizei height) {  // GLsizei for non-negative integer
   // Compute aspect ratio of the new window
   if (height == 0) height = 1;                // To prevent divide by 0
@@ -101,6 +96,7 @@ int main(int argc, char** argv) {
 
   game = new Game;
   painter = new Painter;
+  srand(static_cast<unsigned int>(time(NULL)));
 
   initGL();                         // Our own OpenGL initialization
   glutMainLoop();                   // Enter the infinite event-processing loop

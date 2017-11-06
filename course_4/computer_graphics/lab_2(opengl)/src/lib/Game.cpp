@@ -99,19 +99,24 @@ int Game::getRandomDirection(int character_index) {
       case KEY_UP:
         available_choises.erase(remove(available_choises.begin(), available_choises.end(), KEY_DOWN), available_choises.end());
         break;
+
       case KEY_DOWN:
         available_choises.erase(remove(available_choises.begin(), available_choises.end(), KEY_UP), available_choises.end());
         break;
+
       case KEY_LEFT:
         available_choises.erase(remove(available_choises.begin(), available_choises.end(), KEY_RIGHT), available_choises.end());
         break;
+
       case KEY_RIGHT:
         available_choises.erase(remove(available_choises.begin(), available_choises.end(), KEY_LEFT), available_choises.end());
         break;
+
+      default:break;
     }
   }
 
-  int choise_index = rand() % available_choises.size();
+  int choise_index = static_cast<int>(rand() % available_choises.size());
   return available_choises[choise_index];
 }
 
@@ -232,11 +237,6 @@ bool Game::PlayerHasGhostCollisions(int character_index) {
   }
 
   return false;
-}
-
-void Game::setCharacterCoordinates(int character_index, int x, int y) {
-  character_coordinates[character_index][0] = x;
-  character_coordinates[character_index][1] = y;
 }
 
 void Game::setKeyPress(int direction, int value) {

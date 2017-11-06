@@ -29,7 +29,6 @@ public:
   int getRandomDirection(int character_index);
 
   int** getCharacterCoordinates();
-  void setCharacterCoordinates(int character_index, int x, int y);
   int* getCharacterDirections();
   void changeDirection(int character_index, int direction);
   void setKeyPress(int direction, int value);

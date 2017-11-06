@@ -18,9 +18,9 @@ private:
   int getCharacterIndexByCoordinates(int x, int y, int** character_coordinates);
 
   void drawWall(double x, double y);
-  void drapGhost(double x, double y);
-  void drapPacman(double x, double y);
-  void drawFood(int x, int y);
+  void drawGhost(double x, double y);
+  void drawPacman(double x, double y);
+  void drawFood(double x, double y);
 
   void drawRectangle(double x, double y);
 };
