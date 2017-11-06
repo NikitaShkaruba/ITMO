@@ -38,7 +38,7 @@ void Painter::drawCharacters(Graphics* graphics, int** character_coordinates) {
 		int character_y = character_coordinates[i][1] * BLOCK_HEIGHT;
 		
 		if (i == 0) {
-			drapPacman(character_x, character_y, graphics);
+//			drapPacman(character_x, character_y, graphics);
 		} else {
 			drapGhost(character_x, character_y, graphics);
 		}
