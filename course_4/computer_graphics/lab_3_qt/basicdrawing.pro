@@ -8,5 +8,5 @@ SOURCES       = main.cpp \
 RESOURCES     = basicdrawing.qrc
 
 # install
-target.path = $$[QT_INSTALL_EXAMPLES]/widgets/painting/basicdrawing
+target.path = /Users/sigma/code/ITMO/course_4/computer_graphics/lab_3_qt
 INSTALLS += target
