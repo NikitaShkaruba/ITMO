@@ -1,10 +1,14 @@
 QT += widgets
 
 HEADERS       = renderarea.h \
-                window.h
+                window.h \
+                game.h
+
 SOURCES       = main.cpp \
                 renderarea.cpp \
-                window.cpp
+                window.cpp \
+                game.cpp
+
 RESOURCES     = basicdrawing.qrc
 
 # install

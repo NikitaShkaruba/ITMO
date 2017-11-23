@@ -1,6 +1,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "renderarea.h"
+#include "game.h"
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -20,6 +22,7 @@ public:
 
 private:
     RenderArea *renderArea;
+    Game* game;
 };
 
 #endif // WINDOW_H

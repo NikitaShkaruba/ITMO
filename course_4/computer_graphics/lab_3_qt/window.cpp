@@ -1,9 +1,9 @@
-#include "renderarea.h"
 #include "window.h"
 
 #include <QtWidgets>
 
 Window::Window() {
+    game = new Game;
     renderArea = new RenderArea;
 
     QGridLayout* mainLayout = new QGridLayout;
