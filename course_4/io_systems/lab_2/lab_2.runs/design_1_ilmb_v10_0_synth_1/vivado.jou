@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:07 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Sat Nov 25 18:28:33 2017
+# Process ID: 4799
+# Current directory: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_ilmb_v10_0_synth_1
+# Command line: vivado -log design_1_ilmb_v10_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_ilmb_v10_0.tcl
+# Log file: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_ilmb_v10_0_synth_1/design_1_ilmb_v10_0.vds
+# Journal file: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_ilmb_v10_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source design_1_ilmb_v10_0.tcl -notrace
