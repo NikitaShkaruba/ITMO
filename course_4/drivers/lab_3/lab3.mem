@@ -1,0 +1,28 @@
+Internal RAM layout:
+      0 1 2 3 4 5 6 7 8 9 A B C D E F
+0x00:|0|0|0|0|0|0|0|0|b|c|c|c|c|d| | |
+0x10:| | | | | | | | | | | | | | | | |
+0x20:|T|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|
+0x30:|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|
+0x40:|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|
+0x50:|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|
+0x60:|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|a|
+0x70:|a|a|a|a|a|a|a|a|a|a|a|a|a|S|S|S|
+0x80:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0x90:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0xa0:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0xb0:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0xc0:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0xd0:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0xe0:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0xf0:|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|S|
+0-3:Reg Banks, T:Bit regs, a-z:Data, B:Bits, Q:Overlay, I:iData, S:Stack, A:Absolute
+
+Stack starts at: 0x7d (sp set to 0x7c) with 131 bytes available.
+
+Other memory:
+   Name             Start    End      Size     Max     
+   ---------------- -------- -------- -------- --------
+   PAGED EXT. RAM                         0      256   
+   EXTERNAL RAM                           0    65536   
+   ROM/EPROM/FLASH  0x2100   0x2940    2113    65536   
