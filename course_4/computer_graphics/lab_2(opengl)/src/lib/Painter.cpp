@@ -22,8 +22,6 @@ void Painter::pushPointToVector(float x, float y, float z) {
 }
 
 void Painter::drawWorld(char** map, int** character_coordinates) {
-  vertices.clear();
-
   for (int y = 0; y < MAP_HEIGHT; y++) {
     for (int x = 0; x < MAP_WIDTH; x++) {
       char map_piece = map[y][x];
@@ -44,13 +42,6 @@ void Painter::drawWorld(char** map, int** character_coordinates) {
       }
     }
   }
-
-  glVertexPointer(3, GL_FLOAT, 0, NULL);                              // Establish its 3 coordinates per vertex with zero stride in this array; necessary here
-  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);  // Upload vertex data to the video device
-  glBindBuffer(GL_ARRAY_BUFFER, main_vertex_buffer);                  // Make the new VBO active. Repeat here incase changed since initialisation
-
-  glEnableClientState(GL_VERTEX_ARRAY);                               // Establish array contains vertices (not normals, colours, texture coords etc)
-  glDrawArrays(GL_LINES, 0, vertices.size() / 3);    // Actually draw the triangle, giving the number of vertices provided
 }
 
 void Painter::drawGameOverScreen() {

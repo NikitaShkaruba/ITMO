@@ -16,6 +16,8 @@ void initGL() {
 }
 
 void displayHandler() {
+  painter->vertices.clear();
+
   char** map = game->getMap();
   int** character_coordinates = game->getCharacterCoordinates();
 
@@ -26,6 +28,12 @@ void displayHandler() {
   } else {
     painter->drawWorld(map, character_coordinates);
   }
+
+  glVertexPointer(3, GL_FLOAT, 0, NULL);                              // Establish its 3 coordinates per vertex with zero stride in this array; necessary here
+  glBufferData(GL_ARRAY_BUFFER, painter->vertices.size() * sizeof(float), painter->vertices.data(), GL_STATIC_DRAW);  // Upload vertex data to the video device
+  glBindBuffer(GL_ARRAY_BUFFER, painter->main_vertex_buffer);                  // Make the new VBO active. Repeat here incase changed since initialisation
+
+  glDrawArrays(GL_LINES, 0, static_cast<GLsizei>(painter->vertices.size() / 3 + painter->colors.size() / 3));    // Actually draw the triangle, giving the number of vertices provided
 
   glutSwapBuffers();  // Swap the front and back frame buffers (double buffering)
   glFlush(); // Force display to be drawn now
@@ -98,8 +106,9 @@ int main(int argc, char** argv) {
   painter = new Painter;
   srand(static_cast<unsigned int>(time(NULL)));
 
-  glGenBuffers(1, &painter->main_vertex_buffer);              // Create a new VBO and use the variable id to store the VBO id
-  glBindBuffer(GL_ARRAY_BUFFER, painter->main_vertex_buffer); // Make the new VBO active
+  glGenBuffers(1, &painter->main_vertex_buffer);
+  glBindBuffer(GL_ARRAY_BUFFER, painter->main_vertex_buffer);
+  glEnableClientState(GL_VERTEX_ARRAY); // first array for verticies
 
   initGL();                         // Our own OpenGL initialization
   glutMainLoop();                   // Enter the infinite event-processing loop

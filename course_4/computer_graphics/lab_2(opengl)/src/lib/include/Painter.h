@@ -18,7 +18,9 @@ public:
   void drawWinScreen();
 
   GLuint main_vertex_buffer; // Create a variable to hold the VBO identifier
+  GLuint main_colours_buffer;
   vector<float> vertices;
+  vector<float> colors;
 
 private:
   int getCharacterIndexByCoordinates(int x, int y, int** character_coordinates);
