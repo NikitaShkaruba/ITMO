@@ -1,4 +1,7 @@
 #pragma once
+#include "include.h"
+
+using namespace std;
 
 static const double BLOCK_SCALE = 0.2;
 static const double BLOCK_WIDTH = 1 * BLOCK_SCALE;
@@ -14,6 +17,9 @@ public:
   void drawGameOverScreen();
   void drawWinScreen();
 
+  GLuint main_vertex_buffer; // Create a variable to hold the VBO identifier
+  vector<float> vertices;
+
 private:
   int getCharacterIndexByCoordinates(int x, int y, int** character_coordinates);
 
@@ -23,4 +29,14 @@ private:
   void drawFood(double x, double y);
 
   void drawRectangle(double x, double y);
+  void _drawRectangleInnerSide(double x, double y);
+  void _drawRectangleTopSide(double x, double y);
+  void _drawRectangleRightSide(double x, double y);
+
+  void drawSmallRectangle(double x, double y);
+  void _drawSmallRectangleInnerSide(double x, double y);
+  void _drawSmallRectangleTopSide(double x, double y);
+  void _drawSmallRectangleRightSide(double x, double y);
+
+  void pushPointToVector(float x, float y, float z);
 };

@@ -1,13 +1,6 @@
-//
-// Created by Nikita Shkaruba on 06/11/2017.
-//
-
 #include "include/include.h"
 
 void Painter::drawWall(double x, double y) {
-  x = x * BLOCK_SCALE;
-  y = y * BLOCK_SCALE;
-
   drawRectangle(x, y);
 }
 
@@ -20,7 +13,17 @@ Painter::Painter() {
   glTranslatef(-3, -1, -7.0f);  // Move right and into the screen
 }
 
+Painter::~Painter() = default;
+
+void Painter::pushPointToVector(float x, float y, float z) {
+  vertices.push_back(x);
+  vertices.push_back(y);
+  vertices.push_back(z);
+}
+
 void Painter::drawWorld(char** map, int** character_coordinates) {
+  vertices.clear();
+
   for (int y = 0; y < MAP_HEIGHT; y++) {
     for (int x = 0; x < MAP_WIDTH; x++) {
       char map_piece = map[y][x];
@@ -41,6 +44,13 @@ void Painter::drawWorld(char** map, int** character_coordinates) {
       }
     }
   }
+
+  glVertexPointer(3, GL_FLOAT, 0, NULL);                              // Establish its 3 coordinates per vertex with zero stride in this array; necessary here
+  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);  // Upload vertex data to the video device
+  glBindBuffer(GL_ARRAY_BUFFER, main_vertex_buffer);                  // Make the new VBO active. Repeat here incase changed since initialisation
+
+  glEnableClientState(GL_VERTEX_ARRAY);                               // Establish array contains vertices (not normals, colours, texture coords etc)
+  glDrawArrays(GL_LINES, 0, vertices.size() / 3);    // Actually draw the triangle, giving the number of vertices provided
 }
 
 void Painter::drawGameOverScreen() {
@@ -102,207 +112,66 @@ void Painter::drawWinScreen() {
 }
 
 void Painter::drawGhost(double x, double y) {
-  x = x * BLOCK_SCALE;
-  y = y * BLOCK_SCALE;
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 0.0, 1.0);
-  glRectd(x, y, x + BLOCK_WIDTH , y  + BLOCK_HEIGHT);
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glRectd(x, y, x + BLOCK_WIDTH , y  + BLOCK_HEIGHT);
-
-  // Top side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 0.0, 1.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glEnd();
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glEnd();
-
-  // Right side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 0.0, 1.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y, 0);
-  glEnd();
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y, 0);
-  glEnd();
+  drawRectangle(x, y);
 }
 
 void Painter::drawPacman(double x, double y) {
-  x = x * BLOCK_SCALE;
-  y = y * BLOCK_SCALE;
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 1.0, 0.0);
-  glRectd(x, y, x + BLOCK_WIDTH , y  + BLOCK_HEIGHT);
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glRectd(x, y, x + BLOCK_WIDTH , y  + BLOCK_HEIGHT);
-
-  // Top side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 1.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glEnd();
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glEnd();
-
-  // Right side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 1.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y, 0);
-  glEnd();
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y, 0);
-  glEnd();
+  drawRectangle(x, y);
 }
 
-Painter::~Painter() = default;
-
 void Painter::drawFood(double x, double y) {
-  x = x * BLOCK_SCALE + BLOCK_WIDTH / 2;
-  y = y * BLOCK_SCALE + BLOCK_WIDTH / 3;
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(0.0, 1.0, 0.0);
-  glRectd(x, y, x + BLOCK_WIDTH / 3, y  + BLOCK_HEIGHT / 3);
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glRectd(x, y, x + BLOCK_WIDTH / 3, y  + BLOCK_HEIGHT / 3);
-
-  // Top side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(0.0, 1.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT / 3, 0);
-  glVertex3d(x + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_LENGTH / 3 + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
-  glEnd();
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT / 3, 0);
-  glVertex3d(x + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_LENGTH / 3 + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
-  glEnd();
-
-  // Right side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(0.0, 1.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3, y, 0);
-  glEnd();
-
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_LENGTH / 3, 0);
-  glVertex3d(x + BLOCK_WIDTH / 3, y, 0);
-  glEnd();
+  drawSmallRectangle(x, y);
 }
 
 void Painter::drawRectangle(double x, double y) {
-  // Inner side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 0.0, 0.0);
-  glRectd(x, y, x + BLOCK_WIDTH , y  + BLOCK_HEIGHT);
+  x = x * BLOCK_SCALE;
+  y = y * BLOCK_SCALE;
 
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glRectd(x, y, x + BLOCK_WIDTH , y  + BLOCK_HEIGHT);
+  _drawRectangleInnerSide(x, y);
+  _drawRectangleTopSide(x, y);
+  _drawRectangleRightSide(x, y);
+}
 
-  // Top side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glEnd();
+void Painter::_drawRectangleRightSide(double x, double y) {
+  pushPointToVector(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
+  pushPointToVector(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
 
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glEnd();
+  pushPointToVector(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
+  pushPointToVector(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
 
-  // Right side
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glColor3f(1.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y, 0);
-  glEnd();
+  pushPointToVector(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
+  pushPointToVector(x + BLOCK_WIDTH, y, 0);
 
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glColor3f(0.0, 0.0, 0.0);
-  glBegin(GL_QUADS);
-  glVertex3d(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH + BLOCK_LENGTH, y + BLOCK_LENGTH, 0);
-  glVertex3d(x + BLOCK_WIDTH, y, 0);
-  glEnd();
+  pushPointToVector(x + BLOCK_WIDTH, y, 0);
+  pushPointToVector(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
+}
+
+void Painter::_drawRectangleTopSide(double x, double y) {
+  pushPointToVector(x, y + BLOCK_HEIGHT, 0);
+  pushPointToVector(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
+
+  pushPointToVector(x + BLOCK_LENGTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
+  pushPointToVector(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
+
+  pushPointToVector(x + BLOCK_LENGTH + BLOCK_WIDTH, y + BLOCK_HEIGHT + BLOCK_LENGTH, 0);
+  pushPointToVector(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
+  pushPointToVector(x, y + BLOCK_HEIGHT, 0);
+}
+
+void Painter::_drawRectangleInnerSide(double x, double y) {
+  pushPointToVector(x, y, 0);
+  pushPointToVector(x, y + BLOCK_HEIGHT, 0);
+
+  pushPointToVector(x, y + BLOCK_HEIGHT, 0);
+  pushPointToVector(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH, y + BLOCK_HEIGHT, 0);
+  pushPointToVector(x + BLOCK_WIDTH, y, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH, y, 0);
+  pushPointToVector(x, y, 0);
 }
 
 int Painter::getCharacterIndexByCoordinates(int x, int y, int** character_coordinates) {
@@ -313,4 +182,55 @@ int Painter::getCharacterIndexByCoordinates(int x, int y, int** character_coordi
   }
 
   return -1;
+}
+
+void Painter::drawSmallRectangle(double x, double y) {
+  x = x * BLOCK_SCALE + BLOCK_WIDTH / 3;
+  y = y * BLOCK_SCALE  + BLOCK_HEIGHT / 3;
+
+  _drawSmallRectangleInnerSide(x, y);
+  _drawSmallRectangleTopSide(x, y);
+  _drawSmallRectangleRightSide(x, y);
+}
+
+void Painter::_drawSmallRectangleInnerSide(double x, double y) {
+  pushPointToVector(x, y, 0);
+  pushPointToVector(x, y + BLOCK_HEIGHT / 3, 0);
+
+  pushPointToVector(x, y + BLOCK_HEIGHT / 3, 0);
+  pushPointToVector(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+  pushPointToVector(x + BLOCK_WIDTH / 3, y, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH / 3, y, 0);
+  pushPointToVector(x, y, 0);
+}
+
+void Painter::_drawSmallRectangleTopSide(double x, double y) {
+  pushPointToVector(x, y + BLOCK_HEIGHT / 3, 0);
+  pushPointToVector(x + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+
+  pushPointToVector(x + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  pushPointToVector(x + BLOCK_LENGTH / 3 + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+
+  pushPointToVector(x + BLOCK_LENGTH / 3 + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  pushPointToVector(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+  pushPointToVector(x, y + BLOCK_HEIGHT / 3, 0);
+}
+
+void Painter::_drawSmallRectangleRightSide(double x, double y) {
+  pushPointToVector(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
+  pushPointToVector(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_HEIGHT / 3 + BLOCK_LENGTH / 3, 0);
+  pushPointToVector(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_LENGTH / 3, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH / 3 + BLOCK_LENGTH / 3, y + BLOCK_LENGTH / 3, 0);
+  pushPointToVector(x + BLOCK_WIDTH / 3, y, 0);
+
+  pushPointToVector(x + BLOCK_WIDTH / 3, y, 0);
+  pushPointToVector(x + BLOCK_WIDTH / 3, y + BLOCK_HEIGHT / 3, 0);
 }

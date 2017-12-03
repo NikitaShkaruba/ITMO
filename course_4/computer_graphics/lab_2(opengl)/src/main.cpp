@@ -27,8 +27,8 @@ void displayHandler() {
     painter->drawWorld(map, character_coordinates);
   }
 
-  glEnd();   // Done drawing the pyramid
   glutSwapBuffers();  // Swap the front and back frame buffers (double buffering)
+  glFlush(); // Force display to be drawn now
 }
 
 void reshapeHandler(GLsizei width, GLsizei height) {  // GLsizei for non-negative integer
@@ -97,6 +97,9 @@ int main(int argc, char** argv) {
   game = new Game;
   painter = new Painter;
   srand(static_cast<unsigned int>(time(NULL)));
+
+  glGenBuffers(1, &painter->main_vertex_buffer);              // Create a new VBO and use the variable id to store the VBO id
+  glBindBuffer(GL_ARRAY_BUFFER, painter->main_vertex_buffer); // Make the new VBO active
 
   initGL();                         // Our own OpenGL initialization
   glutMainLoop();                   // Enter the infinite event-processing loop
