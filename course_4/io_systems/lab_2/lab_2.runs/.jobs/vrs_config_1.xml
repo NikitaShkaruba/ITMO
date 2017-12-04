@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="design_1_microblaze_0_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_microblaze_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_clk_wiz_1_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_clk_wiz_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_rst_clk_wiz_1_100M_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_rst_clk_wiz_1_100M_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_axi_timer_0_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_axi_timer_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_axi_gpio_0_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_axi_gpio_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_xbar_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_dlmb_v10_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_dlmb_v10_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_ilmb_v10_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_ilmb_v10_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="design_1_dlmb_v10_0_synth_1"/>
+	</Run>
+	<Run Id="design_1_dlmb_bram_if_cntlr_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_dlmb_bram_if_cntlr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_ilmb_bram_if_cntlr_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_ilmb_bram_if_cntlr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="design_1_lmb_bram_0_synth_1" LaunchDir="/home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_lmb_bram_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+</Runs>
+

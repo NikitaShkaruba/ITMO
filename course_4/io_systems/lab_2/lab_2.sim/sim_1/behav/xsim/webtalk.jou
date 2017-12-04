@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:07 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Sat Nov 25 18:53:12 2017
+# Process ID: 6868
+# Current directory: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim
+# Command line: wbtcv -mode batch -source /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim/xsim.dir/design_1_wrapper_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim/webtalk.jou
+#-----------------------------------------------------------
+source /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim/xsim.dir/design_1_wrapper_behav/webtalk/xsim_webtalk.tcl -notrace
