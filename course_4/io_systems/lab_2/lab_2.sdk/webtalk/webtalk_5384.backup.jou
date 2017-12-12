@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:07 MDT 2017
+# 
+# Start of session at: Sat Nov 25 18:31:38 2017
+# Process ID: 5384
+# Current directory: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sdk/webtalk
+# Command line: wbtcv -mode batch -source sdk_webtalk.tcl
+# Log file: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sdk/webtalk/webtalk.log
+# Journal file: /home/nsh/code/ITMO/course_4/io_systems/lab_2/lab_2.sdk/webtalk/webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

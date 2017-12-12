@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Tue Dec 12 13:47:04 2017
+# Process ID: 724
+# Current directory: F:/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_clk_wiz_0_0_synth_1
+# Command line: vivado.exe -log design_1_clk_wiz_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_clk_wiz_0_0.tcl
+# Log file: F:/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_clk_wiz_0_0_synth_1/design_1_clk_wiz_0_0.vds
+# Journal file: F:/ITMO/course_4/io_systems/lab_2/lab_2.runs/design_1_clk_wiz_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_clk_wiz_0_0.tcl -notrace
