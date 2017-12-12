@@ -1,0 +1,17 @@
+#include <xil_io.h>
+#define GPIO_ADDRESS  0x40000000
+
+#define TIMER_TCSR0  0x41C00000
+#define TIMER_TLR0  0x41C00004
+#define TIMER_TCR0  0x41C00008
+
+
+//typedef unsigned int u32;
+
+int main() {
+	u32 per=50;
+	Xil_Out32(GPIO_ADDRESS, per);
+	Xil_Out32(TIMER_TLR0, per);
+	Xil_Out32(TIMER_TCSR0, 1<<10 | 1<<9|1<<7|1<<5|1<<4);
+	while(1);
+}

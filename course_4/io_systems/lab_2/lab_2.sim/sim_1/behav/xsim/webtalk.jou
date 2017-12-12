@@ -2,8 +2,8 @@
 # Webtalk v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Tue Dec 12 14:12:16 2017
-# Process ID: 4516
+# Start of session at: Tue Dec 12 19:32:13 2017
+# Process ID: 8396
 # Current directory: F:/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source F:/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim/xsim.dir/sim_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: F:/ITMO/course_4/io_systems/lab_2/lab_2.sim/sim_1/behav/xsim/webtalk.log

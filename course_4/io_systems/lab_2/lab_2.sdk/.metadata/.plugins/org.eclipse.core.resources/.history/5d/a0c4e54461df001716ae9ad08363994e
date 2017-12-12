@@ -1,0 +1,65 @@
+#include <xil_io.h>
+#define GPIO  0x40000000
+#define TCSR0 0x41C00000
+#define TCSR1 0x41C00010
+#define TLR0 0x41C00004
+#define TLR1 0x41C00014
+#define TCR0 0x41C00008
+#define TCR1 0x41C00018
+
+int main() {
+	int timer0 = 0;
+	volatile int n = 0;
+
+	while(1) {
+		for(int time = 0x62; time <= 0x8A; time += 0x14){
+			Xil_Out32(TLR0, time);      //period of pwm - 0x62 = 98 = 100 - 2
+			Xil_Out32(TLR1, 0x3A);      //period of 1 - 0x3A = 58 = 60 - 2
+
+			Xil_Out32(TCSR0, 0x286);    //bit 9 - Enable pwm
+									    //bit 7 - Enable timer
+			Xil_Out32(TCSR1, 0x286);    //bit 2 - Enable external generate signal
+										//bit 1 - Down counter
+
+			Xil_Out32(GPIO, (time - 0x3A) * 10); //write period of 0
+
+			for(n = 0; n < 66; n++);   //period of 10 millis
+		}
+	}
+}
+
+
+
+
+
+/*
+#include <xil_io.h>
+#define GPIO  0x40000000
+#define TCSR0 0x41C00000
+#define TCSR1 0x41C00010
+#define TLR0 0x41C00004
+#define TLR1 0x41C00014
+#define TCR0 0x41C00008
+#define TCR1 0x41C00018
+
+void delay_10ms() {
+	for(u32 n = 0; n < 66; n++);
+}
+
+int main() {
+	while(1) {
+		for(u32 per = 50; per <= 70; per += 10){
+			Xil_Out32(GPIO, per * 10);
+
+			Xil_Out32(TLR0, per-2);      //period of pwm - 0x62 = 98 = 100 - 2
+			Xil_Out32(TLR1, per/2-2);      //period of 1 - 0x3A = 58 = 60 - 2
+
+			Xil_Out32(TCSR0, 1<<9 | 1<<7);    //bit 9 - Enable pwm | bit 7 - Enable timer
+			Xil_Out32(TCSR1, 1<<2 | 1<<1);    //bit 2 - Enable external generate signal | bit 1 - Down counter
+
+			delay_10ms();
+		}
+	}
+}
+
+*/

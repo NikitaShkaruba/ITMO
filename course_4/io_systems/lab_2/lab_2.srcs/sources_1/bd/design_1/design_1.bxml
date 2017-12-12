@@ -5,7 +5,7 @@
     <Generation Name="SYNTHESIS" State="STALE" Timestamp="1513073497"/>
     <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1513073497"/>
     <Generation Name="SIMULATION" State="GENERATED" Timestamp="1513073497"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1513073497"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1513092979"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\design_1_microblaze_0_0\design_1_microblaze_0_0.xci" Type="IP">
         <Instance HierarchyPath="microblaze_0"/>
