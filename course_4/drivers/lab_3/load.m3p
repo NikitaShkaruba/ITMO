@@ -1,6 +1,6 @@
     terminateonerror
     -- Открытие com-порта (com1) на скорости 9600 бит/с
-    9600 openchannel //./com4
+    9600 openchannel com4
 
 : wait
     

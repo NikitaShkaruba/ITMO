@@ -7,7 +7,7 @@
 const u8 DIP_POLL_MODE=0x01;
 const u8 NUMBER_LIMIT=0xFF;
 
-//eai eiinoaioa yoi ia eiinoaioa I_i
+//ибо константа это не константа О_о
 #define STATE_NUMBER 0
 #define STATE_CR 1
 #define STATE_ERROR 2
@@ -33,30 +33,30 @@ void initialize_handler() {
 void poll_loop() {
 	u8 i;
 	u8 byte_in;
-	leds(0);
 	
 	while( read_dip()==DIP_POLL_MODE ){
-		if( read_byte(&byte_in) ){
-			for( i=1;i<=3;i++ ){
-				if (byte_in > 96 && byte_in < 123) {
-					byte_in = byte_in - 32;
-				}
-				/*if (byte_in > 191 && byte_in < 224) {
-					byte_in = byte_in + 32;
-				}*/
-				send_byte(byte_in);
-			}
-			send_string("\r\n");
-		}
+		if( poll_is_byte() ){// Прием байта
+			byte_in=poll_read_byte();
 		
-		delay_ms(1);
+			for( i=byte_in;i<='9';i++ ){
+				poll_write_byte(i);
+			}
+			
+			poll_write_byte('\r');
+			poll_write_byte('\n');
+		}
 	}
 	
 	mode=MODE_INT;
 }
 
 void int_loop() {
+	u8 byte_in;
+	
 	while( read_dip()!=DIP_POLL_MODE ){
+		if( read_byte(&byte_in) ){
+			handler_int(byte_in);
+		}
 		delay_ms(1);
 	}
 	
@@ -66,9 +66,11 @@ void int_loop() {
 void handler_loop() {
 	while(1) {
 		if( mode==MODE_POLL ) {
-			send_string("\r\npoll mode\r\n");
+			ES=0;
+			poll_send_string("\r\npoll mode\r\n");
 			poll_loop();
 		}else{
+			ES=1;
 			send_string("\r\ninteruption mode\r\n");
 			int_loop();
 		}
@@ -77,55 +79,57 @@ void handler_loop() {
 
 void error() {
 	send_string("\r\nerror\r\n");
+	leds(0xAA);
 	state=STATE_ERROR;
 }
 
-
-void handler_int() {
-	u8 num;
-	u8 sym;
-	int array[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-	int i;
-	int count=0;
-	
-	if( state==STATE_ERROR ){//i?euaai iinea ioeaee
-		reset();
+u8 to_hex(u8 val) {
+	if( val>9 ) {
+		return 'A'+val-10;
 	}
 	
-	if( read_byte(&sym) ){
-		switch (state) {
-			case STATE_NUMBER:
-				if(sym>='0' && sym<='9'){
-					send_byte(sym);
-					num=sym-'0';
-				
-					if( num > NUMBER_LIMIT-number*10 ) {//noaiao aieuoa, ?ai NUMBER_LIMIT
-						error();
-						return;
-					}
-					
-					number*=10;
-					number+=num;
-				}else if (sym == '\r'){
-					send_string("\r\nBin:");
-					while (number > 0) {
-						array[count] = number % 2;
-						number = number / 2;
-						count++;
-					}
-					for (i = 7; i >= 0; i--) {
-						send_byte(array[i] + '0');
-						led(i, array[i]);
-					}
-					
-					send_string("\r\n");
-					reset();
-				}
-				else{
+	return '0'+val;
+}
+
+void handler_int(u8 sym) {
+	u8 num;
+	
+	if( state==STATE_ERROR ){//очищаем после ошибки
+		reset();
+		leds(0x00);
+	}
+	
+	switch (state) {
+		case STATE_NUMBER:
+			if(sym>='0' && sym<='9'){
+				send_byte(sym);
+				num=sym-'0';
+			
+				if( num > NUMBER_LIMIT-number*10 ) {//станет больше, чем NUMBER_LIMIT
 					error();
+					return;
 				}
-				break;
-		}
-	} else 
-		error();
+				
+				number*=10;
+				number+=num;
+			}else if( sym=='r' ) {
+				state=STATE_CR;
+			}else{
+				error();
+			}
+			
+			break;
+		case STATE_CR:
+			if( sym=='n' ) {
+				send_string("\r\nHex:");
+				send_byte(to_hex(number>>4));
+				send_byte(to_hex(number&0x0F));
+				send_string("\r\n");
+				reset();
+			}else{
+				error();
+			}
+			
+			break;
+	}
 }

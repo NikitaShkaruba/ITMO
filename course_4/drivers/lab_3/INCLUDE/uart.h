@@ -9,9 +9,14 @@
 #define S2400   0xF4
 #define S1200   0xE8
 
-void initialize_uart(char speed);
-void send_byte(char data);
-bool read_byte(char* data);
+void initialize_uart(u8 speed);
+void send_byte(u8 data);
+bool read_byte(u8* data);
 void send_string(char * str);
+
+u8 poll_is_byte();
+u8 poll_read_byte();
+void poll_write_byte(u8 byte_out);
+void poll_send_string(char * str);
 
 #endif

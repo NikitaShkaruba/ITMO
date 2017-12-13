@@ -1,5 +1,6 @@
 #include "buffer.h"
 
+
 void initialize_buffer(Buffer* buffer) {
 	buffer->head=0;
 	buffer->tail=0;

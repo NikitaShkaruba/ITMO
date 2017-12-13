@@ -11,7 +11,7 @@ static u8 MODE_INT=0xFF;
 void initialize_handler();
 void poll_loop();
 void int_loop();
-void handler_int();
+void handler_int(u8);
 void handler_loop();
 
 #endif

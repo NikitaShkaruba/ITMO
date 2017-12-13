@@ -15,18 +15,18 @@ void initialize_uart(u8 speed) {
 	initialize_buffer(&buffer_out);
 	SetVector( 0x2023, (void *)UART_ISR );
 	
-	TH1       =  speed; //Eia nei?inoe
-    TMOD     |=  0x20; //Oaeia? 1 aoaao ?aaioaou a ?a?eia autoreload
-    TCON     |=  0x40; //Caione oaeia?a 1
-    SCON      =  0x50; //Iano?ieee iineaaiaaoaeuiiai eaiaea
+	TH1       =  speed;
+    TMOD     |=  0x20;
+    TCON     |=  0x40;
+    SCON      =  0x50;
 	
-	ES=1;
+	ES=0;
 }
 
 void send_byte(u8 dat) {
 	ES=0;
 	
-	if( !sending_byte ){//ia?eiaai i?ioann ia?aaa?e
+	if( !sending_byte ){
 		sending_byte=true;
 		SBUF=dat;
 	}else if( !is_buffer_full(&buffer_out) ){
@@ -39,7 +39,7 @@ void send_byte(u8 dat) {
 void send_string(char * str){
 	ES=0;
 	
-	if( !sending_byte ){//ia?eiaai i?ioann ia?aaa?e
+	if( !sending_byte ){
 		sending_byte=true;
 		SBUF=*str;
 		str++;
@@ -73,7 +73,7 @@ bool read_byte(u8* dat) {
 void UART_ISR( void ) __interrupt ( 4 ) {
 	u8 dat;
 	
-	if( TI ){// Ia?aaa?a aaeoa
+	if( TI ){
 		if( is_buffer_empty(&buffer_out) ){
 			sending_byte=false;
 		}else{
@@ -84,16 +84,33 @@ void UART_ISR( void ) __interrupt ( 4 ) {
 		TI=0;
 	}
 	
-	if( RI ){// I?eai aaeoa
+	if( RI ){
 		RI=0;
 		dat=SBUF;
 		
-		if( !is_buffer_full(&buffer_in) ){//Anee iieii, oi oa?yai aaeo
+		if( !is_buffer_full(&buffer_in) ){
 			push_byte_to_buffer(&buffer_in,dat);
-		}
-		
-		if( mode==MODE_INT ) {
-			handler_int();
 		}
 	}
 }
+
+u8 poll_is_byte()  {
+    return RI;
+}
+
+u8 poll_read_byte() {
+    while( !RI );
+    RI = 0;
+    return SBUF;
+}
+
+void poll_write_byte(u8 byte_out){
+	SBUF = byte_out;
+    TI   = 0;
+    while( !TI );
+}
+
+void poll_send_string(char * str){
+    while( *str ) poll_write_byte( *str++ );
+}
+	

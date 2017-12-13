@@ -5,7 +5,7 @@ NAME	= lab3
 
 # Настройки компилятора и линкера
 
-CC      = sdcc
+CC      = C:\\Program\ Files\ \(x86\)\\SDCC\\bin\\sdcc.exe
 CFLAGS  = -I./INCLUDE -c --stack-auto
 LFLAGS  = --code-loc 0x2100 --xram-loc 0x6000 --stack-auto --stack-loc 0x80 
 
@@ -22,7 +22,7 @@ TARBALL  = ${PROJNAME}.tar
 # Настройки M3P
 
 M3P		 = m3p
-COMPORT	 = com2
+COMPORT	 = com4
 COMLOG	 = $(COMPORT)_log.txt
 BAUD	 = 9600	
 
@@ -61,11 +61,11 @@ term:
 
 
 TEST_SERIAL_SRC = \
+$(SRC_DIR)/led.c \
 $(SRC_DIR)/max.c \
-$(SRC_DIR)/interrupt.c \
+$(SRC_DIR)/common.c \
 $(SRC_DIR)/system_timer.c \
 $(SRC_DIR)/uart.c \
-$(SRC_DIR)/led.c \
 $(SRC_DIR)/buffer.c \
 $(SRC_DIR)/handler.c \
 $(SRC_DIR)/lab3.c 
