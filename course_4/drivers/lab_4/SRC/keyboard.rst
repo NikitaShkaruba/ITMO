@@ -1,0 +1,866 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 2.9.0 #5416 (Mar 22 2009) (MINGW32)
+                              4 ; This file was generated Wed Nov 22 10:14:02 2017
+                              5 ;--------------------------------------------------------
+                              6 	.module keyboard
+                              7 	.optsdcc -mmcs51 --model-small
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _SPEAKER_TIME
+                             13 	.globl _KEY_REPEAT_DELAY
+                             14 	.globl _KEY_START_REPEAT_DELAY
+                             15 	.globl _KEY_COUNT_LIMIT
+                             16 	.globl _RELEASE_COUNT
+                             17 	.globl _PRESS_COUNT
+                             18 	.globl _COLS
+                             19 	.globl _ROWS
+                             20 	.globl _false
+                             21 	.globl _true
+                             22 	.globl _key_click
+                             23 	.globl _scan_keyboard
+                             24 	.globl _SPR0
+                             25 	.globl _SPR1
+                             26 	.globl _CPHA
+                             27 	.globl _CPOL
+                             28 	.globl _SPIM
+                             29 	.globl _SPE
+                             30 	.globl _WCOL
+                             31 	.globl _ISPI
+                             32 	.globl _I2CI
+                             33 	.globl _I2CTX
+                             34 	.globl _I2CRS
+                             35 	.globl _I2CM
+                             36 	.globl _MDI
+                             37 	.globl _MCO
+                             38 	.globl _MDE
+                             39 	.globl _MDO
+                             40 	.globl _CS0
+                             41 	.globl _CS1
+                             42 	.globl _CS2
+                             43 	.globl _CS3
+                             44 	.globl _SCONV
+                             45 	.globl _CCONV
+                             46 	.globl _DMA
+                             47 	.globl _ADCI
+                             48 	.globl _P
+                             49 	.globl _F1
+                             50 	.globl _OV
+                             51 	.globl _RS0
+                             52 	.globl _RS1
+                             53 	.globl _F0
+                             54 	.globl _AC
+                             55 	.globl _CY
+                             56 	.globl _CAP2
+                             57 	.globl _CNT2
+                             58 	.globl _TR2
+                             59 	.globl _XEN
+                             60 	.globl _TCLK
+                             61 	.globl _RCLK
+                             62 	.globl _EXF2
+                             63 	.globl _TF2
+                             64 	.globl _WDE
+                             65 	.globl _WDS
+                             66 	.globl _WDR2
+                             67 	.globl _WDR1
+                             68 	.globl _PRE0
+                             69 	.globl _PRE1
+                             70 	.globl _PRE2
+                             71 	.globl _PX0
+                             72 	.globl _PT0
+                             73 	.globl _PX1
+                             74 	.globl _PT1
+                             75 	.globl _PS
+                             76 	.globl _PT2
+                             77 	.globl _PADC
+                             78 	.globl _PSI
+                             79 	.globl _RXD
+                             80 	.globl _TXD
+                             81 	.globl _INT0
+                             82 	.globl _INT1
+                             83 	.globl _T0
+                             84 	.globl _T1
+                             85 	.globl _WR
+                             86 	.globl _RD
+                             87 	.globl _EX0
+                             88 	.globl _ET0
+                             89 	.globl _EX1
+                             90 	.globl _ET1
+                             91 	.globl _ES
+                             92 	.globl _ET2
+                             93 	.globl _EADC
+                             94 	.globl _EA
+                             95 	.globl _RI
+                             96 	.globl _TI
+                             97 	.globl _RB8
+                             98 	.globl _TB8
+                             99 	.globl _REN
+                            100 	.globl _SM2
+                            101 	.globl _SM1
+                            102 	.globl _SM0
+                            103 	.globl _T2
+                            104 	.globl _T2EX
+                            105 	.globl _IT0
+                            106 	.globl _IE0
+                            107 	.globl _IT1
+                            108 	.globl _IE1
+                            109 	.globl _TR0
+                            110 	.globl _TF0
+                            111 	.globl _TR1
+                            112 	.globl _TF1
+                            113 	.globl _DACCON
+                            114 	.globl _DAC1H
+                            115 	.globl _DAC1L
+                            116 	.globl _DAC0H
+                            117 	.globl _DAC0L
+                            118 	.globl _SPICON
+                            119 	.globl _SPIDAT
+                            120 	.globl _ADCCON3
+                            121 	.globl _ADCGAINH
+                            122 	.globl _ADCGAINL
+                            123 	.globl _ADCOFSH
+                            124 	.globl _ADCOFSL
+                            125 	.globl _B
+                            126 	.globl _ADCCON1
+                            127 	.globl _I2CCON
+                            128 	.globl _ACC
+                            129 	.globl _PSMCON
+                            130 	.globl _ADCDATAH
+                            131 	.globl _ADCDATAL
+                            132 	.globl _ADCCON2
+                            133 	.globl _DMAP
+                            134 	.globl _DMAH
+                            135 	.globl _DMAL
+                            136 	.globl _PSW
+                            137 	.globl _TH2
+                            138 	.globl _TL2
+                            139 	.globl _RCAP2H
+                            140 	.globl _RCAP2L
+                            141 	.globl _T2CON
+                            142 	.globl _EADRL
+                            143 	.globl _WDCON
+                            144 	.globl _EDATA4
+                            145 	.globl _EDATA3
+                            146 	.globl _EDATA2
+                            147 	.globl _EDATA1
+                            148 	.globl _ETIM3
+                            149 	.globl _ETIM2
+                            150 	.globl _ETIM1
+                            151 	.globl _ECON
+                            152 	.globl _IP
+                            153 	.globl _P3
+                            154 	.globl _IE2
+                            155 	.globl _IE
+                            156 	.globl _P2
+                            157 	.globl _I2CADD
+                            158 	.globl _I2CDAT
+                            159 	.globl _SBUF
+                            160 	.globl _SCON
+                            161 	.globl _P1
+                            162 	.globl _TH1
+                            163 	.globl _TH0
+                            164 	.globl _TL1
+                            165 	.globl _TL0
+                            166 	.globl _TMOD
+                            167 	.globl _TCON
+                            168 	.globl _PCON
+                            169 	.globl _DPP
+                            170 	.globl _DPH
+                            171 	.globl _DPL
+                            172 	.globl _SP
+                            173 	.globl _P0
+                            174 	.globl _key_clicks
+                            175 	.globl _speaker
+                            176 	.globl _prescaler
+                            177 	.globl _col
+                            178 	.globl _key_value
+                            179 	.globl _key_repeat_time
+                            180 	.globl _key_pressed_time
+                            181 	.globl _key_count
+                            182 	.globl _initialize_keyboard
+                            183 	.globl _keyboard_read_byte
+                            184 	.globl _scan_keyboard_int
+                            185 ;--------------------------------------------------------
+                            186 ; special function registers
+                            187 ;--------------------------------------------------------
+                            188 	.area RSEG    (DATA)
+                    0080    189 _P0	=	0x0080
+                    0081    190 _SP	=	0x0081
+                    0082    191 _DPL	=	0x0082
+                    0083    192 _DPH	=	0x0083
+                    0084    193 _DPP	=	0x0084
+                    0087    194 _PCON	=	0x0087
+                    0088    195 _TCON	=	0x0088
+                    0089    196 _TMOD	=	0x0089
+                    008A    197 _TL0	=	0x008a
+                    008B    198 _TL1	=	0x008b
+                    008C    199 _TH0	=	0x008c
+                    008D    200 _TH1	=	0x008d
+                    0090    201 _P1	=	0x0090
+                    0098    202 _SCON	=	0x0098
+                    0099    203 _SBUF	=	0x0099
+                    009A    204 _I2CDAT	=	0x009a
+                    009B    205 _I2CADD	=	0x009b
+                    00A0    206 _P2	=	0x00a0
+                    00A8    207 _IE	=	0x00a8
+                    00A9    208 _IE2	=	0x00a9
+                    00B0    209 _P3	=	0x00b0
+                    00B8    210 _IP	=	0x00b8
+                    00B9    211 _ECON	=	0x00b9
+                    00BA    212 _ETIM1	=	0x00ba
+                    00BB    213 _ETIM2	=	0x00bb
+                    00C4    214 _ETIM3	=	0x00c4
+                    00BC    215 _EDATA1	=	0x00bc
+                    00BD    216 _EDATA2	=	0x00bd
+                    00BE    217 _EDATA3	=	0x00be
+                    00BF    218 _EDATA4	=	0x00bf
+                    00C0    219 _WDCON	=	0x00c0
+                    00C6    220 _EADRL	=	0x00c6
+                    00C8    221 _T2CON	=	0x00c8
+                    00CA    222 _RCAP2L	=	0x00ca
+                    00CB    223 _RCAP2H	=	0x00cb
+                    00CC    224 _TL2	=	0x00cc
+                    00CD    225 _TH2	=	0x00cd
+                    00D0    226 _PSW	=	0x00d0
+                    00D2    227 _DMAL	=	0x00d2
+                    00D3    228 _DMAH	=	0x00d3
+                    00D4    229 _DMAP	=	0x00d4
+                    00D8    230 _ADCCON2	=	0x00d8
+                    00D9    231 _ADCDATAL	=	0x00d9
+                    00DA    232 _ADCDATAH	=	0x00da
+                    00DF    233 _PSMCON	=	0x00df
+                    00E0    234 _ACC	=	0x00e0
+                    00E8    235 _I2CCON	=	0x00e8
+                    00EF    236 _ADCCON1	=	0x00ef
+                    00F0    237 _B	=	0x00f0
+                    00F1    238 _ADCOFSL	=	0x00f1
+                    00F2    239 _ADCOFSH	=	0x00f2
+                    00F3    240 _ADCGAINL	=	0x00f3
+                    00F4    241 _ADCGAINH	=	0x00f4
+                    00F5    242 _ADCCON3	=	0x00f5
+                    00F7    243 _SPIDAT	=	0x00f7
+                    00F8    244 _SPICON	=	0x00f8
+                    00F9    245 _DAC0L	=	0x00f9
+                    00FA    246 _DAC0H	=	0x00fa
+                    00FB    247 _DAC1L	=	0x00fb
+                    00FC    248 _DAC1H	=	0x00fc
+                    00FD    249 _DACCON	=	0x00fd
+                            250 ;--------------------------------------------------------
+                            251 ; special function bits
+                            252 ;--------------------------------------------------------
+                            253 	.area RSEG    (DATA)
+                    008F    254 _TF1	=	0x008f
+                    008E    255 _TR1	=	0x008e
+                    008D    256 _TF0	=	0x008d
+                    008C    257 _TR0	=	0x008c
+                    008B    258 _IE1	=	0x008b
+                    008A    259 _IT1	=	0x008a
+                    0089    260 _IE0	=	0x0089
+                    0088    261 _IT0	=	0x0088
+                    0091    262 _T2EX	=	0x0091
+                    0090    263 _T2	=	0x0090
+                    009F    264 _SM0	=	0x009f
+                    009E    265 _SM1	=	0x009e
+                    009D    266 _SM2	=	0x009d
+                    009C    267 _REN	=	0x009c
+                    009B    268 _TB8	=	0x009b
+                    009A    269 _RB8	=	0x009a
+                    0099    270 _TI	=	0x0099
+                    0098    271 _RI	=	0x0098
+                    00AF    272 _EA	=	0x00af
+                    00AE    273 _EADC	=	0x00ae
+                    00AD    274 _ET2	=	0x00ad
+                    00AC    275 _ES	=	0x00ac
+                    00AB    276 _ET1	=	0x00ab
+                    00AA    277 _EX1	=	0x00aa
+                    00A9    278 _ET0	=	0x00a9
+                    00A8    279 _EX0	=	0x00a8
+                    00B7    280 _RD	=	0x00b7
+                    00B6    281 _WR	=	0x00b6
+                    00B5    282 _T1	=	0x00b5
+                    00B4    283 _T0	=	0x00b4
+                    00B3    284 _INT1	=	0x00b3
+                    00B2    285 _INT0	=	0x00b2
+                    00B1    286 _TXD	=	0x00b1
+                    00B0    287 _RXD	=	0x00b0
+                    00BF    288 _PSI	=	0x00bf
+                    00BE    289 _PADC	=	0x00be
+                    00BD    290 _PT2	=	0x00bd
+                    00BC    291 _PS	=	0x00bc
+                    00BB    292 _PT1	=	0x00bb
+                    00BA    293 _PX1	=	0x00ba
+                    00B9    294 _PT0	=	0x00b9
+                    00B8    295 _PX0	=	0x00b8
+                    00C7    296 _PRE2	=	0x00c7
+                    00C6    297 _PRE1	=	0x00c6
+                    00C5    298 _PRE0	=	0x00c5
+                    00C3    299 _WDR1	=	0x00c3
+                    00C2    300 _WDR2	=	0x00c2
+                    00C1    301 _WDS	=	0x00c1
+                    00C0    302 _WDE	=	0x00c0
+                    00CF    303 _TF2	=	0x00cf
+                    00CE    304 _EXF2	=	0x00ce
+                    00CD    305 _RCLK	=	0x00cd
+                    00CC    306 _TCLK	=	0x00cc
+                    00CB    307 _XEN	=	0x00cb
+                    00CA    308 _TR2	=	0x00ca
+                    00C9    309 _CNT2	=	0x00c9
+                    00C8    310 _CAP2	=	0x00c8
+                    00D7    311 _CY	=	0x00d7
+                    00D6    312 _AC	=	0x00d6
+                    00D5    313 _F0	=	0x00d5
+                    00D4    314 _RS1	=	0x00d4
+                    00D3    315 _RS0	=	0x00d3
+                    00D2    316 _OV	=	0x00d2
+                    00D1    317 _F1	=	0x00d1
+                    00D0    318 _P	=	0x00d0
+                    00DF    319 _ADCI	=	0x00df
+                    00DE    320 _DMA	=	0x00de
+                    00DD    321 _CCONV	=	0x00dd
+                    00DC    322 _SCONV	=	0x00dc
+                    00DB    323 _CS3	=	0x00db
+                    00DA    324 _CS2	=	0x00da
+                    00D9    325 _CS1	=	0x00d9
+                    00D8    326 _CS0	=	0x00d8
+                    00EF    327 _MDO	=	0x00ef
+                    00EE    328 _MDE	=	0x00ee
+                    00ED    329 _MCO	=	0x00ed
+                    00EC    330 _MDI	=	0x00ec
+                    00EB    331 _I2CM	=	0x00eb
+                    00EA    332 _I2CRS	=	0x00ea
+                    00E9    333 _I2CTX	=	0x00e9
+                    00E8    334 _I2CI	=	0x00e8
+                    00FF    335 _ISPI	=	0x00ff
+                    00FE    336 _WCOL	=	0x00fe
+                    00FD    337 _SPE	=	0x00fd
+                    00FC    338 _SPIM	=	0x00fc
+                    00FB    339 _CPOL	=	0x00fb
+                    00FA    340 _CPHA	=	0x00fa
+                    00F9    341 _SPR1	=	0x00f9
+                    00F8    342 _SPR0	=	0x00f8
+                            343 ;--------------------------------------------------------
+                            344 ; overlayable register banks
+                            345 ;--------------------------------------------------------
+                            346 	.area REG_BANK_0	(REL,OVR,DATA)
+   0000                     347 	.ds 8
+                            348 ;--------------------------------------------------------
+                            349 ; internal ram data
+                            350 ;--------------------------------------------------------
+                            351 	.area DSEG    (DATA)
+   0021                     352 _MODE_INT:
+   0021                     353 	.ds 1
+   0022                     354 _key_count::
+   0022                     355 	.ds 16
+   0032                     356 _key_pressed_time::
+   0032                     357 	.ds 16
+   0042                     358 _key_repeat_time::
+   0042                     359 	.ds 16
+   0052                     360 _key_value::
+   0052                     361 	.ds 17
+   0063                     362 _col::
+   0063                     363 	.ds 1
+   0064                     364 _prescaler::
+   0064                     365 	.ds 1
+   0065                     366 _speaker::
+   0065                     367 	.ds 1
+                            368 ;--------------------------------------------------------
+                            369 ; overlayable items in internal ram 
+                            370 ;--------------------------------------------------------
+                            371 	.area OSEG    (OVR,DATA)
+                            372 ;--------------------------------------------------------
+                            373 ; indirectly addressable internal ram data
+                            374 ;--------------------------------------------------------
+                            375 	.area ISEG    (DATA)
+                            376 ;--------------------------------------------------------
+                            377 ; absolute internal ram data
+                            378 ;--------------------------------------------------------
+                            379 	.area IABS    (ABS,DATA)
+                            380 	.area IABS    (ABS,DATA)
+                            381 ;--------------------------------------------------------
+                            382 ; bit data
+                            383 ;--------------------------------------------------------
+                            384 	.area BSEG    (BIT)
+                            385 ;--------------------------------------------------------
+                            386 ; paged external ram data
+                            387 ;--------------------------------------------------------
+                            388 	.area PSEG    (PAG,XDATA)
+                            389 ;--------------------------------------------------------
+                            390 ; external ram data
+                            391 ;--------------------------------------------------------
+                            392 	.area XSEG    (XDATA)
+   6086                     393 _key_clicks::
+   6086                     394 	.ds 67
+                            395 ;--------------------------------------------------------
+                            396 ; absolute external ram data
+                            397 ;--------------------------------------------------------
+                            398 	.area XABS    (ABS,XDATA)
+                            399 ;--------------------------------------------------------
+                            400 ; external initialized ram data
+                            401 ;--------------------------------------------------------
+                            402 	.area XISEG   (XDATA)
+                            403 	.area HOME    (CODE)
+                            404 	.area GSINIT0 (CODE)
+                            405 	.area GSINIT1 (CODE)
+                            406 	.area GSINIT2 (CODE)
+                            407 	.area GSINIT3 (CODE)
+                            408 	.area GSINIT4 (CODE)
+                            409 	.area GSINIT5 (CODE)
+                            410 	.area GSINIT  (CODE)
+                            411 	.area GSFINAL (CODE)
+                            412 	.area CSEG    (CODE)
+                            413 ;--------------------------------------------------------
+                            414 ; global & static initialisations
+                            415 ;--------------------------------------------------------
+                            416 	.area HOME    (CODE)
+                            417 	.area GSINIT  (CODE)
+                            418 	.area GSFINAL (CODE)
+                            419 	.area GSINIT  (CODE)
+                            420 ;	./INCLUDE/handler.h:9: static u8 MODE_INT=0xFF;
+   216F 75 21 FF            421 	mov	_MODE_INT,#0xFF
+                            422 ;	SRC/keyboard.c:25: char key_value[]="147*2580369#ABCD";
+   2172 75 52 31            423 	mov	_key_value,#0x31
+   2175 75 53 34            424 	mov	(_key_value + 0x0001),#0x34
+   2178 75 54 37            425 	mov	(_key_value + 0x0002),#0x37
+   217B 75 55 2A            426 	mov	(_key_value + 0x0003),#0x2A
+   217E 75 56 32            427 	mov	(_key_value + 0x0004),#0x32
+   2181 75 57 35            428 	mov	(_key_value + 0x0005),#0x35
+   2184 75 58 38            429 	mov	(_key_value + 0x0006),#0x38
+   2187 75 59 30            430 	mov	(_key_value + 0x0007),#0x30
+   218A 75 5A 33            431 	mov	(_key_value + 0x0008),#0x33
+   218D 75 5B 36            432 	mov	(_key_value + 0x0009),#0x36
+   2190 75 5C 39            433 	mov	(_key_value + 0x000a),#0x39
+   2193 75 5D 23            434 	mov	(_key_value + 0x000b),#0x23
+   2196 75 5E 41            435 	mov	(_key_value + 0x000c),#0x41
+   2199 75 5F 42            436 	mov	(_key_value + 0x000d),#0x42
+   219C 75 60 43            437 	mov	(_key_value + 0x000e),#0x43
+   219F 75 61 44            438 	mov	(_key_value + 0x000f),#0x44
+   21A2 75 62 00            439 	mov	(_key_value + 0x0010),#0x00
+                            440 ;--------------------------------------------------------
+                            441 ; Home
+                            442 ;--------------------------------------------------------
+                            443 	.area HOME    (CODE)
+                            444 	.area HOME    (CODE)
+                            445 ;--------------------------------------------------------
+                            446 ; code
+                            447 ;--------------------------------------------------------
+                            448 	.area CSEG    (CODE)
+                            449 ;------------------------------------------------------------
+                            450 ;Allocation info for local variables in function 'initialize_keyboard'
+                            451 ;------------------------------------------------------------
+                            452 ;------------------------------------------------------------
+                            453 ;	SRC/keyboard.c:30: void initialize_keyboard() {
+                            454 ;	-----------------------------------------
+                            455 ;	 function initialize_keyboard
+                            456 ;	-----------------------------------------
+   297B                     457 _initialize_keyboard:
+                    0002    458 	ar2 = 0x02
+                    0003    459 	ar3 = 0x03
+                    0004    460 	ar4 = 0x04
+                    0005    461 	ar5 = 0x05
+                    0006    462 	ar6 = 0x06
+                    0007    463 	ar7 = 0x07
+                    0000    464 	ar0 = 0x00
+                    0001    465 	ar1 = 0x01
+                            466 ;	SRC/keyboard.c:31: initialize_buffer(&key_clicks);
+   297B 90 60 86            467 	mov	dptr,#_key_clicks
+   297E 75 F0 00            468 	mov	b,#0x00
+   2981 12 25 42            469 	lcall	_initialize_buffer
+                            470 ;	SRC/keyboard.c:32: col=0;
+   2984 75 63 00            471 	mov	_col,#0x00
+                            472 ;	SRC/keyboard.c:33: prescaler=0;
+   2987 75 64 00            473 	mov	_prescaler,#0x00
+   298A 22                  474 	ret
+                            475 ;------------------------------------------------------------
+                            476 ;Allocation info for local variables in function 'keyboard_read_byte'
+                            477 ;------------------------------------------------------------
+                            478 ;dat                       Allocated to registers r2 r3 r4 
+                            479 ;is_data                   Allocated to registers r5 
+                            480 ;------------------------------------------------------------
+                            481 ;	SRC/keyboard.c:36: bool keyboard_read_byte(u8* dat) {
+                            482 ;	-----------------------------------------
+                            483 ;	 function keyboard_read_byte
+                            484 ;	-----------------------------------------
+   298B                     485 _keyboard_read_byte:
+   298B AA 82               486 	mov	r2,dpl
+   298D AB 83               487 	mov	r3,dph
+   298F AC F0               488 	mov	r4,b
+                            489 ;	SRC/keyboard.c:39: ET2=0;
+   2991 C2 AD               490 	clr	_ET2
+                            491 ;	SRC/keyboard.c:41: is_data=!is_buffer_empty(&key_clicks);
+   2993 90 60 86            492 	mov	dptr,#_key_clicks
+   2996 75 F0 00            493 	mov	b,#0x00
+   2999 C0 02               494 	push	ar2
+   299B C0 03               495 	push	ar3
+   299D C0 04               496 	push	ar4
+   299F 12 25 7F            497 	lcall	_is_buffer_empty
+   29A2 AD 82               498 	mov	r5,dpl
+   29A4 D0 04               499 	pop	ar4
+   29A6 D0 03               500 	pop	ar3
+   29A8 D0 02               501 	pop	ar2
+   29AA ED                  502 	mov	a,r5
+   29AB B4 01 00            503 	cjne	a,#0x01,00106$
+   29AE                     504 00106$:
+   29AE E4                  505 	clr	a
+   29AF 33                  506 	rlc	a
+                            507 ;	SRC/keyboard.c:43: if( is_data ){
+   29B0 FD                  508 	mov	r5,a
+   29B1 60 25               509 	jz	00102$
+                            510 ;	SRC/keyboard.c:44: *dat=pop_byte_from_buffer(&key_clicks);
+   29B3 90 60 86            511 	mov	dptr,#_key_clicks
+   29B6 75 F0 00            512 	mov	b,#0x00
+   29B9 C0 02               513 	push	ar2
+   29BB C0 03               514 	push	ar3
+   29BD C0 04               515 	push	ar4
+   29BF C0 05               516 	push	ar5
+   29C1 12 26 68            517 	lcall	_pop_byte_from_buffer
+   29C4 AE 82               518 	mov	r6,dpl
+   29C6 D0 05               519 	pop	ar5
+   29C8 D0 04               520 	pop	ar4
+   29CA D0 03               521 	pop	ar3
+   29CC D0 02               522 	pop	ar2
+   29CE 8A 82               523 	mov	dpl,r2
+   29D0 8B 83               524 	mov	dph,r3
+   29D2 8C F0               525 	mov	b,r4
+   29D4 EE                  526 	mov	a,r6
+   29D5 12 2C 10            527 	lcall	__gptrput
+   29D8                     528 00102$:
+                            529 ;	SRC/keyboard.c:47: ET2=1;
+   29D8 D2 AD               530 	setb	_ET2
+                            531 ;	SRC/keyboard.c:48: return is_data;
+   29DA 8D 82               532 	mov	dpl,r5
+   29DC 22                  533 	ret
+                            534 ;------------------------------------------------------------
+                            535 ;Allocation info for local variables in function 'scan_keyboard'
+                            536 ;------------------------------------------------------------
+                            537 ;scan_mask                 Allocated to registers 
+                            538 ;row_mask                  Allocated to registers 
+                            539 ;------------------------------------------------------------
+                            540 ;	SRC/keyboard.c:51: u8 scan_keyboard() {
+                            541 ;	-----------------------------------------
+                            542 ;	 function scan_keyboard
+                            543 ;	-----------------------------------------
+   29DD                     544 _scan_keyboard:
+                            545 ;	SRC/keyboard.c:55: scan_mask=~(1 << col);
+   29DD 85 63 F0            546 	mov	b,_col
+   29E0 05 F0               547 	inc	b
+   29E2 74 01               548 	mov	a,#0x01
+   29E4 80 02               549 	sjmp	00105$
+   29E6                     550 00103$:
+   29E6 25 E0               551 	add	a,acc
+   29E8                     552 00105$:
+   29E8 D5 F0 FB            553 	djnz	b,00103$
+   29EB F4                  554 	cpl	a
+   29EC FA                  555 	mov	r2,a
+                            556 ;	SRC/keyboard.c:56: write_max(KB, scan_mask);
+   29ED C0 02               557 	push	ar2
+   29EF 90 00 00            558 	mov	dptr,#0x0000
+   29F2 12 22 01            559 	lcall	_write_max
+   29F5 15 81               560 	dec	sp
+                            561 ;	SRC/keyboard.c:57: row_mask=~(read_max(KB) & 0xF0)>>4;
+   29F7 90 00 00            562 	mov	dptr,#0x0000
+   29FA 12 22 23            563 	lcall	_read_max
+   29FD E5 82               564 	mov	a,dpl
+   29FF 54 F0               565 	anl	a,#0xF0
+   2A01 7B 00               566 	mov	r3,#0x00
+   2A03 F4                  567 	cpl	a
+   2A04 FA                  568 	mov	r2,a
+   2A05 EB                  569 	mov	a,r3
+   2A06 F4                  570 	cpl	a
+   2A07 FB                  571 	mov	r3,a
+   2A08 C4                  572 	swap	a
+   2A09 CA                  573 	xch	a,r2
+   2A0A C4                  574 	swap	a
+   2A0B 54 0F               575 	anl	a,#0x0f
+   2A0D 6A                  576 	xrl	a,r2
+   2A0E CA                  577 	xch	a,r2
+   2A0F 54 0F               578 	anl	a,#0x0f
+   2A11 CA                  579 	xch	a,r2
+   2A12 6A                  580 	xrl	a,r2
+   2A13 CA                  581 	xch	a,r2
+   2A14 30 E3 02            582 	jnb	acc.3,00106$
+   2A17 44 F0               583 	orl	a,#0xf0
+   2A19                     584 00106$:
+   2A19 8A 82               585 	mov	dpl,r2
+                            586 ;	SRC/keyboard.c:59: return row_mask;
+   2A1B 22                  587 	ret
+                            588 ;------------------------------------------------------------
+                            589 ;Allocation info for local variables in function 'key_click'
+                            590 ;------------------------------------------------------------
+                            591 ;key                       Allocated to registers r2 
+                            592 ;------------------------------------------------------------
+                            593 ;	SRC/keyboard.c:62: void key_click(u8 key){
+                            594 ;	-----------------------------------------
+                            595 ;	 function key_click
+                            596 ;	-----------------------------------------
+   2A1C                     597 _key_click:
+   2A1C AA 82               598 	mov	r2,dpl
+                            599 ;	SRC/keyboard.c:63: speaker=1;//включаем спикер
+   2A1E 75 65 01            600 	mov	_speaker,#0x01
+                            601 ;	SRC/keyboard.c:64: enable_speaker();
+   2A21 C0 02               602 	push	ar2
+   2A23 12 2B 73            603 	lcall	_enable_speaker
+                            604 ;	SRC/keyboard.c:66: if( !is_buffer_full(&key_clicks) ){
+   2A26 90 60 86            605 	mov	dptr,#_key_clicks
+   2A29 75 F0 00            606 	mov	b,#0x00
+   2A2C 12 25 9E            607 	lcall	_is_buffer_full
+   2A2F E5 82               608 	mov	a,dpl
+   2A31 D0 02               609 	pop	ar2
+   2A33 70 13               610 	jnz	00103$
+                            611 ;	SRC/keyboard.c:67: push_byte_to_buffer(&key_clicks, key_value[key]);
+   2A35 EA                  612 	mov	a,r2
+   2A36 24 52               613 	add	a,#_key_value
+   2A38 F8                  614 	mov	r0,a
+   2A39 86 02               615 	mov	ar2,@r0
+   2A3B C0 02               616 	push	ar2
+   2A3D 90 60 86            617 	mov	dptr,#_key_clicks
+   2A40 75 F0 00            618 	mov	b,#0x00
+   2A43 12 25 BD            619 	lcall	_push_byte_to_buffer
+   2A46 15 81               620 	dec	sp
+   2A48                     621 00103$:
+   2A48 22                  622 	ret
+                            623 ;------------------------------------------------------------
+                            624 ;Allocation info for local variables in function 'scan_keyboard_int'
+                            625 ;------------------------------------------------------------
+                            626 ;row                       Allocated to registers r3 
+                            627 ;row_mask                  Allocated to registers r2 
+                            628 ;key                       Allocated to registers r4 
+                            629 ;------------------------------------------------------------
+                            630 ;	SRC/keyboard.c:71: void scan_keyboard_int(){
+                            631 ;	-----------------------------------------
+                            632 ;	 function scan_keyboard_int
+                            633 ;	-----------------------------------------
+   2A49                     634 _scan_keyboard_int:
+                            635 ;	SRC/keyboard.c:76: prescaler++;
+   2A49 05 64               636 	inc	_prescaler
+                            637 ;	SRC/keyboard.c:77: if( prescaler==2 ){
+   2A4B 74 02               638 	mov	a,#0x02
+   2A4D B5 64 02            639 	cjne	a,_prescaler,00152$
+   2A50 80 03               640 	sjmp	00153$
+   2A52                     641 00152$:
+   2A52 02 2B 3C            642 	ljmp	00124$
+   2A55                     643 00153$:
+                            644 ;	SRC/keyboard.c:79: prescaler=0;
+   2A55 75 64 00            645 	mov	_prescaler,#0x00
+                            646 ;	SRC/keyboard.c:81: row_mask=scan_keyboard();
+   2A58 12 29 DD            647 	lcall	_scan_keyboard
+   2A5B AA 82               648 	mov	r2,dpl
+                            649 ;	SRC/keyboard.c:83: for( row=0;row<ROWS;row++ ){
+   2A5D 7B 00               650 	mov	r3,#0x00
+   2A5F                     651 00129$:
+   2A5F 90 2C 93            652 	mov	dptr,#_ROWS
+   2A62 E4                  653 	clr	a
+   2A63 93                  654 	movc	a,@a+dptr
+   2A64 FC                  655 	mov	r4,a
+   2A65 C3                  656 	clr	c
+   2A66 EB                  657 	mov	a,r3
+   2A67 9C                  658 	subb	a,r4
+   2A68 40 03               659 	jc	00154$
+   2A6A 02 2B 2E            660 	ljmp	00132$
+   2A6D                     661 00154$:
+                            662 ;	SRC/keyboard.c:84: key=col*ROWS + row;
+   2A6D 85 63 F0            663 	mov	b,_col
+   2A70 EC                  664 	mov	a,r4
+   2A71 A4                  665 	mul	ab
+   2A72 FC                  666 	mov	r4,a
+   2A73 EB                  667 	mov	a,r3
+   2A74 2C                  668 	add	a,r4
+   2A75 FC                  669 	mov	r4,a
+                            670 ;	SRC/keyboard.c:86: if( row_mask>>row & 1 ){//клавиша нажата
+   2A76 8B F0               671 	mov	b,r3
+   2A78 05 F0               672 	inc	b
+   2A7A EA                  673 	mov	a,r2
+   2A7B 80 02               674 	sjmp	00156$
+   2A7D                     675 00155$:
+   2A7D C3                  676 	clr	c
+   2A7E 13                  677 	rrc	a
+   2A7F                     678 00156$:
+   2A7F D5 F0 FB            679 	djnz	b,00155$
+   2A82 30 E0 3E            680 	jnb	acc.0,00112$
+                            681 ;	SRC/keyboard.c:87: if( key_count[key]<KEY_COUNT_LIMIT ) {
+   2A85 EC                  682 	mov	a,r4
+   2A86 24 22               683 	add	a,#_key_count
+   2A88 F8                  684 	mov	r0,a
+   2A89 86 05               685 	mov	ar5,@r0
+   2A8B 90 2C 97            686 	mov	dptr,#_KEY_COUNT_LIMIT
+   2A8E E4                  687 	clr	a
+   2A8F 93                  688 	movc	a,@a+dptr
+   2A90 FE                  689 	mov	r6,a
+   2A91 C3                  690 	clr	c
+   2A92 ED                  691 	mov	a,r5
+   2A93 9E                  692 	subb	a,r6
+   2A94 50 52               693 	jnc	00113$
+                            694 ;	SRC/keyboard.c:88: key_count[key]++;
+   2A96 0D                  695 	inc	r5
+   2A97 A6 05               696 	mov	@r0,ar5
+                            697 ;	SRC/keyboard.c:90: if( key_count[key]>PRESS_COUNT && key_pressed_time[key]==0 ){//помечаем, как нажатую
+   2A99 90 2C 95            698 	mov	dptr,#_PRESS_COUNT
+   2A9C E4                  699 	clr	a
+   2A9D 93                  700 	movc	a,@a+dptr
+   2A9E FE                  701 	mov	r6,a
+   2A9F C3                  702 	clr	c
+   2AA0 9D                  703 	subb	a,r5
+   2AA1 50 45               704 	jnc	00113$
+   2AA3 EC                  705 	mov	a,r4
+   2AA4 24 32               706 	add	a,#_key_pressed_time
+   2AA6 F8                  707 	mov	r0,a
+   2AA7 E6                  708 	mov	a,@r0
+   2AA8 70 3E               709 	jnz	00113$
+                            710 ;	SRC/keyboard.c:91: key_click(key);
+   2AAA 8C 82               711 	mov	dpl,r4
+   2AAC C0 02               712 	push	ar2
+   2AAE C0 03               713 	push	ar3
+   2AB0 C0 04               714 	push	ar4
+   2AB2 12 2A 1C            715 	lcall	_key_click
+   2AB5 D0 04               716 	pop	ar4
+   2AB7 D0 03               717 	pop	ar3
+   2AB9 D0 02               718 	pop	ar2
+                            719 ;	SRC/keyboard.c:92: key_pressed_time[key]=1;
+   2ABB EC                  720 	mov	a,r4
+   2ABC 24 32               721 	add	a,#_key_pressed_time
+   2ABE F8                  722 	mov	r0,a
+   2ABF 76 01               723 	mov	@r0,#0x01
+   2AC1 80 25               724 	sjmp	00113$
+   2AC3                     725 00112$:
+                            726 ;	SRC/keyboard.c:96: if( key_count[key]>0 ) {
+   2AC3 EC                  727 	mov	a,r4
+   2AC4 24 22               728 	add	a,#_key_count
+   2AC6 F8                  729 	mov	r0,a
+   2AC7 E6                  730 	mov	a,@r0
+   2AC8 FD                  731 	mov	r5,a
+   2AC9 60 1D               732 	jz	00113$
+                            733 ;	SRC/keyboard.c:97: key_count[key]--;
+   2ACB 1D                  734 	dec	r5
+   2ACC A6 05               735 	mov	@r0,ar5
+                            736 ;	SRC/keyboard.c:99: if( key_count[key]<RELEASE_COUNT && key_pressed_time[key]>0 ){//помечаем как отпущенную
+   2ACE 90 2C 96            737 	mov	dptr,#_RELEASE_COUNT
+   2AD1 E4                  738 	clr	a
+   2AD2 93                  739 	movc	a,@a+dptr
+   2AD3 FE                  740 	mov	r6,a
+   2AD4 C3                  741 	clr	c
+   2AD5 ED                  742 	mov	a,r5
+   2AD6 9E                  743 	subb	a,r6
+   2AD7 50 0F               744 	jnc	00113$
+   2AD9 EC                  745 	mov	a,r4
+   2ADA 24 32               746 	add	a,#_key_pressed_time
+   2ADC F8                  747 	mov	r0,a
+   2ADD E6                  748 	mov	a,@r0
+   2ADE 60 08               749 	jz	00113$
+                            750 ;	SRC/keyboard.c:100: key_pressed_time[key]=0;
+   2AE0 76 00               751 	mov	@r0,#0x00
+                            752 ;	SRC/keyboard.c:101: key_repeat_time[key]=0;
+   2AE2 EC                  753 	mov	a,r4
+   2AE3 24 42               754 	add	a,#_key_repeat_time
+   2AE5 F8                  755 	mov	r0,a
+   2AE6 76 00               756 	mov	@r0,#0x00
+   2AE8                     757 00113$:
+                            758 ;	SRC/keyboard.c:106: if( key_pressed_time[key]>0 ){//Клавиша помечена как нажатая
+   2AE8 EC                  759 	mov	a,r4
+   2AE9 24 32               760 	add	a,#_key_pressed_time
+   2AEB F8                  761 	mov	r0,a
+   2AEC E6                  762 	mov	a,@r0
+   2AED FD                  763 	mov	r5,a
+   2AEE 60 3A               764 	jz	00131$
+                            765 ;	SRC/keyboard.c:107: if( key_pressed_time[key]<KEY_START_REPEAT_DELAY ){
+   2AF0 90 2C 98            766 	mov	dptr,#_KEY_START_REPEAT_DELAY
+   2AF3 E4                  767 	clr	a
+   2AF4 93                  768 	movc	a,@a+dptr
+   2AF5 FE                  769 	mov	r6,a
+   2AF6 C3                  770 	clr	c
+   2AF7 ED                  771 	mov	a,r5
+   2AF8 9E                  772 	subb	a,r6
+   2AF9 50 05               773 	jnc	00117$
+                            774 ;	SRC/keyboard.c:108: key_pressed_time[key]++;
+   2AFB ED                  775 	mov	a,r5
+   2AFC 04                  776 	inc	a
+   2AFD F6                  777 	mov	@r0,a
+   2AFE 80 2A               778 	sjmp	00131$
+   2B00                     779 00117$:
+                            780 ;	SRC/keyboard.c:110: key_repeat_time[key]++;
+   2B00 EC                  781 	mov	a,r4
+   2B01 24 42               782 	add	a,#_key_repeat_time
+   2B03 F8                  783 	mov	r0,a
+   2B04 86 05               784 	mov	ar5,@r0
+   2B06 0D                  785 	inc	r5
+   2B07 A6 05               786 	mov	@r0,ar5
+                            787 ;	SRC/keyboard.c:112: if( key_repeat_time[key]==KEY_REPEAT_DELAY ) {//повторяем каждые KEY_REPEAT_DELAY
+   2B09 90 2C 99            788 	mov	dptr,#_KEY_REPEAT_DELAY
+   2B0C E4                  789 	clr	a
+   2B0D 93                  790 	movc	a,@a+dptr
+   2B0E FE                  791 	mov	r6,a
+   2B0F ED                  792 	mov	a,r5
+   2B10 B5 06 17            793 	cjne	a,ar6,00131$
+                            794 ;	SRC/keyboard.c:113: key_click(key);
+   2B13 8C 82               795 	mov	dpl,r4
+   2B15 C0 02               796 	push	ar2
+   2B17 C0 03               797 	push	ar3
+   2B19 C0 04               798 	push	ar4
+   2B1B 12 2A 1C            799 	lcall	_key_click
+   2B1E D0 04               800 	pop	ar4
+   2B20 D0 03               801 	pop	ar3
+   2B22 D0 02               802 	pop	ar2
+                            803 ;	SRC/keyboard.c:114: key_repeat_time[key]=0;
+   2B24 EC                  804 	mov	a,r4
+   2B25 24 42               805 	add	a,#_key_repeat_time
+   2B27 F8                  806 	mov	r0,a
+   2B28 76 00               807 	mov	@r0,#0x00
+   2B2A                     808 00131$:
+                            809 ;	SRC/keyboard.c:83: for( row=0;row<ROWS;row++ ){
+   2B2A 0B                  810 	inc	r3
+   2B2B 02 2A 5F            811 	ljmp	00129$
+   2B2E                     812 00132$:
+                            813 ;	SRC/keyboard.c:120: col++;
+   2B2E 05 63               814 	inc	_col
+                            815 ;	SRC/keyboard.c:122: if( col==COLS ){
+   2B30 90 2C 94            816 	mov	dptr,#_COLS
+   2B33 E4                  817 	clr	a
+   2B34 93                  818 	movc	a,@a+dptr
+   2B35 FA                  819 	mov	r2,a
+   2B36 B5 63 03            820 	cjne	a,_col,00124$
+                            821 ;	SRC/keyboard.c:123: col=0;
+   2B39 75 63 00            822 	mov	_col,#0x00
+   2B3C                     823 00124$:
+                            824 ;	SRC/keyboard.c:127: if( speaker>0 ){//Спикер работает
+   2B3C E5 65               825 	mov	a,_speaker
+   2B3E 60 11               826 	jz	00133$
+                            827 ;	SRC/keyboard.c:128: speaker++;
+   2B40 05 65               828 	inc	_speaker
+                            829 ;	SRC/keyboard.c:130: if(speaker==SPEAKER_TIME){
+   2B42 90 2C 9A            830 	mov	dptr,#_SPEAKER_TIME
+   2B45 E4                  831 	clr	a
+   2B46 93                  832 	movc	a,@a+dptr
+   2B47 FA                  833 	mov	r2,a
+   2B48 B5 65 06            834 	cjne	a,_speaker,00133$
+                            835 ;	SRC/keyboard.c:131: disable_speaker();
+   2B4B 12 2B 80            836 	lcall	_disable_speaker
+                            837 ;	SRC/keyboard.c:132: speaker=0;//выключаем спикер
+   2B4E 75 65 00            838 	mov	_speaker,#0x00
+   2B51                     839 00133$:
+   2B51 22                  840 	ret
+                            841 	.area CSEG    (CODE)
+                            842 	.area CONST   (CODE)
+   2C90                     843 _true:
+   2C90 FF                  844 	.db #0xFF
+   2C91                     845 _false:
+   2C91 00                  846 	.db #0x00
+   2C92                     847 _MODE_TEST:
+   2C92 00                  848 	.db #0x00
+   2C93                     849 _ROWS:
+   2C93 04                  850 	.db #0x04
+   2C94                     851 _COLS:
+   2C94 04                  852 	.db #0x04
+   2C95                     853 _PRESS_COUNT:
+   2C95 08                  854 	.db #0x08
+   2C96                     855 _RELEASE_COUNT:
+   2C96 03                  856 	.db #0x03
+   2C97                     857 _KEY_COUNT_LIMIT:
+   2C97 14                  858 	.db #0x14
+   2C98                     859 _KEY_START_REPEAT_DELAY:
+   2C98 3C                  860 	.db #0x3C
+   2C99                     861 _KEY_REPEAT_DELAY:
+   2C99 64                  862 	.db #0x64
+   2C9A                     863 _SPEAKER_TIME:
+   2C9A 64                  864 	.db #0x64
+                            865 	.area XINIT   (CODE)
+                            866 	.area CABS    (ABS,CODE)

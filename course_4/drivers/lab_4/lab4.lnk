@@ -1,0 +1,26 @@
+-myuxi
+-Y
+-b HOME = 0x2100
+-b XSEG = 0x6000
+-b PSEG = 0x6000
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-b SSEG = 0x0080
+-k C:\Program Files (x86)\SDCC\bin\..\lib\small-stack-auto
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+SRC/led.rel
+SRC/max.rel
+SRC/common.rel
+SRC/system_timer.rel
+SRC/uart.rel
+SRC/buffer.rel
+SRC/handler.rel
+SRC/keyboard.rel
+SRC/speaker.rel
+SRC/lab4.rel
+
+-e
