@@ -21,6 +21,7 @@ private:
 	void drapGhost(int x, int y, Graphics* graphics);
 	void drapPacman(int x, int y, Graphics* graphics);
 	void drawFood(int x, int y, Graphics* graphics);
+	void drawNothing(int x, int y, Graphics* graphics);
 
 	void drawRectangle(int x, int y, Color color, Graphics* graphics);
 
