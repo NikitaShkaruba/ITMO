@@ -15,6 +15,7 @@
 #include <cstdio>
 
 #include <pypa/parser/parser.hh>
+#include <pypa/converter/converter.hh>
 
 namespace pypa {
   void dump(AstPtr);
@@ -36,6 +37,7 @@ int main(int argc, char const** argv) {
   if (pypa::parse(lexer, ast, symbols, options)) {
     printf("Parsing successfull\n");
     dump(ast);
+    convert_to_cpp(ast);
   } else {
     fprintf(stderr, "Parsing failed\n");
     return 1;

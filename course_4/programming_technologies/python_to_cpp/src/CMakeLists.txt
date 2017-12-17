@@ -27,12 +27,12 @@ add_library(pypa pypa/ast/ast.cc
                  pypa/parser/symbol_table.cc)
 
 # lexer_test
-add_executable(lexer-test EXCLUDE_FROM_ALL pypa/parser/test.cc)
+add_executable(lexer-test EXCLUDE_FROM_ALL pypa/parser/test.cc pypa/converter/converter.cc pypa/converter/converter.hh)
 add_dependencies(lexer-test pypa)
 target_link_libraries(lexer-test pypa gmp double-conversion)
 
 # parser_test
-add_executable(parser-test EXCLUDE_FROM_ALL pypa/parser/test.cc)
+add_executable(parser-test EXCLUDE_FROM_ALL pypa/parser/test.cc  pypa/converter/converter.cc pypa/converter/converter.hh)
 add_dependencies(parser-test pypa)
 target_link_libraries(parser-test pypa gmp double-conversion)
 
