@@ -1,13 +1,12 @@
 import pygame
 
+from src.constants.colors import black, white, blue, red, yellow
+from src.lib.elements.Block import Block
+from src.lib.elements.Player import Player
+from src.lib.elements.Ghost import Ghost
+from src.lib.elements.Wall import Wall
+
 # Color variables
-black = (0, 0, 0)
-white = (255, 255, 255)
-blue = (0, 0, 255)
-green = (0, 255, 0)
-red = (255, 0, 0)
-purple = (255, 0, 255)
-yellow = (255, 255, 0)
 
 # Set icon
 pacman_icon = pygame.image.load('resources/images/pacman.png')
@@ -17,22 +16,6 @@ pygame.display.set_icon(pacman_icon)
 pygame.mixer.init()
 pygame.mixer.music.load('resources/music/pacman.mp3')
 pygame.mixer.music.play(-1, 0.0)
-
-
-class Wall(pygame.sprite.Sprite):
-    # Constructor function
-    def __init__(self, x, y, width, height, color):
-        # Call the parent's constructor
-        pygame.sprite.Sprite.__init__(self)
-
-        # Make a blue wall, of the size specified in the parameters
-        self.image = pygame.Surface([width, height])
-        self.image.fill(color)
-
-        # Make our top-left corner the passed-in location.
-        self.rect = self.image.get_rect()
-        self.rect.top = y
-        self.rect.left = x
 
 
 # This creates all the walls in room 1
@@ -96,132 +79,6 @@ def setup_gate(all_sprites_list):
     gate.add(Wall(282, 242, 42, 2, white))
     all_sprites_list.add(gate)
     return gate
-
-
-# This class represents the ball
-# It derives from the "Sprite" class in Pygame
-class Block(pygame.sprite.Sprite):
-
-    # Constructor. Pass in the color of the block, 
-    # and its x and y position
-    def __init__(self, color, width, height):
-        # Call the parent class (Sprite) constructor
-        pygame.sprite.Sprite.__init__(self)
-
-        # Create an image of the block, and fill it with a color.
-        # This could also be an image loaded from the disk.
-        self.image = pygame.Surface([width, height])
-        self.image.fill(white)
-        self.image.set_colorkey(white)
-        pygame.draw.ellipse(self.image, color, [0, 0, width, height])
-
-        # Fetch the rectangle object that has the dimensions of the image
-        # image.
-        # Update the position of this object by setting the values 
-        # of rect.x and rect.y
-        self.rect = self.image.get_rect()
-
-    # This class represents the bar at the bottom that the player controls
-
-
-class Player(pygame.sprite.Sprite):
-    # Set speed vector
-    change_x = 0
-    change_y = 0
-
-    # Constructor function
-    def __init__(self, x, y, filename):
-        # Call the parent's constructor
-        pygame.sprite.Sprite.__init__(self)
-
-        # Set height, width
-        self.image = pygame.image.load(filename).convert()
-
-        # Make our top-left corner the passed-in location.
-        self.rect = self.image.get_rect()
-        self.rect.top = y
-        self.rect.left = x
-        self.prev_x = x
-        self.prev_y = y
-
-    # Clear the speed of the player
-    def prevdirection(self):
-        self.prev_x = self.change_x
-        self.prev_y = self.change_y
-
-    # Change the speed of the player
-    def change_speed(self, x, y):
-        self.change_x += x
-        self.change_y += y
-
-    # Find a new position for the player
-    def update(self, walls, gate):
-        # Get the old position, in case we need to go back to it
-
-        old_x = self.rect.left
-        new_x = old_x + self.change_x
-        self.rect.left = new_x
-
-        old_y = self.rect.top
-        new_y = old_y + self.change_y
-
-        # Did this update cause us to hit a wall?
-        x_collide = pygame.sprite.spritecollide(self, walls, False)
-        if x_collide:
-            # Whoops, hit a wall. Go back to the old position
-            self.rect.left = old_x
-            # self.rect.top=prev_y
-            # y_collide = pygame.sprite.spritecollide(self, walls, False)
-            # if y_collide:
-            #     # Whoops, hit a wall. Go back to the old position
-            #     self.rect.top=old_y
-            #     print('a')
-        else:
-
-            self.rect.top = new_y
-
-            # Did this update cause us to hit a wall?
-            y_collide = pygame.sprite.spritecollide(self, walls, False)
-            if y_collide:
-                # Whoops, hit a wall. Go back to the old position
-                self.rect.top = old_y
-                # self.rect.left=prev_x
-                # x_collide = pygame.sprite.spritecollide(self, walls, False)
-                # if x_collide:
-                #     # Whoops, hit a wall. Go back to the old position
-                #     self.rect.left=old_x
-                #     print('b')
-
-        if gate:
-            gate_hit = pygame.sprite.spritecollide(self, gate, False)
-            if gate_hit:
-                self.rect.left = old_x
-                self.rect.top = old_y
-
-
-# Inheritime Player klassist
-class Ghost(Player):
-    # Change the speed of the ghost
-    def change_speed(self, turn_list, ghost, turn, steps, l):
-        try:
-            z = turn_list[turn][2]
-            if steps < z:
-                self.change_x = turn_list[turn][0]
-                self.change_y = turn_list[turn][1]
-                steps += 1
-            else:
-                if turn < l:
-                    turn += 1
-                elif ghost == "clyde":
-                    turn = 2
-                else:
-                    turn = 0
-                self.change_x = turn_list[turn][0]
-                self.change_y = turn_list[turn][1]
-                steps = 0
-            return [turn, steps]
-        except IndexError:
-            return [0, 0]
 
 
 Pinky_directions = [
