@@ -10,12 +10,12 @@ purple = (255, 0, 255)
 yellow = (255, 255, 0)
 
 # Set icon
-pacman_icon = pygame.image.load('images/pacman.png')
+pacman_icon = pygame.image.load('resources/images/pacman.png')
 pygame.display.set_icon(pacman_icon)
 
 # Add music
 pygame.mixer.init()
-pygame.mixer.music.load('pacman.mp3')
+pygame.mixer.music.load('resources/music/pacman.mp3')
 pygame.mixer.music.play(-1, 0.0)
 
 
@@ -359,7 +359,7 @@ background.fill(black)
 clock = pygame.time.Clock()
 
 pygame.font.init()
-font = pygame.font.Font("freesansbold.ttf", 24)
+font = pygame.font.Font("resources/fonts/freesansbold.ttf", 24)
 
 # default locations for Pacman and monstas
 w = 303 - 16  # Width
@@ -396,23 +396,23 @@ def start_game():
     c_steps = 0
 
     # Create the player paddle object
-    pacman = Player(w, p_h, "images/pacman.png")
+    pacman = Player(w, p_h, "resources/images/pacman.png")
     all_sprites_list.add(pacman)
     pacman_collide.add(pacman)
 
-    blinky = Ghost(w, b_h, "images/Blinky.png")
+    blinky = Ghost(w, b_h, "resources/images/Blinky.png")
     monsta_list.add(blinky)
     all_sprites_list.add(blinky)
 
-    pinky = Ghost(w, m_h, "images/Pinky.png")
+    pinky = Ghost(w, m_h, "resources/images/Pinky.png")
     monsta_list.add(pinky)
     all_sprites_list.add(pinky)
 
-    inky = Ghost(i_w, m_h, "images/Inky.png")
+    inky = Ghost(i_w, m_h, "resources/images/Inky.png")
     monsta_list.add(inky)
     all_sprites_list.add(inky)
 
-    clyde = Ghost(c_w, m_h, "images/Clyde.png")
+    clyde = Ghost(c_w, m_h, "resources/images/Clyde.png")
     monsta_list.add(clyde)
     all_sprites_list.add(clyde)
 
