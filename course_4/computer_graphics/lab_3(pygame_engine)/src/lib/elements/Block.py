@@ -1,6 +1,6 @@
 import pygame
 
-from src.constants.colors import white
+from src.lib.constants.colors import white
 
 
 class Block(pygame.sprite.Sprite):
