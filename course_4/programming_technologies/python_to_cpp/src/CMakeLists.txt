@@ -4,7 +4,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${libpypa_SOURCE_DIR}/modules/")
 find_package(GMP REQUIRED)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -W -Wall -Werror -pedantic -Wno-unused-parameter -Wno-unused-const-variable")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -W -Wall -pedantic -Wno-unused-parameter -Wno-unused-const-variable")
 
 check_cxx_compiler_flag(-Wno-unused-local-typedefs CXX_NO_UNUSED_LOCAL_TYPEDEFS)
 if(CXX_NO_UNUSED_LOCAL_TYPEDEFS)
@@ -39,3 +39,6 @@ target_link_libraries(parser-test pypa gmp double-conversion)
 # install
 install(TARGETS pypa ARCHIVE DESTINATION lib)
 install(DIRECTORY pypa DESTINATION include FILES_MATCHING PATTERN "*.hh" PATTERN "*.inl")
+
+# converted_test
+add_executable(converted-test converted_test/test.cpp)

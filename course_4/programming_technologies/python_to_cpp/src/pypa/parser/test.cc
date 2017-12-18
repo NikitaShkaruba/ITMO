@@ -35,8 +35,6 @@ int main(int argc, char const** argv) {
   options.printdbgerrors = true;
   pypa::Lexer lexer(argv[1]);
   if (pypa::parse(lexer, ast, symbols, options)) {
-    printf("Parsing successfull\n");
-    dump(ast);
     convert_to_cpp(ast);
   } else {
     fprintf(stderr, "Parsing failed\n");
