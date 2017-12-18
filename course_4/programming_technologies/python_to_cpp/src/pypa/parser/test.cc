@@ -15,7 +15,7 @@
 #include <cstdio>
 
 #include <pypa/parser/parser.hh>
-#include <pypa/converter/converter.hh>
+#include <pypa/translator/translator.hh>
 
 namespace pypa {
   void dump(AstPtr);
@@ -35,7 +35,7 @@ int main(int argc, char const** argv) {
   options.printdbgerrors = true;
   pypa::Lexer lexer(argv[1]);
   if (pypa::parse(lexer, ast, symbols, options)) {
-    convert_to_cpp(ast);
+    translate_to_cpp(ast);
   } else {
     fprintf(stderr, "Parsing failed\n");
     return 1;

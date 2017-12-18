@@ -78,7 +78,7 @@ class DoubleToStringConverter {
   // The exponent_character is used in exponential representations. It is
   // usually 'e' or 'E'.
   //
-  // When converting to the shortest representation the converter will
+  // When converting to the shortest representation the translator will
   // represent input numbers in decimal format if they are in the interval
   // [10^decimal_in_shortest_low; 10^decimal_in_shortest_high[
   //    (lower boundary included, greater boundary excluded).
@@ -90,13 +90,13 @@ class DoubleToStringConverter {
   //   ToShortest(100000000000000000000.0)  -> "100000000000000000000"
   //   ToShortest(1111111111111111111111.0) -> "1.1111111111111111e+21"
   //
-  // When converting to precision mode the converter may add
+  // When converting to precision mode the translator may add
   // max_leading_padding_zeroes before returning the number in exponential
   // format.
   // Example with max_leading_padding_zeroes_in_precision_mode = 6.
   //   ToPrecision(0.0000012345, 2) -> "0.0000012"
   //   ToPrecision(0.00000012345, 2) -> "1.2e-7"
-  // Similarily the converter may add up to
+  // Similarily the translator may add up to
   // max_trailing_padding_zeroes_in_precision_mode in precision mode to avoid
   // returning an exponential representation. A zero added by the
   // EMIT_TRAILING_ZERO_AFTER_POINT flag is counted for this limit.
@@ -128,7 +128,7 @@ class DoubleToStringConverter {
         !((flags & EMIT_TRAILING_ZERO_AFTER_POINT) != 0));
   }
 
-  // Returns a converter following the EcmaScript specification.
+  // Returns a translator following the EcmaScript specification.
   static const DoubleToStringConverter& EcmaScriptConverter();
 
   // Computes the shortest string of digits that correctly represent the input
@@ -149,7 +149,7 @@ class DoubleToStringConverter {
   // is accurate enough to uniquely identify the input-number.
   // For example the most precise representation of the double 9e59 equals
   // "899999999999999918767229449717619953810131273674690656206848", but
-  // the converter will return the shorter (but still correct) "9e59".
+  // the translator will return the shorter (but still correct) "9e59".
   //
   // Returns true if the conversion succeeds. The conversion always succeeds
   // except when the input value is special and no infinity_symbol or
@@ -242,7 +242,7 @@ class DoubleToStringConverter {
   // Example with max_leading_padding_zeroes_in_precision_mode = 6.
   //   ToPrecision(0.0000012345, 2) -> "0.0000012"
   //   ToPrecision(0.00000012345, 2) -> "1.2e-7"
-  // Similarily the converter may add up to
+  // Similarily the translator may add up to
   // max_trailing_padding_zeroes_in_precision_mode in precision mode to avoid
   // returning an exponential representation. A zero added by the
   // EMIT_TRAILING_ZERO_AFTER_POINT flag is counted for this limit.

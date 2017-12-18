@@ -23,14 +23,14 @@ void _print_with_depth(String pattern, ...) {
   va_end(arguments_to_print);
 }
 
-void _convert_comment(const std::shared_ptr<AstStatement> &statement) {
+void _translate_comment(const std::shared_ptr<AstStatement> &statement) {
   AstDocString const & comment_statement = static_cast<const AstDocString &>(*statement);
   String s = comment_statement.doc;
 
   _print_with_depth("/**%s*/\n", s.c_str());
 }
 
-void _convert_print(const shared_ptr<AstStatement>& statement) {
+void _translate_print(const shared_ptr<AstStatement>& statement) {
   AstPrint const & print_statement = static_cast<const AstPrint &>(*statement);
 
   String print_parts = "";
@@ -44,7 +44,7 @@ void _convert_print(const shared_ptr<AstStatement>& statement) {
   _print_with_depth("printf(\"%s\");\n", print_parts.c_str());
 }
 
-void _convert_import(const shared_ptr<AstStatement>& statement) {
+void _translate_import(const shared_ptr<AstStatement>& statement) {
   AstPrint const & import_statement = static_cast<const AstPrint &>(*statement);
 
   AstAlias const & arguments = static_cast<const AstAlias &> (*import_statement.destination);
@@ -65,83 +65,83 @@ void _convert_import(const shared_ptr<AstStatement>& statement) {
   depth++;
 }
 
-void _convert_raise(const shared_ptr<AstStatement>& statement) {
+void _translate_raise(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_repr(const shared_ptr<AstStatement>& statement) {
+void _translate_repr(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_return(const shared_ptr<AstStatement>& statement) {
+void _translate_return(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_set(const shared_ptr<AstStatement>& statement) {
+void _translate_set(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_setcomp(const shared_ptr<AstStatement>& statement) {
+void _translate_setcomp(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_slice(const shared_ptr<AstStatement>& statement) {
+void _translate_slice(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_slicetype(const shared_ptr<AstStatement>& statement) {
+void _translate_slicetype(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_statement(const shared_ptr<AstStatement>& statement) {
+void _translate_statement(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_str(const shared_ptr<AstStatement>& statement) {
+void _translate_str(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_subscript(const shared_ptr<AstStatement>& statement) {
+void _translate_subscript(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_suite(const shared_ptr<AstStatement>& statement) {
+void _translate_suite(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_tryexcept(const shared_ptr<AstStatement>& statement) {
+void _translate_tryexcept(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_tryfinally(const shared_ptr<AstStatement>& statement) {
+void _translate_tryfinally(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_tuple(const shared_ptr<AstStatement>& statement) {
+void _translate_tuple(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_unaryop(const shared_ptr<AstStatement>& statement) {
+void _translate_unaryop(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_while(const shared_ptr<AstStatement>& statement) {
+void _translate_while(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_with(const shared_ptr<AstStatement>& statement) {
+void _translate_with(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_yield(const shared_ptr<AstStatement>& statement) {
+void _translate_yield(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void _convert_yieldexpr(const shared_ptr<AstStatement>& statement) {
+void _translate_yieldexpr(const shared_ptr<AstStatement>& statement) {
  printf("sht");
 }
 
-void convert_to_cpp(AstModulePtr ast_module_pointer) {
+void translate_to_cpp(AstModulePtr ast_module_pointer) {
   AstStmtList ast_nodes = ast_module_pointer->body->items;
 
   for (size_t nodes_index = 0; nodes_index < ast_nodes.size(); nodes_index++) {
@@ -150,9 +150,9 @@ void convert_to_cpp(AstModulePtr ast_module_pointer) {
 
     AstType s = statement->type;
     if (s == AstType::DocString) {
-      _convert_comment(statement);
+      _translate_comment(statement);
     } else if (s == AstType::Import) {
-      _convert_import(statement);
+      _translate_import(statement);
     } else if (s == AstType::Alias) {
 
     } else if (s == AstType::Arguments) {
@@ -282,7 +282,7 @@ void convert_to_cpp(AstModulePtr ast_module_pointer) {
 
 
     } else if (s == AstType::Print) {
-      _convert_print(statement);
+      _translate_print(statement);
     } else if (s == AstType::Raise) {
 
 
