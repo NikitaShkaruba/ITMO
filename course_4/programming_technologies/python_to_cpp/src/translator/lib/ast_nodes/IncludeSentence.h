@@ -1,4 +1,4 @@
-#include "Sentence.hh"
+#include "Sentence.h"
 #include <pypa/ast/types.hh>
 #include <string>
 

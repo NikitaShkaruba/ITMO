@@ -1,3 +1,3 @@
-#include "translator.hh"
+#include "translator.h"
 
 AbstractSyntaxTree* Translator::root;

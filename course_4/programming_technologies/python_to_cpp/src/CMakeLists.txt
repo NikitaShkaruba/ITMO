@@ -27,13 +27,13 @@ add_library(pypa pypa/ast/ast.cc
                  pypa/parser/symbol_table.cc)
 
 # lexer_test
-add_executable(lexer-test EXCLUDE_FROM_ALL pypa/parser/test.cc translator/translator.hh translator/ast_nodes/Sentence.hh translator/abstract_syntax_tree.hh)
+add_executable(lexer-test EXCLUDE_FROM_ALL pypa/parser/test.cc translator/translator.h translator/lib/ast_nodes/Sentence.h translator/lib/abstract_syntax_tree.h)
 
 add_dependencies(lexer-test pypa)
 target_link_libraries(lexer-test pypa gmp double-conversion)
 
 # parser_test
-add_executable(parser-test EXCLUDE_FROM_ALL pypa/parser/test.cc translator/translator.hh)
+add_executable(parser-test EXCLUDE_FROM_ALL pypa/parser/test.cc translator/translator.h translator)
 add_dependencies(parser-test pypa)
 target_link_libraries(parser-test pypa gmp double-conversion)
 
@@ -42,4 +42,4 @@ install(TARGETS pypa ARCHIVE DESTINATION lib)
 install(DIRECTORY pypa DESTINATION include FILES_MATCHING PATTERN "*.hh" PATTERN "*.inl")
 
 # translation_results
-add_executable(converted-test ../test/cpp_out/hello_world.cpp translator/ast_nodes/CommentSentence.h translator/ast_nodes/IncludeSentence.h translator/ast_nodes/PrintSentence.hh translator/translator.cc translator/ast_nodes/FunctionSentence.h)
+add_executable(converted-test ../test/cpp_out/hello_world.cpp translator/lib/ast_nodes/CommentSentence.h translator/lib/ast_nodes/IncludeSentence.h translator/lib/ast_nodes/PrintSentence.h translator/translator.cpp translator/lib/ast_nodes/FunctionSentence.h)

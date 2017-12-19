@@ -1,5 +1,5 @@
 #include <string>
-#include "Sentence.hh"
+#include "Sentence.h"
 
 class FunctionSentence : public Sentence {
 public:
@@ -20,7 +20,7 @@ public:
       children_content += children.at(i)->toString(tabs + TAB);
     }
 
-    return "\nvoid " + name + "() {" + children_content +"}";
+    return "\nint " + name + "() {" + children_content +"}";
   }
 
 private:

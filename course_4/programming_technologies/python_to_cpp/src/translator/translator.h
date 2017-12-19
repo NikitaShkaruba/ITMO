@@ -1,10 +1,10 @@
 #pragma once
 
-#include <translator/abstract_syntax_tree.hh>
-#include <translator/ast_nodes/CommentSentence.h>
+#include <translator/lib/abstract_syntax_tree.h>
+#include <translator/lib/ast_nodes/CommentSentence.h>
 #include <pypa/ast/ast.hh>
 #include <map>
-#include <translator/ast_nodes/PrintSentence.hh>
+#include <translator/lib/ast_nodes/PrintSentence.h>
 
 using namespace pypa;
 using namespace std;

@@ -2,12 +2,12 @@
 #pragma once
 
 #include <pypa/ast/ast.hh>
-#include <translator/ast_nodes/IncludeSentence.h>
-#include <translator/ast_nodes/FunctionSentence.h>
+#include <translator/lib/ast_nodes/IncludeSentence.h>
+#include <translator/lib/ast_nodes/FunctionSentence.h>
 #include "string.h"
 #include "vector"
 #include "map"
-#include "translator/ast_nodes/Sentence.hh"
+#include "translator/lib/ast_nodes/Sentence.h"
 
 using namespace std;
 using namespace pypa;

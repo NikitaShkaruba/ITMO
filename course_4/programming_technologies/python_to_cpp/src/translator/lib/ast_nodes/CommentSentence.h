@@ -1,5 +1,5 @@
 #include <string>
-#include "Sentence.hh"
+#include "Sentence.h"
 
 class CommentSentence : public Sentence {
 public:

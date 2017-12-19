@@ -1,8 +1,8 @@
 #include <cstdio>
 
 #include <pypa/parser/parser.hh>
-#include <translator/translator.hh>
-#include "translator/translator.cc" // It is necessary, coz it builds really kinky
+#include <translator/translator.h>
+#include "translator/translator.cpp" // It is necessary, coz it builds really kinky
 
 namespace pypa {
   void dump(AstPtr);
@@ -29,7 +29,7 @@ int main(int argc, char const** argv) {
   }
 
   // Dump python ast to stdout
-  dump(ast);
+//  dump(ast);
 
   // Construct syntax tree
   AbstractSyntaxTree* cpp_abstract_syntax_tree = Translator::translate_to_cpp(ast);

@@ -1,4 +1,4 @@
-#include "Sentence.hh"
+#include "Sentence.h"
 #include <pypa/ast/types.hh>
 #include <string>
 
@@ -11,7 +11,7 @@ public:
   }
 
   string toString(string tabs = "") {
-    return tabs + "printf(\"%s\", \"" + print_string + "\")\n";
+    return tabs + "printf(\"%s\", \"" + print_string + "\");\n";
   }
 
 private:

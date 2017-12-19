@@ -3,9 +3,9 @@
 #include <iostream>
 #include <cstdio>
 
-/**
-    A "Hello World" example for the pypa parser
-*/
 int main() {
+  /**
+    A "Hello World" example for the pypa parser
+  */
   printf("%s", "Hello World!");
 }
