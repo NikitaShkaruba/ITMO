@@ -31,11 +31,14 @@ int main(int argc, char const** argv) {
   // Dump python ast to stdout
   dump(ast);
 
-  // Print translated .cpp file from .py
-  AbstractSyntaxTree* cpp_tree = Translator::translate_to_cpp(ast);
-  if (!cpp_tree) {
+  // Construct syntax tree
+  AbstractSyntaxTree* cpp_abstract_syntax_tree = Translator::translate_to_cpp(ast);
+  if (!cpp_abstract_syntax_tree) {
     return 1;
   }
+
+  // Print cpp ast
+  printf("%s", cpp_abstract_syntax_tree->toString().c_str());
 
   return 0;
 }

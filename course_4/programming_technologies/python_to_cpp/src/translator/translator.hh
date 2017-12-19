@@ -1,10 +1,10 @@
 #pragma once
 
 #include <translator/abstract_syntax_tree.hh>
-#include <translator/ast_nodes/CommentNode.hh>
+#include <translator/ast_nodes/CommentSentence.h>
 #include <pypa/ast/ast.hh>
 #include <map>
-#include <translator/ast_nodes/PrintNode.hh>
+#include <translator/ast_nodes/PrintSentence.hh>
 
 using namespace pypa;
 using namespace std;
@@ -216,6 +216,10 @@ public:
       }
     }
 
+    if (root->isNoMainScript()) {
+      root->packMain();
+    }
+
     return root;
   }
 
@@ -225,7 +229,7 @@ private:
     AstDocString const &comment_statement = static_cast<const AstDocString &>(*statement);
     String comment_content = comment_statement.doc;
 
-    root->addChild(new CommentNode(comment_content));
+    root->addNode(new CommentSentence(comment_content));
   }
 
   void static _translate_print(const shared_ptr<AstStatement> &statement) {
@@ -239,7 +243,7 @@ private:
       print_parts = print_parts.append(space + string_statements.value);
     }
 
-    root->addChild(new PrintNode(print_parts));
+    root->addNode(new PrintSentence(print_parts));
   }
 
   void static _translate_import(const shared_ptr<AstStatement> &statement) {
@@ -250,10 +254,10 @@ private:
     String lib_name = name.id;
 
     if (name.id == "sys") {
-      root->addHeader(new IncludeNode("cstdio"));
-      root->addHeader(new IncludeNode("iostream"));
-      root->addHeader(new IncludeNode("fstream"));
-      root->addHeader(new IncludeNode("stdio.h"));
+      root->addHeader(new IncludeSentence("cstdio"));
+      root->addHeader(new IncludeSentence("iostream"));
+      root->addHeader(new IncludeSentence("fstream"));
+      root->addHeader(new IncludeSentence("stdio.h"));
     } else {
       throw "undefined import!";
     }
