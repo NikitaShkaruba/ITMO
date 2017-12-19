@@ -28,6 +28,7 @@ lexer_test_LDADD=libpypa.la
 
 parser_test_SOURCES=\
 	pypa/parser/test.cc \
+	 ../test/run_translation.cpp
 	$(NULL)
 parser_test_LDADD=libpypa.la
 

@@ -32,3 +32,4 @@ src/pypa/parser/symbol_table_visitor.hh
 src/pypa/ast/dump.hh
 src/pypa/parser/make_string.cc
 src/pypa/parser/error.hh
+test/run_translation.cpp

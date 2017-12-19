@@ -24,7 +24,7 @@ ${headers}
 )
 
 #
-# associates the list of headers with the library
+# associates the list of ast_nodes with the library
 # for the purposes of installation/import into other projects
 set_target_properties(double-conversion
     PROPERTIES PUBLIC_HEADER "${headers}")

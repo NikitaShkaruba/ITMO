@@ -1,5 +1,5 @@
 enable_testing()
-file(GLOB PYTHON_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/tests/*.py)
+file(GLOB PYTHON_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/python_src/*.py)
 foreach(PYTHON_SRC ${PYTHON_SRCS})
   get_filename_component(BASEFILENAME ${PYTHON_SRC} NAME_WE)
   add_test(NAME parser-test_${BASEFILENAME} COMMAND ./parser-test "${PYTHON_SRC}" WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/src)
