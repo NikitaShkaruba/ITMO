@@ -1,12 +1,13 @@
 #pragma once
 
 #include <pypa/ast/ast.hh>
-#include <translator/lib/ast_nodes/IncludeSentence.h>
 #include <translator/lib/ast_nodes/FunctionDefinitionSentence.h>
+#include <translator/lib/ast_nodes/IncludeSentence.h>
+#include <translator/lib/ast_nodes/NameSpaceSentence.h>
+#include "translator/lib/ast_nodes/Sentence.h"
 #include "string.h"
 #include "vector"
 #include "map"
-#include "translator/lib/ast_nodes/Sentence.h"
 
 using namespace std;
 using namespace pypa;
@@ -15,6 +16,14 @@ const string FUNCTION_NAME_MAIN = "main";
 
 class AbstractSyntaxTree {
 public:
+
+  AbstractSyntaxTree() {
+    addHeader(new NameSpaceSentence("std"));
+
+    addHeader(new IncludeSentence("string"));
+    addHeader(new IncludeSentence("cstdio"));
+  }
+
   /**
    * Добавляет одну ноду
    */
@@ -25,8 +34,8 @@ public:
   /**
    * Добавляет хедер - как и ноду, только в начало @see addNode
    */
-  void addHeader(IncludeSentence* includeNode) {
-    this->nodes.insert(nodes.begin(), (Sentence*) includeNode);
+  void addHeader(Sentence* includeNode) {
+    this->nodes.insert(nodes.begin(), includeNode);
   }
 
   /**
@@ -43,7 +52,7 @@ public:
     FunctionDefinitionSentence* mainFunction = new FunctionDefinitionSentence(FUNCTION_NAME_MAIN);
 
     for (unsigned long i = 0; i < nodes.size();) {
-      if (nodes.at(i)->getType() == static_cast<int>(AstType::Import)) {
+      if (nodes.at(i)->getType() == static_cast<int>(AstType::Import) || nodes.at(i)->getType() == static_cast<int>(AstType::ImportFrom)) {
         i++;
         continue;
       }
@@ -93,7 +102,7 @@ private:
    */
   bool isLib() {
     for (unsigned long i = 0; i < nodes.size(); i++) {
-      if (nodes.at(i)->getType() != static_cast<int>(AstType::FunctionDef) && nodes.at(i)->getType() != static_cast<int>(AstType::Import)) {
+      if (nodes.at(i)->getType() != static_cast<int>(AstType::FunctionDef) && nodes.at(i)->getType() != static_cast<int>(AstType::Import) && nodes.at(i)->getType() != static_cast<int>(AstType::ImportFrom)) {
         return false;
       }
     }

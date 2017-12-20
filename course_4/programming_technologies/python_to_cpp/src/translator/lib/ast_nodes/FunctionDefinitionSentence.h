@@ -3,9 +3,9 @@
 
 class FunctionDefinitionSentence : public Sentence {
 public:
-  FunctionDefinitionSentence(string name, vector<string> argument_names, vector<string> argument_default_values) {
+  FunctionDefinitionSentence(string name, vector<string> argument_names, vector<string> argument_default_values, vector<Sentence*> children) {
     this->type = static_cast<int>(AstType::FunctionDef);
-    this->children = vector<Sentence*>();
+    this->children = children;
 
     this->name = name;
     this->argument_names = argument_names;
@@ -50,7 +50,7 @@ public:
       arguments_string += next_argument;
     }
 
-    return "\nint " + name + "(" + arguments_string + ") {" + children_content +"}";
+    return "\nint " + name + "(" + arguments_string + ") {\n" + children_content +"}";
   }
 
 private:

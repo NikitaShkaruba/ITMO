@@ -165,28 +165,43 @@ public:
 
 private:
 
-  void static _translate_comment(const std::shared_ptr<AstStatement> &statement) {
+  static void _translate_comment(const std::shared_ptr<AstStatement> &statement) {
     AstDocString const &comment_statement = static_cast<const AstDocString &>(*statement);
     String comment_content = comment_statement.doc;
 
     root->addNode(new CommentSentence(comment_content));
   }
 
-  void static _translate_print(const shared_ptr<AstStatement> &statement) {
+  static void _translate_print(const shared_ptr<AstStatement> &statement) {
+    root->addNode(_create_printNode(statement));
+  }
+
+  static PrintSentence* _create_printNode(const shared_ptr<AstStatement> &statement) {
     AstPrint const &print_statement = static_cast<const AstPrint &>(*statement);
 
     String print_parts = "";
     for (unsigned long i = 0; i < print_statement.values.size(); i++) {
-      AstStr const &string_statements = static_cast<const AstStr &>(*print_statement.values.at(i));
+      AstExpression print_argument_statement = *print_statement.values.at(i);
 
-      String space = print_parts.empty() ? "" : " "; // Add space if not first
-      print_parts = print_parts.append(space + string_statements.value);
+      string value;
+      if (print_argument_statement.type == AstType::Str) {
+        AstStr const &string_statement = static_cast<const AstStr &>(*print_statement.values.at(i));
+        value = "\"" + string_statement.value +"\"";
+      } else if (print_argument_statement.type == AstType::Name) {
+        AstName const &name_statement = static_cast<const AstName &>(*print_statement.values.at(i));
+        value = name_statement.id;
+      } else {
+        throw "Not supported statement type";
+      }
+
+      String space = print_parts.empty() ? "" : " + "; // Add space if not first
+      print_parts = print_parts.append(space + value);
     }
 
-    root->addNode(new PrintSentence(print_parts));
+    return new PrintSentence(print_parts);
   }
 
-  void static _translate_import(const shared_ptr<AstStatement> &statement) {
+  static void _translate_import(const shared_ptr<AstStatement> &statement) {
     AstPrint const & import_statement = static_cast<const AstPrint &>(*statement);
 
     AstAlias const & arguments = static_cast<const AstAlias &> (*import_statement.destination);
@@ -195,17 +210,16 @@ private:
 
     if (name.id == "sys") {
       root->addHeader(new IncludeSentence("cstdio"));
-      root->addHeader(new IncludeSentence("iostream"));
-      root->addHeader(new IncludeSentence("fstream"));
       root->addHeader(new IncludeSentence("stdio.h"));
     } else {
       throw "undefined import!";
     }
   }
 
-  void static _translate_function_def(const shared_ptr<AstStatement> &statement) {
+  static void _translate_function_def(const shared_ptr<AstStatement> &statement) {
     AstFunctionDef const & function_statement = static_cast<const AstFunctionDef &>(*statement);
 
+    // Собираем имя функции
     AstExpr const & name_expression = static_cast<const AstExpr &>(function_statement.name);
     AstName const & name_statement = static_cast<const AstName &>(*name_expression);
     string function_name = name_statement.id;
@@ -228,10 +242,33 @@ private:
       argument_default_values.push_back(argument_default_value);
     }
 
-    root->addNode(new FunctionDefinitionSentence(function_name, argument_names, argument_default_values));
+    // Собираем тело функции
+    vector<Sentence*> children;
+    AstSuite & body_expression = static_cast<AstSuite &>(*function_statement.body);
+    for (unsigned long i = 0; i < body_expression.items.size(); i++) {
+//      AstStatement const & nested_expression = static_cast<const AstStatement  &>(*body_expression.items.at(i));
+      std::shared_ptr<AstStatement> &nested_statement = body_expression.items.at(i);
+
+      switch (nested_statement->type) {
+        case AstType::Print:
+          children.push_back(_create_printNode(nested_statement));
+          break;
+
+        case AstType::Pass:
+          break;
+        default:
+          break;
+      }
+    }
+//    AstExpr const & name_expression = static_cast<const AstExpr &>(function_statement.name);
+//    AstName const & name_statement = static_cast<const AstName &>(*name_expression);
+//    string function_name = name_statement.id;
+
+
+    root->addNode(new FunctionDefinitionSentence(function_name, argument_names, argument_default_values, children));
   }
 
-  void static _translate_assignment(const shared_ptr<AstStatement> &statement) {
+  static void _translate_assignment(const shared_ptr<AstStatement> &statement) {
     AstPrint const &import_statement = static_cast<const AstPrint &>(*statement);
 
     AstAlias const &arguments = static_cast<const AstAlias &> (*import_statement.destination);
@@ -248,79 +285,79 @@ private:
     }
   }
 
-  void static _translate_raise(const shared_ptr<AstStatement> &statement) {
+  static void _translate_raise(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_repr(const shared_ptr<AstStatement> &statement) {
+  static void _translate_repr(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_return(const shared_ptr<AstStatement> &statement) {
+  static void _translate_return(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_set(const shared_ptr<AstStatement> &statement) {
+  static void _translate_set(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_setcomp(const shared_ptr<AstStatement> &statement) {
+  static void _translate_setcomp(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_slice(const shared_ptr<AstStatement> &statement) {
+  static void _translate_slice(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_slicetype(const shared_ptr<AstStatement> &statement) {
+  static void _translate_slicetype(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_statement(const shared_ptr<AstStatement> &statement) {
+  static void _translate_statement(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_str(const shared_ptr<AstStatement> &statement) {
+  static void _translate_str(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_subscript(const shared_ptr<AstStatement> &statement) {
+  static void _translate_subscript(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_suite(const shared_ptr<AstStatement> &statement) {
+  static void _translate_suite(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_tryexcept(const shared_ptr<AstStatement> &statement) {
+  static void _translate_tryexcept(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_tryfinally(const shared_ptr<AstStatement> &statement) {
+  static void _translate_tryfinally(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_tuple(const shared_ptr<AstStatement> &statement) {
+  static void _translate_tuple(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_unaryop(const shared_ptr<AstStatement> &statement) {
+  static void _translate_unaryop(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_while(const shared_ptr<AstStatement> &statement) {
+  static void _translate_while(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_with(const shared_ptr<AstStatement> &statement) {
+  static void _translate_with(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_yield(const shared_ptr<AstStatement> &statement) {
+  static void _translate_yield(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 
-  void static _translate_yieldexpr(const shared_ptr<AstStatement> &statement) {
+  static void _translate_yieldexpr(const shared_ptr<AstStatement> &statement) {
     printf("sht");
   }
 

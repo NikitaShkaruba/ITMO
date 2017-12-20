@@ -11,7 +11,7 @@ public:
   }
 
   string toString(string tabs = "") {
-    return tabs + "printf(\"%s\", \"" + print_string + "\");\n";
+    return tabs + "printf(\"%s\", " + print_string + ");\n";
   }
 
 private:

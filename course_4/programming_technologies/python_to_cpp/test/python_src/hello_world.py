@@ -7,4 +7,4 @@
 """
 import sys
 
-print >> sys.stdout, "Hello", "World!"
+print >> sys.stdout, "Hello World!"
