@@ -66,3 +66,8 @@ gradlew.bat
 # Visual studio trash #
 #######################
 **/.vs/
+
+# Repository libs #
+###################
+io_systems/lib/**
+io_systems/lab_2/lab_2.cache/**
