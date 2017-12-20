@@ -1,9 +1,8 @@
-
 #pragma once
 
 #include <pypa/ast/ast.hh>
 #include <translator/lib/ast_nodes/IncludeSentence.h>
-#include <translator/lib/ast_nodes/FunctionSentence.h>
+#include <translator/lib/ast_nodes/FunctionDefinitionSentence.h>
 #include "string.h"
 #include "vector"
 #include "map"
@@ -31,28 +30,17 @@ public:
   }
 
   /**
-   * Проверяет, что у скрипта нет меина
+   * Проверяет, нужен ли скрипту меин для выполнения. Питону он не обязателен, а cpp - необходим.
    */
-  bool isNoMainScript() {
-    for (unsigned long i = 0; i < nodes.size(); i++) {
-      if (nodes.at(i)->getType() != static_cast<int>(AstType::FunctionDef)) {
-        continue;
-      }
-
-      FunctionSentence* functionNode = static_cast<FunctionSentence*>(nodes.at(i));
-      if (functionNode->getName() == FUNCTION_NAME_MAIN) {
-        return false;
-      }
-    }
-
-    return true;
+  bool isMainNeeded() {
+    return isNoMainScript() && !isLib();
   }
 
   /**
    * Заносит всё, кроме хедеров в меин
    */
   void packMain() {
-    FunctionSentence* mainFunction = new FunctionSentence(FUNCTION_NAME_MAIN);
+    FunctionDefinitionSentence* mainFunction = new FunctionDefinitionSentence(FUNCTION_NAME_MAIN);
 
     for (unsigned long i = 0; i < nodes.size();) {
       if (nodes.at(i)->getType() == static_cast<int>(AstType::Import)) {
@@ -81,6 +69,39 @@ public:
   }
 
 private:
+
+  /**
+   * Проверяет, что у скрипта нет меина
+   */
+  bool isNoMainScript() {
+    for (unsigned long i = 0; i < nodes.size(); i++) {
+      if (nodes.at(i)->getType() != static_cast<int>(AstType::FunctionDef)) {
+        continue;
+      }
+
+      FunctionDefinitionSentence* functionNode = static_cast<FunctionDefinitionSentence*>(nodes.at(i));
+      if (functionNode->getName() == FUNCTION_NAME_MAIN) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Проверяет, является ли файл библиотекой
+   */
+  bool isLib() {
+    for (unsigned long i = 0; i < nodes.size(); i++) {
+      if (nodes.at(i)->getType() != static_cast<int>(AstType::FunctionDef) && nodes.at(i)->getType() != static_cast<int>(AstType::Import)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   vector<Sentence*> nodes;
+
 };
 

@@ -42,4 +42,4 @@ install(TARGETS pypa ARCHIVE DESTINATION lib)
 install(DIRECTORY pypa DESTINATION include FILES_MATCHING PATTERN "*.hh" PATTERN "*.inl")
 
 # translation_results
-add_executable(converted-test ../test/cpp_out/hello_world.cpp translator/lib/ast_nodes/CommentSentence.h translator/lib/ast_nodes/IncludeSentence.h translator/lib/ast_nodes/PrintSentence.h translator/translator.cpp translator/lib/ast_nodes/FunctionSentence.h)
+add_executable(converted-test ../test/cpp_out/hello_world.cpp translator/lib/ast_nodes/CommentSentence.h translator/lib/ast_nodes/IncludeSentence.h translator/lib/ast_nodes/PrintSentence.h translator/translator.cpp translator/lib/ast_nodes/FunctionDefinitionSentence.h)

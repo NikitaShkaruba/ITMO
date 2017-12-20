@@ -29,185 +29,125 @@ public:
 
       } else if (s == AstType::Arguments) {
 
-
       } else if (s == AstType::Assert) {
-
 
       } else if (s == AstType::Assign) {
 
-
       } else if (s == AstType::Attribute) {
-
 
       } else if (s == AstType::AugAssign) {
 
-
       } else if (s == AstType::BinOp) {
-
 
       } else if (s == AstType::Bool) {
 
-
       } else if (s == AstType::BoolOp) {
-
 
       } else if (s == AstType::Break) {
 
-
       } else if (s == AstType::Call) {
-
 
       } else if (s == AstType::ClassDef) {
 
-
       } else if (s == AstType::Compare) {
-
 
       } else if (s == AstType::Complex) {
 
-
       } else if (s == AstType::Comprehension) {
-
 
       } else if (s == AstType::Continue) {
 
-
       } else if (s == AstType::Delete) {
-
 
       } else if (s == AstType::Dict) {
 
-
       } else if (s == AstType::DictComp) {
-
 
       } else if (s == AstType::Ellipsis) {
 
-
       } else if (s == AstType::EllipsisObject) {
-
 
       } else if (s == AstType::Except) {
 
-
       } else if (s == AstType::Exec) {
-
 
       } else if (s == AstType::Expression) {
 
-
       } else if (s == AstType::ExpressionStatement) {
-
 
       } else if (s == AstType::ExtSlice) {
 
-
       } else if (s == AstType::For) {
 
-
       } else if (s == AstType::FunctionDef) {
-
-
+        _translate_function_def(statement);
       } else if (s == AstType::Generator) {
-
 
       } else if (s == AstType::Global) {
 
-
       } else if (s == AstType::If) {
-
 
       } else if (s == AstType::IfExpr) {
 
-
       } else if (s == AstType::ImportFrom) {
-
 
       } else if (s == AstType::Index) {
 
-
       } else if (s == AstType::Keyword) {
-
 
       } else if (s == AstType::Lambda) {
 
-
       } else if (s == AstType::List) {
-
 
       } else if (s == AstType::ListComp) {
 
-
       } else if (s == AstType::Module) {
-
 
       } else if (s == AstType::Name) {
 
-
       } else if (s == AstType::None) {
-
 
       } else if (s == AstType::Number) {
 
-
       } else if (s == AstType::Pass) {
-
 
       } else if (s == AstType::Print) {
         _translate_print(statement);
       } else if (s == AstType::Raise) {
 
-
       } else if (s == AstType::Repr) {
-
 
       } else if (s == AstType::Return) {
 
-
       } else if (s == AstType::Set) {
-
 
       } else if (s == AstType::SetComp) {
 
-
       } else if (s == AstType::Slice) {
-
 
       } else if (s == AstType::SliceType) {
 
-
       } else if (s == AstType::Statement) {
-
 
       } else if (s == AstType::Str) {
 
-
       } else if (s == AstType::Subscript) {
-
 
       } else if (s == AstType::Suite) {
 
-
       } else if (s == AstType::TryExcept) {
-
 
       } else if (s == AstType::TryFinally) {
 
-
       } else if (s == AstType::Tuple) {
-
 
       } else if (s == AstType::UnaryOp) {
 
-
       } else if (s == AstType::While) {
-
 
       } else if (s == AstType::With) {
 
-
       } else if (s == AstType::Yield) {
-
 
       } else if (s == AstType::YieldExpr) {
 
@@ -216,7 +156,7 @@ public:
       }
     }
 
-    if (root->isNoMainScript()) {
+    if (root->isMainNeeded()) {
       root->packMain();
     }
 
@@ -247,6 +187,51 @@ private:
   }
 
   void static _translate_import(const shared_ptr<AstStatement> &statement) {
+    AstPrint const & import_statement = static_cast<const AstPrint &>(*statement);
+
+    AstAlias const & arguments = static_cast<const AstAlias &> (*import_statement.destination);
+    AstName const & name = static_cast<const AstName &> (*arguments.name);
+    String lib_name = name.id;
+
+    if (name.id == "sys") {
+      root->addHeader(new IncludeSentence("cstdio"));
+      root->addHeader(new IncludeSentence("iostream"));
+      root->addHeader(new IncludeSentence("fstream"));
+      root->addHeader(new IncludeSentence("stdio.h"));
+    } else {
+      throw "undefined import!";
+    }
+  }
+
+  void static _translate_function_def(const shared_ptr<AstStatement> &statement) {
+    AstFunctionDef const & function_statement = static_cast<const AstFunctionDef &>(*statement);
+
+    AstExpr const & name_expression = static_cast<const AstExpr &>(function_statement.name);
+    AstName const & name_statement = static_cast<const AstName &>(*name_expression);
+    string function_name = name_statement.id;
+
+    // Собираем аргументы и их дефолтные значения
+    vector<String> argument_names;
+    vector<String> argument_default_values;
+    AstArguments const & arguments_expression = static_cast<const AstArguments &>(function_statement.args);
+    for (unsigned long i = 0; i < arguments_expression.arguments.size(); i++) {
+      AstName const & argument_name_expression = static_cast<const AstName &>(*arguments_expression.arguments.at(i));
+      string argument_name = argument_name_expression.id;
+
+      string argument_default_value = "";
+      if (arguments_expression.defaults.at(i) != nullptr) {
+        AstStr const & argument_default_value_expression = static_cast<const AstStr  &>(*arguments_expression.defaults.at(i));
+        argument_default_value = argument_default_value_expression.value;
+      }
+
+      argument_names.push_back(argument_name);
+      argument_default_values.push_back(argument_default_value);
+    }
+
+    root->addNode(new FunctionDefinitionSentence(function_name, argument_names, argument_default_values));
+  }
+
+  void static _translate_assignment(const shared_ptr<AstStatement> &statement) {
     AstPrint const &import_statement = static_cast<const AstPrint &>(*statement);
 
     AstAlias const &arguments = static_cast<const AstAlias &> (*import_statement.destination);

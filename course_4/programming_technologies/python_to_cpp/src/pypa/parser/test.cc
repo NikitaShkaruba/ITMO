@@ -37,8 +37,9 @@ int main(int argc, char const** argv) {
     return 1;
   }
 
-  // Print cpp ast
-  printf("%s", cpp_abstract_syntax_tree->toString().c_str());
+  // Print cpp code
+  string cpp_code = cpp_abstract_syntax_tree->toString();
+  printf("%s", cpp_code .c_str());
 
   return 0;
 }
