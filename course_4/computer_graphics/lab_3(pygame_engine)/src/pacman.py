@@ -7,7 +7,7 @@ from src.lib.elements.Player import Player
 from src.lib.elements.Ghost import Ghost
 from src.lib.helpers.initialize import initialize_map, initialize_gate
 
-pacman_icon = pygame.image.load('resources/images/pacman.png')
+pacman_icon = pygame.image.load('resources/images/pacman_right.png')
 pygame.display.set_icon(pacman_icon)
 
 pygame.mixer.init()
@@ -58,7 +58,7 @@ def start_game():
     c_steps = 0
 
     # Create the player paddle object
-    pacman = Player(width, pacman_height, "resources/images/pacman.png")
+    pacman = Player(width, pacman_height, "resources/images/pacman_right.png")
     all_sprites_list.add(pacman)
     pacman_collide.add(pacman)
 

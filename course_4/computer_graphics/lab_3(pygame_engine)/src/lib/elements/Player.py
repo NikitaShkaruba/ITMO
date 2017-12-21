@@ -31,6 +31,16 @@ class Player(pygame.sprite.Sprite):
         self.change_x += x
         self.change_y += y
 
+        if self.change_x > 0:
+            self.image = pygame.image.load("resources/images/pacman_right.png").convert()
+        elif self.change_x < 0:
+            self.image = pygame.image.load("resources/images/pacman_left.png").convert()
+        elif self.change_y > 0:
+            self.image = pygame.image.load("resources/images/pacman_bottom.png").convert()
+        elif self.change_y < 0:
+            self.image = pygame.image.load("resources/images/pacman_top.png").convert()
+
+
     # Find a new position for the player
     def update(self, walls, gate):
         # Get the old position, in case we need to go back to it

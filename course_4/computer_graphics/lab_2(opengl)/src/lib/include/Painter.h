@@ -6,7 +6,7 @@ using namespace std;
 static const double BLOCK_SCALE = 0.2;
 static const double BLOCK_WIDTH = 1 * BLOCK_SCALE;
 static const double BLOCK_HEIGHT = 1 * BLOCK_SCALE;
-static const double BLOCK_LENGTH = 0.5 * BLOCK_SCALE;
+static const double BLOCK_LENGTH = 0.6 * BLOCK_SCALE;
 
 class Painter {
 public:
@@ -30,15 +30,15 @@ private:
   void drawPacman(double x, double y);
   void drawFood(double x, double y);
 
-  void drawRectangle(double x, double y);
-  void _drawRectangleInnerSide(double x, double y);
-  void _drawRectangleTopSide(double x, double y);
-  void _drawRectangleRightSide(double x, double y);
+  void drawRectangle(double x, double y, float red, float green, float blue);
+  void _drawRectangleInnerSide(double x, double y, float red, float green, float blue);
+  void _drawRectangleTopSide(double x, double y, float red, float green, float blue);
+  void _drawRectangleRightSide(double x, double y, float red, float green, float blue);
 
-  void drawSmallRectangle(double x, double y);
-  void _drawSmallRectangleInnerSide(double x, double y);
-  void _drawSmallRectangleTopSide(double x, double y);
-  void _drawSmallRectangleRightSide(double x, double y);
+  void drawSmallRectangle(double x, double y, float red, float green, float blue);
+  void _drawSmallRectangleInnerSide(double x, double y, float red, float green, float blue);
+  void _drawSmallRectangleTopSide(double x, double y, float red, float green, float blue);
+  void _drawSmallRectangleRightSide(double x, double y, float red, float green, float blue);
 
-  void pushPointToVector(float x, float y, float z);
+  void pushPointToVector(float x, float y, float z, float red, float green, float blue);
 };
