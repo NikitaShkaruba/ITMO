@@ -1,0 +1,25 @@
+    terminateonerror
+    -- Открытие com-порта (com1) на скорости 9600 бит/с
+    9600 openchannel com2
+
+: wait
+    
+    cr cr
+    ." Включите питание и нажмите кнопку RESET на стенде SDK." cr cr 
+    ." Ожидание перезапуска... " 
+
+    begin rsio dup emit 109 == until
+
+    ." Ok" cr cr
+;
+
+    wait 
+
+    T_RAM
+
+    0x2100       write lab2.bin
+    0x2100       jmp
+
+    0 term
+
+bye
